@@ -3,13 +3,13 @@
     --font-scale: calc(var(--scale) * 0.9); /* Main text unit in smash poker */
     --font: "Fragment Mono"; /* Helvetica monospace */
 
-    --background-primary: white;
-    --background-secondary: lawngreen; /* background of amiibo area */
+    --background-primary: lightgrey;
+    --background-secondary: darkgrey;
 
     --blur-intensity: 2; /* how much blur there will be on semi blured elements, higher means less*/
 
-    --bubble-color: lightgrey; /* Used in the background of rouned containers */
-    --dark-bubble-color: rgb(173, 173, 173);
+    --bubble-color: darkgrey; /* Used in the background of rouned containers */
+    --dark-bubble-color: rgb(101, 101, 101);
     --border-Colors: black; /* also primary text color */
     --secondary-text-color: white; /* Nav button text */
     --out-of-bounds-color: slategray;
@@ -28,8 +28,64 @@ body {
 
 .main-content /* area where everything takes place */ {
     display: grid;
-    grid-template-rows: 35% 70%;
+    grid-template-rows: 30% 70%;
     grid-template-columns: 100%;
     height: calc(var(--scale) * 40); /* about 90vh by defualt */
     aspect-ratio: 5/3; /* want something somewhat wide but it still has so side bars */
+}
+
+.top-section {
+}
+
+.middle-section {
+}
+
+.bottom-section {
+}
+
+/* functional classes */
+
+.hide /* class for hide and unhideing elements */ {
+    display: none !important;
+}
+
+.invisable /* class for hide and unhideing elements */ {
+    opacity: 0%;
+    pointer-events: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.context-pointer {
+    cursor: context-menu;
+}
+
+.disabled-click {
+    cursor: not-allowed;
+}
+
+.border-thin {
+    border: calc(var(--scale) / 3) solid var(--border-Colors);
+}
+
+.border-thick {
+    border: calc(var(--scale) / 2) solid var(--border-Colors);
+}
+
+.flex /* made this a class since its used a lot */ {
+    display: flex;
+}
+
+.fit {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.bubble /* equivlent of scratch variable display */ {
+    background-color: var(--bubble-color);
+    border: calc(var(--scale) / 5) solid var(--border-Colors);
+    border-radius: calc(var(--scale) * 1);
 }
