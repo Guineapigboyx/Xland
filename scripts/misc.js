@@ -59,3 +59,9 @@ function scaleWindow() {
         document.documentElement.style.removeProperty("--scale", "2.4vh");
     }
 }
+
+function hasClass(selector, classToCheck) {
+    if (document.querySelector(selector).classList.contains(classToCheck)) {
+        return true;
+    } else return false;
+}

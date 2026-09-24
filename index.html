@@ -26,10 +26,34 @@
     </head>
     <body>
         <header></header>
-        <main class="main-content">
-            <div class="top-section"></div>
-            <div class="middle-section hide"></div>
-            <div class="bottom-section"></div>
+        <main class="main-content border-thin">
+            <div class="toolbar">
+                <button class="button massive-text Header-text pointer"></button>
+                <button
+                    id="world-button"
+                    class="button massive-text Header-text pointer"
+                    onclick="toggleScreen('world')"
+                >
+                    World
+                </button>
+                <button
+                    id="status-button"
+                    class="button massive-text Header-text pointer"
+                    onclick="toggleScreen('status')"
+                >
+                    Status
+                </button>
+                <div id="info" class="huge-text center-text dark-bubble">
+                    <div data-slot="1"></div>
+                    <div data-slot="2"></div>
+                    <div data-slot="3"></div>
+                </div>
+            </div>
+            <div class="bottom-section">
+                <p id="bottom-null" class="fit-div gigantic-text center-text">Nothing to show</p>
+                <section class="world-screen fit-div hide"></section>
+                <section class="status-screen fit-div hide"></section>
+            </div>
         </main>
     </body>
 </html>

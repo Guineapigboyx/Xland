@@ -3,44 +3,26 @@
     --font-scale: calc(var(--scale) * 0.9); /* Main text unit in smash poker */
     --font: "Fragment Mono"; /* Helvetica monospace */
 
-    --background-primary: lightgrey;
-    --background-secondary: darkgrey;
+    --background-primary: dimgrey;
+    --background-secondary: rgb(62, 76, 76); /* modifed version of darkslate grey */
+    --background-tertiary: grey;
+
+    --primary-button-color: DarkSlateBlue;
+    --secondary-button-color: GoldenRod;
 
     --blur-intensity: 2; /* how much blur there will be on semi blured elements, higher means less*/
 
     --bubble-color: darkgrey; /* Used in the background of rouned containers */
-    --dark-bubble-color: rgb(101, 101, 101);
+    --dark-bubble-color: MidnightBlue;
+    --dark-bubble-text: PapayaWhip;
     --border-Colors: black; /* also primary text color */
     --secondary-text-color: white; /* Nav button text */
     --out-of-bounds-color: slategray;
 }
 
-body {
-    background-color: var(--out-of-bounds-color); /* out of bounds area */
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    font-family: var(--font);
-    font-size: var(--font-scale);
-    color: var(--border-Colors);
-    overflow: hidden;
-}
-
-.main-content /* area where everything takes place */ {
-    display: grid;
-    grid-template-rows: 30% 70%;
-    grid-template-columns: 100%;
-    height: calc(var(--scale) * 40); /* about 90vh by defualt */
-    aspect-ratio: 5/3; /* want something somewhat wide but it still has so side bars */
-}
-
-.top-section {
-}
-
-.middle-section {
-}
-
-.bottom-section {
+/* Fix for chromium browsers */
+button {
+    font-family: var(--font) !important;
 }
 
 /* functional classes */
@@ -78,14 +60,157 @@ body {
     display: flex;
 }
 
-.fit {
+.fit-img {
     object-fit: contain;
     height: 100%;
     width: 100%;
+}
+
+.fit-div {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
 }
 
 .bubble /* equivlent of scratch variable display */ {
     background-color: var(--bubble-color);
     border: calc(var(--scale) / 5) solid var(--border-Colors);
     border-radius: calc(var(--scale) * 1);
+}
+
+.dark-bubble /* equivlent of scratch variable display */ {
+    background-color: var(--dark-bubble-color);
+    border: calc(var(--scale) / 5) solid var(--border-Colors);
+    border-radius: calc(var(--scale) * 1);
+    color: var(--dark-bubble-text);
+}
+
+/* text */
+
+.normal-text /* text for pizes */ {
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    align-items: last baseline;
+}
+
+.tiny-text {
+    margin: 0px;
+    font-size: calc(var(--font-scale) * 0.65);
+}
+
+.small-text {
+    margin: 0px;
+    font-size: calc(var(--font-scale) * 0.85);
+}
+
+.medium-text {
+    margin: 0px;
+    font-size: var(--font-scale);
+}
+
+.large-text {
+    margin: 0px;
+    font-size: calc(var(--font-scale) * 1.2);
+}
+
+.huge-text {
+    margin: 0px;
+    font-size: calc(var(--font-scale) * 1.5);
+}
+
+.massive-text {
+    font-size: calc(var(--font-scale) * 2);
+}
+
+.gigantic-text {
+    font-size: calc(var(--font-scale) * 2.5);
+}
+
+.colossal-text {
+    font-size: calc(var(--font-scale) * 6);
+}
+
+.Header-text /* bolded text */ {
+    font-weight: bold;
+}
+
+.center-text /* needs to have flex most of the time to work */ {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.right-text {
+    justify-self: end;
+    margin-left: auto;
+}
+
+.left-text {
+    justify-self: start;
+    margin-right: auto;
+}
+
+/* buttons / boxes */
+.button /* basic/fallback button */ {
+    background-color: var(--primary-button-color);
+    border: calc(var(--scale) / 2.5) solid var(--border-Colors);
+    align-items: center;
+}
+
+.button-secondary /* nav button */ {
+    background-color: var(--secondary-button-color);
+    border: calc(var(--scale) / 2.5) solid var(--border-Colors);
+    color: var(--secondary-text-color);
+}
+
+/* Area sections */
+
+body {
+    background-color: var(--out-of-bounds-color); /* out of bounds area */
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font);
+    font-size: var(--font-scale);
+    color: var(--border-Colors);
+    overflow: hidden;
+}
+
+.main-content /* area where everything takes place */ {
+    display: grid;
+    grid-template-rows: 23% 77%;
+    grid-template-columns: 100%;
+    height: calc(var(--scale) * 38); /* about 91vh by defualt */
+    aspect-ratio: 4.5/3; /* want something somewhat wide but it still has so side bars */
+    margin-top: calc(var(--scale) / -3); /* line up the top with the top of the screen */
+    border-radius: calc(var(--scale) * 0.4);
+}
+
+/* Bottom sections */
+
+.bottom-section {
+    background-color: var(--background-secondary);
+}
+
+/* Toolbar */
+
+.toolbar {
+    background-color: var(--background-primary);
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: repeat(3, 18%) 40%;
+    padding: 1.5%;
+    gap: 2%;
+}
+
+#info {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 33%);
+    margin-top: calc(var(--scale) / -2);
+    margin-bottom: calc(var(--scale) / -2);
+    padding: 2%;
 }
