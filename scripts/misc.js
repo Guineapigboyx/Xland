@@ -43,3 +43,19 @@ function isClickDisabled(ownSelector) {
 
     return el.classList.contains("disabled-click");
 }
+
+function scaleWindow() {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+
+    //checks if the window is smaller in width than main
+    if (window.innerHeight / window.innerWidth > 0.6) {
+        //scales the window to fit
+        document.documentElement.style.setProperty(
+            "--scale",
+            2.4 * (window.innerWidth / window.innerHeight) * 0.6 + "vh",
+        );
+    } else {
+        document.documentElement.style.removeProperty("--scale", "2.4vh");
+    }
+}

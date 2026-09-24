@@ -14,3 +14,22 @@
     --secondary-text-color: white; /* Nav button text */
     --out-of-bounds-color: slategray;
 }
+
+body {
+    background-color: var(--out-of-bounds-color); /* out of bounds area */
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font);
+    font-size: var(--font-scale);
+    color: var(--border-Colors);
+    overflow: hidden;
+}
+
+.main-content /* area where everything takes place */ {
+    display: grid;
+    grid-template-rows: 35% 70%;
+    grid-template-columns: 100%;
+    height: calc(var(--scale) * 40); /* about 90vh by defualt */
+    aspect-ratio: 5/3; /* want something somewhat wide but it still has so side bars */
+}
