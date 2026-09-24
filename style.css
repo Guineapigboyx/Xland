@@ -183,8 +183,8 @@ body {
     display: grid;
     grid-template-rows: 23% 77%;
     grid-template-columns: 100%;
-    height: calc(var(--scale) * 38); /* about 91vh by defualt */
-    aspect-ratio: 4.5/3; /* want something somewhat wide but it still has so side bars */
+    height: calc(var(--scale) * 40); /* about 91vh by defualt */
+    aspect-ratio: 4.2/3; /* want something somewhat wide but it still has so side bars */
     margin-top: calc(var(--scale) / -3); /* line up the top with the top of the screen */
     border-radius: calc(var(--scale) * 0.4);
 }
@@ -204,6 +204,7 @@ body {
     grid-template-columns: repeat(3, 18%) 40%;
     padding: 1.5%;
     gap: 2%;
+    border-bottom: calc(var(--scale) / 2.5) solid var(--border-Colors);
 }
 
 #info {
