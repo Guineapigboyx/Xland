@@ -1,0 +1,16 @@
+:root {
+    --scale: 2.4vh; /* Main unit in smash poker */
+    --font-scale: calc(var(--scale) * 0.9); /* Main text unit in smash poker */
+    --font: "Fragment Mono"; /* Helvetica monospace */
+
+    --background-primary: white;
+    --background-secondary: lawngreen; /* background of amiibo area */
+
+    --blur-intensity: 2; /* how much blur there will be on semi blured elements, higher means less*/
+
+    --bubble-color: lightgrey; /* Used in the background of rouned containers */
+    --dark-bubble-color: rgb(173, 173, 173);
+    --border-Colors: black; /* also primary text color */
+    --secondary-text-color: white; /* Nav button text */
+    --out-of-bounds-color: slategray;
+}
