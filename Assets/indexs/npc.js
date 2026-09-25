@@ -23,7 +23,7 @@
  * @property {string} id - Unique identifier for the item (e.g. “sword_01”)
  * @property {Boolean} canSell - do they want to sell this item
  * @property {number} price - Price in currency
- * @property {number} - Optional quantity, defaulting to 1 if omitted
+ * @property {number} quantity - defaulting to 1 if omitted
  *
  * Equipment
  * @typedef {object} equiped - what could appear in each equipment slot
