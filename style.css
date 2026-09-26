@@ -23,6 +23,7 @@
     --border-thick-width: calc(var(--scale) / 2);
     --border-thin-width: calc(var(--scale) / 3);
     --border-extra-thin-width: calc(var(--scale) / 4);
+    --border-super-thin-width: calc(var(--scale) / 5);
 
     --head-icon: url("Assets/inventory/BG3/equipment icons/BG3-Helmets_Icon.webp");
     --feet-icon: url("Assets/inventory/BG3/equipment icons/BG3-Boots_Icon.webp");
@@ -63,6 +64,10 @@ button {
 
 .disabled-click {
     cursor: not-allowed;
+}
+
+.border-super-thin {
+    border: var(--border-super-thin-width) solid var(--border-Colors);
 }
 
 .border-extra-thin {
