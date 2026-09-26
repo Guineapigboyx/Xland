@@ -13,16 +13,33 @@
     --blur-intensity: 2; /* how much blur there will be on semi blured elements, higher means less*/
 
     --bubble-color: darkgrey; /* Used in the background of rouned containers */
-    --dark-bubble-color: MidnightBlue;
+    --dark-bubble-color: rgb(57, 50, 43);
+    --blue-bubble-color: MidnightBlue;
     --dark-bubble-text: PapayaWhip;
-    --border-Colors: black; /* also primary text color */
     --secondary-text-color: white; /* Nav button text */
     --out-of-bounds-color: slategray;
+
+    --border-Colors: black; /* also primary text color */
+    --border-thick-width: calc(var(--scale) / 2);
+    --border-thin-width: calc(var(--scale) / 3);
+    --border-extra-thin-width: calc(var(--scale) / 4);
+
+    --head-icon: url("Assets/inventory/BG3/equipment icons/BG3-Helmets_Icon.webp");
+    --feet-icon: url("Assets/inventory/BG3/equipment icons/BG3-Boots_Icon.webp");
+    --body-icon: url("Assets/inventory/BG3/equipment icons/BG3-Clothing.webp");
+    --pants-icon: url("Assets/inventory/BG3/equipment icons/BG3-Underwear_Icon.webp");
+    --hand-icon: url("Assets/inventory/BG3/equipment icons/BG3-Gloves_Icon.webp");
+    --necklace-icon: url("Assets/inventory/BG3/equipment icons/BG3-Amulets.webp");
+    --belt-icon: url("Assets/inventory/BG3/equipment icons/BG3_Belts_Icon.webp");
+    --storage-icon: url("Assets/inventory/BG3/equipment icons/BG3-Backpack.webp");
+    --main-hand-icon: url("Assets/inventory/BG3/equipment icons/BG3-Weapon_Icon.webp");
+    --off-hand-icon: url("Assets/inventory/BG3/equipment icons/BG3-Shields_Icon.webp");
 }
 
 /* Fix for chromium browsers */
 button {
     font-family: var(--font) !important;
+    cursor: pointer;
 }
 
 /* functional classes */
@@ -48,12 +65,16 @@ button {
     cursor: not-allowed;
 }
 
+.border-extra-thin {
+    border: var(--border-extra-thin-width) solid var(--border-Colors);
+}
+
 .border-thin {
-    border: calc(var(--scale) / 3) solid var(--border-Colors);
+    border: var(--border-thin-width) solid var(--border-Colors);
 }
 
 .border-thick {
-    border: calc(var(--scale) / 2) solid var(--border-Colors);
+    border: var(--border-thick-width) solid var(--border-Colors);
 }
 
 .flex /* made this a class since its used a lot */ {
@@ -82,6 +103,13 @@ button {
 
 .dark-bubble /* equivlent of scratch variable display */ {
     background-color: var(--dark-bubble-color);
+    border: calc(var(--scale) / 5) solid var(--border-Colors);
+    border-radius: calc(var(--scale) * 1);
+    color: var(--dark-bubble-text);
+}
+
+.blue-bubble /* equivlent of scratch variable display */ {
+    background-color: var(--blue-bubble-color);
     border: calc(var(--scale) / 5) solid var(--border-Colors);
     border-radius: calc(var(--scale) * 1);
     color: var(--dark-bubble-text);
@@ -214,4 +242,92 @@ body {
     margin-top: calc(var(--scale) / -2);
     margin-bottom: calc(var(--scale) / -2);
     padding: 2%;
+}
+
+/* status screen */
+
+.status-screen {
+    display: grid;
+    grid-template-rows: 22% auto;
+    grid-template-columns: repeat(3, 33.33333%);
+}
+
+.status-toolbar {
+    grid-column: 1 / 4;
+}
+
+.inventory-preview {
+    display: grid;
+    grid-template-columns: 24% auto 25%;
+    grid-template-rows: repeat(6, 15%);
+    row-gap: 2%;
+    border-left: 0;
+    border-bottom: 0;
+    padding: calc(var(--scale) / 5);
+}
+
+.inventory-preview[data-slot="3"] {
+    border-right: 0;
+}
+
+.person-picture {
+    grid-column: 2;
+    grid-row: 1/6;
+}
+
+*[data-equipment] {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+*[data-equipment][data-inslot=""]::after {
+    content: "";
+    display: block;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    opacity: 40%;
+}
+
+*[data-equipment="head"][data-inslot=""]::after {
+    background-image: var(--head-icon);
+}
+
+*[data-equipment="feet"][data-inslot=""]::after {
+    background-image: var(--feet-icon);
+}
+
+*[data-equipment="pants"][data-inslot=""]::after {
+    background-image: var(--pants-icon);
+}
+
+*[data-equipment="body"][data-inslot=""]::after {
+    background-image: var(--body-icon);
+}
+
+*[data-equipment="hands"][data-inslot=""]::after {
+    background-image: var(--hand-icon);
+}
+
+*[data-equipment="necklace"][data-inslot=""]::after {
+    background-image: var(--necklace-icon);
+}
+
+*[data-equipment="belt"][data-inslot=""]::after {
+    background-image: var(--belt-icon);
+}
+
+*[data-equipment="storage"][data-inslot=""]::after {
+    background-image: var(--storage-icon);
+}
+
+*[data-equipment="mainHand"][data-inslot=""]::after {
+    background-image: var(--main-hand-icon);
+}
+
+*[data-equipment="offHand"][data-inslot=""]::after {
+    background-image: var(--off-hand-icon);
 }
