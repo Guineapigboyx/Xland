@@ -27,27 +27,27 @@
  *
  * Equipment
  * @typedef {object} equiped - what could appear in each equipment slot
- * @property {Array} equiped.head - head
- * @property {Array} equiped.leg - legs
- * @property {Array} equiped.body - body
- * @property {Array} equiped.hand - hands
- * @property {Array} equiped.ring1 - ring slot 1
- * @property {Array} equiped.ring2 - ring slot 2
- * @property {Array} equiped.necklace - necklace
- * @property {Array} equiped.underwear - underwear
- * @property {Array} equiped.belt - belt
- * @property {Array} equiped.mainHand - item in main hand
- * @property {Array} equiped.offHand - item in off hand
+ * @property {Array} head - head
+ * @property {Array} leg - legs
+ * @property {Array} body - body
+ * @property {Array} hand - hands
+ * @property {Array} ring1 - ring slot 1
+ * @property {Array} ring2 - ring slot 2
+ * @property {Array} necklace - necklace
+ * @property {Array} underwear - underwear
+ * @property {Array} belt - belt
+ * @property {Array} mainHand - item in main hand
+ * @property {Array} offHand - item in off hand
  *
  * @typedef {object} stats - base stat ranges
- * @property {[number, number]} stats.hp - health range [min, max]
- * @property {[number, number]} stats.strength - Strength range [min, max]
- * @property {[number, number]} stats.defense - Defense range [min, max]
- * @property {[number, number]} stats.speed - Speed range [min, max]
- * @property {[number, number]} stats.endurance - Endurance range [min, max]
- * @property {[number, number]} stats.intelligence - Intelligence range [min, max]
- * @property {[number, number]} stats.stealth - Stealth range [min, max]
- * @property {[number, number]} stats.crafting - Crafting range [min, max]
+ * @property {[number, number]} hp - health range [min, max]
+ * @property {[number, number]} strength - Strength range [min, max]
+ * @property {[number, number]} defense - Defense range [min, max]
+ * @property {[number, number]} speed - Speed range [min, max]
+ * @property {[number, number]} endurance - Endurance range [min, max]
+ * @property {[number, number]} intelligence - Intelligence range [min, max]
+ * @property {[number, number]} stealth - Stealth range [min, max]
+ * @property {[number, number]} crafting - Crafting range [min, max]
  *
  * @property {("spear"|"lightSword"|"heavySword"|"lightSpear"|"heavySpear"|"lightHammer"|"heavyHammer"|"lightAxe"|"heavyAxe"|"flail"|"bow"|"unarmed")[]} proficiency
  * - Weapon types the NPC is proficient with
