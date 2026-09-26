@@ -28,13 +28,11 @@
  * Equipment
  * @typedef {object} equiped - what could appear in each equipment slot
  * @property {Array} head - head
- * @property {Array} leg - legs
- * @property {Array} body - body
- * @property {Array} hand - hands
- * @property {Array} ring1 - ring slot 1
- * @property {Array} ring2 - ring slot 2
  * @property {Array} necklace - necklace
- * @property {Array} underwear - underwear
+ * @property {Array} body - body
+ * @property {Array} pants - pants
+ * @property {Array} hand - hands
+ * @property {Array} feet - feet
  * @property {Array} belt - belt
  * @property {Array} mainHand - item in main hand
  * @property {Array} offHand - item in off hand
@@ -80,13 +78,11 @@
  *
  * @typedef {object} equiped - If a equipment can appear in a slot
  * @property {Boolean} equiped.head - can a item appear in the head slot
- * @property {Boolean} equiped.leg - can a item appear in the legs slot
+ * @property {Boolean} equiped.necklace - can a item appear in the necklace slot
+ * @property {Boolean} equiped.pants - can a item appear in the pants slot
  * @property {Boolean} equiped.body - can a item appear in the body slot
  * @property {Boolean} equiped.hand - can a item appear in the hands slot
- * @property {Boolean} equiped.ring1 - can a item appear in the ring slot 1 slot
- * @property {Boolean} equiped.ring2 - can a item appear in the ring slot 2 slot
- * @property {Boolean} equiped.necklace - can a item appear in the necklace slot
- * @property {Boolean} equiped.underwear - can a item appear in the underwear slot
+ * @property {Boolean} equiped.feet - can a item appear in the feet slot
  * @property {Boolean} equiped.belt - can a item appear in the belt slot
  * @property {Boolean} equiped.mainHand - can a item appear in the item in main hand slot
  * @property {Boolean} equiped.offHand - can a item appear in the item in off hand slot
