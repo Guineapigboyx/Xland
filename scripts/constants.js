@@ -47,20 +47,25 @@ const navButton = {
  *
  *
  */
-const attacks = {};
-
-const elements = {};
 
 /**
  * @typedef {person} basePepole - the persons stat
  *
- * @typedef {Object} - the persons stat
- * @property {Number}
+ * @typedef {Object} person - the persons stat
+ * @property {Number} hp - how much HP they have
+ * @property {Number} strength - how much HP they have
+ * @property {Number} defense - how much HP they have
+ * @property {Number} speed - how much HP they have
+ * @property {Number} endurance - how much HP they have
+ * @property {Number} intelligence - how much HP they have
+ * @property {Object} ability - how much HP they have
+ * @property {Object} ability2 - how much HP they have
+ * @property {attack} speicalMove - how much HP they have
  */
 const basePepole = {
     Koopa: {
-        HP: 100,
-        str: 3,
+        hp: 100,
+        strength: 3,
         defense: 3,
         speed: 2,
         endurance: 5,
@@ -74,6 +79,26 @@ const basePepole = {
         speicalMove: "koopaShellCurl",
     },
 };
+
+/**
+ * @typedef {slot} equipSlots - defineing all of the slots in the inventory
+ *
+ * @typedef {Object} slot - the slot and all its paramiters
+ * @property {string} htmlSlot - the value for data-equipment in the person overview
+ * @property {weaponType|undefined} weaponType - if used as a weapon and has none it falls back on to this weapon type, if undefined it can't be held
+ */
+const equipSlots = {
+    head: { htmlSlot: head },
+};
+
+/**
+ * @typedef {weapon} weaponTypes - All the diffrent weapon types
+ *
+ * @typedef {Object} weaponType - this weapon types propertys
+ * @property {"oneHand"|"twoHand"} heldSlot - can this item be held by hand and does it take 2 hands to hold
+ * @property {statType} attackBonus - the stat to calculate the modifer for actions with this weapon
+ */
+const weaponTypes = {};
 
 /**
  * @typedef {Object} statType - xland stat
