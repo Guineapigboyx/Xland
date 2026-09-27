@@ -92,15 +92,158 @@ const equipSlots = {
 };
 
 /**
- * @typedef {weapon} weaponTypes - All the diffrent weapon types
+ * @typedef {weapon} weaponTypes - All the diffrent weapon/held item types
  *
  * @typedef {Object} weaponType - this weapon types propertys
- * @property {"oneHand"|"twoHand"} heldSlot - can this item be held by hand and does it take 2 hands to hold
- * @property {statType} attackBonus - the stat to calculate the modifer for actions with this weapon
+ * @property {Number} weightThreshold - If the weight is above this amount it becomes 2 handed. Put 0 for always 2 handed
+ * @property {statTypes.statType} attackBonus - the stat to calculate the modifer for actions with this weapon
+ * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - fallback for if a move does not spesfiy
+ *
+ * @property {undefined|1|2|3} rockBreaker - gets a bonus if used for destorying rocky objects
+ * @property {undefined|1|2|3} metalBreaker - gets a bonus if used for destorying metal objects
+ * @property {undefined|1|2|3} woodBreaker - gets a bonus if used for cutting wood
+ * @property {undefined|1|2|3} fabricBreaker - gets a bonus for cutting string/fabric
+ *
+ * @property {1|2|3|undefined} effectiveBlock - gets a bonus when blocking with
+ * @property {undefined|Boolean} ranged - is this a ranged weapon
+ * @property {undefined|Boolean} mountable - gets large debuffs if not mounted
  */
-const weaponTypes = {};
+const weaponTypes = {
+    pickaxe: {
+        weightThreshold: 0,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 3,
+        metalBreaker: 1,
+    },
+    hammer: {
+        weightThreshold: 7,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 2,
+        metalBreaker: 2,
+    },
+    guardingHammer: {
+        weightThreshold: 3,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 1,
+        metalBreaker: 1,
+        effectiveBlock: true,
+    },
+    drill: {
+        weightThreshold: 0,
+        attackBonus: statTypes.strength,
+        sound: "mechnical",
+        rockBreaker: 3,
+        metalBreaker: 3,
+        woodBreaker: 3,
+    },
+    shield: {
+        weightThreshold: 16,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 1,
+        effectiveBlock: true,
+    },
+    knife: {
+        weightThreshold: 25,
+        attackBonus: statTypes.speed,
+        sound: "slash",
+        woodBreaker: 1,
+        fabricBreaker: 3,
+    },
+    sword: {
+        weightThreshold: 13,
+        attackBonus: statTypes.strength,
+        sound: "slash",
+        fabricBreaker: 3,
+    },
+    guardingSword: {
+        weightThreshold: 7,
+        attackBonus: statTypes.strength,
+        sound: "slash",
+        fabricBreaker: 2,
+        effectiveBlock: true,
+    },
+    slapstick: {
+        weightThreshold: 25,
+        attackBonus: statTypes.endurance,
+        sound: "swoosh",
+    },
+    gloves: {
+        weightThreshold: Infinity,
+        attackBonus: statTypes.strength,
+        sound: "swoosh",
+        rockBreaker: 1,
+        metalBreaker: 1,
+        effectiveBlock: true,
+    },
+    gun: {
+        weightThreshold: 12,
+        attackBonus: statTypes.intelligence,
+        sound: "boom",
+        rockBreaker: 1,
+        metalBreaker: 1,
+        woodBreaker: 1,
+        fabricBreaker: 1,
+        ranged: true,
+    },
+    bow: {
+        weightThreshold: 4,
+        attackBonus: statTypes.intelligence,
+        sound: "swoosh",
+        ranged: true,
+    },
+    spear: {
+        weightThreshold: 5,
+        attackBonus: statTypes.speed,
+        sound: "stab",
+        fabricBreaker: 1,
+    },
+    club: {
+        weightThreshold: 13,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 2,
+        metalBreaker: 3,
+    },
+    whip: {
+        weightThreshold: 24,
+        attackBonus: statTypes.speed,
+        sound: "swoosh",
+        fabricBreaker: 1,
+    },
+    boatWeapon: {
+        weightThreshold: 0,
+        attackBonus: statTypes.intelligence,
+        sound: "boom",
+        rockBreaker: 2,
+        metalBreaker: 2,
+        woodBreaker: 2,
+        ranged: true,
+        mountable: true,
+    },
+    bluntObject: {
+        //like a rock
+        weightThreshold: 9,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 1,
+    },
+    largeObject: {
+        // only use for generic items that could never be "small"
+        weightThreshold: 0,
+        attackBonus: statTypes.strength,
+        sound: "slam",
+        rockBreaker: 1,
+        metalBreaker: 1,
+    },
+};
 
 /**
+ * @typedef {statType} statTypes - every xland stat
+ *
  * @typedef {Object} statType - xland stat
  * @property {Number} max - the highest this stat can go with levels //min level is 0
  * @property {string} description - description of the stat
