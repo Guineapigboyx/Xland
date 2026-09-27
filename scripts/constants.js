@@ -103,6 +103,7 @@ const equipSlots = {
  * @typedef {statusEffect} statusEffects - every status effect in xland
  *
  * @typedef {Object} statusEffect -
+ * @property {string} name - name of the effect
  * // Combat
  * @property {boolean|undefined} fallbackOnGainCombat - if true onGainCombat fallbacks to onActivate, normally false
  * @property {boolean|undefined} fallbackOnLossCombat - if true onLossCombat fallbacks to onActivate, normally false

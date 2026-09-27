@@ -19,12 +19,14 @@
     --secondary-text-color: white; /* Nav button text */
     --out-of-bounds-color: slategray;
 
+    /* borders */
     --border-Colors: black; /* also primary text color */
     --border-thick-width: calc(var(--scale) / 2);
     --border-thin-width: calc(var(--scale) / 3);
     --border-extra-thin-width: calc(var(--scale) / 4);
     --border-super-thin-width: calc(var(--scale) / 5);
 
+    /* Equipment icons */
     --head-icon: url("Assets/inventory/BG3/equipment icons/BG3-Helmets_Icon.webp");
     --feet-icon: url("Assets/inventory/BG3/equipment icons/BG3-Boots_Icon.webp");
     --body-icon: url("Assets/inventory/BG3/equipment icons/BG3-Clothing.webp");
@@ -35,6 +37,16 @@
     --storage-icon: url("Assets/inventory/BG3/equipment icons/BG3-Backpack.webp");
     --main-hand-icon: url("Assets/inventory/BG3/equipment icons/BG3-Weapon_Icon.webp");
     --off-hand-icon: url("Assets/inventory/BG3/equipment icons/BG3-Shields_Icon.webp");
+
+    /* damage type colors */
+    --fire-color: IndianRed;
+    --poison-color: RebeccaPurple;
+    --shock-color: Olive;
+    --blood-color: Brown;
+    --death-color: MediumVioletRed;
+    --cold-color: MediumTurquoise;
+    --water-color: royalblue;
+    --heal-color: MediumSpringGreen;
 }
 
 /* Fix for chromium browsers */

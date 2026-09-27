@@ -239,8 +239,15 @@ const weaponTypes = {
 };
 
 /**
- * @typedef {elemental} elementTypes - elements like fire, lighting, ice
+ * @typedef {elemental} damageTypes - elements like fire, lighting, ice
  *
- * @typedef {object} elemental - the element // its called elemental since Element means html element
+ * @typedef {object} damagetype - the type of damage and the properties of it
+ * @property {Number} damage - bonus damage added ontop of any damage source that uses this type
+ * @property {Number} damageMult - mutiplier of the base damage
+ * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
+ * @property {statusEffect} effectGiven - the effect given
+ * @property {Number} effectChance - chance of getting the effect
+ * @property {statusEffect} effectGiven2 - the 2nd effect given
+ * @property {Number} effectChance2 - chance of getting the 2nd effect
  */
-const elementTypes = {};
+const damageTypes = {};
