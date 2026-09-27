@@ -214,7 +214,7 @@ body {
 
 .main-content /* area where everything takes place */ {
     display: grid;
-    grid-template-rows: 23% 77%;
+    grid-template-rows: 20% 80%;
     grid-template-columns: 100%;
     height: calc(var(--scale) * 40); /* about 91vh by defualt */
     aspect-ratio: 4.2/3; /* want something somewhat wide but it still has so side bars */
@@ -253,7 +253,7 @@ body {
 
 .status-screen {
     display: grid;
-    grid-template-rows: 8% auto;
+    grid-template-rows: 10% auto;
     grid-template-columns: repeat(3, 33.33333%);
 }
 
@@ -263,7 +263,7 @@ body {
 
 .person-overview {
     display: grid;
-    grid-template-columns: 24% auto 25%;
+    grid-template-columns: 23% auto 23%;
     grid-template-rows: repeat(5, 9%) 0% auto;
     row-gap: 2%;
     border-left: 0;
