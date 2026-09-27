@@ -22,6 +22,7 @@ const navButton = {
  * Data for all of the attacks in xland
  *
  * @typedef {Object} attack - the id of the attack like "verticalSlash"
+ * @property {weaponTypes.weaponType|undefined} attackFor - the weapon type this attack is for, if undefined its not connected to a weapon
  * @property {Number} damage - amount of damage it deals (if damageMult is present this is a bounus)
  * @property {Number} damageMult - multipler of the base damage that is added to the attack
  * @property {Number} armorDamage - how much defense is ignored when hitting with this attack
@@ -44,9 +45,8 @@ const navButton = {
  * @typedef {Object} statusEffects - array of every satus effect that is given by this weapon
  * @property {String} effect - effect name
  * @property {Number} effectChance - chance of the effect happening
- *
- *
  */
+const attacks = {};
 
 /**
  * @typedef {person} basePepole - the persons stat
@@ -311,7 +311,5 @@ const statTypes = {
         baselevel: 10,
     },
 };
-
-const attacks = {};
 
 const elements = {};
