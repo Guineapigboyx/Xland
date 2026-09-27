@@ -28,7 +28,7 @@ const navButton = {
  * @property {Number} armorDamageMult - presentage of the armor ignored by this attack
  *
  * @property {Number} hits - amount of hit this attack does
- * @property {boolean} endAfterMiss - if you miss stop all subsqent hits from this move
+ * @property {Boolean} endAfterMiss - if you miss stop all subsqent hits from this move
  *
  * @property {Number} speed - how fast the attack is (default is 5)
  * @property {Number} accuracy - how much accuracy is removed or added
@@ -85,10 +85,19 @@ const basePepole = {
  *
  * @typedef {Object} slot - the slot and all its paramiters
  * @property {string} htmlSlot - the value for data-equipment in the person overview
- * @property {weaponType|undefined} weaponType - if used as a weapon and has none it falls back on to this weapon type, if undefined it can't be held
+ * @property {weaponTypes.weaponType|undefined} weaponType - if used as a weapon and has none it falls back on to this weapon type, if undefined it can't be held
  */
 const equipSlots = {
-    head: { htmlSlot: head },
+    head: { htmlSlot: "head", weaponType: weaponTypes.gloves },
+    head: { htmlSlot: "necklace", weaponType: weaponTypes.slapstick },
+    head: { htmlSlot: "pants", weaponType: weaponTypes.hammer },
+    head: { htmlSlot: "body", weaponType: weaponTypes.shield },
+    head: { htmlSlot: "hands", weaponType: weaponTypes.gloves },
+    head: { htmlSlot: "feet", weaponType: weaponTypes.pickaxe },
+    head: { htmlSlot: "belt", weaponType: weaponTypes.whip },
+    head: { htmlSlot: "storage", weaponType: weaponTypes.bluntObject },
+    head: { htmlSlot: "mainHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
+    head: { htmlSlot: "offHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
 };
 
 /**
