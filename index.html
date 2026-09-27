@@ -55,9 +55,19 @@
                 <section class="world-screen fit-div hide"></section>
                 <section class="status-screen fit-div hide">
                     <div class="status-toolbar"></div>
-                    <div class="inventory-preview border-thin" data-slot="1">
+                    <div class="person-overview border-thin" data-slot="1">
                         <img class="person-picture" />
                         <button data-equipment="head" data-inslot class="dark-bubble"></button>
+                        <div class="person-condition">
+                            <div class="overview-HP dark-bubble small-text center-text">
+                                <p>HP:</p>
+                                <p>n/a</p>
+                            </div>
+                            <div class="overview-EP dark-bubble small-text center-text">
+                                <p>EP:</p>
+                                <p>n/a</p>
+                            </div>
+                        </div>
                         <button data-equipment="necklace" data-inslot class="dark-bubble"></button>
                         <button data-equipment="pants" data-inslot class="dark-bubble"></button>
                         <button data-equipment="body" data-inslot class="dark-bubble"></button>
@@ -66,11 +76,29 @@
                         <button data-equipment="belt" data-inslot class="dark-bubble"></button>
                         <button data-equipment="storage" data-inslot class="dark-bubble"></button>
                         <button data-equipment="mainHand" data-inslot class="dark-bubble"></button>
+                        <button
+                            onclick="personOverview(1)"
+                            class="person-status blue-bubble small-text"
+                        >
+                            Full Overview
+                        </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
+                        <div class="divide"></div>
+                        <div class="person-inventory"></div>
                     </div>
-                    <div class="inventory-preview border-thin" data-slot="2">
+                    <div class="person-overview border-thin" data-slot="2">
                         <img class="person-picture" />
                         <button data-equipment="head" data-inslot class="dark-bubble"></button>
+                        <div class="person-condition">
+                            <div class="overview-HP dark-bubble small-text center-text">
+                                <p>HP:</p>
+                                <p>n/a</p>
+                            </div>
+                            <div class="overview-EP dark-bubble small-text center-text">
+                                <p>EP:</p>
+                                <p>n/a</p>
+                            </div>
+                        </div>
                         <button data-equipment="necklace" data-inslot class="dark-bubble"></button>
                         <button data-equipment="pants" data-inslot class="dark-bubble"></button>
                         <button data-equipment="body" data-inslot class="dark-bubble"></button>
@@ -79,11 +107,29 @@
                         <button data-equipment="belt" data-inslot class="dark-bubble"></button>
                         <button data-equipment="storage" data-inslot class="dark-bubble"></button>
                         <button data-equipment="mainHand" data-inslot class="dark-bubble"></button>
+                        <button
+                            onclick="personOverview(2)"
+                            class="person-status blue-bubble small-text"
+                        >
+                            Full Overview
+                        </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
+                        <div class="divide"></div>
+                        <div class="person-inventory"></div>
                     </div>
-                    <div class="inventory-preview border-thin" data-slot="3">
+                    <div class="person-overview border-thin" data-slot="3">
                         <img class="person-picture" />
                         <button data-equipment="head" data-inslot class="dark-bubble"></button>
+                        <div class="person-condition">
+                            <div class="overview-HP dark-bubble small-text center-text">
+                                <p>HP:</p>
+                                <p>n/a</p>
+                            </div>
+                            <div class="overview-EP dark-bubble small-text center-text">
+                                <p>EP:</p>
+                                <p>n/a</p>
+                            </div>
+                        </div>
                         <button data-equipment="necklace" data-inslot class="dark-bubble"></button>
                         <button data-equipment="pants" data-inslot class="dark-bubble"></button>
                         <button data-equipment="body" data-inslot class="dark-bubble"></button>
@@ -92,7 +138,15 @@
                         <button data-equipment="belt" data-inslot class="dark-bubble"></button>
                         <button data-equipment="storage" data-inslot class="dark-bubble"></button>
                         <button data-equipment="mainHand" data-inslot class="dark-bubble"></button>
+                        <button
+                            onclick="personOverview(3)"
+                            class="person-status blue-bubble small-text"
+                        >
+                            Full Overview
+                        </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
+                        <div class="divide"></div>
+                        <div class="person-inventory"></div>
                     </div>
                 </section>
             </div>
