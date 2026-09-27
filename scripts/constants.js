@@ -89,15 +89,15 @@ const basePepole = {
  */
 const equipSlots = {
     head: { htmlSlot: "head", weaponType: weaponTypes.gloves },
-    head: { htmlSlot: "necklace", weaponType: weaponTypes.slapstick },
-    head: { htmlSlot: "pants", weaponType: weaponTypes.hammer },
-    head: { htmlSlot: "body", weaponType: weaponTypes.shield },
-    head: { htmlSlot: "hands", weaponType: weaponTypes.gloves },
-    head: { htmlSlot: "feet", weaponType: weaponTypes.pickaxe },
-    head: { htmlSlot: "belt", weaponType: weaponTypes.whip },
-    head: { htmlSlot: "storage", weaponType: weaponTypes.bluntObject },
-    head: { htmlSlot: "mainHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
-    head: { htmlSlot: "offHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
+    necklace: { htmlSlot: "necklace", weaponType: weaponTypes.slapstick },
+    pants: { htmlSlot: "pants", weaponType: weaponTypes.hammer },
+    body: { htmlSlot: "body", weaponType: weaponTypes.shield },
+    hands: { htmlSlot: "hands", weaponType: weaponTypes.gloves },
+    feet: { htmlSlot: "feet", weaponType: weaponTypes.pickaxe },
+    belt: { htmlSlot: "belt", weaponType: weaponTypes.whip },
+    storage: { htmlSlot: "storage", weaponType: weaponTypes.bluntObject },
+    mainHand: { htmlSlot: "mainHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
+    offHand: { htmlSlot: "offHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
 };
 
 /**
