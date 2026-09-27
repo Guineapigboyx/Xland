@@ -41,9 +41,8 @@ const navButton = {
  *
  * @property {Function} requirements - function to check if the user meets the special requirements to use this move
  *
- * @property {String[]} elements - array of every element this attack has
- * @typedef {Object} statusEffects - array of every satus effect that is given by this weapon
- * @property {String} effect - effect name
+ * @property {damagetype} damagetype - array of every element this attack has
+ * @property {statusEffect} effectGiven - array of every satus effect that is given by this weapon
  * @property {Number} effectChance - chance of the effect happening
  */
 const attacks = {};
@@ -99,3 +98,32 @@ const equipSlots = {
     mainHand: { htmlSlot: "mainHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
     offHand: { htmlSlot: "offHand", weaponType: weaponTypes.gloves }, // unarmed is gloves
 };
+
+/**
+ * @typedef {statusEffect} statusEffects - every status effect in xland
+ *
+ * @typedef {Object} statusEffect -
+ * // Combat
+ * @property {boolean|undefined} fallbackOnGainCombat - if true onGainCombat fallbacks to onActivate, normally false
+ * @property {boolean|undefined} fallbackOnLossCombat - if true onLossCombat fallbacks to onActivate, normally false
+ * @property {Function|undefined} onGainCombat - function that runs when the effect is gained
+ * @property {Function|undefined} onActivate - function that runs when the effect is lost
+ * @property {Function|undefined} OnLossCombat - function that runs when the effect is lost
+ * // Out of combat
+ * @property {boolean|undefined} fallbackOnGainOut - if true onGainOut fallbacks to onHour, normally false
+ * @property {boolean|undefined} fallbackOnLossOut - if true onLossOut fallbacks to onHour, normally false
+ * @property {Function|undefined} onGainOut - function that runs when the effect is gained, if undifined do onHour
+ * @property {Function|undefined} onHour - function that runs every hour, if false have no combat effects, if false have no out of combat effects
+ * @property {Function|undefined} OnLossOut - function that runs when the effect is lost, if undifined do onHour
+ *
+ * @property {number|undefined} activateionTurn - How many turns it takes for the onActivate happens. If undefined it sets this to 1
+ * @property {number|undefined} activateionHour - How many hours it takes for the onHour happens. If undefined it sets this to 1
+ *
+ * @property {statChange[]|undefined} statchanges - Array of which stat and how much is changed in each stat
+ *
+ * @typedef {object} statChange - how much is changed in this stat
+ * @property {string} statName - the stats name (statType.name)
+ * @property {Number} change - the amount it changes
+ *
+ */
+const statusEffects = {};
