@@ -304,4 +304,33 @@ const itemUsageTypes = {
  * @property {String} name - name of the rarity
  * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
  */
-const raritys;
+const raritys = {
+    basic: {
+        name: "Basic",
+        CssColor: "--basic-color",
+    },
+    basic: {
+        name: "uncommon",
+        CssColor: "--uncommon-color",
+    },
+    basic: {
+        name: "rare",
+        CssColor: "--rare-color",
+    },
+    basic: {
+        name: "master",
+        CssColor: "--master-color",
+    },
+    basic: {
+        name: "legendary",
+        CssColor: "--legendary-color",
+    },
+    basic: {
+        name: "mythic",
+        CssColor: "--mythic-color",
+    },
+    basic: {
+        name: "ultra-rank",
+        CssColor: "--ultra-rank-color",
+    },
+};
