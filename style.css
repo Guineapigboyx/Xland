@@ -47,6 +47,15 @@
     --cold-color: MediumTurquoise;
     --water-color: royalblue;
     --heal-color: MediumSpringGreen;
+
+    /* Rarity colors */
+    --basic-color: SaddleBrown;
+    --uncommon-color: MediumSpringGreen;
+    --rare-color: MediumBlue;
+    --master-color: DarkMagenta;
+    --legendary-color: DarkOrange;
+    --mythic-color: PaleGoldenRod;
+    --ultra-rank-color: MediumTurquoise;
 }
 
 /* Fix for chromium browsers */
