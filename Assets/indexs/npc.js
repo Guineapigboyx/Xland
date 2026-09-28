@@ -107,5 +107,34 @@
  * @property {Number} alphaStats.stealth - Stealth mutipler
  * @property {Number} alphaStats.crafting - Crafting mutipler
  */
+const npcs = {
+    billyMaye: {
+        name: "billy maye",
+        home: "new billy",
+        level: 1,
 
-String;
+        profession: "local asshole",
+        background:
+            "Loves to throw rocks at windows for the sake of being an ass. Is frankly a local goon, loves to prank people and loves to make peoples lives kind of miserable. Does not deal with confrontation well; runs away when confronted about his behavior.",
+        skills: ["strong", "cowardly"],
+
+        goodPreferences: ["pranks", "gooning", "throwing rocks"],
+
+        badPreferences: ["confrontation", "being threatened"],
+
+        goodApproval: 10,
+        badApproval: -5,
+        fightThreshold: -10000000000,
+
+        stats: {
+            hp: [20, 20],
+            strength: [1, 1],
+            defense: [1, 1],
+            speed: [1, 1],
+            endurance: [1, 1],
+            intelligence: [1, 1],
+            stealth: [20, 20],
+            crafting: [1, 1],
+        },
+    },
+};
