@@ -16,7 +16,6 @@
  *
  * Trading
  * @property {Number} tradeThreshold - how high approval must be to trade
- * @property {function} restockItems - function to produce items inside the inventory
  * @property {Number} restockTime -  How many ingame hours it takes for them to restock
  *
  * @typedef  {Object} inventory - Which items they have in their inventory and are willing to sell
@@ -24,6 +23,7 @@
  * @property {Boolean} canSell - do they want to sell this item
  * @property {Number} price - Price in currency
  * @property {Number} quantity - defaulting to 1 if omitted
+ * @property {Boolean} canRestock - do the items restock in the shop
  *
  * Equipment
  * @typedef {Object} equiped - what could appear in each equipment slot
