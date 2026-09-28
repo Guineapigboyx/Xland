@@ -46,6 +46,7 @@
  * @property {[Number, Number]} intelligence - Intelligence range [min, max]
  * @property {[Number, Number]} stealth - Stealth range [min, max]
  * @property {[Number, Number]} crafting - Crafting range [min, max]
+ * @property {[Number, Number]} courage - courage range [min, max]
  *
  * @property {("spear"|"lightSword"|"heavySword"|"lightSpear"|"heavySpear"|"lightHammer"|"heavyHammer"|"lightAxe"|"heavyAxe"|"flail"|"bow"|"unarmed")[]} proficiency
  * - Weapon types the NPC is proficient with
@@ -76,8 +77,9 @@ const npcs = {
             speed: [1, 1],
             endurance: [1, 1],
             intelligence: [1, 1],
-            stealth: [20, 20],
+            stealth: [10, 10],
             crafting: [1, 1],
+            courage: [0, 0]
         },
     },
     johnLinus: {
@@ -103,9 +105,9 @@ const npcs = {
         badApproval: -15,
         fightThreshold: -90,
 
-        trading: {
-            tradeThreshold: 30,
-            restockItems: {
+         restockTime: 10,
+
+            inventory: {
                 leather: {
                     id: "leather",
                     canSell: true,
@@ -118,39 +120,37 @@ const npcs = {
                     canSell: true,
                     price: 200,
                     quantity: 5,
+                    canRestock: true,
                 },
                 wheat: {
                     id: "wheat",
                     canSell: true,
                     price: 50,
                     quantity: 15,
+                    canRestock: true,
                 },
+                xalerite: {
+                    id: "xalerite",
+                    canSell: false,
+                    price: 0,
+                    quantity: 200,
+                    canRestock: false,
+                }
             },
-            restockTime: 10,
-
-            inventory: {
-                leather: {
-                    id: "leather",
-                    canSell: true,
-                    price: 150,
-                    quantity: 5,
-                },
-                cloth: {
-                    id: "cloth",
-                    canSell: true,
-                    price: 200,
-                    quantity: 5,
-                },
-                wheat: {
-                    id: "wheat",
-                    canSell: true,
-                    price: 50,
-                    quantity: 15,
-                },
+        
+            stats: {
+            hp: [50, 80],
+            strength: [2, 4],
+            defense: [1, 3],
+            speed: [1, 1],
+            endurance: [2, 6],
+            intelligence: [1, 5],
+            stealth: [1, 1],
+            crafting: [1, 5],
+            courage: [10, 15]
             },
         },
     },
-};
 
 /**
  * Beasts/Animals formating
