@@ -94,15 +94,10 @@ const npcs = {
 
         goodPreferences: ["farming", "gift giving", "hunting", "local politics"],
 
-        badPreferences: [
-            "theft",
-            "stealing",
-            "looking down on people",
-            "undermining the working class",
-        ],
+        badPreferences: ["theft", "stealing", "looking down on people", "undermining the working class"],
 
         goodApproval: 15,
-        badApproval: -15,
+        badApproval: -30,
         fightThreshold: -90,
 
          restockTime: 10,
