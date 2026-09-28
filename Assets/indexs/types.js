@@ -296,3 +296,12 @@ const itemUsageTypes = {
         onDamage: "onDamage", // when you hit something else it is used (it does not need to do damage)
     },
 };
+
+/**
+ * @typedef {rarity} raritys - all the diffent rarity levels in xland
+ *
+ * @typedef {object} rarity - the color and
+ * @property {String} name - name of the rarity
+ * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
+ */
+const raritys;
