@@ -21,6 +21,8 @@ const navButton = {
 /**
  * Data for all of the attacks in xland
  *
+ * @typedef {attack} attacks - all the xland attacks
+ *
  * @typedef {Object} attack - the id of the attack like "verticalSlash"
  * @property {weaponTypes.weaponType|undefined} attackFor - the weapon type this attack is for, if undefined its not connected to a weapon
  * @property {Number} damage - amount of damage it deals (if damageMult is present this is a bounus)
