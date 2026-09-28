@@ -87,12 +87,17 @@ const npcs = {
 
         profession: "farmer",
         background:
-            "has spend years as a local farmer, supplies the entire city of New Billy with food, and has made a fortune from this. Loves what he does. He's an extremely humble man who has no issues with helping those in need. Is very passive and patient. Speaks with a southern twang, however spends a lot of time being quiet. Mostly spends his days tending to crops and keeping up with news in the local paper."
+            "has spend years as a local farmer, supplies the entire city of New Billy with food, and has made a fortune from this. Loves what he does. He's an extremely humble man who has no issues with helping those in need. Is very passive and patient. Speaks with a southern twang, however spends a lot of time being quiet. Mostly spends his days tending to crops and keeping up with news in the local paper.",
         skills: ["farming", "fishing", "hunter", "outdoorsman", "merchant"],
 
         goodPreferences: ["farming", "gift giving", "hunting", "local politics"],
 
-        badPreferences: ["theft", "stealing", "looking down on people", "undermining the working class"],
+        badPreferences: [
+            "theft",
+            "stealing",
+            "looking down on people",
+            "undermining the working class",
+        ],
 
         goodApproval: 15,
         badApproval: -15,
@@ -106,12 +111,13 @@ const npcs = {
                     canSell: true,
                     price: 150,
                     quantity: 5,
+                    canRestock: true,
                 },
                 cloth: {
                     id: "cloth",
                     canSell: true,
-                    price: 200
-                    quantity: 5
+                    price: 200,
+                    quantity: 5,
                 },
                 wheat: {
                     id: "wheat",
@@ -119,11 +125,11 @@ const npcs = {
                     price: 50,
                     quantity: 15,
                 },
-            }
+            },
             restockTime: 10,
 
             inventory: {
-                 leather: {
+                leather: {
                     id: "leather",
                     canSell: true,
                     price: 150,
@@ -132,16 +138,17 @@ const npcs = {
                 cloth: {
                     id: "cloth",
                     canSell: true,
-                    price: 200
-                    quantity: 5
+                    price: 200,
+                    quantity: 5,
                 },
                 wheat: {
                     id: "wheat",
                     canSell: true,
                     price: 50,
                     quantity: 15,
+                },
             },
-        }
+        },
     },
 };
 
