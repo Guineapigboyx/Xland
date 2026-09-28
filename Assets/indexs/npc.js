@@ -82,6 +82,8 @@ const npcs = {
     },
 };
 
+penis
+
 /**
  * Beasts/Animals formating
  *
