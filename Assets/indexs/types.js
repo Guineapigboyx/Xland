@@ -363,3 +363,29 @@ const foodTypes = {
     lquid: { name: "lquid", CssColor: "--lquid-color" },
     meat: { name: "meat", CssColor: "--meat-color" },
 };
+
+/**
+ * @typedef {Object} foodPrefixes
+ * @property {prefix}
+ *
+ * @typedef {prefix}
+ * @property {string} prefixName - the name of the prefix that getts applied to foods cooked primarily with this type
+ * @property {statusEffects.statusEffect|undefined} prefixEffect - the effect given by the prefix
+ * @property {Number|undefined} effectChance - chance of getting the effect
+ * @property {statTypes.statType|undefined} prefixStat - the stat that gets changed
+ * @property {Number|undefined} statChange - the amount of the prefixStat changes
+ */
+const foodPrefixes = {
+    spicy: { name: "spicy" },
+    superSpicy: { name: "superSpicy" },
+    cold: { name: "cold" },
+    mystic: { name: "mystic" },
+    hardened: { name: "hardened" },
+    deadly: { name: "deadly" },
+    deadly: { name: "deadly" },
+    salty: { name: "salty" },
+    energizing: { name: "energizing" },
+    disguesting: { name: "disguesting" },
+    wet: { name: "wet" },
+    shocking: { name: "shocking" },
+};
