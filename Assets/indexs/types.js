@@ -374,7 +374,7 @@ const foodTypes = {
  *
  * @typedef {prefix}
  * @property {string} prefixName - the name of the prefix that getts applied to foods cooked primarily with this type
- * @property {statusEffects.statusEffect|undefined} prefixEffect - the effect given by the prefix
+ * @property {statusEffects.effect|undefined} prefixEffect - the effect given by the prefix
  * @property {Number|undefined} effectChance - chance of getting the effect
  * @property {statTypes.statType|undefined} prefixStat - the stat that gets changed
  * @property {Number|undefined} statChange - the amount of the prefixStat changes

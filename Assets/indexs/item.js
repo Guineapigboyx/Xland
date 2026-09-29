@@ -31,7 +31,7 @@
  * @property {effectGiven[]|undefined} effects - can be multiple
  *
  * @typedef {object} effectGiven
- * @property {statusEffects.statusEffect} effectGiven
+ * @property {statusEffects.effect} effectGiven
  * @property {itemUsageTypes[]} effectCondition - the condition the effect happens
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
@@ -51,7 +51,7 @@
  * @property {foodPrefixes.prefix} - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
  * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
- * @property {statusEffects.statusEffect} effectGiven
+ * @property {statusEffects.effect} effectGiven
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
  */
