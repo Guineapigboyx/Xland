@@ -38,7 +38,7 @@
  *
  * ----
  * @typedef {object} weaponData - properties about this item in combat
- * @property {weaponTypes.weaponType|undefined} weaponType - what weapon type is this,
+ * @property {weaponTypes.weaponType} weaponType - what weapon type is this,
  * @property {Number} attack - attack stat
  * @property {Number|undefined} accuracy
  * @property {Number|undefined} pickaxePower
@@ -48,12 +48,11 @@
  * ----
  * @typedef {Object} foodData
  * @property {foodType} foodType - the type of food it is
+ * @property {foodPrefixes.prefix} - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
  * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
  * @property {statusEffects.statusEffect} effectGiven
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
  */
-const items = {
-    name: "wood",
-};
+const items = {};
