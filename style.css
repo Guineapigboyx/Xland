@@ -56,6 +56,22 @@
     --legendary-color: DarkOrange;
     --mythic-color: PaleGoldenRod;
     --ultra-rank-color: MediumTurquoise;
+
+    /* Food colors */
+    --mushroom-color: SaddleBrown;
+    --pikmin-color: Brown;
+    --berries-color: SteelBlue;
+    --pepper-color: IndianRed;
+    --herb-color: ForestGreen;
+    --grain-color: BurlyWood;
+    --mystic-color: MediumAquaMarine;
+    --fruit-color: MediumSlateBlue;
+    --flower-color: PaleVioletRed;
+    --crystal-color: Cyan;
+    --energizing-color: DeepSkyBlue;
+    --toxic-color: RebeccaPurple;
+    --lquid-color: Gainsboro;
+    --meat-color: FireBrick;
 }
 
 /* Fix for chromium browsers */

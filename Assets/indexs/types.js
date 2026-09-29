@@ -301,9 +301,10 @@ const itemUsageTypes = {
 };
 
 /**
- * @typedef {rarity} raritys - all the diffent rarity levels in xland
+ * @typedef {Object} raritys - all the diffent rarity levels in xland
+ * @property {rarity}
  *
- * @typedef {object} rarity - the color and
+ * @typedef {object} rarity - the color and name of the rarity
  * @property {String} name - name of the rarity
  * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
  */
@@ -312,28 +313,53 @@ const raritys = {
         name: "Basic",
         CssColor: "--basic-color",
     },
-    basic: {
-        name: "uncommon",
+    uncommon: {
+        name: "Uncommon",
         CssColor: "--uncommon-color",
     },
-    basic: {
-        name: "rare",
+    rare: {
+        name: "Rare",
         CssColor: "--rare-color",
     },
-    basic: {
-        name: "master",
+    master: {
+        name: "Master",
         CssColor: "--master-color",
     },
-    basic: {
-        name: "legendary",
+    legendary: {
+        name: "Legendary",
         CssColor: "--legendary-color",
     },
-    basic: {
-        name: "mythic",
+    mythic: {
+        name: "Mythic",
         CssColor: "--mythic-color",
     },
-    basic: {
-        name: "ultra-rank",
+    ultraRank: {
+        name: "Ultra-rank",
         CssColor: "--ultra-rank-color",
     },
+};
+
+/**
+ * @typedef {Object} foodTypes - all the diffent rarity levels in xland
+ * @property {foodType}
+ *
+ * @typedef {object} foodType - the color and name of each food type
+ * @property {String} name - name of the food type
+ * @property {string} CssColor - the color of this food type and prefix (IT MUST BE A CSS VARIABLE)
+ */
+const foodTypes = {
+    mushroom: { name: "mushroom", CssColor: "--mushroom-color" },
+    pikmin: { name: "pikmin", CssColor: "--pikmin-color" },
+    berries: { name: "berries", CssColor: "--berries-color" },
+    pepper: { name: "pepper", CssColor: "--pepper-color" },
+    herb: { name: "herb", CssColor: "--herb-color" },
+    grain: { name: "grain", CssColor: "--grain-color" },
+    mystic: { name: "mystic", CssColor: "--mystic-color" },
+    fruit: { name: "fruit", CssColor: "--fruit-color" },
+    flower: { name: "flower", CssColor: "--flower-color" },
+    crystal: { name: "crystal", CssColor: "--crystal-color" },
+    energizing: { name: "energizing", CssColor: "--energizing-color" },
+    toxic: { name: "toxic", CssColor: "--toxic-color" },
+    lquid: { name: "lquid", CssColor: "--lquid-color" },
+    meat: { name: "meat", CssColor: "--meat-color" },
 };
