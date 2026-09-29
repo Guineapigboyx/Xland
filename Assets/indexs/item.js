@@ -35,6 +35,7 @@
  * @property {itemUsageTypes[]} effectCondition - the condition the effect happens
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
+ * @property {Number} effectTime - how long the effect lasts in turns/hours
  *
  * ----
  * @typedef {object} weaponData - properties about this item in combat
@@ -54,6 +55,7 @@
  * @property {statusEffects.effect} effectGiven
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
+ * @property {Number} effectTime - how long the effect lasts in turns/hours
  */
 const items = {
     wood: { name: "Wood", rarity: raritys.basic },

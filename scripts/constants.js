@@ -152,6 +152,7 @@ const statusEffects = {
     starving: { name: "Starving" },
     gross: { name: "Gross" },
     yum: { name: "yummy" },
+    prone: { name: "Prone" },
     // stat effects
     burstingVitality: { name: "Bursting Vitality" },
     waningVitality: { name: "Waning Vitality" },
