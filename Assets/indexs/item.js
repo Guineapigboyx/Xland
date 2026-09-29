@@ -4,8 +4,8 @@
  *
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
- * @property {Number} maxUses - how many times can it be used before it's gone (just put infinity if non consumeable)
- * @property {rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
+ * @property {Number|undefined} maxUses - how many times can it be used before it's gone (just put undifined if non consumeable)
+ * @property {raritys.rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {materialData|undefined} materialData - Data about it as a crafting material
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
@@ -55,4 +55,58 @@
  * @property {Number} effectChance - chance of getting the effect
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
  */
-const items = {};
+const items = {
+    wood: { name: "Wood", rarity: raritys.basic },
+    stone: { name: "Stone", rarity: raritys.basic },
+    bone: { name: "Bone", rarity: raritys.common },
+    tin: { name: "Tin", rarity: raritys.common },
+    iron: { name: "Iron", rarity: raritys.common },
+    aluminum: { name: "Aluminum", rarity: raritys.common },
+    copper: { name: "Copper", rarity: raritys.common },
+    zinc: { name: "Zinc", rarity: raritys.common },
+    shinyStone: { name: "Shiny Stone", rarity: raritys.common },
+    carbon: { name: "Carbon", rarity: raritys.common },
+    carbonBone: { name: "Carbon Bone", rarity: raritys.uncommon },
+    silver: { name: "Silver", rarity: raritys.uncommon },
+    brass: { name: "Brass", rarity: raritys.uncommon },
+    uramite: { name: "Uramite", rarity: raritys.uncommon },
+    gold: { name: "Gold", rarity: raritys.uncommon },
+    steel: { name: "Steel", rarity: raritys.uncommon },
+    lithium: { name: "Lithium", rarity: raritys.rare },
+    carbonSteel: { name: "Carbon steel", rarity: raritys.rare },
+    platium: { name: "Platium", rarity: raritys.rare },
+    magnesium: { name: "Magnesium", rarity: raritys.rare },
+    lead: { name: "Lead", rarity: raritys.rare },
+    mithril: { name: "Mithril", rarity: raritys.rare },
+    crystal: { name: "Crystal", rarity: raritys.master },
+    flameright: { name: "Flameright", rarity: raritys.master },
+    adamantite: { name: "Adamantite", rarity: raritys.master },
+    stainlessSteel: { name: "Stainless Steel", rarity: raritys.master },
+    uranium: { name: "Uranium", rarity: raritys.master },
+    plutonium: { name: "Plutonium", rarity: raritys.legendary },
+    xtramite: { name: "Xtramite", rarity: raritys.legendary },
+    titanium: { name: "Titanium", rarity: raritys.legendary },
+    titaniumGold: { name: "Titanium gold", rarity: raritys.legendary },
+    masterOre: { name: "Master ore", rarity: raritys.mythic },
+    pale: { name: "Pale", rarity: raritys.mythic },
+    // gemstones
+    raindite: { name: "Raindite", rarity: raritys.ultraRank },
+    diamond: { name: "Diamond", rarity: raritys.master },
+    ruby: { name: "Ruby", rarity: raritys.rare },
+    sapphire: { name: "Sapphire", rarity: raritys.uncommon },
+    amethyst: { name: "Amethyst", rarity: raritys.common },
+    emerald: { name: "Emerald", rarity: raritys.rare },
+    negimite: { name: "Negimite", rarity: raritys.legendary },
+    amber: { name: "Amber", rarity: raritys.rare },
+    topaz: { name: "Topaz", rarity: raritys.legendary },
+    geode: { name: "Geode", rarity: raritys.uncommon },
+    grass: { name: "Grass", rarity: raritys.basic },
+    treeBranch: { name: "Tree Branch", rarity: raritys.basic },
+    leaf: { name: "Leaf", rarity: raritys.basic },
+    leather: { name: "Leather", rarity: raritys.common },
+    hide: { name: "Hide", rarity: raritys.uncommon },
+    mud: { name: "Mud", rarity: raritys.basic },
+    glue: { name: "Glue", rarity: raritys.basic },
+    wire: { name: "Wire", rarity: raritys.basic },
+    string: { name: "String", rarity: raritys.basic },
+};
