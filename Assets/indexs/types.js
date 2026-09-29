@@ -1,5 +1,6 @@
 /**
  * @typedef {statType} statTypes - every xland stat
+ * @property {statType}
  *
  * @typedef {Object} statType - xland stat
  * @property {string} name - name of the stat
@@ -70,7 +71,8 @@ const statTypes = {
 };
 
 /**
- * @typedef {weapon} weaponTypes - All the diffrent weapon/held item types
+ * @typedef {object} weaponTypes - All the diffrent weapon/held item types
+ * @property {weaponType}
  *
  * @typedef {Object} weaponType - this weapon types propertys
  * @property {string} name - name of the weapon type
@@ -239,7 +241,8 @@ const weaponTypes = {
 };
 
 /**
- * @typedef {elemental} damageTypes - elements like fire, lighting, ice
+ * @typedef {object} damageTypes - elements like fire, lighting, ice
+ * @property {damagetype}
  *
  * @typedef {object} damagetype - the type of damage and the properties of it
  * @property {Number} damage - bonus damage added ontop of any damage source that uses this type

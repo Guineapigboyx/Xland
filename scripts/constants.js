@@ -21,7 +21,8 @@ const navButton = {
 /**
  * Data for all of the attacks in xland
  *
- * @typedef {attack} attacks - all the xland attacks
+ * @typedef {object} attacks - all the xland attacks
+ * @property {attack}
  *
  * @typedef {Object} attack - the id of the attack like "verticalSlash"
  * @property {weaponTypes.weaponType|undefined} attackFor - the weapon type this attack is for, if undefined its not connected to a weapon
@@ -50,7 +51,8 @@ const navButton = {
 const attacks = {};
 
 /**
- * @typedef {person} basePepole - the persons stat
+ * @typedef {Object} basePepole - the persons stat
+ * @property {person}
  *
  * @typedef {Object} person - the persons stat
  * @property {Number} hp - how much HP they have
@@ -82,7 +84,8 @@ const basePepole = {
 };
 
 /**
- * @typedef {slot} equipSlots - defineing all of the slots in the inventory
+ * @typedef {Object} equipSlots - defineing all of the slots in the inventory
+ * @property {slot}
  *
  * @typedef {Object} slot - the slot and all its paramiters
  * @property {string} htmlSlot - the value for data-equipment in the person overview
@@ -102,7 +105,8 @@ const equipSlots = {
 };
 
 /**
- * @typedef {statusEffect} statusEffects - every status effect in xland
+ * @typedef {Object} statusEffects - every status effect in xland
+ * @property {statusEffect}
  *
  * @typedef {Object} statusEffect -
  * @property {string} name - name of the effect

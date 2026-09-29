@@ -1,6 +1,8 @@
 /**
- * All of the xland items
+ * @typedef {object} items - All of the xland items
+ * @property {item}
  *
+ * @typedef {object} item - data about this item
  * @property {String} name - name of the item
  * @property {Number} maxUses - how many times can it be used before it's gone (just put infinity if non consumeable)
  * @property {rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
@@ -35,11 +37,23 @@
  * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
  *
  * ----
- * @typedef {object} weaponData
+ * @typedef {object} weaponData - properties about this item in combat
  * @property {weaponTypes.weaponType|undefined} weaponType - what weapon type is this,
  * @property {Number} attack - attack stat
  * @property {Number|undefined} accuracy
  * @property {Number|undefined} pickaxePower
  * @property {Number|undefined} defense
+ * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - sound category this item uses
  *
+ * ----
+ * @typedef {Object} foodData
+ * @property {foodType} foodType - the type of food it is
+ * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
+ * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
+ * @property {statusEffects.statusEffect} effectGiven
+ * @property {Number} effectChance - chance of getting the effect
+ * @property {0|1|2|3|4|5|6} effectPryority - should this effect be overwritten by other matrials // only use 6 for bad effect
  */
+const items = {
+    name: "wood",
+};
