@@ -50,6 +50,7 @@
 
     /* Rarity colors */
     --basic-color: SaddleBrown;
+    --common-color: silver;
     --uncommon-color: MediumSpringGreen;
     --rare-color: MediumBlue;
     --master-color: DarkMagenta;

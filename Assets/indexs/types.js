@@ -313,6 +313,10 @@ const raritys = {
         name: "Basic",
         CssColor: "--basic-color",
     },
+    common: {
+        name: "Common",
+        CssColor: "--common-color",
+    },
     uncommon: {
         name: "Uncommon",
         CssColor: "--uncommon-color",
