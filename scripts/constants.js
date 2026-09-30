@@ -110,6 +110,7 @@ const equipSlots = {
  *
  * @typedef {Object} effect -
  * @property {string} name - name of the effect
+ * @property {string} description - decription of the effect
  * // Combat
  * @property {boolean|undefined} fallbackOnGainCombat - if true onGainCombat fallbacks to onActivate, normally false
  * @property {boolean|undefined} fallbackOnLossCombat - if true onLossCombat fallbacks to onActivate, normally false
@@ -140,19 +141,22 @@ const statusEffects = {
     shocked: { name: "Shocked" },
     wet: { name: "Wet" },
     paralysis: { name: "Paralysis" },
-    brokenArm: { name: "BrokenArm" },
-    brokenLeg: { name: "BrokenLeg" },
+    brokenArm: { name: "Broken Arm" },
+    brokenLeg: { name: "Broken Leg" },
     bleed: { name: "Bleed" },
     stuned: { name: "Stuned" },
     unconscious: { name: "Unconscious" },
     regeneration: { name: "Regeneration" },
-    superCharged: { name: "SperCharged" },
+    superCharged: { name: "Sper Charged" },
     drowning: { name: "Drowning" },
     hungry: { name: "Hungry" },
     starving: { name: "Starving" },
     gross: { name: "Gross" },
     yum: { name: "yummy" },
     prone: { name: "Prone" },
+    blind: { name: "Blind" },
+    flash: { name: "Flash" },
+    glassGear: { name: "Glass Gear" },
     // stat effects
     burstingVitality: { name: "Bursting Vitality" },
     waningVitality: { name: "Waning Vitality" },
