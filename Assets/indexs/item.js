@@ -62,27 +62,21 @@ const items = {
         rarity: raritys.basic,
         weight: 2.18,
         materialData: { weight: 2, durablity: 3, attack: 2.5, defense: 3, pickaxePower: 2.5 },
-        weaponData: {
-            weaponType: weaponTypes.club,
-        },
+        weaponData: { weaponType: weaponTypes.club },
     },
     stone: {
         name: "Stone",
         rarity: raritys.basic,
         weight: 4.36,
         materialData: { weight: 4, durablity: 4, attack: 3, defense: 2, pickaxePower: 5 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     bone: {
         name: "Bone",
         rarity: raritys.common,
         weight: 1.3,
         materialData: { weight: 1, durablity: 1, attack: 3, defense: 1, pickaxePower: 10 },
-        weaponData: {
-            weaponType: weaponTypes.club,
-        },
+        weaponData: { weaponType: weaponTypes.club },
     },
     tin: {
         name: "Tin",
@@ -104,27 +98,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     iron: {
         name: "Iron",
         rarity: raritys.common,
         weight: 4.09,
         materialData: { weight: 3.75, durablity: 7, attack: 5, defense: 2, pickaxePower: 15 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     aluminum: {
         name: "Aluminum",
         rarity: raritys.common,
         weight: 3.05,
         materialData: { weight: 2.8, durablity: 5, attack: 6, defense: 4, pickaxePower: 20 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     copper: {
         name: "Copper",
@@ -138,9 +126,7 @@ const items = {
             pickaxePower: 20,
             damageType: damageTypes.electric,
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     zinc: {
         name: "Zinc",
@@ -166,9 +152,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     shinyStone: {
         name: "Shiny Stone",
@@ -194,9 +178,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     carbon: {
         name: "Carbon",
@@ -242,9 +224,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     carbonBone: {
         name: "Carbon Bone",
@@ -283,27 +263,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.club,
-        },
+        weaponData: { weaponType: weaponTypes.club },
     },
     silver: {
         name: "Silver",
         rarity: raritys.uncommon,
         weight: 3.11,
         materialData: { weight: 2.85, durablity: 7, attack: 6, defense: 3, pickaxePower: 25 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     brass: {
         name: "Brass",
         rarity: raritys.uncommon,
         weight: 3.82,
         materialData: { weight: 3.5, durablity: 8, attack: 4, defense: 6, pickaxePower: 25 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     uramite: {
         name: "Uramite",
@@ -339,27 +313,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     gold: {
         name: "Gold",
         rarity: raritys.uncommon,
         weight: 4.9,
         materialData: { weight: 5.0, durablity: 10, attack: 8, defense: 8, pickaxePower: 30 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     steel: {
         name: "Steel",
         rarity: raritys.uncommon,
         weight: 6.11,
         materialData: { weight: 5.6, durablity: 13, attack: 11, defense: 8, pickaxePower: 30 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     lithium: {
         name: "Lithium",
@@ -412,27 +380,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     carbonSteel: {
         name: "Carbon steel",
         rarity: raritys.rare,
         weight: 8.29,
         materialData: { weight: 7.6, durablity: 20, attack: 16, defense: 12, pickaxePower: 50 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     platium: {
         name: "Platium",
         rarity: raritys.rare,
         weight: 5.78,
         materialData: { weight: 5.3, durablity: 17, attack: 13, defense: 10, pickaxePower: 50 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     magnesium: {
         name: "Magnesium",
@@ -454,9 +416,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     lead: {
         name: "Lead",
@@ -479,9 +439,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.largeObject,
-        },
+        weaponData: { weaponType: weaponTypes.largeObject },
     },
     mithril: {
         name: "Mithril",
@@ -506,9 +464,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     crystal: {
         name: "Crystal",
@@ -538,9 +494,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.knife,
-        },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     flameright: {
         name: "Flameright",
@@ -575,27 +529,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     adamantite: {
         name: "Adamantite",
         rarity: raritys.master,
         weight: 3.55,
         materialData: { weight: 3.25, durablity: 20, attack: 17, defense: 13, pickaxePower: 100 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     stainlessSteel: {
         name: "Stainless Steel",
         rarity: raritys.master,
         weight: 9.05,
         materialData: { weight: 8.3, durablity: 30, attack: 14, defense: 9, pickaxePower: 100 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     uranium: {
         name: "Uranium",
@@ -634,9 +582,7 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     plutonium: {
         name: "Plutonium",
@@ -675,18 +621,14 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     xtramite: {
         name: "Xtramite",
         rarity: raritys.legendary,
         weight: 3.82,
         materialData: { weight: 3.5, durablity: 25, attack: 13, defense: 25, pickaxePower: 125 },
-        weaponData: {
-            weaponType: weaponTypes.whip,
-        },
+        weaponData: { weaponType: weaponTypes.whip },
     },
     titanium: {
         name: "Titanium",
@@ -714,27 +656,21 @@ const items = {
                 },
             ],
         },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     masterOre: {
         name: "Master ore",
         rarity: raritys.mythic,
         weight: 3.82,
         materialData: { weight: 3.5, durablity: 50, attack: 35, defense: 25, pickaxePower: 200 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     pale: {
         name: "Pale",
         rarity: raritys.mythic,
         weight: 2.84,
         materialData: { weight: 2.6, durablity: 60, attack: 40, defense: 30, pickaxePower: 200 },
-        weaponData: {
-            weaponType: weaponTypes.bluntObject,
-        },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     raindite: {
         name: "Raindite",
