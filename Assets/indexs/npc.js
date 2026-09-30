@@ -79,7 +79,7 @@ const npcs = {
             intelligence: [1, 1],
             stealth: [10, 10],
             crafting: [1, 1],
-            courage: [0, 0]
+            courage: [0, 0],
         },
     },
     johnLinus: {
@@ -94,46 +94,51 @@ const npcs = {
 
         goodPreferences: ["farming", "gift giving", "hunting", "local politics"],
 
-        badPreferences: ["theft", "stealing", "looking down on people", "undermining the working class"],
+        badPreferences: [
+            "theft",
+            "stealing",
+            "looking down on people",
+            "undermining the working class",
+        ],
 
         goodApproval: 15,
         badApproval: -30,
         fightThreshold: -90,
 
-         restockTime: 10,
+        restockTime: 10,
 
-            inventory: {
-                leather: {
-                    id: "leather",
-                    canSell: true,
-                    price: 150,
-                    quantity: 5,
-                    canRestock: true,
-                },
-                cloth: {
-                    id: "cloth",
-                    canSell: true,
-                    price: 200,
-                    quantity: 5,
-                    canRestock: true,
-                },
-                wheat: {
-                    id: "wheat",
-                    canSell: true,
-                    price: 50,
-                    quantity: 15,
-                    canRestock: true,
-                },
-                xalerite: {
-                    id: "xalerite",
-                    canSell: false,
-                    price: 0,
-                    quantity: 200,
-                    canRestock: false,
-                }
+        inventory: {
+            leather: {
+                id: "leather",
+                canSell: true,
+                price: 150,
+                quantity: 5,
+                canRestock: true,
             },
-        
-            stats: {
+            cloth: {
+                id: "cloth",
+                canSell: true,
+                price: 200,
+                quantity: 5,
+                canRestock: true,
+            },
+            wheat: {
+                id: "wheat",
+                canSell: true,
+                price: 50,
+                quantity: 15,
+                canRestock: true,
+            },
+            xalerite: {
+                id: "xalerite",
+                canSell: false,
+                price: 0,
+                quantity: 200,
+                canRestock: false,
+            },
+        },
+
+        stats: {
             hp: [50, 80],
             strength: [2, 4],
             defense: [1, 3],
@@ -142,8 +147,7 @@ const npcs = {
             intelligence: [1, 5],
             stealth: [1, 1],
             crafting: [1, 5],
-            courage: [10, 15]
-            },
+            courage: [10, 15],
         },
     },
-
+};
