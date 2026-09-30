@@ -79,6 +79,7 @@ const statTypes = {
  * @property {Number} weightThreshold - If the weight is above this amount it becomes 2 handed. Put 0 for always 2 handed
  * @property {statTypes.statType} attackBonus - the stat to calculate the modifer for actions with this weapon
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - fallback for if a move does not spesfiy
+ * @property {damageTypes.damagetype} damagetype - fallback damage type if a item does not have one
  *
  * @property {undefined|1|2|3} rockBreaker - gets a bonus if used for destorying rocky objects
  * @property {undefined|1|2|3} metalBreaker - gets a bonus if used for destorying metal objects
@@ -353,6 +354,12 @@ const itemUsageTypes = {
         onRollAny: "onRollAny", // when you do a roll with any outcome it will be used
         onRoll: "onRoll", // when you do a roll it is used (can be used for roll modifers)
         onDamage: "onDamage", // when you hit something else it is used (it does not need to do damage)
+        onHour: "onHour", // when the hour changes
+        onFire: "onFire", // when on fire
+        // entering somewhere
+        enterCold: "enterCold",
+        enterHot: "enterHot",
+        enterWater: "enterWater",
     },
 };
 
