@@ -40,6 +40,11 @@ const damageTypes = {
         CssColor: "--fire-color",
         effects: [{ effectGiven: statusEffects.burning, effectChance: 0.4, effectTime: 3 }],
     },
+    cold: {
+        name: "Cold",
+        CssColor: "--cold-color",
+        effects: [{ effectGiven: statusEffects.freeze, effectChance: 0.6, effectTime: 2 }],
+    },
     electric: {
         name: "Electric",
         damageMult: 1.2,
