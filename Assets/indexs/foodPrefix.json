@@ -1,0 +1,13 @@
+{
+    "spicy": { "name": "spicy" },
+    "superSpicy": { "name": "superSpicy" },
+    "cold": { "name": "cold" },
+    "mystic": { "name": "mystic" },
+    "hardened": { "name": "hardened" },
+    "deadly": { "name": "deadly" },
+    "salty": { "name": "salty" },
+    "energizing": { "name": "energizing" },
+    "disguesting": { "name": "disguesting" },
+    "wet": { "name": "wet" },
+    "shocking": { "name": "shocking" }
+}

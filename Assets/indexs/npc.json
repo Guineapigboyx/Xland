@@ -1,0 +1,98 @@
+{
+    "billyMaye": {
+        "name": "billy maye",
+        "home": "new billy",
+        "level": 1,
+
+        "profession": "local asshole",
+        "background": "Loves to throw rocks at windows for the sake of being an ass. Is frankly a local goon, loves to prank people and loves to make peoples lives kind of miserable. Does not deal with confrontation well; runs away when confronted about his behavior.",
+        "skills": ["strong", "cowardly"],
+
+        "goodPreferences": ["pranks", "gooning", "throwing rocks"],
+
+        "badPreferences": ["confrontation", "being threatened"],
+
+        "goodApproval": 10,
+        "badApproval": -5,
+        "fightThreshold": -10000000000,
+
+        "stats": {
+            "hp": [20, 20],
+            "strength": [1, 1],
+            "defense": [1, 1],
+            "speed": [1, 1],
+            "endurance": [1, 1],
+            "intelligence": [1, 1],
+            "stealth": [10, 10],
+            "crafting": [1, 1],
+            "courage": [0, 0]
+        }
+    },
+    "johnLinus": {
+        "name": "john linus",
+        "home": "new billy",
+        "level": 1,
+
+        "profession": "farmer",
+        "background": "has spend years as a local farmer, supplies the entire city of New Billy with food, and has made a fortune from this. Loves what he does. He's an extremely humble man who has no issues with helping those in need. Is very passive and patient. Speaks with a southern twang, however spends a lot of time being quiet. Mostly spends his days tending to crops and keeping up with news in the local paper.",
+        "skills": ["farming", "fishing", "hunter", "outdoorsman", "merchant"],
+
+        "goodPreferences": ["farming", "gift giving", "hunting", "local politics"],
+
+        "badPreferences": [
+            "theft",
+            "stealing",
+            "looking down on people",
+            "undermining the working class"
+        ],
+
+        "goodApproval": 15,
+        "badApproval": -30,
+        "fightThreshold": -90,
+
+        "restockTime": 10,
+
+        "inventory": {
+            "leather": {
+                "id": "leather",
+                "canSell": true,
+                "price": 150,
+                "quantity": 5,
+                "canRestock": true
+            },
+            "cloth": {
+                "id": "cloth",
+                "canSell": true,
+                "price": 200,
+                "quantity": 5,
+                "canRestock": true
+            },
+            "wheat": {
+                "id": "wheat",
+                "canSell": true,
+                "price": 50,
+                "quantity": 15,
+                "canRestock": true
+            },
+            "xalerite": {
+                "id": "xalerite",
+                "canSell": false,
+                "price": 0,
+                "quantity": 200,
+                "canRestock": false
+            }
+        },
+
+        "stats": {
+            "hp": [50, 80],
+            "strength": [2, 4],
+            "defense": [1, 3],
+            "speed": [1, 1],
+            "endurance": [2, 6],
+            "intelligence": [1, 5],
+            "stealth": [1, 1],
+            "crafting": [1, 5],
+            "courage": [10, 15]
+        }
+    }
+}

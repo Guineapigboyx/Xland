@@ -1,0 +1,15 @@
+{
+    "Koopa": {
+        "hp": 100,
+        "strength": 3,
+        "defense": 3,
+        "speed": 2,
+        "endurance": 5,
+        "intelligence": 3,
+        "ability": {
+            "name": "Shell defense",
+            "description": "Acts as passive shield until broken, shell curl doubles the defense given"
+        },
+        "speicalMove": "koopaShellCurl"
+    }
+}

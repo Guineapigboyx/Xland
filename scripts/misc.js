@@ -65,3 +65,7 @@ function hasClass(selector, classToCheck) {
         return true;
     } else return false;
 }
+
+async function waitMs(duration) {
+    return new Promise((resolve) => setTimeout(resolve, duration));
+}
