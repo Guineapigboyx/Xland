@@ -62,6 +62,7 @@ const statusEffects = {
     bloodLust: { name: "BloodLust" },
     stupity: { name: "Stupity" },
     // Power
+    //up
     bluntPowerUp: { name: "Blunt Power Up" },
     sharpPowerUp: { name: "Sharp Power Up" },
     crushingPowerUp: { name: "Crushing Power Up" },
@@ -71,6 +72,8 @@ const statusEffects = {
     windPowerUp: { name: "Wind Power Up" },
     toxicPowerUp: { name: "Toxic Power Up" },
     waterPowerUp: { name: "Water Power Up" },
+    coldPowerUp: { name: "Cold Power Up" },
+    // down
     bluntPowerDown: { name: "Blunt Power Down" },
     sharpPowerDown: { name: "Sharp Power Down" },
     crushingPowerDown: { name: "Crushing Power Down" },
@@ -80,6 +83,7 @@ const statusEffects = {
     windPowerDown: { name: "Wind Power Down" },
     toxicPowerDown: { name: "Toxic Power Down" },
     waterPowerDown: { name: "Water Power Down" },
+    coldPowerDown: { name: "Cold Power Down" },
     // Resitance
     bluntResitance: { name: "Blunt Resitance" },
     sharpResitance: { name: "Sharp Resitance" },
@@ -90,6 +94,8 @@ const statusEffects = {
     windResitance: { name: "Wind Resitance" },
     toxicResitance: { name: "Toxic Resitance" },
     waterResitance: { name: "Water Resitance" },
+    coldResitance: { name: "cold Resitance" },
+    // Vulnerability
     bluntVulnerability: { name: "Blunt Vulnerability" },
     sharpVulnerability: { name: "Sharp Vulnerability" },
     crushingVulnerability: { name: "Crushing Vulnerability" },
@@ -99,4 +105,5 @@ const statusEffects = {
     windVulnerability: { name: "Wind Vulnerability" },
     toxicVulnerability: { name: "Toxic Vulnerability" },
     waterVulnerability: { name: "Water Vulnerability" },
+    coldVulnerability: { name: "Cold Vulnerability" },
 };
