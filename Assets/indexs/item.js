@@ -5,9 +5,9 @@
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
  * @property {Number} weight
- * @property {Number|undefined} maxUses - how many times can it be used before it's gone (just put undifined if non consumeable)
  * @property {raritys.rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {materialData|undefined} materialData - Data about it as a crafting material
+ * @property {imbuingType|undefined} imbuingData - Data about imbueing with this material
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
  * @property {Number|undefined} storageCapacity
@@ -39,17 +39,45 @@
  * @property {Number|undefined} pickaxePower
  * @property {Number|undefined} defense
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - sound category this item uses
+ * @property {attack|undefined} speicalAttack - special attack that is added to this item
  *
  * ----
  * @typedef {Object} foodData
  * @property {foodType} foodType - the type of food it is
+ * @property {Number|undefined} maxUses - how many times can it be used before it's gone (if undifined it 1)
  * @property {foodPrefixes.prefix} - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
  * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
  * @property {effects[]} effects - effects gotten from eating
  *
+ * ---
+ * @typedef {Object} imbuingData
+ * @property {string} prefix - the name that gets applied to the start of imbued items
+ * @property {itemUsageTypes[]} imbueUsageType - how to activate the imbue
+ * @property {Number} imbueUses - how many times you can use the item before it imbue runs out
+ * @property {Number} imbueTime - how long a single usage of a imbue lasts
+ * @property {boolean|undefined} cancelable - can you cancel the imbule effects, this also allows a reaction to deny its effects
+ * @property {boolean|undefined} denyCost - if you deny a imbue effect it still subtracts 1 from imbueUses (does nothing unless cancelable is on)
+ *
+ * Imbue effects
+ * @property {statChange[]|undefined} statchanges - Array of which stat and how much is changed in each stat
+ * @property {effects[]|undefined} statusEffects - effects gotten from doing the effectCondition and haveing the imbued item equiped
+ * @property {Number} attack - attack bonus added to any item with this imbue
+ * @property {Number} accuracy - accuracy bonus added to any item with this imbue
+ * @property {Number} defense - defense bonus added to any item with this imbue
+ * @property {damageTypes.damagetype} damagetype - the damagetype this imbue changes the wepon to have
+ * @property {attack[]|undefined} instantAction - when the imbue is activated the attack it activates
+ * @property {boolean|undefined} actionCost - the action still has a EP cost
+ *
+ * @example The imbueUsageType is onHit and uses 8. so you can get hit the 8 times before the imbue is lost
+ * @example The imbueUsageType is onHit and time 3. So if you get hit it activates the imbue effects for 3 turns.
+ *
+ * ---
+ * @typedef {Object} statChange - the stats name (statType.name)
+ * @property {Number} amount - the amount the stat changes
+ *
  * ----
- * @typedef {object} effect
+ * @typedef {Object} effect
  * @property {statusEffects.effect} effectGiven - the effect given
  * @property {Number} effectChance - chance of getting the effect
  * @property {Number} effectTime - how long the effect lasts in turns/hours
@@ -676,43 +704,57 @@ const items = {
         name: "Raindite",
         rarity: raritys.ultraRank,
         weight: 2.18,
-        materialData: { weight: 2, durablity: 70, attack: 50, defense: 50, pickaxePower: 200 },
+        materialData: {
+            weight: 2,
+            durablity: 70,
+            attack: 50,
+            defense: 50,
+            pickaxePower: 200,
+            damageType: damageTypes.magic,
+        },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     diamond: {
         name: "Diamond",
         rarity: raritys.master,
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 2, pickaxePower: 100 },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     ruby: {
         name: "Ruby",
         rarity: raritys.rare,
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 2, pickaxePower: 30 },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     sapphire: {
         name: "Sapphire",
         rarity: raritys.uncommon,
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 3, pickaxePower: 30 },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     amethyst: {
         name: "Amethyst",
         rarity: raritys.common,
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 3, pickaxePower: 30 },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     emerald: {
         name: "Emerald",
         rarity: raritys.rare,
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 5, pickaxePower: 30 },
+        weaponData: { weaponType: weaponTypes.knife },
     },
     amber: {
         name: "Amber",
         rarity: raritys.rare,
         weight: 3.27,
         materialData: { weight: 3, durablity: 1, attack: 5, defense: 5 },
+        weaponData: { weaponType: weaponTypes.bluntObject },
     },
     topaz: {
         name: "Topaz",
