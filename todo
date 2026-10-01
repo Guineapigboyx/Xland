@@ -60,10 +60,10 @@ attacks:
     [x] shield
     [-] knife
     [-] sword
-    [-] slapstick
+    [x] slapstick
     [-] gloves // hand to hand
     [x] gun
-    [] bow
+    [x] bow
     [-] spear
     [-] club
     [-] whip

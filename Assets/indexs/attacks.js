@@ -50,7 +50,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  *
  * @property {statTypes.statType|undefined} rollFor - what stat are you rolling with for this attack
  *
- * @property {small|meid|large|huge} aoiSize - size of this attack if it is a aoi
+ * @property {small|mid|large|huge} aoiSize - size of this attack if it is a aoi
  * @property {damagetype[]|undefined} damagetype - array of every element this attack has
  * @property {effect[]|undefined} effect - array of every satus effect that is given by this weapon
  *
@@ -353,28 +353,44 @@ const attacks = {
     volly: {
         name: "Volly",
         attackFor: [weaponTypes.bow],
-        level: 3,
+        level: 2,
         epCost: 3,
-        hits: 8,
-        accuracy: -2,
+        accuracy: -3,
         durablity: -3,
+        aoiSize: "mid",
+    },
+    mutiShot: {
+        name: "muti Shot",
+        attackFor: [weaponTypes.bow],
+        epCost: 3,
+        level: 4,
+        hits: 3,
+        accuracy: 2,
     },
     largeVolly: {
         name: "Large volly",
         attackFor: [weaponTypes.bow],
-        level: 6,
+        level: 5,
         epCost: 5,
-        hits: 6,
         accuracy: -4,
         durablity: -6,
+        aoiSize: "mid",
+    },
+    precisionShot: {
+        name: "Precision Shot",
+        attackFor: [weaponTypes.bow],
+        epCost: 3,
+        level: 6,
+        accuracy: 3,
     },
     hugeVolly: {
         name: "huge volly",
         attackFor: [weaponTypes.bow],
         level: 10,
-        epCost: 8,
-        hits: 10,
+        epCost: 4,
         accuracy: -6,
-        durablity: -10,
+        durablity: -2,
+        aoiSize: "large",
     },
+    // slapsticks
 };
