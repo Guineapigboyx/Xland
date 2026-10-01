@@ -21,6 +21,7 @@ const itemUsageTypes = {
         onDamage: "onDamageCombat", // when you hit something else it is used (it does not need to do damage)
         onTurnChange: "onTurnChangeCombat", // when the turns change
         onIncapable: "onIncapable", // when you lose the ability to attack in a turn (could come from haveing no EP or a status effect)
+        onCritical: "onCritical", // when you are at 1/6 of your max hp
     },
     outBattle: {
         // the player way they can use the item

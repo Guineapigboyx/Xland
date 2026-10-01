@@ -51,6 +51,7 @@ const statusEffects = {
     blind: { name: "Blind" },
     flash: { name: "Flash" },
     glassGear: { name: "Glass Gear" },
+    sturdyGear: { name: "Sturdy Gear" },
     freeze: { name: "freeze" },
     // stat effects
     burstingVitality: { name: "Bursting Vitality" },

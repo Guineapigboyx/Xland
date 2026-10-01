@@ -7,7 +7,7 @@
  * @property {Number} weight
  * @property {raritys.rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {materialData|undefined} materialData - Data about it as a crafting material
- * @property {imbuingType|undefined} imbuingData - Data about imbueing with this material
+ * @property {socketData|undefined} socketData - Data about socketing with this material
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
  * @property {Number|undefined} storageCapacity
@@ -40,6 +40,7 @@
  * @property {Number|undefined} defense
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - sound category this item uses
  * @property {attack|undefined} speicalAttack - special attack that is added to this item
+ * @property {Function} onHit - when you hit something this function runs
  *
  * ----
  * @typedef {Object} foodData
@@ -51,37 +52,38 @@
  * @property {effects[]} effects - effects gotten from eating
  *
  * ---
- * @typedef {Object} imbuingData
- * @property {string} prefix - the name that gets applied to the start of imbued items
- * @property {itemUsageTypes[]} imbueUsageType - how to activate the imbue
- * @property {Number} imbueUses - how many times you can use the item before it imbue runs out
- * @property {Number} imbueTime - how long a single usage of a imbue lasts
+ * @typedef {Object} socketData
+ * @property {string} prefix - the name that gets applied to the start of socketd items
+ * @property {itemUsageTypes[]} socketUsageType - how to activate the socket
+ * @property {Number} socketUses - how many times you can use the item before it socket runs out
+ * @property {Number} socketTime - how long a single usage of a socket lasts
  * @property {boolean|undefined} cancelable - can you cancel the imbule effects, this also allows a reaction to deny its effects
- * @property {boolean|undefined} denyCost - if you deny a imbue effect it still subtracts 1 from imbueUses (does nothing unless cancelable is on)
+ * @property {boolean|undefined} denyCost - if you deny a socket effect it still subtracts 1 from socketUses (does nothing unless cancelable is on)
  *
- * Imbue effects
- * @property {statChange[]|undefined} statchanges - Array of which stat and how much is changed in each stat
- * @property {effects[]|undefined} statusEffects - effects gotten from doing the effectCondition and haveing the imbued item equiped
- * @property {Number} attack - attack bonus added to any item with this imbue
- * @property {Number} accuracy - accuracy bonus added to any item with this imbue
- * @property {Number} defense - defense bonus added to any item with this imbue
- * @property {damageTypes.damagetype} damagetype - the damagetype this imbue changes the wepon to have
- * @property {attack[]|undefined} instantAction - when the imbue is activated the attack it activates
+ * socket effects
+ * @property {statChange|undefined} statChange - Array of which stat and how much is changed in each stat
+ * @property {effects[]|undefined} effects - effects gotten from doing the effectCondition and haveing the socketd item equiped
+ * @property {Number} attack - attack bonus added to any item with this socket
+ * @property {Number} accuracy - accuracy bonus added to any item with this socket
+ * @property {Number} defense - defense bonus added to any item with this socket
+ * @property {damageTypes.damagetype} damagetype - the damagetype this socket changes the wepon to have
+ * @property {attack[]|undefined} instantAction - when the socket is activated the attack it activates
  * @property {boolean|undefined} actionCost - the action still has a EP cost
  *
- * @example The imbueUsageType is onHit and uses 8. so you can get hit the 8 times before the imbue is lost
- * @example The imbueUsageType is onHit and time 3. So if you get hit it activates the imbue effects for 3 turns.
+ * @example The socketUsageType is onHit and uses 8. so you can get hit the 8 times before the socket is lost
+ * @example The socketUsageType is onHit and time 3. So if you get hit it activates the socket effects for 3 turns.
  *
  * ---
- * @typedef {Object} statChange - the stats name (statType.name)
+ * @typedef {Object} statChange
+ * @property {statTypes.statType} stat - the stats object
  * @property {Number} amount - the amount the stat changes
  *
  * ----
  * @typedef {Object} effect
  * @property {statusEffects.effect} effectGiven - the effect given
- * @property {Number} effectChance - chance of getting the effect
- * @property {Number} effectTime - how long the effect lasts in turns/hours
- * @property {itemUsageTypes[]} effectCondition - the condition the effect happens (does NOT apply for foodData)
+ * @property {Number} effectChance - chance of getting the effect (does NOT apply for socketData)
+ * @property {Number} effectTime - how long the effect lasts in turns/hours (does NOT apply for socketData)
+ * @property {itemUsageTypes[]} effectCondition - the condition the effect happens (does NOT apply for foodData or socketData)
  * @property {Boolean} onSelf - if the effect is given to your self or a target (does NOT apply for foodData)
  */
 const items = {
@@ -720,6 +722,13 @@ const items = {
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 2, pickaxePower: 100 },
         weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "vivid",
+            socketUsageType: [itemUsageTypes.inBattle.useSelf],
+            socketUses: 3,
+            socketTime: 2,
+            accuracy: 10,
+        },
     },
     ruby: {
         name: "Ruby",
@@ -727,6 +736,23 @@ const items = {
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 2, pickaxePower: 30 },
         weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "Rubinated",
+            socketUsageType: [itemUsageTypes.inBattle.useSelf, itemUsageTypes.outBattle.useSelf],
+            socketUses: 12,
+            socketTime: 4,
+            damageType: damageTypes.electric,
+            effect: [
+                {
+                    effectGiven: statusEffects.electricPowerUp,
+                    onSelf: true,
+                },
+                {
+                    effectGiven: statusEffects.electricResitance,
+                    onSelf: true,
+                },
+            ],
+        },
     },
     sapphire: {
         name: "Sapphire",
@@ -734,6 +760,29 @@ const items = {
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 3, pickaxePower: 30 },
         weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "Ice Spiked",
+            socketUsageType: [
+                itemUsageTypes.inBattle.useAnyone,
+                itemUsageTypes.outBattle.useAnyone,
+            ],
+            socketUses: 8,
+            socketTime: 4,
+            damageType: damageTypes.cold,
+            effect: [
+                {
+                    effectGiven: statusEffects.sharpVulnerability,
+                },
+                {
+                    effectGiven: statusEffects.coldPowerUp,
+                    onSelf: true,
+                },
+                {
+                    effectGiven: statusEffects.coldResitance,
+                    onSelf: true,
+                },
+            ],
+        },
     },
     amethyst: {
         name: "Amethyst",
@@ -741,6 +790,23 @@ const items = {
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 3, pickaxePower: 30 },
         weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "Peril",
+            socketUsageType: [itemUsageTypes.inBattle.onCritical],
+            socketUses: 3,
+            socketTime: 3,
+            cancelable: true,
+            effect: [
+                {
+                    effectGiven: statusEffects.regeneration,
+                    onSelf: true,
+                },
+                {
+                    effectGiven: statusEffects.burstingVitality,
+                    onSelf: true,
+                },
+            ],
+        },
     },
     emerald: {
         name: "Emerald",
@@ -748,19 +814,59 @@ const items = {
         weight: 0.82,
         materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 5, pickaxePower: 30 },
         weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "Sturdy",
+            socketUsageType: [itemUsageTypes.inBattle.onSelf, itemUsageTypes.outBattle.onSelf],
+            socketUses: 8,
+            socketTime: 12,
+            effect: [
+                {
+                    effectGiven: statusEffects.sturdyGear,
+                    onSelf: true,
+                },
+            ],
+            statChange: { stat: statTypes.defense, amount: 2 },
+        },
     },
     amber: {
         name: "Amber",
         rarity: raritys.rare,
         weight: 3.27,
         materialData: { weight: 3, durablity: 1, attack: 5, defense: 5 },
-        weaponData: { weaponType: weaponTypes.bluntObject },
+        weaponData: {
+            weaponType: weaponTypes.bluntObject,
+            onHit: () => {
+                console.warn("explode function missing for amber");
+            },
+        },
+        socketData: {
+            prefix: "Expolsive",
+            socketUsageType: [
+                itemUsageTypes.outBattle.onDamage,
+                itemUsageTypes.inBattle.onDamage,
+                itemUsageTypes.inBattle.onHit,
+                itemUsageTypes.outBattle.onHit,
+            ],
+            socketUses: 1,
+            socketTime: 1,
+            statChange: { stat: statTypes.courage, amount: 3 },
+            instantAction: "explode",
+        },
     },
     topaz: {
         name: "Topaz",
         rarity: raritys.legendary,
         weight: 1.64,
         materialData: { weight: 1.5, durablity: 7, attack: 15, defense: 11, pickaxePower: 100 },
+        weaponData: { weaponType: weaponTypes.knife },
+        socketData: {
+            prefix: "Divine",
+            socketUsageType: [itemUsageTypes.inBattle.onDamage, itemUsageTypes.outBattle.onDamage],
+            socketUses: 20,
+            socketTime: 1,
+            cancelable: true,
+            instantAction: "Divine Smite",
+        },
     },
     geode: {
         name: "Geode",
