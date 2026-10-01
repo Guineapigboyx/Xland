@@ -99,7 +99,18 @@ const weaponTypes = {
         metalBreaker: 1,
         effectiveBlock: true,
     },
-    gun: {
+    gunFast: {
+        name: "Raipd Fire Gun",
+        weightThreshold: 12,
+        attackBonus: statTypes.intelligence,
+        sound: "boom",
+        rockBreaker: 1,
+        metalBreaker: 1,
+        woodBreaker: 1,
+        fabricBreaker: 1,
+        ranged: true,
+    },
+    gunSlow: {
         name: "Gun",
         weightThreshold: 12,
         attackBonus: statTypes.intelligence,
