@@ -1,0 +1,117 @@
+// install todo+ for formating
+// "-" means not started
+// "" means started
+// "x" means done
+// "=" might be removed
+// just delate the line if it is removed
+
+items:
+    [] Basic componet
+    [x] Metal
+    [x] jewel/gem
+    [-] negimite (negitive crafting system)
+    [] Other miniral
+    [] Other Matrial
+    [] crafted componet // tho there are no funcanolity for them
+    [-] Consumables/food
+    [-] ammo
+    [-] equipment
+    [-] non dynamic items
+    [-] Enemy Drops
+    [-] Storage items
+    [-] Crafting station
+
+crafting:
+    [-] schematics/crafting molds
+    [-] crafting stat effects
+    [-] socketing
+
+UI:
+    [] all status screen
+    [-] battle
+    [-] full inventory
+    [-] interaction
+    [-] conversation
+    [-] map
+    [-] adventure log
+    [-] crafting
+    [=] cooking
+    [=] climbing
+    // there will most likely be more
+
+pepole:
+    [-] new names
+    [] Koopa
+    [-] Lucario
+    [-] Mario
+    [-] Luigi
+    [-] Kirby
+    [-] Toon Link
+    [-] Link
+    [-] Monferno
+    [-] Sonic
+    [-] Tails
+
+attacks:
+    [] shared attacks
+    [-] pickaxe
+    [-] hammer
+    [-] drill
+    [x] shield
+    [-] knife
+    [-] sword
+    [-] slapstick
+    [-] gloves // hand to hand
+    [x] gun
+    [] bow
+    [-] spear
+    [-] club
+    [-] whip
+    [x] boat weapons
+    [-] generic objects
+    [-] special attacks
+    [-] world actions // like exposion 
+
+types:
+    [x] damageTypes
+    [x] foodTypes
+    [] itemUsageTypes // the types are there but not the event listeners
+    [x] statTypes // might add more
+    [x] weaponTypes
+    [-] foodPrefixes
+
+gameplay:
+    [-] cooking
+    [-] battle system
+    [-] interactions
+    [-] dialoage
+    [-] climbing
+    [-] exploreing
+    [-] traps
+    [-] tradeing
+    [-] stealth
+    [-] experiance
+    [-] survival
+    [-] rolls // the thing that genrates the roll you just did
+
+animals:
+    [-] giga beasts
+    [-] level 1
+    [-] level 2
+    [-] level 3
+    [-] level 4
+    [-] level 5
+    [-] level 6
+    [-] level MAX
+
+world Gen:
+    [-] towns
+    [-] continets
+    [-] ocean
+    [-] poi placer
+    [-] battle area
+
+other:
+    [] npcs // there needs to be at least like 30
+    [-] dynamic npcs // like genric npcs that pull from a pool of properties 
+    [] statusEffects
