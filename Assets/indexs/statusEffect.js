@@ -65,6 +65,7 @@ const statusEffects = {
     bloodLust: { name: "BloodLust" },
     stupity: { name: "Stupity" },
     guarding: { name: "Guarding" },
+    counterReady: { name: "Ready To Counter" },
     // Power
     //up
     bluntPowerUp: { name: "Blunt Power Up" },
@@ -99,6 +100,7 @@ const statusEffects = {
     toxicResitance: { name: "Toxic Resitance" },
     waterResitance: { name: "Water Resitance" },
     coldResitance: { name: "cold Resitance" },
+    pushResitance: { name: "Push Resitacnce" },
     // Vulnerability
     bluntVulnerability: { name: "Blunt Vulnerability" },
     sharpVulnerability: { name: "Sharp Vulnerability" },
