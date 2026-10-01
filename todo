@@ -79,6 +79,7 @@ types:
     [x] statTypes // might add more
     [x] weaponTypes
     [-] foodPrefixes
+    [-] biome types
 
 gameplay:
     [-] cooking

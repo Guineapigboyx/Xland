@@ -77,7 +77,7 @@
     --meat-color: FireBrick;
 }
 
-/* Fix for chromium browsers */
+/* chromium browsers */
 button {
     font-family: var(--font) !important;
     cursor: pointer;

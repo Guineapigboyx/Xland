@@ -265,23 +265,25 @@ const attacks = {
         },
     },
     // Gun moves
-    shoot: {
+    shootGun: {
         name: "shoot",
         attackFor: [weaponTypes.boatWeapon, weaponTypes.gunFast, weaponTypes.gunSlow],
         level: 0,
     },
-    threeFire: {
+    threeShot: {
         name: "3x shot",
         attackFor: [weaponTypes.gunFast],
         level: 1,
         hits: 3,
         accuracy: -4,
+        durablity: -3,
     },
     aim: {
         name: "Steady aim",
         attackFor: [weaponTypes.gunFast, weaponTypes.gunSlow, weaponTypes.bow],
         level: 3,
         epCost: 4,
+        durablity: 0,
         targetSelf: true,
         effect: [
             {
@@ -298,6 +300,7 @@ const attacks = {
         level: 4,
         hits: 2,
         accuracy: -4,
+        durablity: -2,
     },
     fiveShot: {
         name: "5x Shot",
@@ -306,6 +309,7 @@ const attacks = {
         hits: 5,
         epCost: 2,
         accuracy: -4,
+        durablity: -5,
     },
     headShot: {
         name: "Head Shot",
@@ -321,6 +325,7 @@ const attacks = {
         level: 8,
         hits: 3,
         accuracy: -4,
+        durablity: -3,
     },
     eightShot: {
         name: "8x Shot",
@@ -329,6 +334,7 @@ const attacks = {
         epCost: 4,
         hits: 8,
         accuracy: -6,
+        durablity: -8,
     },
     precisionShot: {
         name: "Precision Shot",
@@ -336,5 +342,39 @@ const attacks = {
         epCost: 3,
         level: 10,
         accuracy: 3,
+    },
+    // bow
+    shootBow: {
+        name: "shoot",
+        attackFor: [weaponTypes.bow],
+        epCost: 1,
+        level: 0,
+    },
+    volly: {
+        name: "Volly",
+        attackFor: [weaponTypes.bow],
+        level: 3,
+        epCost: 3,
+        hits: 8,
+        accuracy: -2,
+        durablity: -3,
+    },
+    largeVolly: {
+        name: "Large volly",
+        attackFor: [weaponTypes.bow],
+        level: 6,
+        epCost: 5,
+        hits: 6,
+        accuracy: -4,
+        durablity: -6,
+    },
+    hugeVolly: {
+        name: "huge volly",
+        attackFor: [weaponTypes.bow],
+        level: 10,
+        epCost: 8,
+        hits: 10,
+        accuracy: -6,
+        durablity: -10,
     },
 };
