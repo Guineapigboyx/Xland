@@ -72,4 +72,5 @@ const damageTypes = {
     },
     heal: { name: "heal", CssColor: "--heal-color", damageMult: -1 },
     instantDeath: { name: "Instant Death", CssColor: "--instant-death-color", damage: 200000 },
+    pushing: { name: "Pushing", CssColor: "--pushing-color" },
 };
