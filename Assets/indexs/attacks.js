@@ -1,3 +1,22 @@
+/*
+Xland battle mechanics
+
+It is turn based so each person on your team will do their attack(s) then the enmmies would do theirs.
+
+--- EP
+A big diffrence with xland combat from a lot of other systems is EP(endurance points). Every thing (that can do combat) has EP.
+Ep says how many moves and strength of moves one can do. Most moves drain some amount of EP so you can only do so many attacks before you run out
+
+By default you can only do 1 attack per turn but you can do a action surge draining a small aditonal amount of ep to do another attack in the same turn.
+(The cost of action surges are exponental so the first one may be 2 but the next one is 3 then the next is 5 then next one is 8)
+
+Also every round you will restore a small amount of EP per turn (by defualt 1 but it can be raised with item or effects)
+There are also some ways to get free action surges like from passive effects or the bloodlust status effect.
+---
+
+Tho for the most part battles are like DND just without bonus actions or spell slots.
+/*
+
 /**
  * Data for all of the attacks in xland
  *
