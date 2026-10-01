@@ -15,7 +15,7 @@ There are also some ways to get free action surges like from passive effects or 
 ---
 
 Tho for the most part battles are like DND just without bonus actions or spell slots.
-/*
+*/
 
 /**
  * Data for all of the attacks in xland
@@ -32,7 +32,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {Number|undefined} level - This is weapon type level not person level (put 0 if you always have it)
  * @property {boolean|undefined} targetSelf - if you need to pick a target to use this move (by defualt true)
  * @property {boolean} reactionUsageType - what must happen for this attack to appear as a reaction
- * 
+ *
  * @property {Number|undefined} damage - amount of damage it deals (if damageMult is present this is a bounus)
  * @property {Number|undefined} damageMult - multipler of the base damage that is added to the attack
  * @property {Number|undefined} armorDamage - how much defense is ignored when hitting with this attack
@@ -49,13 +49,14 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {Number|undefined} durablity - how much durablity is lost when useing the move (by default it uses 1)
  *
  * @property {statTypes.statType|undefined} rollFor - what stat are you rolling with for this attack
- * 
+ *
  * @property {small|meid|large|huge} aoiSize - size of this attack if it is a aoi
  * @property {damagetype[]|undefined} damagetype - array of every element this attack has
  * @property {effect[]|undefined} effect - array of every satus effect that is given by this weapon
  *
  * @property {Function} requirements - function to check if the user meets the special requirements to use this move
- 
+ * @property {boolean} noConsume - don't consume ammo
+ *
  * @property {Function|undefined} speicalFunction - special function for the attack (use only if you have to)
  * @property {itemUsageTypes.inBattle[]|undefined} attackUsageType - only run speicalFunction if this UsageType happens also
  *
@@ -77,7 +78,6 @@ const attacks = {
             weaponTypes.knife,
             weaponTypes.drill,
             weaponTypes.spear,
-            weaponTypes.gloves,
         ],
         weaponSize: "small",
         epCost: 1,
@@ -93,6 +93,10 @@ const attacks = {
             weaponTypes.club,
             weaponTypes.guardingHammer,
             weaponTypes.hammer,
+            weaponTypes.slapstick,
+            weaponTypes.whip,
+            weaponTypes.largeObject,
+            weaponTypes.bluntObject,
         ],
         weaponSize: "large",
         epCost: 2,
@@ -113,6 +117,20 @@ const attacks = {
                 onSelf: true,
             },
         ],
+    },
+    basicSwing: {
+        name: "Basic swing",
+        attackFor: [
+            weaponTypes.club,
+            weaponTypes.slapstick,
+            weaponTypes.hammer,
+            weaponTypes.pickaxe,
+            weaponTypes.whip,
+            weaponTypes.bluntObject,
+        ],
+        weaponSize: "small",
+        epCost: 1,
+        level: 0,
     },
     // shield attacks
     guard: {
@@ -245,5 +263,78 @@ const attacks = {
                 "parry function missing",
             );
         },
+    },
+    // Gun moves
+    shoot: {
+        name: "shoot",
+        attackFor: [weaponTypes.boatWeapon, weaponTypes.gunFast, weaponTypes.gunSlow],
+        level: 0,
+    },
+    threeFire: {
+        name: "3x shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 1,
+        hits: 3,
+        accuracy: -4,
+    },
+    aim: {
+        name: "Steady aim",
+        attackFor: [weaponTypes.gunFast, weaponTypes.gunSlow, weaponTypes.bow],
+        level: 3,
+        epCost: 4,
+        targetSelf: true,
+        effect: [
+            {
+                effectGiven: statusEffects.sharpShoot,
+                effectChance: 0.65,
+                effectTime: 1,
+                onSelf: true,
+            },
+        ],
+    },
+    largeTwoShot: {
+        name: "2x Shot",
+        attackFor: [weaponTypes.gunSlow],
+        level: 4,
+        hits: 2,
+        accuracy: -4,
+    },
+    fiveShot: {
+        name: "5x Shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 5,
+        hits: 5,
+        epCost: 2,
+        accuracy: -4,
+    },
+    headShot: {
+        name: "Head Shot",
+        attackFor: [weaponTypes.gunSlow, weaponTypes.gunFast, weaponTypes.bow],
+        damageMult: 2,
+        epCost: 4,
+        level: 7,
+        accuracy: -2,
+    },
+    largeThreeShot: {
+        name: "3x Shot",
+        attackFor: [weaponTypes.gunSlow],
+        level: 8,
+        hits: 3,
+        accuracy: -4,
+    },
+    eightShot: {
+        name: "8x Shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 10,
+        epCost: 4,
+        hits: 8,
+        accuracy: -6,
+    },
+    precisionShot: {
+        name: "Precision Shot",
+        attackFor: [weaponTypes.gunSlow],
+        epCost: 3,
+        level: 10,
+        accuracy: 3,
     },
 };
