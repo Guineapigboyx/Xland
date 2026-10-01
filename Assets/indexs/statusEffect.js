@@ -18,6 +18,7 @@
  * @property {Function|undefined} onHour - function that runs every hour, if false have no combat effects, if false have no out of combat effects
  * @property {Function|undefined} OnLossOut - function that runs when the effect is lost, if undifined do onHour
  *
+ * @property {statTypes.statType[]|undefined} saveingThrow - stat the effect uses for saveing throws
  * @property {number|undefined} activateionTurn - How many turns it takes for the onActivate happens. If undefined it sets this to 1
  * @property {number|undefined} activateionHour - How many hours it takes for the onHour happens. If undefined it sets this to 1
  *
@@ -57,11 +58,13 @@ const statusEffects = {
     burstingVitality: { name: "Bursting Vitality" },
     waningVitality: { name: "Waning Vitality" },
     BurstingSpeed: { name: "Bursting Speed" },
+    tired: { name: "Tired" },
     lethargic: { name: "Lethargic" },
     fear: { name: "Fear" },
     sharpShoot: { name: "Sharp Shoot" },
     bloodLust: { name: "BloodLust" },
     stupity: { name: "Stupity" },
+    guarding: { name: "Guarding" },
     // Power
     //up
     bluntPowerUp: { name: "Blunt Power Up" },
