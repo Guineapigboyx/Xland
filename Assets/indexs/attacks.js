@@ -29,7 +29,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {weaponTypes.weaponType[]|undefined} attackFor - the weapon type this attack is for, if undefined its not connected to a weapon
  * @property {Number} epCost - amount of enduance it costs to use the attack
  * @property {"large"|"small"|undefined} weaponSize - if 2 handed or 1 handed or both can use this
- * @property {Number|undefined} level - This is weapon type level not person level (put 0 if you always have it)
+ * @property {Number|undefined} level - This is weapon type level not person level (put 0 if you always have it) haveing 1 level in a weapon means you proficiency but no other levels
  * @property {boolean|undefined} targetSelf - if you need to pick a target to use this move (by defualt true)
  * @property {boolean} reactionUsageType - what must happen for this attack to appear as a reaction
  *
@@ -39,9 +39,9 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {Number|undefined} armorDamageMult - presentage of the armor ignored by this attack
  *
  * @property {Number|undefined} hits - amount of hit this attack does
- * @property {Boolean|undefined} endAfterMiss - if you miss stop all subsqent hits from this move
+ * @property {Boolean|undefined} endAfterMiss - if you miss stop all subsqent hits from this move (costs epCost per hit)
  *
- * @property {Number|undefined} speed - how fast the attack is (default is 5)
+ * @property {1|2|3|4|5|undefined} speed - how fast the attack is (default is 3)
  * @property {Number|undefined} accuracy - how much accuracy is removed or added
  * @property {Number|undefined} citChance - how much crit chance is removed or added
  *
@@ -269,20 +269,21 @@ const attacks = {
         name: "shoot",
         attackFor: [weaponTypes.boatWeapon, weaponTypes.gunFast, weaponTypes.gunSlow],
         level: 0,
+        epCost: 0,
     },
     threeShot: {
         name: "3x shot",
         attackFor: [weaponTypes.gunFast],
         level: 1,
         hits: 3,
-        accuracy: -4,
-        durablity: -3,
+        epCost: 1,
+        damageMult: 0.5,
     },
     aim: {
         name: "Steady aim",
         attackFor: [weaponTypes.gunFast, weaponTypes.gunSlow, weaponTypes.bow],
         level: 3,
-        epCost: 4,
+        epCost: 2,
         durablity: 0,
         targetSelf: true,
         effect: [
@@ -298,9 +299,9 @@ const attacks = {
         name: "2x Shot",
         attackFor: [weaponTypes.gunSlow],
         level: 4,
-        hits: 2,
-        accuracy: -4,
-        durablity: -2,
+        hits: 1,
+        epCost: 2,
+        damageMult: 0.7,
     },
     fiveShot: {
         name: "5x Shot",
@@ -308,33 +309,52 @@ const attacks = {
         level: 5,
         hits: 5,
         epCost: 2,
-        accuracy: -4,
-        durablity: -5,
+        damageMult: 0.32,
+    },
+    legShot: {
+        name: "leg Shot",
+        attackFor: [weaponTypes.gunSlow, weaponTypes.gunFast, weaponTypes.bow],
+        damageMult: 0.7,
+        epCost: 3,
+        level: 6,
+        effect: [
+            {
+                effectGiven: statusEffects.prone,
+                effectChance: 0.8,
+                effectTime: 2,
+            },
+            {
+                effectGiven: statusEffects.brokenLeg,
+                effectChance: 0.2,
+                effectTime: 5,
+            },
+        ],
     },
     headShot: {
         name: "Head Shot",
         attackFor: [weaponTypes.gunSlow, weaponTypes.gunFast, weaponTypes.bow],
-        damageMult: 2,
-        epCost: 4,
+        damageMult: 1.5,
+        epCost: 2,
         level: 7,
         accuracy: -2,
     },
     largeThreeShot: {
         name: "3x Shot",
         attackFor: [weaponTypes.gunSlow],
+        epCost: 3,
         level: 8,
         hits: 3,
-        accuracy: -4,
-        durablity: -3,
+        damageMult: 0.65,
+        accuracy: -1,
     },
     eightShot: {
         name: "8x Shot",
         attackFor: [weaponTypes.gunFast],
         level: 10,
-        epCost: 4,
+        epCost: 3,
         hits: 8,
-        accuracy: -6,
-        durablity: -8,
+        accuracy: -1,
+        damageMult: 0.25,
     },
     precisionShot: {
         name: "Precision Shot",
@@ -343,7 +363,7 @@ const attacks = {
         level: 10,
         accuracy: 3,
     },
-    // bow
+    // bow some are in the gun section
     shootBow: {
         name: "shoot",
         attackFor: [weaponTypes.bow],
@@ -354,10 +374,9 @@ const attacks = {
         name: "Volly",
         attackFor: [weaponTypes.bow],
         level: 2,
-        epCost: 3,
-        accuracy: -3,
-        durablity: -3,
-        aoiSize: "mid",
+        epCost: 2,
+        accuracy: -2,
+        aoiSize: "small",
     },
     mutiShot: {
         name: "muti Shot",
@@ -371,26 +390,87 @@ const attacks = {
         name: "Large volly",
         attackFor: [weaponTypes.bow],
         level: 5,
-        epCost: 5,
-        accuracy: -4,
-        durablity: -6,
+        epCost: 4,
+        accuracy: -1,
         aoiSize: "mid",
     },
     precisionShot: {
         name: "Precision Shot",
         attackFor: [weaponTypes.bow],
         epCost: 3,
-        level: 6,
+        level: 7,
         accuracy: 3,
     },
     hugeVolly: {
         name: "huge volly",
         attackFor: [weaponTypes.bow],
         level: 10,
-        epCost: 4,
-        accuracy: -6,
-        durablity: -2,
+        epCost: 6,
+        accuracy: -2,
         aoiSize: "large",
     },
     // slapsticks
+    rapaSmack: {
+        name: "Rapa smack",
+        attackFor: [weaponTypes.slapstick],
+        level: 2,
+        epCost: 2,
+        hits: 3,
+        damageMult: 0.4,
+    },
+    spin: {
+        name: "Spin",
+        attackFor: [weaponTypes.slapstick],
+        level: 3,
+        epCost: 1,
+        damageMult: 0.42,
+        endAfterMiss: true,
+    },
+    dashSmack: {
+        name: "Dash smack",
+        attackFor: [weaponTypes.slapstick],
+        level: 4,
+        epCost: 2,
+        speed: 4,
+    },
+    powerSmash: {
+        name: "Power smack",
+        attackFor: [weaponTypes.slapstick],
+        level: 5,
+        epCost: 3,
+        damageMult: 1.5,
+    },
+    stunSmash: {
+        name: "Stuning smash",
+        attackFor: [weaponTypes.slapstick],
+        level: 6,
+        epCost: 3,
+        damageMult: 0.8,
+        endAfterMiss: true,
+        effect: [
+            {
+                effectGiven: statusEffects.stuned,
+                effectChance: 0.7,
+                effectTime: 3,
+            },
+        ],
+    },
+    quintupleSmack: {
+        name: "Quintuple smack",
+        attackFor: [weaponTypes.slapstick],
+        level: 7,
+        epCost: 3,
+        hits: 5,
+        damageMult: 0.35,
+        accuracy: -1,
+    },
+    octoSmack: {
+        name: "Octo smack",
+        attackFor: [weaponTypes.slapstick],
+        level: 10,
+        epCost: 4,
+        hits: 8,
+        damageMult: 0.29,
+        accuracy: -1,
+    },
 };
