@@ -4,6 +4,7 @@
  * @property {String[]} name - [first,last(optinal)]
  * @property {String} home - Where they live or if none put null and it will put them as traveling
  * @property {Number} level - what level is this NPC, this also determnites various other things
+ * @property {[Number, Number]} maxHp - health range [min, max]
  *
  * @property {String} profession - what they do (it does not have to be a job)
  * @property {String} background - talk about what they do and why they do it. You can be quite discriptive here since its bassicly who the NPC character is
@@ -17,14 +18,12 @@
  * @property {Number|undefined} tradeThreshold - how high approval must be to trade
  * @property {Number|undefined} restockTime -  How many ingame hours it takes for them to restock
  *
- * @property {inventory|undefined} inventory - inventory of the NPC
+ * @property {inventoryItem[]|undefined} inventory - inventory of the NPC
  * @property {equiped[]|undefined} equiped - items this npc has equiped
- * @property {stats|undefined} stats - the stats of the NPC
+ * @property {stat[]|undefined} stats - the stats of the NPC
  *
- * ----
- * @typedef {Object} inventory - inventory of the NPC
- * @property {inventoryItem} - items in the inventory
- *
+ * @property {weaponTypes.weaponType[]} proficiency
+ * - Weapon types the NPC is proficient with
  * ----
  * @typedef  {Object} inventoryItem - Which items they have in their inventory and are willing to sell
  * @property {items.item} item - the items object in items
@@ -39,25 +38,17 @@
  * @property {items.item[]} items - items that can appear in the slot
  *
  * ----
- * @typedef {Object} stats - base stat ranges
- * @property {[Number, Number]} hp - health range [min, max]
- * @property {[Number, Number]} strength - Strength range [min, max]
- * @property {[Number, Number]} defense - Defense range [min, max]
- * @property {[Number, Number]} speed - Speed range [min, max]
- * @property {[Number, Number]} endurance - Endurance range [min, max]
- * @property {[Number, Number]} intelligence - Intelligence range [min, max]
- * @property {[Number, Number]} stealth - Stealth range [min, max]
- * @property {[Number, Number]} crafting - Crafting range [min, max]
- * @property {[Number, Number]} courage - courage range [min, max]
+ * @typedef {Object} stat - base stat ranges
+ * @property {statTypes.stat} stat - the stat that is effected
+ * @property {[Number, Number]} range - stat range [min, max], if this will be 0 don't include the stat
  *
- * @property {("spear"|"lightSword"|"heavySword"|"lightSpear"|"heavySpear"|"lightHammer"|"heavyHammer"|"lightAxe"|"heavyAxe"|"flail"|"bow"|"unarmed")[]} proficiency
- * - Weapon types the NPC is proficient with
  */
 const npcs = {
     billyMaye: {
         name: "billy maye",
         home: "new billy",
         level: 1,
+        hp: [20, 20],
 
         profession: "local asshole",
         background:
@@ -72,22 +63,20 @@ const npcs = {
         badApproval: -5,
         fightThreshold: -10000000000,
 
-        stats: {
-            hp: [20, 20],
-            strength: [1, 1],
-            defense: [1, 1],
-            speed: [1, 1],
-            endurance: [1, 1],
-            intelligence: [1, 1],
-            stealth: [10, 10],
-            crafting: [1, 1],
-            courage: [0, 0],
-        },
+        stats: [
+            { stat: statTypes.strength, range: [1, 1] },
+            { stat: statTypes.defense, range: [1, 1] },
+            { stat: statTypes.speed, range: [1, 1] },
+            { stat: statTypes.endurance, range: [1, 1] },
+            { stat: statTypes.intelligence, range: [1, 1] },
+            { stat: statTypes.stealth, range: [10, 10] },
+        ],
     },
     johnLinus: {
         name: "john linus",
         home: "new billy",
         level: 1,
+        maxHp: [50, 80],
 
         profession: "farmer",
         background:
@@ -144,16 +133,15 @@ const npcs = {
             },
         },
 
-        stats: {
-            hp: [50, 80],
-            strength: [2, 4],
-            defense: [1, 3],
-            speed: [1, 1],
-            endurance: [2, 6],
-            intelligence: [1, 5],
-            stealth: [1, 1],
-            crafting: [1, 5],
-            courage: [10, 15],
-        },
+        stats: [
+            { stat: statTypes.strength, range: [2, 4] },
+            { stat: statTypes.defense, range: [1, 3] },
+            { stat: statTypes.speed, range: [1, 1] },
+            { stat: statTypes.endurance, range: [2, 6] },
+            { stat: statTypes.intelligence, range: [1, 5] },
+            { stat: statTypes.stealth, range: [1, 1] },
+            { stat: statTypes.crafting, range: [1, 5] },
+            { stat: statTypes.courage, range: [10, 15] },
+        ],
     },
 };
