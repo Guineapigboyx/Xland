@@ -29,7 +29,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {weaponTypes.weaponType[]|undefined} attackFor - the weapon type this attack is for, if undefined its not connected to a weapon
  * @property {Number} epCost - amount of enduance it costs to use the attack
  * @property {"large"|"small"|undefined} weaponSize - if 2 handed or 1 handed or both can use this
- * @property {Number|undefined} level - This is weapon type level not person level (put 0 if you always have it) haveing 1 level in a weapon means you proficiency but no other levels
+ * @property {0|1|2|3|4|5|6|7|undefined} level - This is weapon type level not person level (put 0 if you always have it) haveing 1 level in a weapon means you proficiency but no other levels
  * @property {boolean|undefined} targetSelf - if you need to pick a target to use this move (by defualt true)
  * @property {boolean|undefined} reactionUsageType - what must happen for this attack to appear as a reaction
  *
@@ -132,6 +132,12 @@ const attacks = {
         epCost: 1,
         level: 0,
     },
+    shootGun: {
+        name: "shoot",
+        attackFor: [weaponTypes.boatWeapon, weaponTypes.gunFast, weaponTypes.gunSlow],
+        level: 0,
+        epCost: 0,
+    },
     // shield attacks
     guard: {
         name: "Guard",
@@ -155,11 +161,12 @@ const attacks = {
         name: "Shield bash",
         attackFor: [weaponTypes.shield],
         epCost: 1,
-        level: 2,
+        level: 1,
         damageMult: 0.4,
         damagetype: [damageTypes.pushing],
         rollFor: statTypes.strength,
     },
+    // lv 2 shield move
     sturdyGuard: {
         name: "Sturdy guard",
         attackFor: [weaponTypes.shield, weaponTypes.guardingHammer, weaponTypes.guardingSword],
@@ -217,7 +224,7 @@ const attacks = {
         attackFor: [weaponTypes.shield],
         targetSelf: true,
         epCost: 2,
-        level: 6,
+        level: 5,
         damageMult: 0.4,
         // todo parry function missing
         speicalFunction: () => {
@@ -229,7 +236,7 @@ const attacks = {
     counter: {
         name: "counter",
         attackFor: [weaponTypes.shield, weaponTypes.guardingSword],
-        level: 8,
+        level: 6,
         epCost: 3,
         effect: [
             {
@@ -249,7 +256,7 @@ const attacks = {
     counterParry: {
         name: "counter Parry",
         attackFor: [weaponTypes.shield],
-        level: 10,
+        level: 7,
         epCost: 4,
         effect: [
             {
@@ -270,25 +277,12 @@ const attacks = {
             );
         },
     },
-    // Gun moves
-    shootGun: {
-        name: "shoot",
-        attackFor: [weaponTypes.boatWeapon, weaponTypes.gunFast, weaponTypes.gunSlow],
-        level: 0,
-        epCost: 0,
-    },
-    threeShot: {
-        name: "3x shot",
-        attackFor: [weaponTypes.gunFast],
-        level: 1,
-        hits: 3,
-        epCost: 1,
-        damageMult: 0.5,
-    },
+
+    // ranged shared
     aim: {
         name: "Steady aim",
         attackFor: [weaponTypes.gunFast, weaponTypes.gunSlow, weaponTypes.bow],
-        level: 3,
+        level: 1,
         epCost: 2,
         durablity: 0,
         targetSelf: true,
@@ -301,28 +295,12 @@ const attacks = {
             },
         ],
     },
-    largeTwoShot: {
-        name: "2x Shot",
-        attackFor: [weaponTypes.gunSlow],
-        level: 4,
-        hits: 1,
-        epCost: 2,
-        damageMult: 0.7,
-    },
-    fiveShot: {
-        name: "5x Shot",
-        attackFor: [weaponTypes.gunFast],
-        level: 5,
-        hits: 5,
-        epCost: 2,
-        damageMult: 0.32,
-    },
     legShot: {
         name: "leg Shot",
         attackFor: [weaponTypes.gunSlow, weaponTypes.gunFast, weaponTypes.bow],
         damageMult: 0.7,
         epCost: 3,
-        level: 6,
+        level: 3,
         effect: [
             {
                 effectGiven: statusEffects.prone,
@@ -340,34 +318,69 @@ const attacks = {
         name: "Head Shot",
         attackFor: [weaponTypes.gunSlow, weaponTypes.gunFast, weaponTypes.bow],
         damageMult: 1.5,
-        epCost: 2,
-        level: 7,
+        epCost: 5,
+        level: 5,
         accuracy: -2,
     },
-    largeThreeShot: {
-        name: "3x Shot",
-        attackFor: [weaponTypes.gunSlow],
-        epCost: 3,
-        level: 8,
+
+    // gun fast
+    // lv 1 steady aim
+    threeShot: {
+        name: "3x shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 2,
         hits: 3,
-        damageMult: 0.65,
-        accuracy: -1,
+        epCost: 1,
+        damageMult: 0.5,
     },
+    // lv 3 leg shot
+    fiveShot: {
+        name: "5x Shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 4,
+        hits: 5,
+        epCost: 2,
+        damageMult: 0.32,
+    },
+    // lv 5 head shot
+    // todo level 6 gun fast
     eightShot: {
         name: "8x Shot",
         attackFor: [weaponTypes.gunFast],
-        level: 10,
+        level: 7,
         epCost: 3,
         hits: 8,
         accuracy: -1,
         damageMult: 0.25,
     },
+    // gun slow
+    // lv 1 steady aim
+    // todo lv 2 gun slow
+    // lv 3 leg shot
+    largeTwoShot: {
+        name: "2x Shot",
+        attackFor: [weaponTypes.gunSlow],
+        level: 4,
+        hits: 1,
+        epCost: 2,
+        damageMult: 0.7,
+    },
+    // lv 5 head shot
     precisionShot: {
         name: "Precision Shot",
         attackFor: [weaponTypes.gunSlow],
         epCost: 3,
-        level: 10,
+        level: 6,
         accuracy: 3,
+    },
+    largeThreeShot: {
+        name: "3x Shot",
+        attackFor: [weaponTypes.gunSlow],
+        epCost: 3,
+        level: 7,
+        hits: 3,
+        damageMult: 0.65,
+        accuracy: -1,
     },
     // bow some are in the gun section
     shootBow: {
@@ -479,4 +492,5 @@ const attacks = {
         damageMult: 0.29,
         accuracy: -1,
     },
+    // drill
 };

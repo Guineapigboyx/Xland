@@ -96,14 +96,14 @@ gameplay:
     [-] rolls // the thing that genrates the roll you just did
 
 animals:
-    [-] giga beasts
     [-] level 1
     [-] level 2
     [-] level 3
     [-] level 4
     [-] level 5
     [-] level 6
-    [-] level MAX
+    [-] level MAX // strange lv MAX technicly is not MAX but thats how its always been so whatever
+    [-] giga beasts 
 
 world Gen:
     [-] towns

@@ -20,9 +20,9 @@ const itemUsageTypes = {
         onRollAny: "onRollAnyCombat", // when you do a roll with any outcome it will be used
         onRoll: "onRollCombat", // when you do a roll it is used (can be used for roll modifers)
         onDamage: "onDamageCombat", // when you hit something else it is used (it does not need to do damage)
-        onTurnChange: "onTurnChangeCombat", // when the turns change
+        onCritical: "onCriticalCombat", // when you are at 1/6 of your max hp
+        onTurnChange: "onTurnChange", // when the turns change
         onIncapable: "onIncapable", // when you lose the ability to attack in a turn (could come from haveing no EP or a status effect)
-        onCritical: "onCritical", // when you are at 1/6 of your max hp
     },
     outBattle: {
         // the player way they can use the item
@@ -45,6 +45,9 @@ const itemUsageTypes = {
         onDamage: "onDamage", // when you hit something else it is used (it does not need to do damage)
         onHour: "onHour", // when the hour changes
         onFire: "onFire", // when on fire
+        onSleep: "onSleep", // when going to sleep
+        onDay: "onDay", // when the day ends (if the day changes in combat this is ran after combat ends)
+        onCritical: "onCritical", // when you are at 1/6 of your max hp
         // entering somewhere
         enterCold: "enterCold",
         enterHot: "enterHot",
