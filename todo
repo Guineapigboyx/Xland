@@ -56,7 +56,7 @@ attacks:
     [] shared attacks
     [-] pickaxe
     [-] hammer
-    [-] drill
+    [x] drill
     [x] shield
     [-] knife
     [-] sword

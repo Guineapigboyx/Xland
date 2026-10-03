@@ -39,8 +39,8 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {Number|undefined} armorDamageMult - presentage of the armor ignored by this attack
  *
  * @property {Number|undefined} hits - amount of hit this attack does
- * @property {Boolean|undefined} endAfterMiss - if you miss stop all subsqent hits from this move (costs epCost per hit)
- * @property {Number|undefined} targets - how many targets are you able to hit with this move
+ * @property {Boolean|undefined} endAfterMiss - keep hitting the target until you miss (costs epCost per hit)
+ * @property {Number|undefined} targets - how many targets are you able to hit with this move (must be equal or lower than hits)
  *
  * @property {1|2|3|4|5|undefined} speed - how fast the attack is (default is 3)
  * @property {Number|undefined} accuracy - how much accuracy is removed or added
@@ -570,4 +570,105 @@ const attacks = {
         accuracy: -1,
     },
     // drill ---------------------------------------------------
+    bore: {
+        name: "Bore",
+        attackFor: [weaponTypes.drill],
+        level: 1,
+        epCost: 3,
+        hits: 5,
+        damageMult: 0.15,
+    },
+    proneBore: {
+        name: "Downwards bore",
+        attackFor: [weaponTypes.drill],
+        level: 1,
+        epCost: 3,
+        hits: 5,
+        // todo function for checking if someone is prone
+        requirements: () => {
+            console.warn("check for is prone missing");
+        },
+        rollFor: statTypes.strength,
+    },
+    dashDrill: {
+        name: "Dash Drill",
+        attackFor: [weaponTypes.drill],
+        level: 2,
+        epCost: 2,
+        speed: 3,
+    },
+    shred: {
+        name: "Shred",
+        attackFor: [weaponTypes.drill],
+        level: 3,
+        epCost: 2,
+        damageMult: 0.5,
+        armorDamageMult: 0.5,
+    },
+    drillGuard: {
+        name: "Drill Guard",
+        attackFor: [weaponTypes.drill],
+        level: 4,
+        epCost: 1,
+        effect: [
+            {
+                effectGiven: statusEffects.counterReady,
+                effectChance: 1,
+                effectTime: 1,
+                duringAttack: true,
+                onSelf: true,
+            },
+        ],
+        rollFor: statTypes.speed,
+        // todo counter function and seting the weapon automatticly to the drill
+        speicalFunction: () => {
+            console.warn("guardingWith var not set", "attackWith not set to drill");
+        },
+    },
+    shredGuard: {
+        name: "Shred Guard",
+        attackFor: [weaponTypes.drill],
+        level: 5,
+        epCost: 4,
+        effect: [
+            {
+                effectGiven: statusEffects.noDefend,
+                effectChance: 1,
+                effectTime: 2,
+            },
+            {
+                effectGiven: statusEffects.armorCrunch,
+                effectChance: 1,
+                effectTime: 2,
+            },
+            {
+                effectGiven: statusEffects.armorCrunch,
+                effectChance: 0.5,
+                effectTime: 2,
+            },
+        ],
+        rollFor: statTypes.intelligence,
+    },
+    overBore: {
+        name: "Over Bore",
+        attackFor: [weaponTypes.drill],
+        level: 6,
+        epCost: 1,
+        damageMult: 0.4,
+        endAfterMiss: true,
+        effect: [
+            {
+                effectGiven: statusEffects.armorCrunch,
+                effectChance: 0.333,
+                effectTime: 2,
+            },
+        ],
+    },
+    pierceArmor: {
+        name: "pierce armor",
+        attackFor: [weaponTypes.drill],
+        level: 7,
+        epCost: 4,
+        armorDamageMult: 0.8,
+    },
 };
