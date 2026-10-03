@@ -5,9 +5,9 @@
  * @typedef {object} damagetype - the type of damage and the properties of it
  * @property {string} name - name of the damage type
  * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
- * @property {Number} damage - bonus damage added ontop of any damage source that uses this type
- * @property {Number} damageMult - mutiplier of the base damage
- * @property {effect[]} effects - the effects given
+ * @property {Number|undefined} damage - bonus damage added ontop of any damage source that uses this type
+ * @property {Number|undefined} damageMult - mutiplier of the base damage
+ * @property {effect[]|undefined} effects - the effects given
  *
  * @typedef {object} effect
  * @property {statusEffects.effect} effectGiven - the effect given

@@ -1,5 +1,6 @@
 /**
  * @typedef {Object} itemUsageTypes - list of all of the diffrent ways something can be activated
+ * @property {string} - the usageType
  */
 const itemUsageTypes = {
     inBattle: {

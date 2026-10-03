@@ -107,12 +107,13 @@ animals:
 
 world Gen:
     [-] towns
-    [-] continets
+    [-] continets // the base everything is placed on 
     [-] ocean
     [-] poi placer
-    [-] battle area
+    [-] battle area generator
+    [-] biome placement
 
 other:
     [] npcs // there needs to be at least like 30
-    [-] dynamic npcs // like genric npcs that pull from a pool of properties 
+    [-] dynamic npcs // like a pool of properties genric npc's can pull from 
     [] statusEffects

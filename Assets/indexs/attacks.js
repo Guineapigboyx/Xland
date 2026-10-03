@@ -31,7 +31,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {"large"|"small"|undefined} weaponSize - if 2 handed or 1 handed or both can use this
  * @property {Number|undefined} level - This is weapon type level not person level (put 0 if you always have it) haveing 1 level in a weapon means you proficiency but no other levels
  * @property {boolean|undefined} targetSelf - if you need to pick a target to use this move (by defualt true)
- * @property {boolean} reactionUsageType - what must happen for this attack to appear as a reaction
+ * @property {boolean|undefined} reactionUsageType - what must happen for this attack to appear as a reaction
  *
  * @property {Number|undefined} damage - amount of damage it deals (if damageMult is present this is a bounus)
  * @property {Number|undefined} damageMult - multipler of the base damage that is added to the attack
@@ -54,8 +54,8 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {damagetype[]|undefined} damagetype - array of every element this attack has
  * @property {effect[]|undefined} effect - array of every satus effect that is given by this weapon
  *
- * @property {Function} requirements - function to check if the user meets the special requirements to use this move
- * @property {boolean} noConsume - don't consume ammo
+ * @property {Function|undefined} requirements - function to check if the user meets the special requirements to use this move
+ * @property {boolean|undefined} noConsume - don't consume ammo
  *
  * @property {Function|undefined} speicalFunction - special function for the attack (use only if you have to)
  * @property {itemUsageTypes.inBattle[]|undefined} attackUsageType - only run speicalFunction if this UsageType happens also
@@ -146,6 +146,7 @@ const attacks = {
                 onSelf: true,
             },
         ],
+        // todo guardingWith var not set
         speicalFunction: () => {
             console.warn("guardingWith var not set");
         },
@@ -181,6 +182,7 @@ const attacks = {
                 onSelf: true,
             },
         ],
+        // todo guardingWith var not set
         speicalFunction: () => {
             console.warn("guardingWith var not set");
         },
@@ -205,6 +207,7 @@ const attacks = {
                 duringAttack: true,
             },
         ],
+        // todo guardingWith var not set
         speicalFunction: () => {
             console.warn("guardingWith var not set");
         },
@@ -216,6 +219,7 @@ const attacks = {
         epCost: 2,
         level: 6,
         damageMult: 0.4,
+        // todo parry function missing
         speicalFunction: () => {
             console.warn("parry function missing");
         },
@@ -237,6 +241,7 @@ const attacks = {
             },
         ],
         rollFor: statTypes.intelligence,
+        // todo counter function
         speicalFunction: () => {
             console.warn("guardingWith var not set", "attackWith var not set");
         },
@@ -256,6 +261,7 @@ const attacks = {
             },
         ],
         rollFor: statTypes.intelligence,
+        // todo counter parry function
         speicalFunction: () => {
             console.warn(
                 "guardingWith var not set",

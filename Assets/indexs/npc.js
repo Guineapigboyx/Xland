@@ -14,18 +14,26 @@
  * @property {Number} badApproval - how much appoval is lost from being in badPreferences
  * @property {Number} fightThreshold - The approval level someone must be to start a auto fight (it can be always if set to 100%)
  *
- * Trading
- * @property {Number} tradeThreshold - how high approval must be to trade
- * @property {Number} restockTime -  How many ingame hours it takes for them to restock
+ * @property {Number|undefined} tradeThreshold - how high approval must be to trade
+ * @property {Number|undefined} restockTime -  How many ingame hours it takes for them to restock
  *
- * @typedef  {Object} inventory - Which items they have in their inventory and are willing to sell
- * @property {String} id - Unique identifier for the item (e.g. “sword_01”)
+ * @property {inventory|undefined} inventory - inventory of the NPC
+ * @property {equiped|undefined} equiped - items this npc has equiped
+ * @property {stats|undefined} stats - the stats of the NPC
+ *
+ * ----
+ * @typedef {Object} inventory - inventory of the NPC
+ * @property {inventoryItem} - items in the inventory
+ *
+ * ----
+ * @typedef  {Object} inventoryItem - Which items they have in their inventory and are willing to sell
+ * @property {items.item} item - the items object in items
  * @property {Boolean} canSell - do they want to sell this item
  * @property {Number} price - Price in currency
  * @property {Number} quantity - defaulting to 1 if omitted
  * @property {Boolean} canRestock - do the items restock in the shop
  *
- * Equipment
+ * ----
  * @typedef {Object} equiped - what could appear in each equipment slot
  * @property {Array} head - head
  * @property {Array} necklace - necklace
@@ -37,6 +45,7 @@
  * @property {Array} mainHand - item in main hand
  * @property {Array} offHand - item in off hand
  *
+ * ----
  * @typedef {Object} stats - base stat ranges
  * @property {[Number, Number]} hp - health range [min, max]
  * @property {[Number, Number]} strength - Strength range [min, max]
@@ -109,6 +118,7 @@ const npcs = {
 
         inventory: {
             leather: {
+                // todo change to items
                 id: "leather",
                 canSell: true,
                 price: 150,
@@ -116,6 +126,7 @@ const npcs = {
                 canRestock: true,
             },
             cloth: {
+                // todo change to items
                 id: "cloth",
                 canSell: true,
                 price: 200,
@@ -123,6 +134,7 @@ const npcs = {
                 canRestock: true,
             },
             wheat: {
+                // todo change to items
                 id: "wheat",
                 canSell: true,
                 price: 50,
@@ -130,6 +142,7 @@ const npcs = {
                 canRestock: true,
             },
             xalerite: {
+                // todo change to items | make a better way of handleing money
                 id: "xalerite",
                 canSell: false,
                 price: 0,

@@ -3,15 +3,18 @@
  * @property {person}
  *
  * @typedef {Object} person - the persons stat
- * @property {Number} hp - how much HP they have
- * @property {Number} strength - how much HP they have
- * @property {Number} defense - how much HP they have
- * @property {Number} speed - how much HP they have
- * @property {Number} endurance - how much HP they have
- * @property {Number} intelligence - how much HP they have
- * @property {Object} ability - how much HP they have
- * @property {Object} ability2 - how much HP they have
- * @property {attack} speicalMove - how much HP they have
+ * @property {Number} hp - How much max HP they have
+ * @property {Number} strength - How much strength they have
+ * @property {Number} defense - How much defense they have
+ * @property {Number} speed - How much speed they have
+ * @property {Number} endurance - How much endurance they have
+ * @property {Number} intelligence - How much intelligence they have
+ * @property {ability[]|undefined} ability - How much HP they have
+ * @property {attacks.attack[]|undefined} speicalMove - Array of special moves they have
+ *
+ * @typedef {Object} ability
+ * @property {itemUsageTypes[]|undefined} abilityTrigger - speical usage types that activate this ability
+ * @property {abilitys.ability} abilityFunction - the ability that gets ran when the itemUsageType occers
  */
 const basePepole = {
     Koopa: {
