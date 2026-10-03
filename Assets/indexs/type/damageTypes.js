@@ -61,7 +61,7 @@ const damageTypes = {
         name: "Toxic",
         CssColor: "--toxic-color",
         effects: [
-            { effectGiven: statusEffects.poisoned, effectChance: 0.75, effectTime: 5 },
+            { effectGiven: statusEffects.sick, effectChance: 0.75, effectTime: 5 },
             { effectGiven: statusEffects.waningVitality, effectChance: 0.25, effectTime: 2 },
         ],
     },

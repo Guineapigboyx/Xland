@@ -20,7 +20,7 @@
  *
  * @property {inventoryItem[]|undefined} inventory - inventory of the NPC
  * @property {equiped[]|undefined} equiped - items this npc has equiped
- * @property {stat[]|undefined} stats - the stats of the NPC
+ * @property {stat[]} stats - the stats of the NPC
  *
  * @property {weaponTypes.weaponType[]} proficiency
  * - Weapon types the NPC is proficient with

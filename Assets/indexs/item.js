@@ -835,7 +835,7 @@ const items = {
         materialData: { weight: 3, durablity: 1, attack: 5, defense: 5 },
         weaponData: {
             weaponType: weaponTypes.bluntObject,
-            // todo expolde attack
+            // todo explode attack
             onHit: () => {
                 console.warn("explode function missing for amber");
             },

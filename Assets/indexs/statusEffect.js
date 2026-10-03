@@ -5,64 +5,55 @@
  * @typedef {Object} effect -
  * @property {string} name - name of the effect
  * @property {string} description - decription of the effect
- * // Combat
- * @property {boolean|undefined} fallbackOnGainCombat - if true onGainCombat fallbacks to onActivate, normally false
- * @property {boolean|undefined} fallbackOnLossCombat - if true onLossCombat fallbacks to onActivate, normally false
- * @property {Function|undefined} onGainCombat - function that runs when the effect is gained
- * @property {Function|undefined} onActivate - function that runs when the effect is lost
- * @property {Function|undefined} OnLossCombat - function that runs when the effect is lost
- * // Out of combat
- * @property {boolean|undefined} fallbackOnGainOut - if true onGainOut fallbacks to onHour, normally false
- * @property {boolean|undefined} fallbackOnLossOut - if true onLossOut fallbacks to onHour, normally false
- * @property {Function|undefined} onGainOut - function that runs when the effect is gained, if undifined do onHour
- * @property {Function|undefined} onHour - function that runs every hour, if false have no combat effects, if false have no out of combat effects
- * @property {Function|undefined} OnLossOut - function that runs when the effect is lost, if undifined do onHour
  *
+ * @property {effectFunctions[]} effectFunctions - when the item usage type happens it will run corisponding function
  * @property {statTypes.statType[]|undefined} saveingThrow - stat the effect uses for saveing throws
- * @property {number|undefined} activateionTurn - How many turns it takes for the onActivate happens. If undefined it sets this to 1
- * @property {number|undefined} activateionHour - How many hours it takes for the onHour happens. If undefined it sets this to 1
- *
  * @property {statChange[]|undefined} statchanges - Array of which stat and how much is changed in each stat
  *
+ * ----
  * @typedef {object} statChange - how much is changed in this stat
  * @property {string} statName - the stats name (statType.name)
  * @property {Number} change - the amount it changes
  *
+ * ----
+ * @typedef {Object} effectFunctions - when the item usage type happens it will run corisponding function
+ * @property {itemUsageTypes} usageType
+ * @property {Function} effectFunction - the function for the when the corisponding usageType happens
  */
 const statusEffects = {
     burning: { name: "Burning" },
-    poisoned: { name: "Poisoned" },
+    sick: { name: "Sick" },
     radiated: { name: "Radiated" },
     shocked: { name: "Shocked" },
     wet: { name: "Wet" },
     paralysis: { name: "Paralysis" },
-    brokenArm: { name: "Broken Arm" },
-    brokenLeg: { name: "Broken Leg" },
+    brokenArm: { name: "Broken Arm" }, // attack rolls have disavantage
+    brokenLeg: { name: "Broken Leg" }, // movement rolls have disavantage and speed is lowered
     bleed: { name: "Bleed" },
     stuned: { name: "Stuned" },
-    unconscious: { name: "Unconscious" },
+    unconscious: { name: "Unconscious" }, // your turn gets skiped (each stack will last for 1 turn)
     regeneration: { name: "Regeneration" },
-    superCharged: { name: "Sper Charged" },
+    superCharged: { name: "Sper Charged" }, // all positive stats boosted
     drowning: { name: "Drowning" },
     hungry: { name: "Hungry" },
     starving: { name: "Starving" },
     gross: { name: "Gross" },
     yum: { name: "yummy" },
-    prone: { name: "Prone" },
+    prone: { name: "Prone" }, // knocked down to the ground
     blind: { name: "Blind" },
-    flash: { name: "Flash" },
-    glassGear: { name: "Glass Gear" },
-    sturdyGear: { name: "Sturdy Gear" },
+    flash: { name: "Flash" }, // the one with the effect glows
+    glassGear: { name: "Glass Gear" }, // duribility damage gets 2x per stack
+    sturdyGear: { name: "Sturdy Gear" }, // duribility damage gets 1/2 per stack
     freeze: { name: "freeze" },
     // stat effects
-    burstingVitality: { name: "Bursting Vitality" },
-    waningVitality: { name: "Waning Vitality" },
+    burstingVitality: { name: "Bursting Vitality" }, // max hp up
+    waningVitality: { name: "Waning Vitality" }, // max hp down
     BurstingSpeed: { name: "Bursting Speed" },
     tired: { name: "Tired" },
-    lethargic: { name: "Lethargic" },
+    lethargic: { name: "Lethargic" }, // you get disavantage on anything phisical
     fear: { name: "Fear" },
     sharpShoot: { name: "Sharp Shoot" },
-    bloodLust: { name: "BloodLust" },
+    bloodLust: { name: "BloodLust" }, // free action surge
     stupity: { name: "Stupity" },
     guarding: { name: "Guarding" },
     counterReady: { name: "Ready To Counter" },
