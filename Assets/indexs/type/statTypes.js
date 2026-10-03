@@ -11,6 +11,7 @@
  * @example if a person had a 14 in lookingCool and the lookingCool has a levelPerBonus of 2 and baseLevel of 10. the person's lookingCool modifer would be +2
  */
 const statTypes = {
+    // everything that can make a roll should have these stats
     strength: {
         name: "Strength",
         max: 20,
@@ -54,6 +55,21 @@ const statTypes = {
         levelPerBonus: 2,
         baselevel: 6,
     },
+    courage: {
+        name: "Courage",
+        max: 24,
+        description: "How you are at doing dangous or even deadly things",
+        levelPerBonus: 2,
+        baselevel: 10,
+    },
+    charisma: {
+        name: "Charisma",
+        max: 20,
+        description: "How good you are at talking you way into or out of things",
+        levelPerBonus: 2,
+        baselevel: 10,
+    },
+    // optional stats - don't think of some of these as stats but more like anything you that can get a penlty or bonus on in a roll
     crafting: {
         name: "Crafting",
         max: 49, // might look random but there are 17 crafting slots i multipled that by 3 and subtracted the first slot
@@ -61,11 +77,32 @@ const statTypes = {
         levelPerBonus: 3,
         baselevel: 1, // 0 means you can't craft
     },
-    courage: {
-        name: "Courage",
-        max: 24,
-        description: "How you are at doing dangous or even deadly things",
-        levelPerBonus: 2,
-        baselevel: 10,
+    Storage: {
+        name: "Storage", // basicly extra points in strength but they are just for carry capasity
+        max: 5,
+        description: "How much can someone hold on them",
+        levelPerBonus: 1,
+        baselevel: 0,
+    },
+    cooking: {
+        name: "cooking",
+        max: 5,
+        description: "How complicated can someone craft something",
+        levelPerBonus: 1,
+        baselevel: 2,
+    },
+    climbing: {
+        name: "climbing",
+        max: 4,
+        description: "How well can you climb something",
+        levelPerBonus: 0.5, // for every 1 point you get +2 on any climbing check
+        baselevel: 1,
+    },
+    evasion: {
+        name: "evasion",
+        max: 6,
+        description: "How good you are at dodgeing",
+        levelPerBonus: 1,
+        baselevel: 0,
     },
 };
