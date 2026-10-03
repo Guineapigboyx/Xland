@@ -62,8 +62,8 @@ attacks:
     [-] sword
     [x] slapstick
     [-] gloves // hand to hand
-    [x] gun
-    [x] bow
+    [] gun
+    [] bow
     [-] spear
     [-] club
     [-] whip
@@ -103,7 +103,7 @@ animals:
     [-] level 5
     [-] level 6
     [-] level MAX // strange lv MAX technicly is not MAX but thats how its always been so whatever
-    [-] giga beasts 
+    [-] giga beasts  
 
 world Gen:
     [-] towns
