@@ -9,6 +9,7 @@
  * @property {effectFunctions[]} effectFunctions - when the item usage type happens it will run corisponding function
  * @property {statTypes.statType[]|undefined} saveingThrow - stat the effect uses for saveing throws
  * @property {statChange[]|undefined} statchanges - Array of which stat and how much is changed in each stat
+ * @property {attacks.attack} specialAttack - a special attack given by this effect
  *
  * ----
  * @typedef {object} statChange - how much is changed in this stat
@@ -103,4 +104,12 @@ const statusEffects = {
     toxicVulnerability: { name: "Toxic Vulnerability" },
     waterVulnerability: { name: "Water Vulnerability" },
     coldVulnerability: { name: "Cold Vulnerability" },
+    // ability effects
+    shellDefence: { name: "Shell Defence" }, // grants tmp HP, regernates over time
+    angerIssues: { name: "Anger Issues" }, // randomly when ever a roll is failed you could get mad and will auto do attacks
+    bellyArmor: { name: "Belly Armor" }, // Allows you to not be one shot leaveing you with 1 hp // can't stack
+    superBellyArmor: { name: "Super Belly Armor" }, // make it so one attack can't do over 3/4th of your hp (each stack will lower this even further)
+    adrenaline: { name: "adrenaline" }, // when ever you don't attack your next attack does a 0.05 damage multiper stacking (this gets reset after a battle ends)
+    spontaneousFear: { name: "Spontaneous Fear" }, // randomly when a roll is failed it will lower your corage by how ever many stacks there are // todo maybe a better name
+    fireAspect: { name: "Fire Aspect" }, // all damage you deal also does fire damage
 };

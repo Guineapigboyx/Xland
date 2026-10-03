@@ -29,7 +29,7 @@ const basePepole = {
             { stat: statTypes.crafting, amount: 1 },
             { stat: statTypes.charisma, amount: 2 },
         ],
-        ability: [],
-        // todo npcData: npcs.koopa
+        ability: [statusEffects.shellDefence],
+        //todo Koopa npcData
     },
 };
