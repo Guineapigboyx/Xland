@@ -40,6 +40,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  *
  * @property {Number|undefined} hits - amount of hit this attack does
  * @property {Boolean|undefined} endAfterMiss - if you miss stop all subsqent hits from this move (costs epCost per hit)
+ * @property {Number|undefined} targets - how many targets are you able to hit with this move
  *
  * @property {1|2|3|4|5|undefined} speed - how fast the attack is (default is 3)
  * @property {Number|undefined} accuracy - how much accuracy is removed or added
@@ -69,7 +70,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {Boolean|undefined} onSelf - if the effect is given to your self or a target
  */
 const attacks = {
-    // level 0 attacks
+    // basic attacks
     basicJab: {
         name: "Basic jab",
         attackFor: [
@@ -144,7 +145,7 @@ const attacks = {
         epCost: 1,
         level: 0,
     },
-    // shield attacks
+    // shields ---------------------------------------------------
     guard: {
         name: "Guard",
         targetSelf: true,
@@ -172,7 +173,41 @@ const attacks = {
         damagetype: [damageTypes.pushing],
         rollFor: statTypes.strength,
     },
-    // lv 2 shield move
+    shieldJump: {
+        name: "Shield jump",
+        attackFor: [weaponTypes.shield],
+        epCost: 3,
+        level: 2,
+        selfDamage: 12,
+        targetSelf: true,
+        effect: [
+            {
+                effectGiven: statusEffects.bluntPowerUp,
+                effectChance: 1,
+                effectTime: 1,
+                onSelf: true,
+            },
+            {
+                effectGiven: statusEffects.sharpPowerUp,
+                effectChance: 1,
+                effectTime: 1,
+                onSelf: true,
+            },
+            {
+                effectGiven: statusEffects.noDefend, // stops you from shield jumping while alreday jumped
+                effectChance: 1,
+                effectTime: 1,
+                onSelf: true,
+            },
+            {
+                effectGiven: statusEffects.bloodLust,
+                effectChance: 1,
+                effectTime: 1,
+                onSelf: true,
+            },
+        ],
+        rollFor: statTypes.strength,
+    },
     sturdyGuard: {
         name: "Sturdy guard",
         attackFor: [weaponTypes.shield, weaponTypes.guardingHammer, weaponTypes.guardingSword],
@@ -284,7 +319,7 @@ const attacks = {
         },
     },
 
-    // ranged shared
+    // ranged shared ---------------------------------------------------
     aim: {
         name: "Steady aim",
         attackFor: [weaponTypes.gunFast, weaponTypes.gunSlow, weaponTypes.bow],
@@ -329,7 +364,7 @@ const attacks = {
         accuracy: -2,
     },
 
-    // gun fast
+    // gun fast ---------------------------------------------------
     // lv 1 steady aim
     threeShot: {
         name: "3x shot",
@@ -337,7 +372,7 @@ const attacks = {
         level: 2,
         hits: 3,
         epCost: 1,
-        damageMult: 0.5,
+        damageMult: 0.4,
     },
     // lv 3 leg shot
     fiveShot: {
@@ -349,7 +384,15 @@ const attacks = {
         damageMult: 0.32,
     },
     // lv 5 head shot
-    // todo level 6 gun fast
+    mutiShot: {
+        name: "Muti shot",
+        attackFor: [weaponTypes.gunFast],
+        level: 6,
+        epCost: 4,
+        targets: 3,
+        hits: 3,
+        damageMult: 0.5,
+    },
     eightShot: {
         name: "8x Shot",
         attackFor: [weaponTypes.gunFast],
@@ -357,22 +400,30 @@ const attacks = {
         epCost: 3,
         hits: 8,
         accuracy: -1,
-        damageMult: 0.25,
+        damageMult: 0.3,
     },
-    // gun slow
+
+    // gun slow ---------------------------------------------------
     // lv 1 steady aim
-    // todo lv 2 gun slow
+    piercingShot: {
+        name: "Piercing Shot",
+        attackFor: [weaponTypes.gunSlow],
+        level: 2,
+        epCost: 2,
+        armorDamageMult: 0.3,
+    },
     // lv 3 leg shot
     largeTwoShot: {
         name: "2x Shot",
         attackFor: [weaponTypes.gunSlow],
         level: 4,
-        hits: 1,
+        hits: 2,
+        targets: 2,
         epCost: 2,
         damageMult: 0.7,
     },
     // lv 5 head shot
-    precisionShot: {
+    gunPrecisionShot: {
         name: "Precision Shot",
         attackFor: [weaponTypes.gunSlow],
         epCost: 3,
@@ -388,7 +439,8 @@ const attacks = {
         damageMult: 0.65,
         accuracy: -1,
     },
-    // bow some are in the gun section
+    // bow ---------------------------------------------------
+    // lv 1 steady aim
     volly: {
         name: "Volly",
         attackFor: [weaponTypes.bow],
@@ -397,7 +449,7 @@ const attacks = {
         accuracy: -2,
         aoiSize: "small",
     },
-    mutiShot: {
+    bowThreeShot: {
         name: "muti Shot",
         attackFor: [weaponTypes.bow],
         epCost: 3,
@@ -414,14 +466,37 @@ const attacks = {
         accuracy: -1,
         aoiSize: "mid",
     },
-    precisionShot: {
-        name: "Precision Shot",
+    bowPrecisionShot: {
+        name: "Precision Arrow",
         attackFor: [weaponTypes.bow],
         epCost: 3,
         level: 5,
         accuracy: 3,
     },
-    // todo lv 6 bow move
+    debilitatingShot: {
+        name: "Debilitating Shot",
+        attackFor: [weaponTypes.bow],
+        level: 6,
+        epCost: 3,
+        accuracy: -1,
+        effect: [
+            {
+                effectGiven: statusEffects.prone,
+                effectChance: 0.8,
+                effectTime: 1,
+            },
+            {
+                effectGiven: statusEffects.prone,
+                effectChance: 0.5,
+                effectTime: 3,
+            },
+            {
+                effectGiven: statusEffects.paralysis,
+                effectChance: 0.2,
+                effectTime: 1,
+            },
+        ],
+    },
     hugeVolly: {
         name: "huge volly",
         attackFor: [weaponTypes.bow],
@@ -430,7 +505,7 @@ const attacks = {
         accuracy: -2,
         aoiSize: "large",
     },
-    // slapsticks
+    // slapsticks ---------------------------------------------------
     rapaSmack: {
         name: "Rapa smack",
         attackFor: [weaponTypes.slapstick],
@@ -494,5 +569,5 @@ const attacks = {
         damageMult: 0.29,
         accuracy: -1,
     },
-    // drill
+    // drill ---------------------------------------------------
 };

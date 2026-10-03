@@ -58,6 +58,7 @@ const statusEffects = {
     stupity: { name: "Stupity" },
     guarding: { name: "Guarding" },
     counterReady: { name: "Ready To Counter" },
+    noDefend: { name: "Unable to defend" }, // can't use any shield moves or guard
     // Power
     //up
     bluntPowerUp: { name: "Blunt Power Up" },
