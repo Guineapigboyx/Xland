@@ -58,8 +58,8 @@ attacks:
     [-] hammer
     [x] drill
     [x] shield
-    [-] knife
-    [-] sword
+    [] knife
+    [x] sword
     [x] slapstick
     [-] gloves // hand to hand
     [x] gun
