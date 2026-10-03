@@ -21,21 +21,9 @@
  * @property {Boolean} behavior.dangerousFlee - if it is willing to put its self in danger to get away from you
  *
  * @property {attacks.attack[]} moveList - list of all moves this beast can preform
- * @property {equiped} - If a equipment can appear in a slot
+ * @property {equipSlots.slot[]} equipSlots - slots equipment can in
  * @property {stats} - normal base stat ranges
  * @property {alphaStats|undefined} - If alpha how much should the base stats be mutiplied
- *
- * ----
- * @typedef {Object} equiped - If a equipment can appear in a slot
- * @property {Boolean} equiped.head - can a item appear in the head slot
- * @property {Boolean} equiped.necklace - can a item appear in the necklace slot
- * @property {Boolean} equiped.pants - can a item appear in the pants slot
- * @property {Boolean} equiped.body - can a item appear in the body slot
- * @property {Boolean} equiped.hand - can a item appear in the hands slot
- * @property {Boolean} equiped.feet - can a item appear in the feet slot
- * @property {Boolean} equiped.belt - can a item appear in the belt slot
- * @property {Boolean} equiped.mainHand - can a item appear in the item in main hand slot
- * @property {Boolean} equiped.offHand - can a item appear in the item in off hand slot
  *
  * ----
  * @typedef {Object} stats - normal base stat ranges

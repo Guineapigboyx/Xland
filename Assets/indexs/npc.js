@@ -18,7 +18,7 @@
  * @property {Number|undefined} restockTime -  How many ingame hours it takes for them to restock
  *
  * @property {inventory|undefined} inventory - inventory of the NPC
- * @property {equiped|undefined} equiped - items this npc has equiped
+ * @property {equiped[]|undefined} equiped - items this npc has equiped
  * @property {stats|undefined} stats - the stats of the NPC
  *
  * ----
@@ -35,15 +35,8 @@
  *
  * ----
  * @typedef {Object} equiped - what could appear in each equipment slot
- * @property {Array} head - head
- * @property {Array} necklace - necklace
- * @property {Array} body - body
- * @property {Array} pants - pants
- * @property {Array} hand - hands
- * @property {Array} feet - feet
- * @property {Array} belt - belt
- * @property {Array} mainHand - item in main hand
- * @property {Array} offHand - item in off hand
+ * @property {equipSlots.slot} slot - the slot that items can appear in
+ * @property {items.item[]} items - items that can appear in the slot
  *
  * ----
  * @typedef {Object} stats - base stat ranges
