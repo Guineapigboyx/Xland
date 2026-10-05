@@ -46,7 +46,7 @@
  * @typedef {Object} foodData
  * @property {foodType} foodType - the type of food it is
  * @property {Number|undefined} maxUses - how many times can it be used before it's gone (if undifined it 1)
- * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
+ * @property {Number|undefined} hpChange - the amount of hp you gain or lose from eating this
  * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
  * @property {foodPrefixes.prefix} prefix - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {effects[]} effects - effects gotten from eating
@@ -1027,7 +1027,7 @@ const items = {
         foodData: {
             foodType: foodTypes.herbs,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.starchy,
         },
     },
@@ -1062,7 +1062,7 @@ const items = {
         foodData: {
             foodType: foodTypes.mushrooms,
             maxUses: 1,
-            healAmount: -5,
+            hpChange: -5,
             prefix: foodPrefixes.earthy,
         },
         effect: [
@@ -1099,7 +1099,7 @@ const items = {
         foodData: {
             foodType: foodTypes.pikmin,
             maxUses: 1,
-            healAmount: -5,
+            hpChange: -5,
             prefix: foodPrefixes.sweet, // pik carrots are sweet in pikmin
             effect: [
                 {
@@ -1118,7 +1118,7 @@ const items = {
         foodData: {
             foodType: foodTypes.grains,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.starchy,
             effect: [
                 {
@@ -1211,7 +1211,7 @@ const items = {
         foodData: {
             foodType: foodTypes.liquid,
             maxUses: 1,
-            healAmount: -30,
+            hpChange: -30,
             prefix: foodPrefixes.wet,
             effect: [
                 {
@@ -1240,7 +1240,7 @@ const items = {
         foodData: {
             foodType: foodTypes.berries,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.sweet,
         },
     },
@@ -1252,7 +1252,7 @@ const items = {
         foodData: {
             foodType: foodTypes.berries,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.salty,
         },
     },
@@ -1282,7 +1282,7 @@ const items = {
         foodData: {
             foodType: foodTypes.mystic,
             maxUses: 1,
-            healAmount: -500,
+            hpChange: -500,
             prefix: foodPrefixes.mystic,
         },
     },
@@ -1312,7 +1312,7 @@ const items = {
         foodData: {
             foodType: foodTypes.mystic,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.mystic,
         },
     },
@@ -1446,7 +1446,7 @@ const items = {
         foodData: {
             foodType: foodTypes.fruit,
             maxUses: 1,
-            healAmount: 25,
+            hpChange: 25,
             prefix: foodPrefixes.sweet,
             effect: [
                 {
@@ -1493,7 +1493,7 @@ const items = {
         foodData: {
             foodType: foodTypes.flowerrs,
             maxUses: 1,
-            healAmount: 15,
+            hpChange: 15,
             prefix: foodPrefixes.cold,
             effect: [
                 {
@@ -1576,7 +1576,7 @@ const items = {
         foodData: {
             foodType: foodTypes.crystal,
             maxUses: 1,
-            healAmount: 50,
+            hpChange: 50,
             prefix: foodPrefixes.hardened,
             effect: [
                 {
@@ -1611,7 +1611,7 @@ const items = {
         foodData: {
             foodType: foodTypes.crystal,
             maxUses: 1,
-            healAmount: 5,
+            hpChange: 5,
             prefix: foodPrefixes.hardened,
             effect: [
                 {
@@ -1691,7 +1691,7 @@ const items = {
         foodData: {
             foodType: foodTypes.fruit,
             maxUses: 1,
-            healAmount: -35,
+            hpChange: -35,
             prefix: foodPrefixes.disguesting,
             effect: [
                 {
@@ -1789,7 +1789,7 @@ const items = {
         foodData: {
             foodType: foodTypes.peppers,
             maxUses: 1,
-            healAmount: 30,
+            hpChange: 30,
             prefix: foodPrefixes.superSpicy,
             effect: [
                 {
@@ -1847,7 +1847,7 @@ const items = {
         foodData: {
             foodType: foodTypes.flowerrs,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.disguesting,
             effect: [
                 {
@@ -1871,7 +1871,7 @@ const items = {
         foodData: {
             foodType: foodTypes.mushrooms,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.strange,
             effect: [
                 {
@@ -1911,7 +1911,7 @@ const items = {
         name: "Slurpshroom",
         raritys: raritys.rare,
         weight: 0.22,
-        healAmount: -17,
+        hpChange: -17,
         epAmount: 3,
         weaponData: { weaponType: weaponTypes.gloves },
         foodData: { foodType: foodTypes.mushrooms, maxUses: 1, prefix: foodPrefixes.strange },
@@ -1965,7 +1965,7 @@ const items = {
         foodData: {
             foodType: foodTypes.fruit,
             maxUses: 1,
-            healAmount: -10,
+            hpChange: -10,
             prefix: foodPrefixes.sweet,
         },
     },
@@ -2162,7 +2162,7 @@ const items = {
         foodData: {
             foodType: foodTypes.energizing,
             maxUses: 1,
-            healAmount: -35,
+            hpChange: -35,
             prefix: foodPrefixes.shocking,
             socketData: {
                 prefix: "Dragon Blood",
@@ -2283,7 +2283,7 @@ const items = {
         foodData: {
             foodType: foodTypes.liquid,
             maxUses: 1,
-            healAmount: -35,
+            hpChange: -35,
             prefix: foodPrefixes.earthy,
         },
         effect: [
@@ -2302,7 +2302,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -10,
+            hpChange: -10,
             prefix: foodPrefixes.strange,
             effect: [
                 {
@@ -2321,7 +2321,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.salty,
         },
     },
@@ -2333,7 +2333,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -15,
+            hpChange: -15,
             prefix: foodPrefixes.sweet,
             effect: [
                 {
@@ -2352,7 +2352,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.earthy,
             effect: [
                 {
@@ -2376,7 +2376,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -50,
+            hpChange: -50,
             prefix: foodPrefixes.salty,
         },
     },
@@ -2388,7 +2388,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -10,
+            hpChange: -10,
             prefix: foodPrefixes.wet,
             effect: [
                 {
@@ -2412,7 +2412,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.salty,
             effect: [
                 {
@@ -2436,7 +2436,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.disguesting,
             effect: [
                 {
@@ -2455,7 +2455,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.salty,
             effect: [
                 {
@@ -2474,7 +2474,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -5,
+            hpChange: -5,
             prefix: foodPrefixes.starchy, // was going to make one called disapointing
         },
     },
@@ -2486,7 +2486,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.salty, // fallback if you get not cooked, cooked meat
             effect: [
                 {
@@ -2505,7 +2505,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -20,
+            hpChange: -20,
             prefix: foodPrefixes.salty,
             effect: [
                 {
@@ -2524,7 +2524,7 @@ const items = {
         foodData: {
             foodType: foodTypes.meat,
             maxUses: 1,
-            healAmount: -35,
+            hpChange: -35,
             prefix: foodPrefixes.earthy,
             effect: [
                 {

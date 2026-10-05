@@ -14,8 +14,7 @@ items:
     [x] Other Matrial
     [x] crafted componet // tho there are no functionality for them
     [x] Consumables/food
-    [-] ammo
-    [-] equipment
+    [-] modular items // fallback data
     [-] non dynamic items
     [-] Giga beast items
     [-] placeable items  
