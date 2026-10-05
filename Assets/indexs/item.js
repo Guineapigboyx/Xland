@@ -1840,7 +1840,7 @@ const items = {
             socketTime: 1,
             effect: [
                 {
-                    effectGiven: stuned,
+                    effectGiven: statusEffects.stuned,
                 },
             ],
         },

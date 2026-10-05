@@ -2,6 +2,11 @@ function toggleScreen(buttonClicked) {
     let sectionClass;
     const navButtonClicked = navButton[buttonClicked];
 
+    if (!navButton[buttonClicked]) {
+        console.error(`navbutton for ${buttonClicked} is not difined`);
+        return;
+    }
+
     // Checks if the screen is alreday active (it needs to be up here since the next it disables all screens)
     let buttonAlredayActive = false;
     if (hasClass(navButtonClicked.sectionClass, "hide")) {

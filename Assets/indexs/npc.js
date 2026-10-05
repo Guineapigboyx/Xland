@@ -100,24 +100,21 @@ const npcs = {
 
         inventory: {
             leather: {
-                // todo change to items
-                id: "leather",
+                item: items.leather,
                 canSell: true,
                 price: 150,
                 quantity: 5,
                 canRestock: true,
             },
             cloth: {
-                // todo change to items
-                id: "cloth",
+                id: items.cloth,
                 canSell: true,
                 price: 200,
                 quantity: 5,
                 canRestock: true,
             },
             wheat: {
-                // todo change to items
-                id: "wheat",
+                id: items.wheat,
                 canSell: true,
                 price: 50,
                 quantity: 15,

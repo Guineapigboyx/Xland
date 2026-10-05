@@ -16,9 +16,9 @@ items:
     [x] Consumables/food
     [-] modular items // fallback data
     [-] non dynamic items
-    [-] Giga beast items
+    [=] Giga beast items // the main thing is unlocking another rarity
     [-] placeable items  
-    [-] Crafting station // they are also placeable items
+    [-] Crafting station // they are also placeable items, my plan is the scematics for them are gotten by killing giga beasts
 
 crafting:
     [-] schematics/crafting molds
@@ -33,7 +33,7 @@ UI:
     [-] conversation
     [-] map
     [-] adventure log
-    [-] crafting
+    [] crafting
     [=] cooking
     [=] climbing
     // there will most likely be more

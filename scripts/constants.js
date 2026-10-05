@@ -11,10 +11,15 @@ const navButton = {
         sectionClass: ".status-screen",
         buttonText: "Status",
     },
-    world: {
-        id: "#world-button",
-        sectionClass: ".world-screen",
-        buttonText: "World",
+    interact: {
+        id: "#interact-button",
+        sectionClass: ".interact-screen",
+        buttonText: "Interact",
+    },
+    crafting: {
+        id: "#crafting-button",
+        sectionClass: ".craft-screen",
+        buttonText: "crafting",
     },
 };
 

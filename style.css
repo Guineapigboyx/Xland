@@ -273,7 +273,7 @@ body {
 .toolbar {
     background-color: var(--background-primary);
     display: grid;
-    grid-template-rows: 100%;
+    grid-template-rows: 50% 50%;
     grid-template-columns: repeat(3, 18%) 40%;
     padding: 1.5%;
     gap: 2%;
@@ -287,24 +287,29 @@ body {
     margin-top: calc(var(--scale) / -2);
     margin-bottom: calc(var(--scale) / -2);
     padding: 2%;
+    grid-row: 1/3;
+    grid-column: 4;
 }
 
 /* status screen */
 
 .status-screen {
     display: grid;
-    grid-template-rows: 10% auto;
+    grid-template-rows: 6% auto;
     grid-template-columns: repeat(3, 33.33333%);
 }
 
 .status-toolbar {
     grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: 12% auto;
+    padding-left: 10%;
 }
 
 .person-overview {
     display: grid;
     grid-template-columns: 23% auto 23%;
-    grid-template-rows: repeat(5, 9%) 0% auto;
+    grid-template-rows: repeat(5, 8%) 0% auto;
     row-gap: 2%;
     border-left: 0;
     border-bottom: 0;
@@ -346,20 +351,14 @@ body {
 }
 
 .person-inventory {
-    overflow-y: scroll;
-    overflow-x: hidden;
     grid-column: 1/4;
-    display: grid;
     padding-right: 5%;
     padding-left: 2%;
-    gap: 1.5%;
-    grid-template-columns: repeat(6, 15.5111%);
     grid-auto-rows: 15.5111%;
-    border-radius: 0;
 }
 
 /* classes for inven item just in case i forget them class="border-extra-thin fit-img context-pointer" */
-.person-inventory > img {
+.inventory > img {
     background-color: var(--dark-bubble-color);
 }
 
@@ -435,4 +434,28 @@ body {
     margin-top: 0.5%;
     margin-left: -1%;
     width: 102.1%;
+}
+
+/* Crafting Screen */
+
+.craft-screen {
+    display: grid;
+    grid-template-rows: auto 17.5%;
+    grid-template-columns: auto 35%;
+}
+
+.craft-screen > .inventory {
+    grid-auto-rows: 10%;
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.inventory {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    gap: 1.5%;
+    grid-template-columns: repeat(6, 15.5111%);
+    border-radius: 0;
+    padding-right: 2%;
 }

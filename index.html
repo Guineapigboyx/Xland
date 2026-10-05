@@ -21,6 +21,7 @@
         <script src="Assets/indexs/attacks.js"></script>
         <script src="Assets/indexs/item.js"></script>
         <!-- character data -->
+        <script src="Assets\indexs\craftingSchematics.js"></script>
         <script src="Assets/indexs/npc.js"></script>
         <script src="Assets/indexs/pepole.js"></script>
         <script src="Assets/indexs/animal.js"></script>
@@ -30,6 +31,7 @@
         <script src="scripts/update-loop.js"></script>
         <script src="scripts/ai.js"></script>
         <script src="scripts/game-state.js"></script>
+        <script src="scripts/event-listeners.js"></script>
         <!-- CSS stylesheet -->
         <link rel="stylesheet" href="style.css" />
 
@@ -47,17 +49,17 @@
         <header></header>
         <main class="main-content borde">
             <div class="toolbar">
-                <button class="button massive-text Header-text pointer"></button>
+                <button class="button huge-text Header-text pointer"></button>
                 <button
-                    id="world-button"
-                    class="button massive-text Header-text pointer"
-                    onclick="toggleScreen('world')"
+                    id="interact-button"
+                    class="button huge-text Header-text pointer"
+                    onclick="toggleScreen('interact')"
                 >
-                    World
+                    Interact
                 </button>
                 <button
                     id="status-button"
-                    class="button massive-text Header-text pointer"
+                    class="button huge-text Header-text pointer"
                     onclick="toggleScreen('status')"
                 >
                     Status
@@ -67,10 +69,24 @@
                     <div data-slot="2"></div>
                     <div data-slot="3"></div>
                 </div>
+                <button
+                    id="crafting-button"
+                    class="button huge-text Header-text pointer"
+                    onclick="toggleScreen('crafting')"
+                >
+                    crafting
+                </button>
+                <button class="button huge-text Header-text pointer"></button>
+                <button class="button huge-text Header-text pointer"></button>
             </div>
             <div class="bottom-section">
                 <p id="bottom-null" class="fit-div gigantic-text center-text">Nothing to show</p>
-                <section class="world-screen fit-div hide"></section>
+                <section class="interact-screen fit-div hide"></section>
+                <section class="craft-screen fit-div hide">
+                    <div id="crafting-grid" class="border-super-thin"></div>
+                    <div class="inventory blue-bubble"></div>
+                    <div class="border-super-thin"></div>
+                </section>
                 <section class="status-screen fit-div hide">
                     <div class="status-toolbar"></div>
                     <div class="person-overview border-thin" data-slot="1">
@@ -102,7 +118,7 @@
                         </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
                         <div class="divide"></div>
-                        <div class="person-inventory"></div>
+                        <div class="inventory person-inventory"></div>
                     </div>
                     <div class="person-overview border-thin" data-slot="2">
                         <img class="person-picture" />
@@ -133,7 +149,7 @@
                         </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
                         <div class="divide"></div>
-                        <div class="person-inventory"></div>
+                        <div class="inventory person-inventory"></div>
                     </div>
                     <div class="person-overview border-thin" data-slot="3">
                         <img class="person-picture" />
@@ -164,7 +180,7 @@
                         </button>
                         <button data-equipment="offHand" data-inslot class="dark-bubble"></button>
                         <div class="divide"></div>
-                        <div class="person-inventory"></div>
+                        <div class="inventory person-inventory"></div>
                     </div>
                 </section>
             </div>
