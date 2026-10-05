@@ -1146,6 +1146,13 @@ const items = {
         raritys: raritys.uncommon,
         weight: 0.55,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Flameing",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.fire,
+        },
         foodData: {
             foodType: foodTypes.pikmin,
             maxUses: 1,
@@ -1164,6 +1171,13 @@ const items = {
         raritys: raritys.uncommon,
         weight: 1.42,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "coal pikmin",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.blunt,
+        },
         foodData: {
             foodType: foodTypes.pikmin,
             maxUses: 1,
@@ -1187,6 +1201,13 @@ const items = {
         raritys: raritys.uncommon,
         weight: 0.55,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Wet",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.water,
+        },
         foodData: {
             foodType: foodTypes.liquid,
             maxUses: 1,
@@ -1545,6 +1566,13 @@ const items = {
         raritys: raritys.master,
         weight: 1.64,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Crystal Spiked",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.sharp,
+        },
         foodData: {
             foodType: foodTypes.crystal,
             maxUses: 1,
@@ -1569,6 +1597,17 @@ const items = {
         raritys: raritys.master,
         weight: 1.64,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Crushing",
+            socketUsageType: [itemUsageTypes.inBattle.onDamage],
+            socketUses: 20,
+            socketTime: 8,
+            effect: [
+                {
+                    effectGiven: statusEffects.armorCrunch,
+                },
+            ],
+        },
         foodData: {
             foodType: foodTypes.crystal,
             maxUses: 1,
@@ -1603,6 +1642,19 @@ const items = {
         raritys: raritys.master,
         weight: 1.64,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Molten",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.fire,
+            effect: [
+                {
+                    effectGiven: statusEffects.fireAspect,
+                    onSelf: true,
+                },
+            ],
+        },
         foodData: {
             foodType: foodTypes.peppers,
             maxUses: 1,
@@ -1781,6 +1833,17 @@ const items = {
         raritys: raritys.master,
         weight: 0.22,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Flumeing",
+            socketUsageType: [itemUsageTypes.inBattle.onDamage],
+            socketUses: 7,
+            socketTime: 1,
+            effect: [
+                {
+                    effectGiven: stuned,
+                },
+            ],
+        },
         foodData: {
             foodType: foodTypes.flowerrs,
             maxUses: 1,
@@ -1965,6 +2028,18 @@ const items = {
         raritys: raritys.uncommon,
         weight: 0.27,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Radiated",
+            socketUsageType: [itemUsageTypes.inBattle.onDamage],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.toxic,
+            effect: [
+                {
+                    effectGiven: statusEffects.radiated,
+                },
+            ],
+        },
         foodData: {
             foodType: foodTypes.toxic,
             maxUses: 1,
@@ -2089,6 +2164,13 @@ const items = {
             maxUses: 1,
             healAmount: -35,
             prefix: foodPrefixes.shocking,
+            socketData: {
+                prefix: "Dragon Blood",
+                socketUsageType: [itemUsageTypes.inBattle.onEnter],
+                socketUses: 20,
+                socketTime: 8,
+                statChange: { stat: statTypes.strength, amount: 3 },
+            },
             effect: [
                 {
                     effectGiven: statusEffects.superCharged,
@@ -2167,6 +2249,14 @@ const items = {
         raritys: raritys.rare,
         weight: 0.27,
         weaponData: { weaponType: weaponTypes.gloves },
+        socketData: {
+            prefix: "Venom",
+            socketUsageType: [itemUsageTypes.inBattle.onEnter],
+            socketUses: 20,
+            socketTime: 8,
+            damageType: damageTypes.toxic,
+            effect: [{ effectGiven: statusEffects.toxicPowerUp, onSelf: true }],
+        },
         foodData: {
             foodType: foodTypes.toxic,
             maxUses: 1,
