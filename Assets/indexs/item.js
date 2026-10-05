@@ -5,13 +5,17 @@
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
  * @property {Number} weight
- * @property {raritys.rarity|undefined} rarity - Hardcoded rarity of a item, if undifined it is determined from the materials
+ * @property {raritys.rarity|undefined} raritys - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {materialData|undefined} materialData - Data about it as a crafting material
  * @property {socketData|undefined} socketData - Data about socketing with this material
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
  * @property {Number|undefined} storageCapacity
  * @property {Array|undefined} materialList - list of the matrials that make up this item
+ *
+ * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
+ * @property {Boolean|undefined} preferWater - wants to be floating in water
+ * 1 small, 2 normal, 3 large, 4 huge, 5 colossal
  *
  * @property {equipSlots.slot|undefined} equipSlot - can items with this type be equiped
  * @property {itemUseageTypes|undefined} itemUsageType - the way(s) this item can be used (not includeing attacks)
@@ -2829,4 +2833,13 @@ const items = {
             ],
         },
     },
+    // crafting stations
+    campfire: { name: "Campfire", raritys: raritys.basic, weight: 1.64, placementSize: 2 },
+    furnace: { name: "Furnace", raritys: raritys.uncommon, weight: 3.27, placementSize: 3 },
+    workbench: { name: "Workbench", raritys: raritys.basic, weight: 1.09, placementSize: 2 },
+    anvil: { name: "Anvil", raritys: raritys.rare, weight: 5.45, placementSize: 2 },
+    morterPestal: { name: "MorterPestal", raritys: raritys.common, weight: 0.92, placementSize: 1 },
+    crusher: { name: "Crusher", raritys: raritys.rare, weight: 6.55, placementSize: 3 },
+    brewerMixer: { name: "BrewerMixer", raritys: raritys.master, weight: 4.73, placementSize: 3 },
+    godsForge: { name: "GodsForge", raritys: raritys.mythic, weight: 32.73, placementSize: 4 },
 };
