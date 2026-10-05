@@ -65,3 +65,22 @@ const raritys = {
         CssColor: "--ultra-rank-color",
     },
 };
+
+/**
+ * @typedef {Object} materialTypes - all the diffrent types of matrials there can be in xland
+ * @property {String}
+ */
+const materialTypes = {
+    metal: "metal",
+    bone: "bone",
+    rock: "rock",
+    wood: "wood",
+    gemStone: "gemStone",
+    plants: "plant",
+    liquid: "liquid",
+    meat: "meat",
+    skin: "skin",
+    sticky: "sticky",
+    wire: "wire", // would call it string but "String" is used by JS
+    other: "other",
+};

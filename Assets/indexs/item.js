@@ -29,6 +29,7 @@
  *
  * @property {damagetypes[]} damagetypes - amplify the power of this damage type when crafted with something that gives the same
  * @property {effects[]} effects
+ * @property {materialTypes} materialType - the type of matrial this item is
  *
  * ----
  * @typedef {object} weaponData - properties about this item in combat
@@ -91,21 +92,42 @@ const items = {
         name: "Wood",
         rarity: raritys.basic,
         weight: 2.18,
-        materialData: { weight: 2, durablity: 3, attack: 2.5, defense: 3, pickaxePower: 2.5 },
+        materialData: {
+            weight: 2,
+            durablity: 3,
+            attack: 2.5,
+            defense: 3,
+            pickaxePower: 2.5,
+            materialType: materialTypes.wood,
+        },
         weaponData: { weaponType: weaponTypes.club },
     },
     stone: {
         name: "Stone",
         rarity: raritys.basic,
         weight: 4.36,
-        materialData: { weight: 4, durablity: 4, attack: 3, defense: 2, pickaxePower: 5 },
+        materialData: {
+            weight: 4,
+            durablity: 4,
+            attack: 3,
+            defense: 2,
+            pickaxePower: 5,
+            materialType: materialTypes.rock,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     bone: {
         name: "Bone",
         rarity: raritys.common,
         weight: 1.3,
-        materialData: { weight: 1, durablity: 1, attack: 3, defense: 1, pickaxePower: 10 },
+        materialData: {
+            weight: 1,
+            durablity: 1,
+            attack: 3,
+            defense: 1,
+            pickaxePower: 10,
+            materialType: materialTypes.bone,
+        },
         weaponData: { weaponType: weaponTypes.club },
     },
     tin: {
@@ -118,6 +140,7 @@ const items = {
             attack: 4,
             defense: 3,
             pickaxePower: 10,
+            materialType: materialTypes.metal,
             effect: [
                 {
                     effectGiven: statusEffects.bloodLust,
@@ -134,14 +157,28 @@ const items = {
         name: "Iron",
         rarity: raritys.common,
         weight: 4.09,
-        materialData: { weight: 3.75, durablity: 7, attack: 5, defense: 2, pickaxePower: 15 },
+        materialData: {
+            weight: 3.75,
+            durablity: 7,
+            attack: 5,
+            defense: 2,
+            pickaxePower: 15,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     aluminum: {
         name: "Aluminum",
         rarity: raritys.common,
         weight: 3.05,
-        materialData: { weight: 2.8, durablity: 5, attack: 6, defense: 4, pickaxePower: 20 },
+        materialData: {
+            weight: 2.8,
+            durablity: 5,
+            attack: 6,
+            defense: 4,
+            pickaxePower: 20,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     copper: {
@@ -154,6 +191,7 @@ const items = {
             attack: 5,
             defense: 3,
             pickaxePower: 20,
+            materialType: materialTypes.metal,
             damageType: damageTypes.electric,
         },
         weaponData: { weaponType: weaponTypes.bluntObject },
@@ -168,6 +206,7 @@ const items = {
             attack: 9,
             defense: 3,
             pickaxePower: 15,
+            materialType: materialTypes.metal,
             effect: [
                 {
                     effectGiven: statusEffects.magicResitance,
@@ -194,6 +233,7 @@ const items = {
             attack: 7,
             defense: 6,
             pickaxePower: 20,
+            materialType: materialTypes.rock,
             effect: [
                 {
                     effectGiven: statusEffects.flash,
@@ -221,6 +261,7 @@ const items = {
             defense: 7,
             pickaxePower: 10,
             damageType: damageTypes.fire,
+            materialType: materialTypes.rock,
             effect: [
                 {
                     effectGiven: statusEffects.burning,
@@ -266,6 +307,7 @@ const items = {
             attack: 15,
             defense: 5,
             pickaxePower: 20,
+            materialType: materialTypes.bone,
             effect: [
                 {
                     effectGiven: statusEffects.bloodLust,
@@ -299,14 +341,28 @@ const items = {
         name: "Silver",
         rarity: raritys.uncommon,
         weight: 3.11,
-        materialData: { weight: 2.85, durablity: 7, attack: 6, defense: 3, pickaxePower: 25 },
+        materialData: {
+            weight: 2.85,
+            durablity: 7,
+            attack: 6,
+            defense: 3,
+            pickaxePower: 25,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     brass: {
         name: "Brass",
         rarity: raritys.uncommon,
         weight: 3.82,
-        materialData: { weight: 3.5, durablity: 8, attack: 4, defense: 6, pickaxePower: 25 },
+        materialData: {
+            weight: 3.5,
+            durablity: 8,
+            attack: 4,
+            defense: 6,
+            pickaxePower: 25,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     uramite: {
@@ -319,6 +375,7 @@ const items = {
             attack: 5,
             defense: 5,
             pickaxePower: 25,
+            materialType: materialTypes.metal,
             effect: [
                 {
                     effectGiven: statusEffects.fireResitance,
@@ -349,14 +406,28 @@ const items = {
         name: "Gold",
         rarity: raritys.uncommon,
         weight: 4.9,
-        materialData: { weight: 5.0, durablity: 10, attack: 8, defense: 8, pickaxePower: 30 },
+        materialData: {
+            weight: 5.0,
+            durablity: 10,
+            attack: 8,
+            defense: 8,
+            pickaxePower: 30,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     steel: {
         name: "Steel",
         rarity: raritys.uncommon,
         weight: 6.11,
-        materialData: { weight: 5.6, durablity: 13, attack: 11, defense: 8, pickaxePower: 30 },
+        materialData: {
+            weight: 5.6,
+            durablity: 13,
+            attack: 11,
+            defense: 8,
+            pickaxePower: 30,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     lithium: {
@@ -369,6 +440,7 @@ const items = {
             attack: 5,
             defense: 9,
             pickaxePower: 50,
+            materialType: materialTypes.metal,
             damageType: damageTypes.electric,
             effect: [
                 {
@@ -416,14 +488,28 @@ const items = {
         name: "Carbon steel",
         rarity: raritys.rare,
         weight: 8.29,
-        materialData: { weight: 7.6, durablity: 20, attack: 16, defense: 12, pickaxePower: 50 },
+        materialData: {
+            weight: 7.6,
+            durablity: 20,
+            attack: 16,
+            defense: 12,
+            pickaxePower: 50,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     platium: {
         name: "Platium",
         rarity: raritys.rare,
         weight: 5.78,
-        materialData: { weight: 5.3, durablity: 17, attack: 13, defense: 10, pickaxePower: 50 },
+        materialData: {
+            weight: 5.3,
+            durablity: 17,
+            attack: 13,
+            defense: 10,
+            pickaxePower: 50,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     magnesium: {
@@ -436,6 +522,7 @@ const items = {
             attack: 11,
             defense: 9,
             pickaxePower: 50,
+            materialType: materialTypes.metal,
             effect: [
                 {
                     effectGiven: statusEffects.superCharged,
@@ -458,6 +545,7 @@ const items = {
             attack: 7,
             defense: 13,
             pickaxePower: 75,
+            materialType: materialTypes.metal,
             damageType: damageTypes.blunt,
             effect: [
                 {
@@ -481,6 +569,7 @@ const items = {
             attack: 19,
             defense: 7,
             pickaxePower: 75,
+            materialType: materialTypes.metal,
             damageType: damageTypes.sharp,
             effect: [
                 {
@@ -506,6 +595,7 @@ const items = {
             attack: 12,
             defense: 11,
             pickaxePower: 110,
+            materialType: materialTypes.gemStone,
             damageType: damageTypes.sharp,
             effect: [
                 {
@@ -536,6 +626,7 @@ const items = {
             attack: 13,
             defense: 9,
             pickaxePower: 100,
+            materialType: materialTypes.metal,
             damageType: damageTypes.fire,
             effect: [
                 {
@@ -565,14 +656,28 @@ const items = {
         name: "Adamantite",
         rarity: raritys.master,
         weight: 3.55,
-        materialData: { weight: 3.25, durablity: 20, attack: 17, defense: 13, pickaxePower: 100 },
+        materialData: {
+            weight: 3.25,
+            durablity: 20,
+            attack: 17,
+            defense: 13,
+            pickaxePower: 100,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     stainlessSteel: {
         name: "Stainless Steel",
         rarity: raritys.master,
         weight: 9.05,
-        materialData: { weight: 8.3, durablity: 30, attack: 14, defense: 9, pickaxePower: 100 },
+        materialData: {
+            weight: 8.3,
+            durablity: 30,
+            attack: 14,
+            defense: 9,
+            pickaxePower: 100,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     uranium: {
@@ -585,6 +690,7 @@ const items = {
             attack: 30,
             defense: 9,
             pickaxePower: 100,
+            materialType: materialTypes.metal,
             damageType: damageTypes.toxic,
             effect: [
                 {
@@ -624,6 +730,7 @@ const items = {
             attack: 30,
             defense: 10,
             pickaxePower: 125,
+            materialType: materialTypes.metal,
             damageType: damageTypes.toxic,
             effect: [
                 {
@@ -657,14 +764,28 @@ const items = {
         name: "Xtramite",
         rarity: raritys.legendary,
         weight: 3.82,
-        materialData: { weight: 3.5, durablity: 25, attack: 13, defense: 25, pickaxePower: 125 },
+        materialData: {
+            weight: 3.5,
+            durablity: 25,
+            attack: 13,
+            defense: 25,
+            pickaxePower: 125,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.whip },
     },
     titanium: {
         name: "Titanium",
         rarity: raritys.legendary,
         weight: 4.36,
-        materialData: { weight: 4, durablity: 33, attack: 28, defense: 21, pickaxePower: 150 },
+        materialData: {
+            weight: 4,
+            durablity: 33,
+            attack: 28,
+            defense: 21,
+            pickaxePower: 150,
+            materialType: materialTypes.metal,
+        },
     },
     titaniumGold: {
         name: "Titanium gold",
@@ -676,6 +797,7 @@ const items = {
             attack: 31,
             defense: 25,
             pickaxePower: 150,
+            materialType: materialTypes.metal,
             effect: [
                 {
                     effectGiven: statusEffects.flash,
@@ -692,14 +814,28 @@ const items = {
         name: "Master ore",
         rarity: raritys.mythic,
         weight: 3.82,
-        materialData: { weight: 3.5, durablity: 50, attack: 35, defense: 25, pickaxePower: 200 },
+        materialData: {
+            weight: 3.5,
+            durablity: 50,
+            attack: 35,
+            defense: 25,
+            pickaxePower: 200,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     pale: {
         name: "Pale",
         rarity: raritys.mythic,
         weight: 2.84,
-        materialData: { weight: 2.6, durablity: 60, attack: 40, defense: 30, pickaxePower: 200 },
+        materialData: {
+            weight: 2.6,
+            durablity: 60,
+            attack: 40,
+            defense: 30,
+            pickaxePower: 200,
+            materialType: materialTypes.metal,
+        },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     raindite: {
@@ -712,6 +848,7 @@ const items = {
             attack: 50,
             defense: 50,
             pickaxePower: 200,
+            materialType: materialTypes.gemStone,
             damageType: damageTypes.magic,
         },
         weaponData: { weaponType: weaponTypes.knife },
@@ -720,7 +857,14 @@ const items = {
         name: "Diamond",
         rarity: raritys.master,
         weight: 0.82,
-        materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 2, pickaxePower: 100 },
+        materialData: {
+            weight: 0.75,
+            durablity: 1,
+            attack: 2,
+            defense: 2,
+            pickaxePower: 100,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "vivid",
@@ -734,7 +878,14 @@ const items = {
         name: "Ruby",
         rarity: raritys.rare,
         weight: 0.82,
-        materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 2, pickaxePower: 30 },
+        materialData: {
+            weight: 0.75,
+            durablity: 1,
+            attack: 3,
+            defense: 2,
+            pickaxePower: 30,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "Rubinated",
@@ -758,7 +909,14 @@ const items = {
         name: "Sapphire",
         rarity: raritys.uncommon,
         weight: 0.82,
-        materialData: { weight: 0.75, durablity: 1, attack: 2, defense: 3, pickaxePower: 30 },
+        materialData: {
+            weight: 0.75,
+            durablity: 1,
+            attack: 2,
+            defense: 3,
+            pickaxePower: 30,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "Ice Spiked",
@@ -788,7 +946,14 @@ const items = {
         name: "Amethyst",
         rarity: raritys.common,
         weight: 0.82,
-        materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 3, pickaxePower: 30 },
+        materialData: {
+            weight: 0.75,
+            durablity: 1,
+            attack: 3,
+            defense: 3,
+            pickaxePower: 30,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "Peril",
@@ -812,7 +977,14 @@ const items = {
         name: "Emerald",
         rarity: raritys.rare,
         weight: 0.82,
-        materialData: { weight: 0.75, durablity: 1, attack: 3, defense: 5, pickaxePower: 30 },
+        materialData: {
+            weight: 0.75,
+            durablity: 1,
+            attack: 3,
+            defense: 5,
+            pickaxePower: 30,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "Sturdy",
@@ -832,7 +1004,13 @@ const items = {
         name: "Amber",
         rarity: raritys.rare,
         weight: 3.27,
-        materialData: { weight: 3, durablity: 1, attack: 5, defense: 5 },
+        materialData: {
+            weight: 3,
+            durablity: 1,
+            attack: 5,
+            defense: 5,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: {
             weaponType: weaponTypes.bluntObject,
             // todo explode attack
@@ -858,7 +1036,14 @@ const items = {
         name: "Topaz",
         rarity: raritys.legendary,
         weight: 1.64,
-        materialData: { weight: 1.5, durablity: 7, attack: 15, defense: 11, pickaxePower: 100 },
+        materialData: {
+            weight: 1.5,
+            durablity: 7,
+            attack: 15,
+            defense: 11,
+            pickaxePower: 100,
+            materialType: materialTypes.gemStone,
+        },
         weaponData: { weaponType: weaponTypes.knife },
         socketData: {
             prefix: "Divine",
@@ -874,84 +1059,157 @@ const items = {
         rarity: raritys.uncommon,
         weight: 5.45,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 5, durablity: 5, attack: 4, defense: 3, pickaxePower: 5 },
+        materialData: {
+            weight: 5,
+            durablity: 5,
+            attack: 4,
+            defense: 3,
+            pickaxePower: 5,
+            materialType: materialTypes.rock,
+        },
     },
     grass: {
         name: "Grass",
         rarity: raritys.basic,
         weight: 0.27,
         weaponData: { weaponType: weaponTypes.knife },
-        materialData: { weight: 0.25, durablity: 1, attack: 1.5, defense: 1, pickaxePower: 1.5 },
+        materialData: {
+            weight: 0.25,
+            durablity: 1,
+            attack: 1.5,
+            defense: 1,
+            pickaxePower: 1.5,
+            materialType: materialTypes.plant,
+        },
     },
     treeBranch: {
         name: "Tree Branch",
         rarity: raritys.basic,
         weight: 1.09,
         weaponData: { weaponType: weaponTypes.club },
-        materialData: { weight: 1, durablity: 1.5, attack: 1.25, defense: 1.5 },
+        materialData: {
+            weight: 1,
+            durablity: 1.5,
+            attack: 1.25,
+            defense: 1.5,
+            materialType: materialTypes.wood,
+        },
     },
     leaf: {
         name: "Leaf",
         rarity: raritys.basic,
         weight: 0.27,
         weaponData: { weaponType: weaponTypes.knife }, // imagine stabbing someone with a leaf
-        materialData: { weight: 0.25, durablity: 1, attack: 0.8, defense: 1 },
+        materialData: {
+            weight: 0.25,
+            durablity: 1,
+            attack: 0.8,
+            defense: 1,
+            materialType: materialTypes.plants,
+        },
     },
     leather: {
         name: "Leather",
         rarity: raritys.common,
         weight: 1.47,
         weaponData: { weaponType: weaponTypes.whip },
-        materialData: { weight: 1.35, durablity: 4, attack: 0, defense: 2 },
+        materialData: {
+            weight: 1.35,
+            durablity: 4,
+            attack: 0,
+            defense: 2,
+            materialType: materialTypes.skin,
+        },
     },
     hide: {
         name: "Hide",
         rarity: raritys.uncommon,
         weight: 1.64,
         weaponData: { weaponType: weaponTypes.whip },
-        materialData: { weight: 1.5, durablity: 8, attack: 0, defense: 3 },
+        materialData: {
+            weight: 1.5,
+            durablity: 8,
+            attack: 0,
+            defense: 3,
+            materialType: materialTypes.skin,
+        },
     },
     mud: {
         name: "Mud",
         rarity: raritys.basic,
         weight: 3.82,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 3.5, durablity: 1.75, attack: 0, defense: 1.5 },
+        materialData: {
+            weight: 3.5,
+            durablity: 1.75,
+            attack: 0,
+            defense: 1.5,
+            materialType: materialTypes.sticky,
+        },
     },
     glue: {
         name: "Glue",
         rarity: raritys.basic,
         weight: 2.1,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 0.5, durablity: 2.3, attack: 0, defense: 2 },
+        materialData: {
+            weight: 0.5,
+            durablity: 2.3,
+            attack: 0,
+            defense: 2,
+            materialType: materialTypes.sticky,
+        },
     },
     wire: {
         name: "Wire",
         rarity: raritys.basic,
         weight: 1.0,
         weaponData: { weaponType: weaponTypes.whip },
-        materialData: { weight: 0.1, durablity: 4, attack: 3, defense: 0.5 },
+        materialData: {
+            weight: 0.1,
+            durablity: 4,
+            attack: 3,
+            defense: 0.5,
+            materialType: materialTypes.wire,
+        },
     },
     string: {
         name: "String",
         rarity: raritys.basic,
         weight: 0.5,
         weaponData: { weaponType: weaponTypes.whip },
-        materialData: { weight: 0.1, durablity: 2, attack: 0, defense: 0.25 },
+        materialData: {
+            weight: 0.1,
+            durablity: 2,
+            attack: 0,
+            defense: 0.25,
+            materialType: materialTypes.wire,
+        },
     },
     flint: {
         name: "Flint",
         rarity: raritys.Common,
         weight: 0.82,
         weaponData: { weaponType: weaponTypes.knife },
-        materialData: { weight: 0.75, durablity: 2, attack: 1.5, defense: 1.0 },
+        materialData: {
+            weight: 0.75,
+            durablity: 2,
+            attack: 1.5,
+            defense: 1.0,
+            materialType: materialTypes.rock,
+        },
     },
     plastic: {
         name: "Plastic",
         rarity: raritys.Uncommon,
         weight: 1.41,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 1, durablity: 6, attack: 1.8, defense: 3.25 },
+        materialData: {
+            weight: 1,
+            durablity: 6,
+            attack: 1.8,
+            defense: 3.25,
+        },
     },
     glass: {
         name: "Glass",
@@ -963,6 +1221,7 @@ const items = {
             durablity: 1,
             attack: 10,
             defense: 0.2,
+
             effect: [
                 {
                     effectGiven: statusEffects.bleed,
@@ -981,42 +1240,77 @@ const items = {
         rarity: raritys.Uncommon,
         weight: 0.4,
         weaponData: { weaponType: weaponTypes.hammer }, // i mean if you have a hammer sized bolt
-        materialData: { weight: 0.15, durablity: 5, attack: 0, defense: 0.0 },
+        materialData: {
+            weight: 0.15,
+            durablity: 5,
+            attack: 0,
+            defense: 0.0,
+        },
     },
     coil: {
         name: "Coil",
         rarity: raritys.Uncommon,
         weigh: 1.7,
         weaponData: { weaponType: weaponTypes.shield },
-        materialData: { weight: 1.3, durablity: 4, attack: 0, defense: 3.25 },
+        materialData: {
+            weight: 1.3,
+            durablity: 4,
+            attack: 0,
+            defense: 3.25,
+            // wire kinda makes sense i guess
+        },
     },
     gear: {
         name: "Gear",
         rarity: raritys.Uncommon,
         weight: 1.12,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 0.9, durablity: 3, attack: 1.7, defense: 1.1 },
+        materialData: {
+            weight: 0.9,
+            durablity: 3,
+            attack: 1.7,
+            defense: 1.1,
+            // would make it metal but im worried about infnite crafting loops
+        },
     },
     cloth: {
         name: "Cloth",
         rarity: raritys.Common,
         weight: 0.87,
         weaponData: { weaponType: weaponTypes.whip },
-        materialData: { weight: 0.8, durablity: 1, attack: 0, defense: 0.5 },
+        materialData: {
+            weight: 0.8,
+            durablity: 1,
+            attack: 0,
+            defense: 0.5,
+            materialType: materialTypes.skin,
+        },
     },
     raiderscrap: {
         name: "Raider Scrap",
         rarity: raritys.Uncommon,
         weight: 3.82,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 3.5, durablity: 10, attack: 6, defense: 6 },
+        materialData: {
+            weight: 3.5,
+            durablity: 10,
+            attack: 6,
+            defense: 6,
+            materialType: materialTypes.metal,
+        },
     },
     superRaiderscrap: {
         name: "Super Raider Scrap",
         rarity: raritys.Master,
         weight: 8.73,
         weaponData: { weaponType: weaponTypes.bluntObject },
-        materialData: { weight: 8.73, durablity: 30, attack: 12, defense: 12 },
+        materialData: {
+            weight: 8.73,
+            durablity: 30,
+            attack: 12,
+            defense: 12,
+            materialType: materialTypes.metal,
+        },
     },
     // food -------------------------------------------------
     hyruleHerbs: {
