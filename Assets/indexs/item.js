@@ -46,9 +46,9 @@
  * @typedef {Object} foodData
  * @property {foodType} foodType - the type of food it is
  * @property {Number|undefined} maxUses - how many times can it be used before it's gone (if undifined it 1)
- * @property {foodPrefixes.prefix} - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {Number|undefined} healAmount - the amount of hp you gain or lose from eating this
  * @property {Number|undefined} epAmount - the amount of ep you gain or lose from eating this
+ * @property {foodPrefixes.prefix} prefix - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {effects[]} effects - effects gotten from eating
  *
  * ---
@@ -958,18 +958,23 @@ const items = {
         rarity: raritys.Uncommon,
         weight: 1.09,
         weaponData: { weaponType: weaponTypes.knife },
-        materialData: { weight: 0.1, durablity: 1, attack: 10, defense: 0.2 },
-        effect: [
-            {
-                effectGiven: statusEffects.bleed,
-                effectChance: 0.6,
-                effectTime: 2,
-                effectCondition: [
-                    itemUsageTypes.inBattle.onDamage,
-                    itemUsageTypes.outBattle.onDamage,
-                ],
-            },
-        ],
+        materialData: {
+            weight: 0.1,
+            durablity: 1,
+            attack: 10,
+            defense: 0.2,
+            effect: [
+                {
+                    effectGiven: statusEffects.bleed,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                    effectCondition: [
+                        itemUsageTypes.inBattle.onDamage,
+                        itemUsageTypes.outBattle.onDamage,
+                    ],
+                },
+            ],
+        },
     },
     bolts: {
         name: "Bolts",
@@ -1012,5 +1017,1432 @@ const items = {
         weight: 8.73,
         weaponData: { weaponType: weaponTypes.bluntObject },
         materialData: { weight: 8.73, durablity: 30, attack: 12, defense: 12 },
+    },
+    // food -------------------------------------------------
+    hyruleHerbs: {
+        name: "Hyrule Herbs",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.herbs,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.starchy,
+        },
+    },
+    coffeeBeans: {
+        name: "Coffee Beans",
+        raritys: raritys.common,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.energizing,
+            maxUses: 1,
+            prefix: foodPrefixes.energizing,
+            effect: [
+                {
+                    effectGiven: statusEffects.BurstingSpeed,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.BurstingSpeed,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    hyruleMushrooms: {
+        name: "Hyrule Mushrooms",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            healAmount: -5,
+            prefix: foodPrefixes.earthy,
+        },
+        effect: [
+            {
+                effectGiven: statusEffects.gross,
+                effectChance: 0.6,
+                effectTime: 4,
+            },
+        ],
+    },
+    rushrooms: {
+        name: "Rushrooms",
+        raritys: raritys.common,
+        weight: 0.33,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            prefix: foodPrefixes.energizing,
+            effect: [
+                {
+                    effectGiven: statusEffects.BurstingSpeed,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    pikmin: {
+        name: "Pikmin",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.pikmin,
+            maxUses: 1,
+            healAmount: -5,
+            prefix: foodPrefixes.sweet, // pik carrots are sweet in pikmin
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.5,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    rice: {
+        name: "Rice",
+        raritys: raritys.common,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.grains,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.starchy,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.5,
+                    effectTime: 5,
+                },
+                {
+                    effectGiven: statusEffects.waterVulnerability,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    wheat: {
+        name: "Wheat",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.grains, maxUses: 1, prefix: foodPrefixes.starchy },
+    },
+    firePikmin: {
+        name: "Fire Pikmin",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.pikmin,
+            maxUses: 1,
+            prefix: foodPrefixes.spicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.9,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    coalPikmin: {
+        name: "Coal Pikmin",
+        raritys: raritys.uncommon,
+        weight: 1.42,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.pikmin,
+            maxUses: 1,
+            prefix: foodPrefixes.disguesting,
+            effect: [
+                {
+                    effectGiven: statusEffects.fireVulnerability,
+                    effectChance: 0.8,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.bluntResitance,
+                    effectChance: 0.8,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    waterPikmin: {
+        name: "Water Pikmin",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            healAmount: -30,
+            prefix: foodPrefixes.wet,
+            effect: [
+                {
+                    effectGiven: statusEffects.wet,
+                    effectChance: 1,
+                    effectTime: 5,
+                },
+                {
+                    effectGiven: statusEffects.drowning,
+                    effectChance: 0.15,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    blueBerries: {
+        name: "Blue Berries",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.berries,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.sweet,
+        },
+    },
+    blackBerries: {
+        name: "Black Berries",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.berries,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.salty,
+        },
+    },
+    orangeBerries: {
+        name: "Orange Berries",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.berries,
+            maxUses: 1,
+            prefix: foodPrefixes.disguesting, // foulBerries from mincemeat
+            effect: [
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.7,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    mysticFlowers: {
+        name: "Mystic Flowers",
+        raritys: raritys.legendary,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mystic,
+            maxUses: 1,
+            healAmount: -500,
+            prefix: foodPrefixes.mystic,
+        },
+    },
+    fireFlowers: {
+        name: "Fire Flowers",
+        raritys: raritys.rare,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.flowerrs,
+            maxUses: 1,
+            prefix: foodPrefixes.spicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.fireAspect,
+                    effectChance: 1,
+                    effectTime: 7,
+                },
+            ],
+        },
+    },
+    eurekaLeaves: {
+        name: "Eureka Leaves",
+        raritys: raritys.rare,
+        weight: 0.33,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mystic,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.mystic,
+        },
+    },
+    metalshrooms: {
+        name: "Metalshrooms",
+        raritys: raritys.rare,
+        weight: 1.09,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            prefix: foodPrefixes.hardened,
+            effect: [
+                {
+                    effectGiven: statusEffects.bluntResitance,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.sharpResitance,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.crushingResitance,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    pepper: {
+        name: "Pepper",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.peppers, maxUses: 1, prefix: foodPrefixes.spicy },
+    },
+    mint: {
+        name: "Mint",
+        raritys: raritys.common,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.herbs,
+            maxUses: 1,
+            prefix: foodPrefixes.minty,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.5,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.5,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    watermelon: {
+        name: "Watermelon",
+        raritys: raritys.uncommon,
+        weight: 0.76,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.fruit,
+            maxUses: 1,
+            prefix: foodPrefixes.wet,
+            effect: [
+                {
+                    effectGiven: statusEffects.wet,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.drowning,
+                    effectChance: 0.15,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    lifefruit: {
+        name: "Lifefruit",
+        raritys: raritys.master,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mystic,
+            maxUses: 1,
+            prefix: foodPrefixes.mystic,
+            effect: [
+                {
+                    effectGiven: statusEffects.burstingVitality,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    dewleaf: {
+        name: "Dewleaf",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            prefix: foodPrefixes.wet,
+            effect: [
+                {
+                    effectGiven: statusEffects.wet,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.4,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    cacti: {
+        name: "Cacti",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.fruit,
+            maxUses: 1,
+            healAmount: 25,
+            prefix: foodPrefixes.sweet,
+            effect: [
+                {
+                    effectGiven: statusEffects.bleed,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.burstingVitality,
+                    effectChance: 0.7,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    iceshroom: {
+        name: "Iceshroom",
+        raritys: raritys.rare,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            prefix: foodPrefixes.cold,
+            effect: [
+                {
+                    effectGiven: statusEffects.freeze,
+                    effectChance: 0.8,
+                    effectTime: 1,
+                },
+                {
+                    effectGiven: statusEffects.freeze,
+                    effectChance: 0.4,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    snowflower: {
+        name: "Snowflower",
+        raritys: raritys.rare,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.flowerrs,
+            maxUses: 1,
+            healAmount: 15,
+            prefix: foodPrefixes.cold,
+            effect: [
+                {
+                    effectGiven: statusEffects.freeze,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    desertshroom: {
+        name: "Desertshroom",
+        raritys: raritys.rare,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            prefix: foodPrefixes.salty,
+            effect: [
+                {
+                    effectGiven: statusEffects.regeneration,
+                    effectChance: 0.3,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.6,
+                    effectTime: 5,
+                },
+            ],
+        },
+    },
+    killerBerry: {
+        name: "Killer Berry",
+        raritys: raritys.master,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.waningVitality,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 1,
+                    effectTime: 6,
+                },
+                {
+                    effectGiven: statusEffects.lethargic,
+                    effectChance: 1,
+                    effectTime: 1,
+                },
+
+                {
+                    effectGiven: statusEffects.lethargic,
+                    effectChance: 0.5,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    crystalFlower: {
+        name: "Crystal Flower",
+        raritys: raritys.master,
+        weight: 1.64,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.crystal,
+            maxUses: 1,
+            healAmount: 50,
+            prefix: foodPrefixes.hardened,
+            effect: [
+                {
+                    effectGiven: statusEffects.bloodLust,
+                    effectChance: 0.7,
+                    effectTime: 1,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    crystalFruit: {
+        name: "Crystal Fruit",
+        raritys: raritys.master,
+        weight: 1.64,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.crystal,
+            maxUses: 1,
+            healAmount: 5,
+            prefix: foodPrefixes.hardened,
+            effect: [
+                {
+                    effectGiven: statusEffects.bloodLust,
+                    effectChance: 0.8,
+                    effectTime: 1,
+                },
+                {
+                    effectGiven: statusEffects.bloodLust,
+                    effectChance: 0.4,
+                    effectTime: 1,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.4,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    volcanoFruit: {
+        name: "Volcano Fruit",
+        raritys: raritys.master,
+        weight: 1.64,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.peppers,
+            maxUses: 1,
+            prefix: foodPrefixes.superSpicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.6,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.3,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    dragonFruit: {
+        name: "Dragon Fruit",
+        raritys: raritys.rare,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.fruit,
+            maxUses: 1,
+            healAmount: -35,
+            prefix: foodPrefixes.disguesting,
+            effect: [
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.4,
+                    effectTime: 5,
+                },
+
+                {
+                    effectGiven: statusEffects.sharpPowerUp,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    daybloom: {
+        name: "Daybloom",
+        raritys: raritys.rare,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.flowerrs,
+            maxUses: 1,
+            prefix: foodPrefixes.earthy,
+            effect: [
+                {
+                    effectGiven: statusEffects.stupity,
+                    effectChance: 0.6,
+                    effectTime: 4,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.8,
+                    effectTime: 5,
+                },
+            ],
+        },
+    },
+    moonstalk: {
+        name: "Moonstalk",
+        raritys: raritys.rare,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.flowerrs, maxUses: 1, prefix: foodPrefixes.cold },
+    },
+    corn: {
+        name: "Corn",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.grains, maxUses: 1, prefix: foodPrefixes.starchy },
+    },
+    proteinBean: {
+        name: "Protein Bean",
+        raritys: raritys.uncommon,
+        weight: 0.11,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.energizing,
+            maxUses: 1,
+            prefix: foodPrefixes.energizing,
+            effect: [
+                {
+                    effectGiven: statusEffects.superCharged,
+                    effectChance: 0.8,
+                    effectTime: 1,
+                },
+            ],
+        },
+    },
+    deathFruit: {
+        name: "Death Fruit",
+        raritys: raritys.master,
+        weight: 0.38,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.unconscious,
+                    effectChance: 0.9,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    ghostPepper: {
+        name: "Ghost Pepper",
+        raritys: raritys.rare,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.peppers,
+            maxUses: 1,
+            healAmount: 30,
+            prefix: foodPrefixes.superSpicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.4,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    fireHerb: {
+        name: "Fire Herb",
+        raritys: raritys.rare,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.herbs,
+            maxUses: 1,
+            prefix: foodPrefixes.spicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.4,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    fumingFlower: {
+        name: "Fuming Flower",
+        raritys: raritys.master,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.flowerrs,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.disguesting,
+            effect: [
+                {
+                    effectGiven: statusEffects.stuned,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.unconscious,
+                    effectChance: 0.6,
+                    effectTime: 1,
+                },
+            ],
+        },
+    },
+    nitroshroom: {
+        name: "Nitroshroom",
+        raritys: raritys.rare,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mushrooms,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.strange,
+            effect: [
+                {
+                    effectGiven: statusEffects.fireResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.coldResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.electricResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.toxicResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.magicResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.windResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    slurpshroom: {
+        name: "Slurpshroom",
+        raritys: raritys.rare,
+        weight: 0.22,
+        healAmount: -17,
+        epAmount: 3,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.mushrooms, maxUses: 1, prefix: foodPrefixes.strange },
+    },
+    poisonShroom: {
+        name: "Poison Shroom",
+        raritys: raritys.uncommon,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 1,
+                    effectTime: 10,
+                },
+            ],
+        },
+    },
+    bulborb: {
+        name: "Bulborb",
+        raritys: raritys.rare,
+        weight: 1.31,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            prefix: foodPrefixes.salty,
+            effect: [
+                {
+                    effectGiven: statusEffects.burstingVitality,
+                    effectChance: 0.6,
+                    effectTime: 1,
+                },
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 1,
+                    effectTime: 3,
+                },
+            ],
+        },
+    },
+    apple: {
+        name: "Apple",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.fruit,
+            maxUses: 1,
+            healAmount: -10,
+            prefix: foodPrefixes.sweet,
+        },
+    },
+    pineApple: {
+        name: "Pine Apple",
+        raritys: raritys.common,
+        weight: 0.22,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.fruit,
+            maxUses: 1,
+            prefix: foodPrefixes.sweet,
+            effect: [
+                {
+                    effectGiven: statusEffects.bleed,
+                    effectChance: 0.25,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    water: {
+        name: "Water",
+        raritys: raritys.basic,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            prefix: foodPrefixes.wet, // water is wet
+        },
+    },
+    milk: {
+        name: "Milk",
+        raritys: raritys.common,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            prefix: foodPrefixes.wet, // i have no idea how to describe milk
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.85,
+                    effectTime: 5,
+                },
+            ],
+        },
+    },
+    salt: {
+        name: "Salt",
+        raritys: raritys.basic,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: { foodType: foodTypes.crystal, maxUses: 1, prefix: foodPrefixes.salty },
+    },
+    chemicalSoup: {
+        name: "Chemical Soup",
+        raritys: raritys.uncommon,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.75,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.75,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 0.75,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.radiated,
+                    effectChance: 0.4,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 1,
+                    effectTime: 5,
+                },
+            ],
+        },
+    },
+    slurpJuice: {
+        name: "Slurp Juice",
+        raritys: raritys.rare,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.mystic,
+            maxUses: 1,
+            prefix: foodPrefixes.strange,
+            effect: [
+                {
+                    effectGiven: statusEffects.fireResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.coldResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.electricResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.toxicResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.magicResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.windResitance,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.superCharged,
+                    effectChance: 0.4,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    fireJuice: {
+        name: "Fire Juice",
+        raritys: raritys.rare,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.spicy,
+            effect: [
+                {
+                    effectGiven: statusEffects.burning,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.sharpPowerUp,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.bluntPowerUp,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.crushingResitance,
+                    effectChance: 0.6,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    dragonJuice: {
+        name: "Dragon Juice",
+        raritys: raritys.rare,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.energizing,
+            maxUses: 1,
+            healAmount: -35,
+            prefix: foodPrefixes.shocking,
+            effect: [
+                {
+                    effectGiven: statusEffects.superCharged,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 1,
+                    effectTime: 8,
+                },
+            ],
+        },
+    },
+    ionizedWater: {
+        name: "Ionized Water",
+        raritys: raritys.basic,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.radiated,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    cactusWater: {
+        name: "Cactus Water",
+        raritys: raritys.uncommon,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            prefix: foodPrefixes.sweet,
+            effect: [
+                {
+                    effectGiven: statusEffects.regeneration,
+                    effectChance: 0.8,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    crackleWater: {
+        name: "Crackle Water",
+        raritys: raritys.uncommon,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.shocking,
+            effect: [
+                {
+                    effectGiven: statusEffects.shocked,
+                    effectChance: 0.75,
+                    effectTime: 3,
+                },
+                {
+                    effectGiven: statusEffects.electricPowerUp,
+                    effectChance: 1,
+                    effectTime: 5,
+                },
+            ],
+        },
+    },
+    venom: {
+        name: "Venom",
+        raritys: raritys.rare,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.toxic,
+            maxUses: 1,
+            prefix: foodPrefixes.deadly,
+            effect: [
+                {
+                    effectGiven: statusEffects.sick,
+                    effectChance: 1,
+                    effectTime: 5,
+                },
+                {
+                    effectGiven: statusEffects.lethargic,
+                    effectChance: 1,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    rainWater: {
+        name: "Rain Water",
+        raritys: raritys.common,
+        weight: 0.27,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.liquid,
+            maxUses: 1,
+            healAmount: -35,
+            prefix: foodPrefixes.earthy,
+        },
+        effect: [
+            {
+                effectGiven: statusEffects.gross,
+                effectChance: 0.5,
+                effectTime: 6,
+            },
+        ],
+    },
+    mysteryMeat: {
+        name: "Mystery Meat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -10,
+            prefix: foodPrefixes.strange,
+            effect: [
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.8,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    brownMeat: {
+        name: "Brown Meat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.salty,
+        },
+    },
+    pikminMeat: {
+        name: "Pikmin Meat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -15,
+            prefix: foodPrefixes.sweet,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    pork: {
+        name: "Pork",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.earthy,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.3,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    primeMeat: {
+        name: "Prime Meat",
+        raritys: raritys.rare,
+        weight: 0.82,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -50,
+            prefix: foodPrefixes.salty,
+        },
+    },
+    fish: {
+        name: "Fish",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -10,
+            prefix: foodPrefixes.wet,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    snake: {
+        name: "Snake",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.salty,
+            effect: [
+                {
+                    effectGiven: statusEffects.toxicPowerUp,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+                {
+                    effectGiven: statusEffects.toxicVulnerability,
+                    effectChance: 0.6,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    rat: {
+        name: "Rat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.disguesting,
+            effect: [
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 1,
+                    effectTime: 6,
+                },
+            ],
+        },
+    },
+    raccoon: {
+        name: "Raccoon",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.salty,
+            effect: [
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    thinMeat: {
+        name: "Thin Meat",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -5,
+            prefix: foodPrefixes.starchy, // was going to make one called disapointing
+        },
+    },
+    cookedMeat: {
+        name: "Cooked Meat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.salty, // fallback if you get not cooked, cooked meat
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 0.75,
+                    effectTime: 2,
+                },
+            ],
+        },
+    },
+    saltedMeat: {
+        name: "Salted Meat",
+        raritys: raritys.common,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -20,
+            prefix: foodPrefixes.salty,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+            ],
+        },
+    },
+    smokedMeat: {
+        name: "Smoked Meat",
+        raritys: raritys.uncommon,
+        weight: 0.55,
+        weaponData: { weaponType: weaponTypes.gloves },
+        foodData: {
+            foodType: foodTypes.meat,
+            maxUses: 1,
+            healAmount: -35,
+            prefix: foodPrefixes.earthy,
+            effect: [
+                {
+                    effectGiven: statusEffects.yum,
+                    effectChance: 1,
+                    effectTime: 4,
+                },
+            ],
+        },
     },
 };

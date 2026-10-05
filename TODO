@@ -13,17 +13,17 @@ items:
     [x] Other miniral
     [x] Other Matrial
     [x] crafted componet // tho there are no functionality for them
-    [-] Consumables/food
+    [x] Consumables/food
     [-] ammo
     [-] equipment
     [-] non dynamic items
-    [-] Enemy Drops
-    [-] Storage items
-    [-] Crafting station
+    [-] Giga beast items
+    [-] placeable items  
+    [-] Crafting station // they are also placeable items
 
 crafting:
     [-] schematics/crafting molds
-    [-] crafting stat effects
+    [-] crafting stat combineing
     [-] socketing
 
 UI:

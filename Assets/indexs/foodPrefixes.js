@@ -17,10 +17,14 @@ const foodPrefixes = {
     mystic: { name: "mystic" },
     hardened: { name: "hardened" },
     deadly: { name: "deadly" },
-    deadly: { name: "deadly" },
     salty: { name: "salty" },
     energizing: { name: "energizing" },
     disguesting: { name: "disguesting" },
     wet: { name: "wet" },
     shocking: { name: "shocking" },
+    sweet: { name: "sweet" },
+    starchy: { name: "starchy" }, // might change the name
+    earthy: { name: "earthy" },
+    minty: { name: "minty" }, // special one for mint
+    strange: { name: "strange" },
 };
