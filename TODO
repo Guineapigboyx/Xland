@@ -6,13 +6,13 @@
 // just delate the line if it is removed
 
 items:
-    [] Basic componet
+    [x] Basic componet
     [x] Metal
     [x] jewel/gem
     [-] negimite (negitive crafting system)
-    [] Other miniral
-    [] Other Matrial
-    [] crafted componet // tho there are no funcanolity for them
+    [x] Other miniral
+    [x] Other Matrial
+    [x] crafted componet // tho there are no functionality for them
     [-] Consumables/food
     [-] ammo
     [-] equipment
