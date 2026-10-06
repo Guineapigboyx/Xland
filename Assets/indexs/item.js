@@ -13,6 +13,9 @@
  * @property {Number|undefined} storageCapacity
  * @property {Array|undefined} materialList - list of the matrials that make up this item
  *
+ * @property {schematics.schematic|undefined} schematic - the schematic that is used to craft this item
+ * @property {craftingStations.station} station - this item can be used as a crafting station
+ *
  * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
  * @property {Boolean|undefined} preferWater - wants to be floating in water
  * 1 small, 2 normal, 3 large, 4 huge, 5 colossal
