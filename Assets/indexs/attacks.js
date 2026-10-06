@@ -12,8 +12,21 @@ By default you can only do 1 attack per turn but you can do a action surge drain
 
 Also every round you will restore a small amount of EP per turn (by defualt 1 but it can be raised with item or effects)
 There are also some ways to get free action surges like from passive effects or the bloodlust status effect.
----
 
+--- Attack rolls
+Another Big diffrence with xland combat is attack roles. instead of rolls like DND that are {dice roll + weapon damage}.
+Xland instead has a base damage for each weapon that then uses the dice roll as a multiper for that damage.
+This multipler can range from -0.27 to 0.3 (so a 20 is 0.3 while a 1 is a -0.27). This also applies per hit so muti hits each get their own roll.
+
+attack damage formela [atk * ((roll * 0.03) + 0.7)]
+atk = base damage
+roll = resualt of d20 roll plus any modifers like the crit stat
+
+There also is a seprate roll called the accuracy roll for if your attack it hit or miss. 
+So its possible for a move to hit but it gets minium damage.
+previously this was done with a D8 but this might change.
+
+---
 Tho for the most part battles are like DND just without bonus actions or spell slots.
 */
 
