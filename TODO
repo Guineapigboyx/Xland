@@ -17,7 +17,7 @@ items:
     [-] modular items // fallback data
     [-] non dynamic items
     [=] Giga beast items // the main thing is unlocking another rarity
-    [-] placeable items  
+    [x] placeable items  
     [x] Crafting station // they are also placeable items, my plan is the scematics for them are gotten by killing giga beasts
 
 crafting:
