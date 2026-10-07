@@ -84,22 +84,3 @@ const materialTypes = {
     wire: "wire", // would call it string but "String" is used by JS
     other: "other",
 };
-
-/**
- * @typedef {Object} craftingStations
- * @property {station}
- *
- * @typedef {Object} station - a station where things can be crafted
- * @property {String} name
- * @property {items.item} item
- */
-const craftingStations = {
-    campfire: { name: "Campfire", items: items.campfire },
-    furnace: { name: "Furnace", items: items.furnace },
-    workbench: { name: "Workbench", items: items.workbench },
-    anvil: { name: "Anvil", items: items.anvil },
-    morterPestal: { name: "MorterPestal", items: items.morterPestal },
-    crusher: { name: "Crusher", items: items.crusher },
-    brewerMixer: { name: "BrewerMixer", items: items.brewerMixer },
-    godsForge: { name: "GodsForge", items: items.godsForge },
-};

@@ -57,7 +57,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  *
  * @property {1|2|3|4|5|undefined} speed - how fast the attack is (default is 3)
  * @property {Number|undefined} accuracy - how much accuracy is removed or added
- * @property {Number|undefined} citChance - how much crit chance is removed or added
+ * @property {Number|undefined} crit - how much crit chance is removed or added
  *
  * @property {Number|undefined} selfDamage - how much damage is delt to the user
  * @property {Number|undefined} durablity - how much durablity is lost when useing the move (by default it uses 1)

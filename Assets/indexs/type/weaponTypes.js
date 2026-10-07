@@ -35,6 +35,13 @@ const weaponTypes = {
         rockBreaker: 2,
         metalBreaker: 2,
     },
+    hammer: {
+        name: "Axe",
+        weightThreshold: 7,
+        attackBonus: statTypes.strength,
+        sound: "slash",
+        woodBreaker: 3,
+    },
     guardingHammer: {
         name: "Guarding Hammer",
         weightThreshold: 3,

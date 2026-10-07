@@ -14,14 +14,15 @@ items:
     [x] Other Matrial
     [x] crafted componet // tho there are no functionality for them
     [x] Consumables/food
-    [-] modular items // fallback data
-    [-] non dynamic items
+    [x] modular items // fallback data
+    [] non dynamic items
     [=] Giga beast items // the main thing is unlocking another rarity
     [x] placeable items  
     [x] Crafting station // they are also placeable items, my plan is the scematics for them are gotten by killing giga beasts
 
 crafting:
     [] schematics/crafting molds
+    [] modules
     [] crafting stat combineing
     [-] socketing
 
