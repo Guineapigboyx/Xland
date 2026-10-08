@@ -29,7 +29,7 @@ const schematics = {
         name: "drill",
         itemName: "Drill",
         modularItem: items.drill,
-        parts: { bit: { name: "bit" }, motor: { name: "motor" }, handle: { name: "grip" } },
+        parts: { bit: { name: "bit" }, motor: { name: "motor" }, grip: { name: "grip" } },
     },
     shield: {
         name: "shield",
@@ -46,7 +46,7 @@ const schematics = {
         modularItem: items.sword,
         parts: {
             blade: { name: "blade" },
-            handle: { name: "hilt" },
+            hilt: { name: "hilt" },
             guard: { name: "guard" },
         },
     },
@@ -57,7 +57,7 @@ const schematics = {
         parts: {
             stick: { name: "stick" },
             string: { name: "string" },
-            rock: { name: "rock" },
+            ball: { name: "ball" },
         },
     },
     gloves: {
