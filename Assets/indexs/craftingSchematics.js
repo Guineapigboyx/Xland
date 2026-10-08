@@ -29,7 +29,7 @@ const schematics = {
         name: "drill",
         itemName: "Drill",
         modularItem: items.drill,
-        parts: { bit: { name: "bit" }, motor: { name: "motor" }, handle: { name: "handle" } },
+        parts: { bit: { name: "bit" }, motor: { name: "motor" }, handle: { name: "grip" } },
     },
     shield: {
         name: "shield",
@@ -133,6 +133,7 @@ const schematics = {
  * lets say you can make this with wood or metal you would put both of those material types here
  * @property {Number} amount - the amount of this material required
  * @property {boolean} same - the materials must both be the same
+ * @property {Number} statMult - mutipler for this materials stats (this effects every stat)
  */
 const modules = {
     // tool heads
@@ -283,7 +284,12 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterial: [materialTypes.wire, materialTypes.plants, materialTypes.skin],
+                allowedMaterial: [
+                    materialTypes.wire,
+                    materialTypes.plants,
+                    materialTypes.skin,
+                    items.rubber,
+                ],
                 amount: 3,
             },
         ],
@@ -434,7 +440,12 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, items.xtramite],
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    items.xtramite,
+                    items.rubber,
+                ],
                 amount: 1,
             },
         ],
@@ -465,7 +476,7 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.wire, materialTypes.plants, items.xtramite],
+                allowedMaterials: [materialTypes.wire, materialTypes.plants],
                 amount: 2,
             },
         ],
@@ -494,18 +505,8 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.metal, materialTypes.bone],
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
                 amount: 3,
-            },
-        ],
-    },
-    barbedString: {
-        name: "Barbed",
-        part: [schematics.slapstick.parts.string],
-        materials: [
-            {
-                allowedMaterials: [materialTypes.metal, materialTypes.bone],
-                amount: 2,
             },
         ],
     },
@@ -627,79 +628,865 @@ const modules = {
         ],
     },
     // drill handle
-    basicGrip: { name: "" },
-    pistolGrip: { name: "" },
-    spadeGrip: { name: "" },
-    doubleSpadeGrid: { name: "" },
-    ropeGrip: { name: "" },
-    strightGrip: { name: "" },
+    basicGrip: {
+        name: "Basic grip",
+        part: [schematics.drill.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [items.bolts],
+                amount: 2,
+            },
+        ],
+    },
+    pistolGrip: {
+        name: "Pistol Grip",
+        part: [schematics.drill.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    spadeGrip: {
+        name: "Spade Grip",
+        part: [schematics.drill.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    doubleSpadeGrid: {
+        name: "Double Spade Grid",
+        part: [schematics.drill.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
     // shield
-    barGrip: { name: "" },
-    holeGrip: { name: "" },
-    doubleBarGrip: { name: "" },
-    straps: { name: "" },
-    rope: { name: "" },
-    guigeStrap: { name: "" },
+    barGrip: {
+        name: "Bar Grip",
+        part: [schematics.shield.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    holeGrip: {
+        name: "Hole Grip",
+        part: [schematics.shield.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    doubleBarGrip: {
+        name: "Double Bar Grip",
+        part: [schematics.shield.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 2,
+            },
+        ],
+    },
+    straps: {
+        name: "Straps",
+        part: [schematics.shield.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.wire,
+                    materialTypes.plants,
+                    items.xtramite,
+                ],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterial: [materialTypes.sticky],
+                amount: 1,
+            },
+        ],
+    },
+    guigeStrap: {
+        name: "Guige Strap",
+        part: [schematics.shield.parts.grip],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterial: [materialTypes.sticky],
+                amount: 1,
+            },
+        ],
+    },
     // shield face
-    flatFace: { name: "" },
-    curvedFace: { name: "" },
-    spikedFace: { name: "" },
-    armoredFace: { name: "" },
-    barbedFace: { name: "" },
-    bladeFace: { name: "" },
-    wideRimdFace: { name: "" },
+    flatFace: {
+        name: "Flat Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    curvedFace: {
+        name: "Curved Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    spikedFace: {
+        name: "Spiked Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.gemStone,
+                    materialTypes.rock,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    armoredFace: {
+        name: "Armored Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    barbedFace: {
+        name: "Barbed Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    bladeFace: {
+        name: "Blade Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterial: [items.knife],
+                amount: 2,
+            },
+        ],
+    },
+    wideRimFace: {
+        name: "Wide Rim Face",
+        part: [schematics.shield.parts.face],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
     // sword blades
-    basicBlade: { name: "" },
-    broadBlade: { name: "" },
-    katanaBlade: { name: "" },
-    rapierBlade: { name: "" },
-    shortBlade: { name: "" },
-    knifeBlade: { name: "" },
-    macheteBlade: { name: "" },
+    basicBlade: {
+        name: "Basic Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    broadBlade: {
+        name: "Broad Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.rock],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    katanaBlade: {
+        name: "Katana Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    rapierBlade: {
+        name: "Rapier Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                amount: 1,
+            },
+        ],
+    },
+    shortBlade: {
+        name: "Short Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    knifeBlade: {
+        name: "Knife Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    macheteBlade: {
+        name: "Machete Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
     // guards
-    basicGuard: { name: "" },
-    shieldGuard: { name: "" },
-    wideGuard: { name: "" },
-    sweptGuard: { name: "" },
-    weightedGuard: { name: "" },
+    basicGuard: {
+        name: "Basic Guard",
+        part: [schematics.sword.parts.guard],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    shieldGuard: {
+        name: "Shield Guard",
+        part: [schematics.sword.parts.guard],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [items.shield],
+                amount: 1,
+            },
+        ],
+    },
+    wideGuard: {
+        name: "Wide Guard",
+        part: [schematics.sword.parts.guard],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 2,
+            },
+        ],
+    },
+    sweptGuard: {
+        name: "Swept Guard",
+        part: [schematics.sword.parts.guard],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    weightedGuard: {
+        name: "Weighted Guard",
+        part: [schematics.sword.parts.guard],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 2,
+            },
+        ],
+    },
     // slackstick stones
-    ball: { name: "" },
-    spiky: { name: "" },
-    largeBall: { name: "" },
+    ball: {
+        name: "Ball",
+        part: [schematics.slapstick.parts.ball],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                    materialTypes.meat,
+                    materialTypes.plants,
+                    materialTypes.gemStone,
+                    materialTypes.sticky,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    spikyBall: {
+        name: "Spiky Ball",
+        part: [schematics.slapstick.parts.ball],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                    materialTypes.meat,
+                    materialTypes.plants,
+                    materialTypes.gemStone,
+                    materialTypes.sticky,
+                ],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    largeBall: {
+        name: "Large Ball",
+        part: [schematics.slapstick.parts.ball],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.rock,
+                    materialTypes.meat,
+                    materialTypes.plants,
+                    materialTypes.gemStone,
+                    materialTypes.sticky,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
     // gloves
-    basicPlate: { name: "" },
-    chainGloves: { name: "" },
-    gauntlets: { name: "" },
-    insulatedGloves: { name: "" },
-    climbingGloves: { name: "" },
+    basicGloves: {
+        name: "Basic Gloves",
+        part: [schematics.gloves.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, items.rubber],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    chainGloves: {
+        name: "Chain Mail Gloves",
+        part: [schematics.gloves.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    gauntlets: {
+        name: "Gauntlets",
+        part: [schematics.gloves.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    insulatedGloves: {
+        name: "Insulated Gloves",
+        part: [schematics.gloves.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    climbingGloves: {
+        name: "Climbing Gloves",
+        part: [schematics.gloves.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterial: [materialTypes.sticky],
+                amount: 1,
+            },
+        ],
+    },
     // knuckle plates
-    baiscPlate: { name: "" },
-    spikedPlate: { name: "" },
-    gloveReinforcement: { name: "" },
-    dusters: { name: "" },
+    baiscPlate: {
+        name: "Baisc Plate",
+        part: [schematics.gloves.parts.knuckle],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                amount: 1,
+            },
+        ],
+    },
+    spikedPlate: {
+        name: "Spiked Plate",
+        part: [schematics.gloves.parts.knuckle],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                amount: 1,
+            },
+        ],
+    },
+    gloveReinforcement: {
+        name: "Glove Reinforcement",
+        part: [schematics.gloves.parts.knuckle],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.skin],
+                amount: 2,
+            },
+        ],
+    },
+    dusters: {
+        name: "Dusters",
+        part: [schematics.gloves.parts.knuckle],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
     // bow stave
-    basicStave: { name: "" },
-    longStave: { name: "" },
-    recursiveStave: { name: "" },
-    warStave: { name: "" },
-    compoundStave: { name: "" },
-    stablizerStave: { name: "" },
-    sightedStave: { name: "" },
+    basicStave: {
+        name: "Basic Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    longStave: {
+        name: "Long Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    recursiveStave: {
+        name: "Recursive Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    warStave: {
+        name: "War Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    compoundStave: {
+        name: "Compound Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterial: [items.gear],
+                amount: 2,
+            },
+        ],
+    },
+    stablizerStave: {
+        name: "Stablizer Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    sightedStave: {
+        name: "Sighted Stave",
+        part: [schematics.bow.parts.stave],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 1,
+            },
+        ],
+    },
     // bow string
-    bowString: { name: "" },
-    bowCable: { name: "" },
+    bowString: {
+        name: "Bow String",
+        part: [schematics.bow.parts.string],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wire],
+                amount: 1,
+            },
+        ],
+    },
+    bowCable: {
+        name: "Bow Cable",
+        part: [schematics.bow.parts.string],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal],
+                amount: 1,
+            },
+        ],
+    },
     // spear head
-    basicHead: { name: "" },
-    glaiveHead: { name: "" },
-    halberdHead: { name: "" },
-    lanceHead: { name: "" },
-    naginataHead: { name: "" },
-    pikeHead: { name: "" },
-    tridentHead: { name: "" },
+    basicHead: {
+        name: "Basic Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    glaiveHead: {
+        name: "Glaive Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    halberdHead: {
+        name: "Halberd Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
+    lanceHead: {
+        name: "Lance Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 4,
+                same: true,
+            },
+        ],
+    },
+    naginataHead: {
+        name: "Naginata Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    tridentHead: {
+        name: "Trident Head",
+        part: [schematics.spear.parts.head],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                    materialTypes.gemStone,
+                ],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
     // club head
-    batHead: { name: "" },
-    armoredHead: { name: "" },
-    spikedHead: { name: "" },
-    barbedHead: { name: "" },
-    wingBatHead: { name: "" },
+    batHead: {
+        name: "Bat Head",
+        part: [schematics.club.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 4,
+                same: true,
+            },
+        ],
+    },
+    armoredHead: {
+        name: "Armored Head",
+        part: [schematics.club.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 4,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    spikedHead: {
+        name: "Spiked Head",
+        part: [schematics.club.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 4,
+                same: true,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.gemStone,
+                    materialTypes.rock,
+                    materialTypes.bone,
+                ],
+                amount: 2,
+            },
+        ],
+    },
+    barbedHead: {
+        name: "Barbed Head",
+        part: [schematics.club.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 4,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 2,
+            },
+        ],
+    },
+    wingBatHead: {
+        name: "Wing Head",
+        part: [schematics.club.parts.head],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
+                amount: 3,
+                same: true,
+            },
+        ],
+    },
 };

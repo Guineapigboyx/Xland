@@ -1192,6 +1192,19 @@ const items = {
             materialType: materialTypes.wire,
         },
     },
+    rubber: {
+        name: "Rubber",
+        rarity: raritys.basic,
+        weight: 0.8,
+        weaponData: { weaponType: weaponTypes.whip },
+        materialData: {
+            weight: 0.2,
+            durablity: 3,
+            attack: 0,
+            defense: 0.4,
+            materialType: materialTypes.sticky,
+        },
+    },
     flint: {
         name: "Flint",
         rarity: raritys.Common,
