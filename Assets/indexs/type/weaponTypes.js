@@ -35,7 +35,7 @@ const weaponTypes = {
         rockBreaker: 2,
         metalBreaker: 2,
     },
-    hammer: {
+    axe: {
         name: "Axe",
         weightThreshold: 7,
         attackBonus: statTypes.strength,
