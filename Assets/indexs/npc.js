@@ -18,15 +18,15 @@
  * @property {Number|undefined} tradeThreshold - how high approval must be to trade
  * @property {Number|undefined} restockTime -  How many ingame hours it takes for them to restock
  *
- * @property {inventoryItem[]|undefined} inventory - inventory of the NPC
+ * @property {npcItem[]|undefined} inventory - inventory of the NPC
  * @property {equiped[]|undefined} equiped - items this npc has equiped
  * @property {stat[]} stats - the stats of the NPC
  *
  * @property {weaponTypes.weaponType[]} proficiency
  * - Weapon types the NPC is proficient with
  * ----
- * @typedef  {Object} inventoryItem - Which items they have in their inventory and are willing to sell
- * @property {items.item} item - the items object in items
+ * @typedef  {Object} npcItem - Which items they have in their inventory and are willing to sell
+ * @property {String} item - the item that is in the npc's inventory, it should be a items.item key
  * @property {Boolean} canSell - do they want to sell this item
  * @property {Number} price - Price in currency
  * @property {Number} quantity - defaulting to 1 if omitted
@@ -35,7 +35,7 @@
  * ----
  * @typedef {Object} equiped - what could appear in each equipment slot
  * @property {equipSlots.slot} slot - the slot that items can appear in
- * @property {items.item[]} items - items that can appear in the slot
+ * @property {String} item - the item that apears in that slot, it should be a items.item key
  *
  * ----
  * @typedef {Object} stat - base stat ranges

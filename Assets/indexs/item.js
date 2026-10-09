@@ -5,15 +5,15 @@
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
  * @property {Number} weight
- * @property {raritys.rarity|undefined} raritys - Hardcoded rarity of a item, if undifined it is determined from the materials
+ * @property {raritys.rarity} raritys - Hardcoded rarity of a item, if undifined it is determined from the materials
+ * @property {Number|undefined} storageCapacity
+ *
  * @property {materialData|undefined} materialData - Data about it as a crafting material
  * @property {socketData|undefined} socketData - Data about socketing with this material
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
- * @property {Number|undefined} storageCapacity
- * @property {Array|undefined} materialList - list of the matrials that make up this item
  *
- * @property {schematics.schematic|undefined} schematic - the schematic that is used to craft this item
+ * @property {component} components - list of the matrials that make up this item
  *
  * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
  * @property {Boolean|undefined} preferWater - wants to be floating in water
@@ -22,34 +22,35 @@
  * @property {equipSlots.slot|undefined} equipSlot - can items with this type be equiped
  * @property {itemUseageTypes|undefined} itemUsageType - the way(s) this item can be used (not includeing attacks)
  *
- * ----
+ * ---------------------------------------
  * @typedef {object} materialData - data about a material if
- * //any of these stats are undifined they are 0
- * @property {Number|undefined} weight
- * @property {Number|undefined} storage
- * @property {Number|undefined} durablity
- * @property {Number|undefined} attack
- * @property {Number|undefined} defense
- * @property {Number|undefined} accuracy
- * @property {Number|undefined} pickaxePower
+ * @property {Number} density
+ * @property {Number} hardness
+ * @property {Number} flexiblity
+ * @property {Number} toughness
+ * @property {Number} sharpness
  *
  * @property {damagetypes[]} damagetypes - amplify the power of this damage type when crafted with something that gives the same
  * @property {effects[]} effects
  * @property {materialTypes} materialType - the type of matrial this item is
  *
- * ----
+ * ---------------------------------------
  * @typedef {object} weaponData - properties about this item in combat
  * @property {weaponTypes.weaponType} weaponType - what weapon type is this,
  * @property {damageTypes.damagetype} damagetype - the damagetype this item gives
- * @property {Number|undefined} density -
- * @property {Number|undefined} hardness
- * @property {Number|undefined} flexiblity
- * @property {Number|undefined} toughness
+ * @property {Number} durablity
+ * @property {Number|undefined} attack
+ * @property {Number|undefined} defense
+ * @property {Number|undefined} accuracy
+ * @property {Number|undefined} crit
+ * @property {Number|undefined} actionSurge - how much ep does it cost to action surge with this item (default = 3)
+ * @property {1|2|3|4|5|6|7|8|undefined} range - overides the weapon types with this range
+ * @property {1|2|3|4|undefined} speed - how fast the weapon is (default = 2)
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - sound category this item uses
- * @property {attack|undefined} speicalAttack - special attack that is added to this item
+ * @property {attacks.attack[]|undefined} speicalAttack - special attack that is added to this item
  * @property {Function} onHit - when you hit something this function runs
  *
- * ----
+ * ---------------------------------------
  * @typedef {Object} foodData
  * @property {foodType} foodType - the type of food it is
  * @property {Number|undefined} maxUses - how many times can it be used before it's gone (if undifined it 1)
@@ -58,17 +59,32 @@
  * @property {foodPrefixes.prefix} prefix - prefixes that this item counts to (like spicy food would count towards the spicy prefix)
  * @property {effects[]} effects - effects gotten from eating
  *
- * ---
+ * ---------------------------------------
+ * @typedef {Object} effect
+ * @property {statusEffects.effect} effectGiven - the effect given
+ * @property {Number} effectChance - chance of getting the effect (does NOT apply for socketData)
+ * @property {Number} effectTime - how long the effect lasts in turns/hours (does NOT apply for socketData)
+ * @property {itemUsageTypes[]} effectCondition - the condition the effect happens (does NOT apply for foodData or socketData)
+ * @property {Boolean} onSelf - if the effect is given to your self or a target (does NOT apply for foodData)
+ *
+ * ---------------------------------------
+ * @typedef {Object} component - the data relateing to how this item was crafted
+ * @property {schematics.schematic}
+ * @property {craftedModules[]} modules
+ *
+ * @typedef {object} craftedModules
+ * @property {modules.module}
+ * @property {iventoryItem[]|Object}
+ *
+ * ---------------------------------------
  * @typedef {Object} socketData
  * @property {string} prefix - the name that gets applied to the start of socketd items
  * @property {itemUsageTypes[]} socketUsageType - how to activate the socket
  * @property {Number} socketUses - how many times you can use the item before it socket runs out
  * @property {Number} socketTime - how long a single usage of a socket lasts
  * @property {boolean|undefined} cancelable - can you cancel the imbule effects, this also allows a reaction to deny its effects
- * @property {boolean|undefined} denyCost - if you deny a socket effect it still subtracts 1 from socketUses (does nothing unless cancelable is on)
  *
- * socket effects
- * @property {statChange|undefined} statChange - Array of which stat and how much is changed in each stat
+ * @property {statChange[]|undefined} statChange - Array of which stat and how much is changed in each stat
  * @property {effects[]|undefined} effects - effects gotten from doing the effectCondition and haveing the socketd item equiped
  * @property {Number} attack - attack bonus added to any item with this socket
  * @property {Number} accuracy - accuracy bonus added to any item with this socket
@@ -84,16 +100,8 @@
  * @typedef {Object} statChange
  * @property {statTypes.statType} stat - the stats object
  * @property {Number} amount - the amount the stat changes
- *
- * ----
- * @typedef {Object} effect
- * @property {statusEffects.effect} effectGiven - the effect given
- * @property {Number} effectChance - chance of getting the effect (does NOT apply for socketData)
- * @property {Number} effectTime - how long the effect lasts in turns/hours (does NOT apply for socketData)
- * @property {itemUsageTypes[]} effectCondition - the condition the effect happens (does NOT apply for foodData or socketData)
- * @property {Boolean} onSelf - if the effect is given to your self or a target (does NOT apply for foodData)
  */
-const items = {
+let items = {
     wood: {
         name: "Wood",
         rarity: raritys.basic,
@@ -3186,3 +3194,9 @@ const items = {
         equipSlot: equipSlots.mainHand,
     },
 };
+
+/**
+ * @typedef {Object} craftedItemData - this holds data about a item that is overid
+ * @property {Record<number, item>} - the key should be the ID, the data in the Object should be a item
+ */
+let craftedItemData = {};

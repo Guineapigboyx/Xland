@@ -5,7 +5,7 @@
  * @typedef {object} schematic - data about this crafting recipe
  * @property {String} name - name of the schematic
  * @property {String} itemName - the item made by the schematic (the name would be "{socket prefix}{material name}{itemName}")
- * @property {items.item} modularItem - the item that is being crafted
+ * @property {String} modularItem - the item that is stored, it should be a items.item key
  * @property {part[]} parts - parts of the schematic that modules go in
  *
  * ----
@@ -106,34 +106,18 @@ const schematics = {
  * @property {allowedMaterial[]|undefined} materials - the sets materials needed to make this
  * lets say you want a module that needs both bolts and wood in the to do that you make 2 allowedMaterial objects one for wood another for bolts
  *
- * @property {Boolean} giveIntergiry - does the weight of this give or remove integrity
- * @property {Number} weightMult
- * //any of these stats are undifined they don't give that stat
- * @property {Number|undefined} durablityMult
- * @property {Number|undefined} attackMult
- * @property {Number|undefined} defenseMult
- * @property {Number|undefined} accuracy - extra accuracy you get from this module
- * @property {Number|undefined} crit - modifer for attack rolls. Adds/subtracts this amount from the final roll. (allows for higher than 1.3 roll damage modifers)
- * @property {1|2|3|4|5|6|7|8|undefined} range - overides the weapon types with this range
- * @property {effect[]|undefined} effect - effects given with this module
+ * @property {Function} itemStats - a function for setting all the values in {items.item.weaponData}
  *
- * @property {attacks.attack} specialAttack - speical attack gotten form useing this module
+ * @property {equipSlots.slot|undefined} equipSlot - can items with this type be equiped (if a item has multiple it can be in any of those slots)
  * @property {weaponTypes.weaponType|undefined} weaponType - if a item is made with this module it will use this instead of the schematics
  * if you try to craft a item with multiple modules with diffrent weaponTypes it will say they are incompatible
  * ----
- * @typedef {Object} effect
- * @property {statusEffects.effect} effectGiven - the effect given
- * @property {Number} effectChance - chance of getting the effect
- * @property {Number} effectTime - how long the effect lasts in turns/hours
- * @property {itemUsageTypes[]} effectCondition - the condition the effect happens
- * @property {Boolean} onSelf - if the effect is given to your self or a target
- * ----
  * @typedef {Object} allowedMaterial
- * @property {(items.item|materialTypes)[]} material - every material or type that can be used here
+ * @property {(inventoryItem|materialTypes)[]} material - every material or type that can be used here
  * lets say you can make this with wood or metal you would put both of those material types here
  * @property {Number} amount - the amount of this material required
  * @property {boolean} same - the materials must both be the same
- * @property {Number} statMult - mutipler for this materials stats (this effects every stat)
+ *
  */
 const modules = {
     // tool heads
@@ -824,7 +808,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [items.knife],
+                allowedMaterial: [items.metal],
                 amount: 2,
             },
         ],

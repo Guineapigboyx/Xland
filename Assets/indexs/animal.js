@@ -37,7 +37,7 @@
  *
  * ---
  * @typedef {Object} itemDrops
- * @property {items.item} - the item
+ * @property {String} item - the item that is droped, it should be a items.item key
  * @property {Number} dropChance - the change of it being droped
  * @property {[Number, Number]} amount - how many of the item is droped [min, max]
  */
