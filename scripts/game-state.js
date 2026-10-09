@@ -40,6 +40,9 @@ let gameState = {
     persons: {},
 };
 
+/**
+ * @param {basePepole.person} basePerson -  1 of the base pepole
+ */
 function addNewTeamate(basePerson) {
     let person = {
         personData: basePerson,
