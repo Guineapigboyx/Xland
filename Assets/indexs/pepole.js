@@ -3,12 +3,19 @@
  * @property {person}
  *
  * @typedef {Object} person - the persons stat
+ * @property {String} id - key of the object
  * @property {string} name - name of the person
  * @property {Number} hp - How much max HP they have
  * @property {stat[]} stats - the base stats of the person
  * @property {statusEffects.effect[]|undefined} ability - This is a status effect that this person always has active.
  * @property {attacks.attack[]|undefined} speicalMove - Array of special moves they have
  * @property {npcs.npc} npcData - mainly for the personality and background of the character
+ * @property {equiped[]} equiped - the items they currently have equiped
+ *
+ * ----
+ * @typedef {Object} equiped
+ * @property {equipSlots.slot} slot - the slot
+ * @property {iventoryItem} item - item
  *
  * ----
  * @typedef {Object} stat - base stat ranges
@@ -18,6 +25,7 @@
  */
 const basePepole = {
     koopa: {
+        id: "koopa",
         name: "Koopa",
         hp: 100,
         stats: [
@@ -31,5 +39,13 @@ const basePepole = {
         ],
         ability: [statusEffects.shellDefence],
         //todo npcData: npcs.koopa
+        equiped: [
+            {
+                slot: equipSlots.pants,
+                item: {
+                    item: "koopasUnderwear",
+                },
+            },
+        ],
     },
 };
