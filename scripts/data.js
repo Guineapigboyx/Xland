@@ -31,3 +31,7 @@ function makeInventoryItem(item, craftingId) {
         return false;
     }
 }
+
+function addItemToInventory(inventoryItem, inventory) {
+    inventory.push(inventoryItem);
+}

@@ -26,13 +26,14 @@
         <script src="Assets/indexs/pepole.js"></script>
         <script src="Assets/indexs/animal.js"></script>
         <!-- JS Scripts -->
+        <script src="scripts/displays.js"></script>
         <script src="scripts/button.js"></script>
         <script src="scripts/misc.js"></script>
-        <script src="scripts/update-loop.js"></script>
         <script src="scripts/ai.js"></script>
         <script src="scripts/game-state.js"></script>
         <script src="scripts/event-listeners.js"></script>
         <script src="scripts/data.js"></script>
+        <script src="scripts/update-loop.js"></script>
         <!-- CSS stylesheet -->
         <link rel="stylesheet" href="style.css" />
 
@@ -77,8 +78,23 @@
                 >
                     crafting
                 </button>
-                <button class="button huge-text Header-text pointer"></button>
-                <button class="button huge-text Header-text pointer"></button>
+                <button
+                    class="button huge-text Header-text pointer"
+                    onclick="addNewTeamate(basePepole.koopa)"
+                >
+                    new mate
+                </button>
+                <button
+                    class="button huge-text Header-text pointer"
+                    onclick="
+                        addItemToInventory(
+                            makeInventoryItem(items.adamantite),
+                            gameState.persons.koopa.inventory,
+                        )
+                    "
+                >
+                    add item
+                </button>
             </div>
             <div class="bottom-section">
                 <p id="bottom-null" class="fit-div gigantic-text center-text">Nothing to show</p>
