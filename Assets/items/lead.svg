@@ -1,0 +1,18 @@
+<svg version="1.1" viewBox="145.82 270.424 116.554 57.8893" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="116.554" height="57.8893">
+  <clipPath id="g13ac7986193_0_970.0">
+    <path d="m0 0l960.0 0l0 540.0l-960.0 0l0 -540.0z" clip-rule="nonzero" />
+  </clipPath>
+  <g clip-path="url(#g13ac7986193_0_970.0)">
+    <path fill="#000000" fill-opacity="0.0" d="m0 0l960.0 0l0 540.0l-960.0 0z" fill-rule="evenodd" />
+    <defs>
+      <linearGradient id="g13ac7986193_0_970.1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(5.577678978650784 0.0 0.0 5.577678978650784 0.0 0.0)" spreadMethod="pad" x1="31.173184475756774" y1="48.572823746792515" x2="31.17316609423157" y2="54.15050272541301">
+        <stop offset="0.0" stop-color="#000000" />
+        <stop offset="1.0" stop-color="#351c75" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#g13ac7986193_0_970.1)" d="m173.87401 302.03412l7.4094543 -23.7034l15.5538025 -7.40683l22.223099 7.40683l21.480316 -6.666687l6.6666718 30.370087z" fill-rule="evenodd" />
+    <path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m173.87401 302.03412l7.4094543 -23.7034l15.5538025 -7.40683l22.223099 7.40683l21.480316 -6.666687l6.6666718 30.370087z" fill-rule="evenodd" />
+    <path fill="#666666" d="m161.87401 315.22046l15.556442 -16.29657l9.629913 2.9632568l17.776901 -7.40683l22.223099 6.6666565l20.0 -4.4461975l14.81366 13.3333435l-12.590561 13.3333435l-60.0 4.4461975l-42.963257 -2.223114z" fill-rule="evenodd" />
+    <path stroke="#595959" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m161.87401 315.22046l15.556442 -16.29657l9.629913 2.9632568l17.776901 -7.40683l22.223099 6.6666565l20.0 -4.4461975l14.81366 13.3333435l-12.590561 13.3333435l-60.0 4.4461975l-42.963257 -2.223114z" fill-rule="evenodd" />
+  </g>
+</svg>

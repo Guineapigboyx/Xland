@@ -1,0 +1,17 @@
+<svg version="1.1" viewBox="565.667 238.234 51.2294000000001 31.767" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="51.2294000000001" height="31.767">
+  <clipPath id="g13ac7986193_0_1598.0">
+    <path d="m0 0l960.0 0l0 540.0l-960.0 0l0 -540.0z" clip-rule="nonzero" />
+  </clipPath>
+  <g clip-path="url(#g13ac7986193_0_1598.0)">
+    <path fill="#000000" fill-opacity="0.0" d="m0 0l960.0 0l0 540.0l-960.0 0z" fill-rule="evenodd" />
+    <defs>
+      <linearGradient id="g13ac7986193_0_1598.1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(7.660763437453138 0.0 0.0 7.660763437453138 0.0 0.0)" spreadMethod="pad" x1="71.76610816691877" y1="33.17124279296858" x2="77.18307657429419" y2="38.588229936955116">
+        <stop offset="0.0" stop-color="#ffffff" />
+        <stop offset="0.15" stop-color="#acacac" />
+        <stop offset="0.5" stop-color="#595959" />
+        <stop offset="1.0" stop-color="#595959" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#g13ac7986193_0_1598.1)" d="m565.6667 270.0006l51.22943 -1.3256226l-6.7408447 -25.145767l-20.222412 -5.295624l-16.178589 11.913467z" fill-rule="evenodd" />
+  </g>
+</svg>
