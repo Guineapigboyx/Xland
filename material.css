@@ -1,0 +1,24 @@
+/* How xland item colors work:
+
+So all material colors have 4 each. the 4 are for gradients or if at somepoint i want to make items use these colors for other sections. 
+Below are how you should map the colors for materials
+
+for 1 color items make them all the same color
+for 4 color items you can make each color special 
+
+for 2 color items make color1 and color 4 special
+for 3 color items make color1 and color2 and color4 speical
+*/
+
+:root {
+    /* metal colors */
+    --Tin: #ffffffff;
+    --Iron: #b7b7b7ff;
+    --Aluminum: #d9d9d9ff;
+    --Copper: #f6b26bff;
+    --Zinc: #ff0000ff;
+    --Shiny-Stone: --Silver: --Brass: --Uramite: --Gold: --steel: --Lithium: --Carbon-steel:
+        --Platium: --Magnesium: --Lead: --Mithril: --Crystal: --Flameright: --Adamantite:
+        --Stainless-Steel: --Uranium: --Plutonium: --Xtramite: --Titanium: --Titanium-gold:
+        --Master-ore: --Pale: ;
+}
