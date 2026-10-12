@@ -30,7 +30,7 @@ let itemIcons = [
     { cssClass: "item-flameright", file: "flameright.svg" },
     { cssClass: "item-flint", file: "flint.svg" },
     { cssClass: "item-flower", file: "flower.svg" },
-    { cssClass: "item-fumming flower", file: "fumming flower.svg" },
+    { cssClass: "item-fumming-flower", file: "fumming flower.svg" },
     { cssClass: "item-ghost-pepper", file: "ghost pepper.svg" },
     { cssClass: "item-glass", file: "glass.svg" },
     { cssClass: "item-gold", file: "gold.svg" },

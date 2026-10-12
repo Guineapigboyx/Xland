@@ -19,6 +19,7 @@ items:
     [=] Giga beast items // the main thing is unlocking another rarity
     [x] placeable items  
     [x] Crafting station // they are also placeable items, my plan is the scematics for them are gotten by killing giga beasts
+    [] material colors
 
 crafting:
     [] schematics/crafting molds
@@ -34,6 +35,7 @@ UI:
     [-] conversation
     [-] map
     [-] adventure log
+    [] dynamic asset coloring
     [] crafting
     [=] cooking
     [=] climbing
