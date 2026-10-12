@@ -45,6 +45,7 @@ let itemIcons = [
     { cssClass: "item-life-fruit", file: "life fruit.svg" },
     { cssClass: "item-lithium", file: "lithium.svg" },
     { cssClass: "item-magnesium", file: "magnesium.svg" },
+    { cssClass: "item-meat", file: "meat.svg" },
     { cssClass: "item-master-ore", file: "master ore.svg" },
     { cssClass: "item-milk", file: "milk.svg" },
     { cssClass: "item-mint", file: "mint.svg" },
