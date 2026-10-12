@@ -38,6 +38,7 @@ Also each material can have a --color-edge, which is used for most of the time b
 Normaly they are #333 which is a very dark grey, but you can put any color in there.
 */
 
+/* svg :root */
 svg {
     /* for 2 color materials */
     --duo2-mix: color-mix(in srgb, var(--color1) 52%, var(--color4));
@@ -45,11 +46,13 @@ svg {
 
     /* for 3 color materials */
     --triple3-mix: color-mix(in srgb, var(--color2) 69.23%, var(--color4) 30.77%);
+
+    /* use auto scaleing for svgs */
     width: var(--svg-scale);
     height: var(--svg-scale);
 }
 
-*[data-material="tin"] {
+svg[data-material="tin"] {
     --color1: #eeeeee;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -57,7 +60,7 @@ svg {
     --material-gradient: url(#ingot-linear);
 }
 
-*[data-material="magnesium"] {
+svg[data-material="magnesium"] {
     --color1: #8e7cc3;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -65,7 +68,7 @@ svg {
     --material-gradient: url(#ingot-radial);
 }
 
-*[data-material="titanium"] {
+svg[data-material="titanium"] {
     --color1: #00ffff;
     --color2: #0000ff;
     --color3: var(--triple3-mix);
@@ -73,7 +76,7 @@ svg {
     --material-gradient: url(#ingot-linear);
 }
 
-*[data-material="plutonium"] {
+svg[data-material="plutonium"] {
     --color1: #8e7cc3;
     --color2: #00ff00;
     --color3: #4c1130;
