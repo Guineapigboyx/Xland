@@ -50,6 +50,9 @@ svg {
     /* use auto scaleing for svgs */
     width: var(--svg-scale);
     height: var(--svg-scale);
+
+    /* png color filter opacity */
+    --color-opacity: 0.7;
 }
 
 svg[data-material="tin"] {
