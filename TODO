@@ -35,11 +35,47 @@ UI:
     [-] conversation
     [-] map
     [-] adventure log
-    [] dynamic asset coloring
+    [] material colors
     [] crafting
     [=] cooking
     [=] climbing
     // there will most likely be more
+    SVG: 
+        [] apple
+        [] cloth
+        [] flower
+        [x] fumming flower // i did it but might not use
+        [] glass
+        [] goop
+        [] leaf
+        [] rice
+        [] meat
+        [] pikmin
+        [] pikmin meat
+        [=] pepper
+        [x] powder
+        [] string
+        [] water
+        [x] wood / ingot
+        [=] bulborb // since its also a animal diffrent colors make sense
+        [=] rat // since its also a animal diffrent colors make sense
+        [=] custom berry colors // might keep the 3 xland ones
+
+        [-] sword blades
+        [-] spear heads
+        [-] handles/shaft
+        [-] clubs
+        [-] bow stave
+        [-] bow string
+        [-] gloves
+        [-] slaptick balls
+        [-] shield faces
+        [-] shield handle
+        [-] drill bits
+        [-] drill grip
+        [-] hammer heads
+        [-] axe heads
+        [-] bindings
 
 pepole:
     [-] new names
