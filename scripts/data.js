@@ -35,3 +35,5 @@ function makeInventoryItem(item, craftingId) {
 function addItemToInventory(inventoryItem, inventory) {
     inventory.push(inventoryItem);
 }
+
+function contextToDropDown(options, selector) {}

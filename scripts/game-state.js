@@ -43,7 +43,7 @@ let gameState = {
 /**
  * @param {basePepole.person} basePerson -  1 of the base pepole
  */
-function addNewTeamate(basePerson) {
+function addNewTeamate(basePerson, text) {
     let person = {
         personData: basePerson,
         inventory: [],
@@ -55,5 +55,5 @@ function addNewTeamate(basePerson) {
         activeEffects: [],
     };
 
-    gameState.persons[basePerson.id] = person;
+    gameState.activeTeam[text] = person;
 }

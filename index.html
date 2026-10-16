@@ -56,14 +56,14 @@
                 <button class="button huge-text Header-text pointer"></button>
                 <button
                     id="interact-button"
-                    class="button huge-text Header-text pointer"
+                    class="button huge-text Header-text pointer hover"
                     onclick="toggleScreen('interact')"
                 >
                     Interact
                 </button>
                 <button
                     id="status-button"
-                    class="button huge-text Header-text pointer"
+                    class="button huge-text Header-text pointer hover"
                     onclick="toggleScreen('status')"
                 >
                     Status
@@ -75,19 +75,19 @@
                 </div>
                 <button
                     id="crafting-button"
-                    class="button huge-text Header-text pointer"
+                    class="button huge-text Header-text pointer hover"
                     onclick="toggleScreen('crafting')"
                 >
                     crafting
                 </button>
                 <button
-                    class="button huge-text Header-text pointer"
+                    class="button huge-text Header-text pointer hover"
                     onclick="addNewTeamate(basePepole.koopa)"
                 >
                     new mate
                 </button>
                 <button
-                    class="button huge-text Header-text pointer"
+                    class="button huge-text Header-text pointer hover"
                     onclick="
                         addItemToInventory(
                             makeInventoryItem(items.adamantite),
@@ -104,7 +104,32 @@
                 <section class="craft-screen fit-div hide">
                     <div id="crafting-grid" class="border-super-thin"></div>
                     <div class="inventory blue-bubble"></div>
-                    <div class="border-super-thin"></div>
+                    <div id="crafting-info" class="border-super-thin">
+                        <div
+                            onmouseenter=""
+                            class="team-list dark-bubble square-bubble dropdown small-text"
+                            style="border-top: 0"
+                        >
+                            <label>Select teamate</label>
+                            <section class="bubble">
+                                <option class="hover" value="N/A">Select teamate</option>
+                                <option class="hover" value="N/A">1</option>
+                                <option class="hover" value="N/A">2</option>
+                                <option class="hover" value="N/A">3</option>
+                                <option class="hover" value="N/A">4</option>
+                                <option class="hover" value="N/A">5</option>
+                                <option class="hover" value="N/A">6</option>
+                                <option class="hover" value="N/A">7</option>
+                                <option class="hover" value="N/A">1</option>
+                                <option class="hover" value="N/A">2</option>
+                                <option class="hover" value="N/A">3</option>
+                                <option class="hover" value="N/A">4</option>
+                                <option class="hover" value="N/A">5</option>
+                                <option class="hover" value="N/A">6</option>
+                                <option class="hover" value="N/A">7</option>
+                            </section>
+                        </div>
+                    </div>
                 </section>
                 <section class="status-screen fit-div hide">
                     <div class="status-toolbar"></div>

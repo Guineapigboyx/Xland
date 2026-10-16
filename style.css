@@ -108,6 +108,10 @@ button {
     cursor: not-allowed;
 }
 
+.hover:hover {
+    background-image: linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 10%));
+}
+
 .border-super-thin {
     border: var(--border-super-thin-width) solid var(--border-Colors);
 }
@@ -146,6 +150,7 @@ button {
     background-color: var(--bubble-color);
     border: calc(var(--scale) / 5) solid var(--border-Colors);
     border-radius: calc(var(--scale) * 1);
+    color: var(--border-Colors);
 }
 
 .dark-bubble /* equivlent of scratch variable display */ {
@@ -160,6 +165,11 @@ button {
     border: calc(var(--scale) / 5) solid var(--border-Colors);
     border-radius: calc(var(--scale) * 1);
     color: var(--dark-bubble-text);
+}
+
+.square-bubble {
+    border: calc(var(--scale) / 4) solid var(--border-Colors);
+    border-radius: 0% !important;
 }
 
 /* text */
@@ -239,6 +249,87 @@ button {
     background-color: var(--secondary-button-color);
     border: calc(var(--scale) / 2.5) solid var(--border-Colors);
     color: var(--secondary-text-color);
+}
+
+.dropdown {
+    display: grid;
+    grid-template-columns: auto 15%;
+    align-items: center;
+    grid-template-rows: 100% auto;
+    box-sizing: border-box;
+}
+
+.dropdown > section {
+    width: 100%;
+    grid-column: 1/3;
+    margin-left: -1.5%;
+    border: var(--border-super-thin-width) solid var(--border-Colors);
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown.upwards > section {
+    flex-direction: column-reverse;
+    position: relative;
+    bottom: 100%;
+    display: inline-flex;
+    vertical-align: text-top;
+}
+
+section > option {
+    border-top: var(--border-super-thin-width) solid var(--border-Colors);
+    padding-left: 5%;
+}
+
+.dropdown::after {
+    content: "";
+    display: inline-block;
+    height: 70%;
+    aspect-ratio: 1/1;
+    grid-row: 1;
+    background-color: currentColor;
+    mask: url("Assets/inventory/go-up.svg") center / contain no-repeat;
+    grid-column: 2;
+}
+
+.context-menu /* right click menu */ {
+    border-radius: calc(var(--scale) / 1.3);
+    overflow: visible;
+    border: calc(var(--scale) / 5) solid var(--border-Colors);
+    background: white;
+    z-index: 1000;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-self: right;
+    padding: 0px;
+    pointer-events: auto !important;
+    position: absolute;
+}
+
+.context-button {
+    background: white;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: calc(var(--scale) / 5);
+    cursor: pointer;
+    text-align: left;
+    border-radius: 0;
+    width: 100%;
+    pointer-events: auto !important;
+}
+
+.context-button:first-child {
+    /* Only round top corners for first button */
+    border-top-left-radius: calc(var(--scale) / 1.6);
+    border-top-right-radius: calc(var(--scale) / 1.6);
+}
+
+.context-button:last-child {
+    /* Only round bottom corners for last button */
+    border-bottom: none;
+    border-bottom-left-radius: calc(var(--scale) / 1.6);
+    border-bottom-right-radius: calc(var(--scale) / 1.6);
 }
 
 /* Area sections */
@@ -456,6 +547,12 @@ body {
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(10, 10%);
     display: grid;
+}
+
+#crafting-info {
+    display: grid;
+    grid-template-rows: 35% 50%;
+    grid-template-columns: 30% 20% 50%;
 }
 
 .inventory {
