@@ -36,11 +36,12 @@
         fill-rule="evenodd"
     />
 
-    <!-- Right face -->
+    <!-- side face -->
     <path
         fill="var(--material-gradient)"
         d="m687.8475 250.3861l21.268005 -21.26799l0 19.613907l-21.268005 21.26799z"
         fill-rule="evenodd"
+        style="filter: brightness(0.8);"
     />
 
     <!-- Top face -->
@@ -48,6 +49,7 @@
         fill="var(--material-gradient)"
         d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l-21.268005 21.26799z"
         fill-rule="evenodd"
+        style="filter: brightness(1.2);"
     />
 
     <!-- Original outline -->
