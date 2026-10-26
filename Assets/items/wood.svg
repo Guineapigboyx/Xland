@@ -4,30 +4,6 @@
     viewBox="637.281 228.118 72.8347 42.8819"
     xmlns="http://www.w3.org/2000/svg"
 >
-<defs>
-        <linearGradient
-            id="ingot-linear"
-            gradientUnits="userSpaceOnUse"
-            x1="638" y1="250"
-            x2="710" y2="250"
-        >
-            <stop offset="0" stop-color="var(--color1)" />
-            <stop offset="0.48" stop-color="var(--color2)" />
-            <stop offset="0.64" stop-color="var(--color3)" />
-            <stop offset="1" stop-color="var(--color4)" />
-        </linearGradient>
-
-        <radialGradient
-            id="ingot-radial"
-            gradientUnits="userSpaceOnUse"
-            cx="674" cy="250" r="40"
-        >
-            <stop offset="0" stop-color="var(--color1)" />
-            <stop offset="0.48" stop-color="var(--color2)" />
-            <stop offset="0.64" stop-color="var(--color3)" />
-            <stop offset="1" stop-color="var(--color4)" />
-        </radialGradient>
-    </defs>
 
     <!-- Front face -->
     <path

@@ -81,6 +81,33 @@ let itemIcons = [
     { cssClass: "item-zinc", file: "zinc.svg" },
 ];
 
+const sharedSVGElements = `
+    <defs>
+        <linearGradient
+            id="ingot-linear"
+            gradientUnits="userSpaceOnUse"
+            x1="638" y1="250"
+            x2="710" y2="250"
+        >
+            <stop offset="0" stop-color="var(--color1)" />
+            <stop offset="0.48" stop-color="var(--color2)" />
+            <stop offset="0.64" stop-color="var(--color3)" />
+            <stop offset="1" stop-color="var(--color4)" />
+        </linearGradient>
+
+        <radialGradient
+            id="ingot-radial"
+            gradientUnits="userSpaceOnUse"
+            cx="674" cy="250" r="40"
+        >
+            <stop offset="0" stop-color="var(--color1)" />
+            <stop offset="0.48" stop-color="var(--color2)" />
+            <stop offset="0.64" stop-color="var(--color3)" />
+            <stop offset="1" stop-color="var(--color4)" />
+        </radialGradient>
+    </defs>
+`;
+
 /**
  * Display a SVG
  * @param {String} selector - the selector you are wanting to put the svg on
@@ -107,6 +134,14 @@ async function loadIcons() {
         }
         fetcher = await fetch(`Assets/items/${itemIcons[icon].file}`);
         itemIcons[icon].svg = await fetcher.text();
+
+        let svg = new DOMParser().parseFromString(
+            itemIcons[icon].svg,
+            "image/svg+xml",
+        ).documentElement;
+
+        svg.insertAdjacentHTML("afterbegin", sharedSVGData);
+        itemIcons[icon].svg = svg.outerHTML;
     }
 }
 loadIcons();
