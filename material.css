@@ -55,6 +55,12 @@ svg {
     --color-opacity: 0.7;
 }
 
+/* todo wood */
+
+/* todo stone */
+
+/* todo bone */
+
 svg[data-material="tin"] {
     --color1: #eeeeee;
     --color2: var(--color1);
@@ -95,6 +101,8 @@ svg[data-material="zinc"] {
     --material-gradient: url(#ingot-radial);
 }
 
+/* todo shiny stone */
+
 svg[data-material="carbon"] {
     --color1: #000;
     --color2: var(--color1);
@@ -102,6 +110,8 @@ svg[data-material="carbon"] {
     --color4: var(--color1);
     --material-gradient: url(#ingot-linear);
 }
+
+/* todo carbon bone */
 
 svg[data-material="silver"] {
     --color1: #f2f2f2ff;
@@ -343,3 +353,41 @@ svg[data-material="amber"] {
     --color4: var(--color1);
     --material-gradient: url(#ingot-linear);
 }
+
+/* todo geode */
+
+/* todo grass */
+
+/* todo tree branch */
+
+/* todo leather */
+
+/* todo hide */
+
+/* todo mud */
+
+/* todo glue */
+
+/* todo wire */
+
+/* todo string */
+
+/* todo rubber */
+
+/* todo flint */
+
+/* todo plastic */
+
+/* todo glass */
+
+/* todo bolts */
+
+/* todo coil */
+
+/* todo gear */
+
+/* todo cloth */
+
+/* todo radier scrap */
+
+/* todo super radier scrap */
