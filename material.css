@@ -55,8 +55,8 @@ svg {
     --color-opacity: 0.7;
 }
 
-svg[data-material="copper"] {
-    --color1: #f6b26bff;
+svg[data-material="tin"] {
+    --color1: #eeeeee;
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
@@ -79,56 +79,24 @@ svg[data-material="aluminum"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="tin"] {
-    --color1: #eeeeee;
+svg[data-material="copper"] {
+    --color1: #f6b26bff;
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="uramite"] {
-    --color1: #45818eff;
+svg[data-material="zinc"] {
+    --color1: #4e29aaff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
-    --color4: #000;
+    --color4: #1e123dff;
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="tin"] {
-    --color1: #eeeeee;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="mithril"] {
-    --color1: #134f5cff;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="adamantite"] {
-    --color1: #980000ff;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="magnesium"] {
-    --color1: #8e7cc3;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #1e123d;
-    --material-gradient: url(#ingot-radial);
-}
-
-svg[data-material="gold"] {
-    --color1: #ffff00ff;
+svg[data-material="carbon"] {
+    --color1: #000;
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
@@ -143,6 +111,94 @@ svg[data-material="silver"] {
     --material-gradient: url(#ingot-radial);
 }
 
+svg[data-material="brass"] {
+    --color1: #ff9900ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-radial);
+}
+
+svg[data-material="uramite"] {
+    --color1: #45818eff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #000;
+    --material-gradient: url(#ingot-radial);
+}
+
+svg[data-material="gold"] {
+    --color1: #ffff00ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="steel"] {
+    --color1: #fff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #000;
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="lithum"] {
+    --color1: #000000ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="carbon steel"] {
+    --color1: #696969ff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #1d1d1dff;
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="platinum"] {
+    --color1: #efefefff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #434343ff;
+    --material-gradient: url(#ingot-radial);
+}
+
+svg[data-material="magnesium"] {
+    --color1: #8e7cc3;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #1e123d;
+    --material-gradient: url(#ingot-radial);
+}
+
+svg[data-material="lead"] {
+    --color1: #000;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #351c75ff;
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="mithril"] {
+    --color1: #134f5cff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="crystal"] {
+    --color1: #bdffff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
 /* todo add the flame part of flameright */
 svg[data-material="flameright"] {
     --color1: #cc4125ff;
@@ -150,6 +206,22 @@ svg[data-material="flameright"] {
     --color3: var(--color1);
     --color4: var(--color1);
     --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="adamantite"] {
+    --color1: #980000ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="stainless steel"] {
+    --color1: #fff;
+    --color2: #d9d9d9ff;
+    --color3: var(--triple3-mix);
+    --color4: #000;
+    --material-gradient: url(#ingot-radial);
 }
 
 svg[data-material="uranium"] {
@@ -168,30 +240,6 @@ svg[data-material="plutonium"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="platinum"] {
-    --color1: #efefefff;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #434343ff;
-    --material-gradient: url(#ingot-radial);
-}
-
-svg[data-material="carbon"] {
-    --color1: #000;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="lithum"] {
-    --color1: #000000ff;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
 svg[data-material="xtramite"] {
     --color1: #6aa84fff;
     --color2: var(--color1);
@@ -208,30 +256,6 @@ svg[data-material="titanium"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="zinc"] {
-    --color1: #4e29aaff;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #1e123dff;
-    --material-gradient: url(#ingot-radial);
-}
-
-svg[data-material="lead"] {
-    --color1: #000;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #351c75ff;
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="steel"] {
-    --color1: #fff;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #000;
-    --material-gradient: url(#ingot-linear);
-}
-
 svg[data-material="titanium gold"] {
     --color1: #ffc002ff;
     --color2: var(--duo2-mix);
@@ -240,12 +264,12 @@ svg[data-material="titanium gold"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="stainless steel"] {
-    --color1: #fff;
-    --color2: #d9d9d9ff;
-    --color3: var(--triple3-mix);
-    --color4: #000;
-    --material-gradient: url(#ingot-radial);
+svg[data-material="master ore"] {
+    --color1: #ff9900;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #8e7cc3;
+    --material-gradient: url(#ingot-linear);
 }
 
 svg[data-material="pale"] {
@@ -256,35 +280,11 @@ svg[data-material="pale"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="master"] {
-    --color1: #ff9900;
-    --color2: var(--duo2-mix);
-    --color3: var(--duo3-mix);
-    --color4: #8e7cc3;
-    --material-gradient: url(#ingot-linear);
-}
-
 svg[data-material="raindite"] {
     --color1: #ff0000ff;
     --color2: #ffff00ff;
     --color3: #00ff00ff;
     --color4: #0000ffff;
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="crystal"] {
-    --color1: #bdffff;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
-}
-
-svg[data-material="emerald"] {
-    --color1: #12c312;
-    --color2: var(--color1);
-    --color3: var(--color1);
-    --color4: var(--color1);
     --material-gradient: url(#ingot-linear);
 }
 
@@ -320,8 +320,24 @@ svg[data-material="amethest"] {
     --material-gradient: url(#ingot-linear);
 }
 
+svg[data-material="emerald"] {
+    --color1: #12c312;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
 svg[data-material="topaz"] {
     --color1: #ffcd83;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="amber"] {
+    --color1: #c37c12;
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
