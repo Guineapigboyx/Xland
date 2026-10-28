@@ -140,7 +140,7 @@ async function loadIcons() {
             "image/svg+xml",
         ).documentElement;
 
-        svg.insertAdjacentHTML("afterbegin", sharedSVGData);
+        svg.insertAdjacentHTML("afterbegin", sharedSVGElements);
         itemIcons[icon].svg = svg.outerHTML;
     }
 }
