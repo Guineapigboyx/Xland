@@ -263,3 +263,67 @@ svg[data-material="master"] {
     --color4: #8e7cc3;
     --material-gradient: url(#ingot-linear);
 }
+
+svg[data-material="raindite"] {
+    --color1: #ff0000ff;
+    --color2: #ffff00ff;
+    --color3: #00ff00ff;
+    --color4: #0000ffff;
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="crystal"] {
+    --color1: #bdffff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="emerald"] {
+    --color1: #12c312;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="diamond"] {
+    --color1: #45cfe1;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="ruby"] {
+    --color1: #ca4848;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="saphire"] {
+    --color1: #09099e;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="amethest"] {
+    --color1: #6d09b1;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
+
+svg[data-material="topaz"] {
+    --color1: #ffcd83;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
