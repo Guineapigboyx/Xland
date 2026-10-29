@@ -55,11 +55,29 @@ svg {
     --color-opacity: 0.7;
 }
 
-/* todo wood */
+svg[data-material="wood"] svg[data-material="tree branch"] {
+    --color1: #b45f06;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo stone */
+svg[data-material="stone"] {
+    --color1: #595959ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo bone */
+svg[data-material="bone"] {
+    --color1: #d5cfb2;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
 svg[data-material="tin"] {
     --color1: #eeeeee;
@@ -101,7 +119,13 @@ svg[data-material="zinc"] {
     --material-gradient: url(#ingot-radial);
 }
 
-/* todo shiny stone */
+svg[data-material="shiny stone"] {
+    --color1: #434343ff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #b7b7b7ff;
+    --material-gradient: url(#ingot-radial);
+}
 
 svg[data-material="carbon"] {
     --color1: #000;
@@ -111,7 +135,13 @@ svg[data-material="carbon"] {
     --material-gradient: url(#ingot-linear);
 }
 
-/* todo carbon bone */
+svg[data-material="carbon bone"] {
+    --color1: #22221e;
+    --color2: #d5cfb2;
+    --color3: var(--triple3-mix);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
 svg[data-material="silver"] {
     --color1: #f2f2f2ff;
@@ -354,27 +384,69 @@ svg[data-material="amber"] {
     --material-gradient: url(#ingot-linear);
 }
 
-/* todo geode */
+svg[data-material="grass"] svg[data-material="leaf"] {
+    --color1: #38761d;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo grass */
+svg[data-material="leather"] {
+    --color1: #dd7e6bff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo tree branch */
+svg[data-material="hide"] {
+    --color1: #b45f06ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-radial);
+}
 
-/* todo leather */
+svg[data-material="mud"] svg[data-material="glue"] {
+    --color1: #572c00ff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: #b45f06ff;
+    --material-gradient: url(#ingot-radial);
+}
 
-/* todo hide */
+svg[data-material="flint"] {
+    --color1: #fff;
+    --color2: #595959ff;
+    --color3: var(--triple3-mix);
+    --color4: #595959ff;
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo mud */
+svg[data-material="radier scrap"] {
+    --color1: #fff;
+    --color2: #ccccccff;
+    --color3: #666666ff;
+    --color4: #737373ff;
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo glue */
+svg[data-material="super radier scrap"] {
+    --color1: rgb(181, 0, 0);
+    --color2: rgb(228, 78, 78);
+    --color3: color-mix(in srgb, var(--color2) 22%, var(--color4));
+    --color4: #f1c232ff;
+    --material-gradient: url(#ingot-linear);
+}
+
+/* fallback material colors, if you get this item made of no mateirals */
 
 /* todo wire */
 
 /* todo string */
 
 /* todo rubber */
-
-/* todo flint */
 
 /* todo plastic */
 
@@ -387,7 +459,3 @@ svg[data-material="amber"] {
 /* todo gear */
 
 /* todo cloth */
-
-/* todo radier scrap */
-
-/* todo super radier scrap */

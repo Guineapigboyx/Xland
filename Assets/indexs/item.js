@@ -1074,6 +1074,7 @@ let items = {
         rarity: raritys.uncommon,
         weight: 5.45,
         weaponData: { weaponType: weaponTypes.bluntObject },
+        /* deciced that geode should not be used for crafting
         materialData: {
             density: 5,
             toughness: 3,
@@ -1082,6 +1083,7 @@ let items = {
             sharpness: 2,
             materialType: materialTypes.rock,
         },
+        */
     },
     grass: {
         name: "Grass",
