@@ -1,8 +1,8 @@
 // install todo+ for formating
-// "-" means not started
-// "" means started
-// "x" means done
-// "=" might be removed
+// "[-]" means not started
+// "[]" means started
+// "[x]" means done
+// "[=]" might be removed
 // just delate the line if it is removed
 
 items:
@@ -19,7 +19,7 @@ items:
     [=] Giga beast items // the main thing is unlocking another rarity
     [x] placeable items  
     [x] Crafting station // they are also placeable items, my plan is the scematics for them are gotten by killing giga beasts
-    [] material colors
+    [x] material colors
 
 crafting:
     [] schematics/crafting molds

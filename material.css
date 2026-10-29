@@ -447,8 +447,6 @@ svg[data-material="super radier scrap"] {
     --material-gradient: url(#ingot-linear);
 }
 
-/* fallback material colors, if you get this item made of no mateirals */
-
 svg[data-material="string"] {
     --color1: #fff;
     --color2: var(--color1);
