@@ -87,7 +87,10 @@ svg[data-material="tin"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="iron"] {
+svg[data-material="iron"],
+svg[data-material="bolts"],
+svg[data-material="coil"],
+svg[data-material="gear"] {
     --color1: #b7b7b7ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -103,7 +106,8 @@ svg[data-material="aluminum"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="copper"] {
+svg[data-material="copper"],
+svg[data-material="wire"] {
     --color1: #f6b26bff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -231,7 +235,8 @@ svg[data-material="mithril"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="crystal"] {
+svg[data-material="crystal"],
+svg[data-material="glass"] {
     --color1: #bdffff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -384,7 +389,8 @@ svg[data-material="amber"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="grass"] svg[data-material="leaf"] {
+svg[data-material="grass"],
+svg[data-material="leaf"] {
     --color1: #38761d;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -408,7 +414,8 @@ svg[data-material="hide"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="mud"] svg[data-material="glue"] {
+svg[data-material="mud"],
+svg[data-material="glue"] {
     --color1: #572c00ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -442,20 +449,27 @@ svg[data-material="super radier scrap"] {
 
 /* fallback material colors, if you get this item made of no mateirals */
 
-/* todo wire */
+svg[data-material="string"] {
+    --color1: #fff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
 
-/* todo string */
+svg[data-material="plastic"],
+svg[data-material="rubber"] {
+    --color1: #38761dff;
+    --color2: #1c3b0fff;
+    --color3: var(--triple3-mix);
+    --color4: #000;
+    --material-gradient: url(#ingot-radial);
+}
 
-/* todo rubber */
-
-/* todo plastic */
-
-/* todo glass */
-
-/* todo bolts */
-
-/* todo coil */
-
-/* todo gear */
-
-/* todo cloth */
+svg[data-material="cloth"] {
+    --color1: #dbce88ff;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: url(#ingot-linear);
+}
