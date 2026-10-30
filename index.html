@@ -108,9 +108,10 @@
                         <div
                             id="crafting-player-dropdown"
                             onclick="
-                                showDropdown(
+                                clickDropDown(
                                     '#crafting-player-dropdown',
                                     createOptions(gameState.activeTeam, (obj) => obj.hp > 0),
+                                    event,
                                 )
                             "
                             class="team-list dark-bubble square-bubble dropdown small-text upwards"

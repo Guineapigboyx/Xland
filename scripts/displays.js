@@ -64,7 +64,14 @@ function fillInventory(selector, inventory) {
 
 // Drop downs
 
-function showDropdown(selector, options) {
+/**
+ * Handles clikcing on a dropdown
+ *
+ * @param {String} selector - the selector of the dropdown
+ * @param {Object} options - options for the drop down [use createOptions for objects and arrays]
+ * @param {Event} clicked - just put event at as the last argument of a onclick
+ */
+function clickDropDown(selector, options, clicked) {
     dropdownEL = document.querySelector(selector);
     dropdownOptionsEL = document.querySelector(`${selector} > section`);
     if (!dropdownOptionsEL) {
@@ -72,27 +79,39 @@ function showDropdown(selector, options) {
         return;
     }
 
-    // make the dropdown go upwards
-    if (dropdownEL.classList.contains("upwards")) {
-        dropdownOptionsEL.style.transform = `translateY(-${dropdownEL.offsetHeight}px)`;
-        console.log("yay");
+    // hide/show dropdown
+    if (dropdownOptionsEL.classList.contains("hide")) {
+        // show dropdown-----------------------------------------------
+        dropdownOptionsEL.classList.remove("hide");
+
+        // make the dropdown go upwards
+        if (dropdownEL.classList.contains("upwards")) {
+            dropdownOptionsEL.style.transform = `translateY(-${dropdownEL.offsetHeight}px)`;
+        } else {
+            dropdownOptionsEL.style.transform = "";
+        }
+
+        resetDropdown(dropdownOptionsEL);
+
+        // create the dropdown options
+        for (let i = 0; i < options.length; i++) {
+            let option = document.createElement("option");
+            option.textContent = options[i].label;
+            option.value = options[i].label;
+            option.className = "hover";
+            dropdownOptionsEL.appendChild(option);
+        }
     } else {
-        dropdownOptionsEL.style.transform = "";
+        // hide dropdown-----------------------------------------------
+        const option = clicked.target.closest("option");
+
+        if (option && dropdownOptionsEL.contains(option)) {
+            dropdownEL.setAttribute("value", option.value);
+            dropdownEL.querySelector("label").textContent = option.textContent;
+        }
+
+        dropdownOptionsEL.classList.add("hide");
     }
-
-    dropdownOptionsEL.replaceChildren(dropdownOptionsEL.firstElementChild);
-
-    console.log(options);
-
-    for (let i = 0; i < options.length; i++) {
-        let option = document.createElement("option");
-        option.textContent = options[i].label;
-        option.value = options[i].label;
-        option.className = "hover";
-        dropdownOptionsEL.appendChild(option);
-    }
-
-    dropdownOptionsEL.classList.remove("hide");
 }
 
 /**
