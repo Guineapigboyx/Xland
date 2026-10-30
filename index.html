@@ -106,27 +106,19 @@
                     <div class="inventory blue-bubble"></div>
                     <div id="crafting-info" class="border-super-thin">
                         <div
-                            onmouseenter=""
-                            class="team-list dark-bubble square-bubble dropdown small-text"
+                            id="crafting-player-dropdown"
+                            onclick="
+                                showDropdown(
+                                    '#crafting-player-dropdown',
+                                    createOptions(gameState.activeTeam, (obj) => obj.hp > 0),
+                                )
+                            "
+                            class="team-list dark-bubble square-bubble dropdown small-text upwards"
                             style="border-top: 0"
                         >
                             <label>Select teamate</label>
-                            <section class="bubble">
+                            <section class="bubble hide">
                                 <option class="hover" value="N/A">Select teamate</option>
-                                <option class="hover" value="N/A">1</option>
-                                <option class="hover" value="N/A">2</option>
-                                <option class="hover" value="N/A">3</option>
-                                <option class="hover" value="N/A">4</option>
-                                <option class="hover" value="N/A">5</option>
-                                <option class="hover" value="N/A">6</option>
-                                <option class="hover" value="N/A">7</option>
-                                <option class="hover" value="N/A">1</option>
-                                <option class="hover" value="N/A">2</option>
-                                <option class="hover" value="N/A">3</option>
-                                <option class="hover" value="N/A">4</option>
-                                <option class="hover" value="N/A">5</option>
-                                <option class="hover" value="N/A">6</option>
-                                <option class="hover" value="N/A">7</option>
                             </section>
                         </div>
                     </div>

@@ -62,6 +62,74 @@ function fillInventory(selector, inventory) {
     }
 }
 
+// Drop downs
+
+function showDropdown(selector, options) {
+    dropdownEL = document.querySelector(selector);
+    dropdownOptionsEL = document.querySelector(`${selector} > section`);
+    if (!dropdownOptionsEL) {
+        console.warn("Broken Selector for dropdown", selector);
+        return;
+    }
+
+    // make the dropdown go upwards
+    if (dropdownEL.classList.contains("upwards")) {
+        dropdownOptionsEL.style.transform = `translateY(-${dropdownEL.offsetHeight}px)`;
+        console.log("yay");
+    } else {
+        dropdownOptionsEL.style.transform = "";
+    }
+
+    dropdownOptionsEL.replaceChildren(dropdownOptionsEL.firstElementChild);
+
+    console.log(options);
+
+    for (let i = 0; i < options.length; i++) {
+        let option = document.createElement("option");
+        option.textContent = options[i].label;
+        option.value = options[i].label;
+        option.className = "hover";
+        dropdownOptionsEL.appendChild(option);
+    }
+
+    dropdownOptionsEL.classList.remove("hide");
+}
+
+/**
+ *
+ * @param {Object|Array} list - the object or arrey the options are comeing from
+ * @param {Function|undefined} requirements - if it is object limit the options to only ones that fit a spesfic critera
+ * @param {Boolean|undefined} removeInvalid - if true it will hide options not fitting the requirement insided of disableing
+ *
+ */
+function createOptions(list, requirements, removeInvalid) {
+    let options = [];
+    let badList = [];
+    let keyList = [];
+
+    if (typeof list === "object") {
+        keyList = Object.keys(list);
+        badList = keyList.filter((key) => !requirements(list[key]));
+
+        if (!badList) {
+            badList = [];
+        } else if (removeInvalid) {
+            keyList = keyList.filter((key) => !badList.includes(key));
+            badList = [];
+        }
+
+        for (let i = 0; i < keyList.length; i++) {
+            options.push({ label: keyList[i], invalid: badList.includes(keyList[i]) });
+        }
+    } else if (typeof list === "array") {
+        options.push({ label: keyList[i], invalid: false });
+    } else {
+        console.warn("invalid list to create options");
+    }
+
+    return options;
+}
+
 // context menue
 
 function showContextMenu(x, y, options) {

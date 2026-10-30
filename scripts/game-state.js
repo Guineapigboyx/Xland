@@ -55,5 +55,5 @@ function addNewTeamate(basePerson, text) {
         activeEffects: [],
     };
 
-    gameState.activeTeam[text] = person;
+    gameState.activeTeam[`${basePerson.name}${Object.keys(gameState.activeTeam).length}`] = person;
 }
