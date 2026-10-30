@@ -26,6 +26,37 @@ crafting:
     [] modules
     [] crafting stat combineing
     [-] socketing
+    finshed types:
+        [x] pickaxe
+        [x] hammer
+        [x] guardingHammer
+        [x] drill
+        [x] shield
+        [x] knife
+        [x] sword
+        [x] guardingSword
+        [x] slapstick
+        [x] gloves
+        [x] gunFast
+        [x] gunSlow
+        [x] bow
+        [x] spear
+        [x] club
+        [x] whip
+        [-] helmet
+        [-] pendent
+        [] leggings
+        [-] chestplate
+        [-] gloves
+        [-] boots
+        [-] belt
+        [-] backPack
+        [x] axe
+        [-] walls/floors
+        [-] boat weapons
+        [-] storage contatiers
+        [-] other placeable
+        [=] crafting stations
 
 UI:
     [] all status screen
