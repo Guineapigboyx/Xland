@@ -94,6 +94,16 @@ const schematics = {
             handle: { name: "handle" },
         },
     },
+    pants: {
+        name: "pants",
+        itemName: "Pants",
+        modularItem: items.leggings,
+        parts: {
+            left: { name: "leftLeg" },
+            rightLed: { name: "rightLed" },
+            waist: { name: "waist" },
+        },
+    },
 };
 
 /**
@@ -1470,6 +1480,108 @@ const modules = {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
                 amount: 3,
                 same: true,
+            },
+        ],
+    },
+    //pants
+    fabric: {
+        name: "Fabric",
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLed,
+            schematics.pants.parts.waist,
+        ],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                amount: 2,
+            },
+        ],
+    },
+    plated: {
+        name: "Plated",
+        part: [schematics.pants.parts.leftLeg, schematics.pants.parts.rightLed],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.bone],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    chain: {
+        name: "Chain",
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLed,
+            schematics.pants.parts.waist,
+        ],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    studded: {
+        name: "Studded",
+        part: [schematics.pants.parts.leftLeg, schematics.pants.parts.rightLed],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.skin],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.gemStone, materialTypes.bone],
+                amount: 1,
+            },
+        ],
+    },
+    wrapped: {
+        name: "Wrapped",
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLed,
+            schematics.pants.parts.waist,
+        ],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                amount: 1,
+            },
+        ],
+    },
+    splited: {
+        name: "splint",
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLed,
+            schematics.pants.parts.waist,
+        ],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.bone],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                amount: 1,
+            },
+        ],
+    },
+    solid: {
+        name: "Solid",
+        part: [schematics.pants.parts.waist],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.wood,
+                    materialTypes.bone,
+                    materialTypes.stone,
+                ],
+                amount: 1,
             },
         ],
     },
