@@ -11,6 +11,7 @@
  * ----
  * @typedef {Object} part - parts of the schematic that modules go in
  * @property {String} name - name of the part
+ * @property {Boolean|undefined} optional - Is it not nessary for this schematic
  */
 const schematics = {
     hammer: {
@@ -19,7 +20,7 @@ const schematics = {
         itemName: "Hammer",
         modularItem: items.hammer,
         parts: {
-            leftHead: { name: "leftHead" },
+            leftHead: { name: "leftHead", Optinal: true },
             rightHead: { name: "rightHead" },
             handle: { name: "handle" },
             binding: { name: "binding" },
@@ -47,7 +48,7 @@ const schematics = {
         parts: {
             blade: { name: "blade" },
             hilt: { name: "hilt" },
-            guard: { name: "guard" },
+            guard: { name: "guard", Optinal: true },
         },
     },
     slapstick: {
@@ -57,14 +58,16 @@ const schematics = {
         parts: {
             stick: { name: "stick" },
             string: { name: "string" },
-            ball: { name: "ball" },
+            ball1: { name: "ball1" },
+            ball2: { name: "ball2", Optinal: true },
+            ball3: { name: "ball3", Optinal: true },
         },
     },
     gloves: {
         name: "gloves",
         itemName: "Gloves",
         modularItem: items.gloves,
-        parts: { knuckle: { name: "knuckle" }, body: { name: "body" } },
+        parts: { knuckle: { name: "knuckle", Optinal: true }, body: { name: "body" } },
     },
     bow: {
         name: "bow",
@@ -99,8 +102,8 @@ const schematics = {
         itemName: "Pants",
         modularItem: items.leggings,
         parts: {
-            left: { name: "leftLeg" },
-            rightLed: { name: "rightLed" },
+            left: { name: "leftLeg", Optinal: true },
+            rightLed: { name: "rightLed", Optinal: true },
             waist: { name: "waist" },
         },
     },
@@ -1019,7 +1022,11 @@ const modules = {
     // slackstick stones
     ball: {
         name: "Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
@@ -1038,7 +1045,11 @@ const modules = {
     },
     spikyBall: {
         name: "Spiky Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
@@ -1066,7 +1077,11 @@ const modules = {
     },
     largeBall: {
         name: "Large Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
