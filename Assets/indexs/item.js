@@ -74,6 +74,7 @@
  *
  * @typedef {object} craftedModules
  * @property {modules.module} module
+ * @property {schematics.schematic.parts.part} part
  * @property {iventoryItem[]|Object} materials
  *
  * ---------------------------------------
@@ -1139,6 +1140,20 @@ let items = {
             flexibility: 4,
             sharpness: 1,
             materialType: materialTypes.plants,
+        },
+    },
+    oldRag: {
+        name: "Old Rag",
+        rarity: raritys.basic,
+        weight: 0.8,
+        weaponData: { weaponType: weaponTypes.whip },
+        materialData: {
+            density: 1,
+            toughness: 1,
+            hardness: 1,
+            flexibility: 4,
+            sharpness: 1,
+            materialType: materialTypes.skin,
         },
     },
     leather: {
@@ -3213,32 +3228,62 @@ let items = {
 
 /**
  * @typedef {Object} craftedItemData - this holds data about a item that is overid
- * @property {items.item} original - Orignal item that this is being applied to
  * @property {Record<number, item>} - the key should be the ID, the data in the Object should be a item
  */
 let craftedItemData = {
     1: {
-        original: items.leggings,
         name: "Koopas Underwear",
         components: {
             schematic: schematics.pants,
-            craftedModules: [{ module: modules.solid, materials: [{ item: "shell" }] }],
+            craftedModules: [
+                {
+                    module: modules.solid,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "shell" }],
+                },
+            ],
         },
     },
     2: {
-        original: items.chestplate,
         name: "Koopas Shell",
         components: {
             schematic: schematics.shirt,
             craftedModules: [
                 {
                     module: modules.shell,
+                    part: schematics.shirt.parts.body,
                     materials: [
                         { item: "shell" },
                         { item: "shell" },
                         { item: "shell" },
                         { item: "shell" },
                     ],
+                },
+            ],
+        },
+        weaponData: {
+            durablity: 50,
+        },
+    },
+    3: {
+        name: "Ripped pants",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "leather" }, { item: "oldRag" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.leftLeg,
+                    materials: [{ item: "oldRag" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.rightLeg,
+                    materials: [{ item: "oldRag" }],
                 },
             ],
         },

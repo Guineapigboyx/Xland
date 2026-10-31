@@ -60,4 +60,31 @@ const basePepole = {
             },
         ],
     },
+    koopa: {
+        id: "locario",
+        name: "locario",
+        hp: 100,
+        stats: [
+            { stat: statTypes.strength, amount: 3 },
+            { stat: statTypes.defense, amount: 3 },
+            { stat: statTypes.speed, amount: 2 },
+            { stat: statTypes.endurance, amount: 5 },
+            { stat: statTypes.intelligence, amount: 3 },
+            { stat: statTypes.crafting, amount: 1 },
+            { stat: statTypes.charisma, amount: 2 },
+        ],
+        ability: [statusEffects.angerIssues],
+        //todo speicalMove: attacks.mineingSmash
+        //todo npcData: npcs.locario
+        equiped: [
+            {
+                // locarios pants
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 3,
+                },
+            },
+        ],
+    },
 };

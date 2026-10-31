@@ -79,6 +79,14 @@ svg[data-material="bone"] {
     --material-gradient: url(#ingot-linear);
 }
 
+svg[data-material="shell"] {
+    --color1: #38761dff;
+    --color2: var(--duo2-mix);
+    --color3: var(--duo3-mix);
+    --color4: rgb(27, 30, 30);
+    --material-gradient: url(#ingot-linear);
+}
+
 svg[data-material="tin"] {
     --color1: #eeeeee;
     --color2: var(--color1);
@@ -464,7 +472,8 @@ svg[data-material="rubber"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="cloth"] {
+svg[data-material="cloth"],
+svg[data-material="old rag"] {
     --color1: #dbce88ff;
     --color2: var(--color1);
     --color3: var(--color1);
