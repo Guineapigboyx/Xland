@@ -1770,6 +1770,38 @@ const modules = {
             },
         ],
     },
+    longShirt: {
+        name: "Long Shirt",
+        part: [schematics.shirt.parts.body],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    items.rubber,
+                ],
+                amount: 3,
+            },
+        ],
+    },
+    gambison: {
+        name: "gambison",
+        part: [schematics.shirt.parts.body],
+        materials: [
+            {
+                allowedMaterials: [
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                ],
+                amount: 3,
+                same: true,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, items.rubber]],
+                amount: 5,
+            },
+        ],
+    },
     // helmets
     hat: {
         name: "Hat",

@@ -189,4 +189,30 @@ let craftedItemData = {
             ],
         },
     },
+    8: {
+        name: "Basic Underwear",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "oldRag" }],
+                },
+            ],
+        },
+    },
+    9: {
+        name: "Basic Tunic",
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.longShirt,
+                    part: schematics.shirt.parts.body,
+                    materials: [{ item: "oldRag" }, { item: "oldRag" }, { item: "oldRag" }],
+                },
+            ],
+        },
+    },
 };

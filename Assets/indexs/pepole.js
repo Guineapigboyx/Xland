@@ -210,4 +210,111 @@ const basePepole = {
             },
         ],
     },
+    kirby: {
+        id: "kirby",
+        name: "Lirby",
+        hp: 50,
+        stats: [
+            { stat: statTypes.strength, amount: 1 },
+            { stat: statTypes.defense, amount: 1 },
+            { stat: statTypes.speed, amount: 1 },
+            { stat: statTypes.endurance, amount: 22 },
+            { stat: statTypes.intelligence, amount: 1 },
+            { stat: statTypes.charisma, amount: 1 },
+            { stat: statTypes.crafting, amount: 0 },
+            { stat: statTypes.stealth, amount: 5 },
+        ],
+        ability: [statusEffects.fireAspect],
+        //todo speicalMove: attacks.mimic
+        //todo npcData: npcs.kirby
+    },
+    link: {
+        id: "link",
+        name: "Link",
+        hp: 150,
+        stats: [
+            { stat: statTypes.strength, amount: 8 },
+            { stat: statTypes.defense, amount: 6 },
+            { stat: statTypes.speed, amount: 2 },
+            { stat: statTypes.endurance, amount: 4 },
+            { stat: statTypes.intelligence, amount: 4 },
+            { stat: statTypes.charisma, amount: 1 },
+            { stat: statTypes.crafting, amount: 3 },
+            { stat: statTypes.courage, amount: 3 },
+            { stat: statTypes.Storage, amount: 4 },
+        ],
+        //todo speicalMove: attacks.freeSwing
+        //todo npcData: npcs.link
+        equiped: [
+            {
+                // basic underwear
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 8,
+                },
+            },
+            {
+                // basic tunic
+                slot: equipSlots.body,
+                item: {
+                    item: "chestplate",
+                    craftedItemId: 9,
+                },
+            },
+        ],
+    },
+    sonic: {
+        id: "sonic",
+        name: "Sonic",
+        hp: 80,
+        stats: [
+            { stat: statTypes.strength, amount: 2 },
+            { stat: statTypes.defense, amount: 1 },
+            { stat: statTypes.speed, amount: 7 },
+            { stat: statTypes.endurance, amount: 12 },
+            { stat: statTypes.intelligence, amount: 1 },
+            { stat: statTypes.charisma, amount: 1 },
+            { stat: statTypes.crafting, amount: 1 },
+            { stat: statTypes.courage, amount: 6 },
+            { stat: statTypes.evasion, amount: 6 },
+        ],
+        //todo speicalMove: attacks.freeSwing
+        //todo npcData: npcs.sonic
+    },
+    toonLink: {
+        id: "toonLink",
+        name: "Toon Link",
+        hp: 120,
+        stats: [
+            { stat: statTypes.strength, amount: 2 },
+            { stat: statTypes.defense, amount: 4 },
+            { stat: statTypes.speed, amount: 1 },
+            { stat: statTypes.endurance, amount: 2 },
+            { stat: statTypes.intelligence, amount: 14 },
+            { stat: statTypes.charisma, amount: 5 },
+            { stat: statTypes.crafting, amount: 8 },
+            { stat: statTypes.Storage, amount: 4 },
+        ],
+        //todo speicalMove: attacks.freeSwing
+        //todo npcData: npcs.toonLink
+        equiped: [
+            {
+                // basic underwear
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 8,
+                },
+            },
+            {
+                // basic tunic
+                slot: equipSlots.body,
+                item: {
+                    item: "chestplate",
+                    craftedItemId: 9,
+                },
+            },
+        ],
+    },
 };
