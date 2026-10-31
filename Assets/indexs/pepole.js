@@ -111,7 +111,7 @@ const basePepole = {
         //todo npcData: npcs.luigi
         equiped: [
             {
-                // overalls
+                // plumbers overalls
                 slot: equipSlots.pants,
                 item: {
                     item: "leggings",
@@ -119,7 +119,7 @@ const basePepole = {
                 },
             },
             {
-                // shirt
+                // luigis shirt
                 slot: equipSlots.body,
                 item: {
                     item: "chestplate",
@@ -127,7 +127,7 @@ const basePepole = {
                 },
             },
             {
-                // shoes
+                // plumbers shoes
                 slot: equipSlots.feet,
                 item: {
                     item: "boots",
@@ -156,7 +156,7 @@ const basePepole = {
         //todo npcData: npcs.mario
         equiped: [
             {
-                // overalls
+                // plumbers overalls
                 slot: equipSlots.pants,
                 item: {
                     item: "leggings",
@@ -164,7 +164,7 @@ const basePepole = {
                 },
             },
             {
-                // shirt
+                // marios shirt
                 slot: equipSlots.body,
                 item: {
                     item: "chestplate",
@@ -172,11 +172,40 @@ const basePepole = {
                 },
             },
             {
-                // shoes
+                // plumbers shoes
                 slot: equipSlots.feet,
                 item: {
                     item: "boots",
                     craftedItemId: 5,
+                },
+            },
+        ],
+    },
+    monferno: {
+        id: "monferno",
+        name: "Monferno",
+        hp: 80,
+        stats: [
+            { stat: statTypes.strength, amount: 5 },
+            { stat: statTypes.defense, amount: 2 },
+            { stat: statTypes.speed, amount: 4 },
+            { stat: statTypes.endurance, amount: 5 },
+            { stat: statTypes.intelligence, amount: 6 },
+            { stat: statTypes.charisma, amount: 2 },
+            { stat: statTypes.crafting, amount: 1 },
+            { stat: statTypes.courage, amount: 1 },
+            { stat: statTypes.evasion, amount: 4 },
+        ],
+        ability: [statusEffects.fireAspect],
+        //todo speicalMove: attacks.flameingTailWhip
+        //todo npcData: npcs.monferno
+        equiped: [
+            {
+                // ripped pants
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 3,
                 },
             },
         ],

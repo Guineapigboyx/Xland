@@ -156,7 +156,7 @@ let craftedItemData = {
                 {
                     module: modules.baiscPlate,
                     part: schematics.boots.parts.toe,
-                    materials: [{ item: "wood" }],
+                    materials: [{ item: "iron" }],
                 },
             ],
         },
