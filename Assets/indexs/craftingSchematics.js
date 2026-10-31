@@ -117,6 +117,25 @@ const schematics = {
             body: { name: "body" },
         },
     },
+    boots: {
+        name: "boots",
+        itemName: "Boots",
+        modularItem: items.boots,
+        parts: {
+            toe: { name: "toe", Optinal: true },
+            shaft: { name: "backStay", Optinal: true }, // the part your ankle goes in
+            body: { name: "body", Optinal: true },
+        },
+    },
+    helmet: {
+        name: "helmet",
+        itemName: "Helmet",
+        modularItem: items.helmet,
+        parts: {
+            skull: { name: "skull" },
+            visor: { name: "visor", Optinal: true },
+        },
+    },
 };
 
 /**
@@ -136,7 +155,7 @@ const schematics = {
  * if you try to craft a item with multiple modules with diffrent weaponTypes it will say they are incompatible
  * ----
  * @typedef {Object} allowedMaterial
- * @property {(inventoryItem|materialTypes)[]} material - every material or type that can be used here
+ * @property {(items.item|materialTypes|foodTypes)[]} material - every material or type that can be used here
  * lets say you can make this with wood or metal you would put both of those material types here
  * @property {Number} amount - the amount of this material required
  * @property {boolean} same - the materials must both be the same
@@ -1521,7 +1540,12 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    items.rubber,
+                ],
                 amount: 2,
             },
         ],
@@ -1552,6 +1576,7 @@ const modules = {
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
+            schematics.helmet.parts.skull,
         ],
         materials: [
             {
@@ -1568,10 +1593,16 @@ const modules = {
             schematics.shirt.parts.body,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
+            schematics.helmet.parts.skull,
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.skin],
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.wood,
+                    materialTypes.skin,
+                    items.rubber,
+                ],
                 amount: 2,
                 same: true,
             },
@@ -1593,13 +1624,18 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    items.rubber,
+                ],
                 amount: 1,
             },
         ],
     },
     splited: {
-        name: "splint",
+        name: "Splint",
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
@@ -1614,8 +1650,38 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    items.rubber,
+                ],
                 amount: 1,
+            },
+        ],
+    },
+    padded: {
+        name: "Padded",
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
+            schematics.pants.parts.waist,
+            schematics.helmet.parts.skull,
+        ],
+        materials: [
+            {
+                allowedMaterials: [
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                ],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, items.rubber]],
+                amount: 3,
             },
         ],
     },
@@ -1628,18 +1694,35 @@ const modules = {
                     materialTypes.metal,
                     materialTypes.wood,
                     materialTypes.bone,
-                    materialTypes.stone,
+                    materialTypes.rock,
                 ],
                 amount: 1,
             },
         ],
     },
+    suppenders: {
+        name: "Suppenders",
+        part: [schematics.pants.parts.waist],
+        materials: [
+            {
+                allowedMaterials: [
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                ],
+                amount: 2,
+            },
+        ],
+    },
     barbbed: {
-        name: "barbbed",
+        name: "Barbbed",
         part: [schematics.shirt.parts.leftSleeve, schematics.shirt.parts.rightSleeve],
         materials: [
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    items.rubber,
+                ],
                 amount: 2,
             },
             {
@@ -1649,12 +1732,73 @@ const modules = {
         ],
     },
     shell: {
-        name: "shell",
+        name: "Shell",
         part: [schematics.shirt.parts.body],
         materials: [
             {
-                allowedMaterials: [materialTypes.bone, materialTypes.wood, materialTypes.metal],
+                allowedMaterials: [
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.rock,
+                ],
                 amount: 4,
+                same: true,
+            },
+        ],
+    },
+    // helmets
+    hat: {
+        name: "Hat",
+        part: [schematics.helmet.parts.skull],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.skin,
+                    items.rubber,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    halfShell: {
+        name: "Half Shell",
+        part: [schematics.helmet.parts.skull],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.metal,
+                    materialTypes.skin,
+                    materialTypes.rock,
+                    items.rubber,
+                ],
+                amount: 1,
+            },
+        ],
+    },
+    naselHelm: {
+        name: "Nasal Helm",
+        part: [schematics.helmet.parts.skull],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal],
+                amount: 2,
+                same: true,
+            },
+        ],
+    },
+    greatHelm: {
+        name: "Great Helm",
+        part: [schematics.helmet.parts.skull],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal],
+                amount: 2,
                 same: true,
             },
         ],
