@@ -121,21 +121,7 @@ let craftedItemData = {
         },
     },
     4: {
-        name: "Red shirt",
-        dye: items.pepper,
-        components: {
-            schematic: schematics.shirt,
-            craftedModules: [
-                {
-                    module: modules.fabric,
-                    part: schematics.shirt.parts.body,
-                    materials: [{ item: "oldRag" }, { item: "oldRag" }],
-                },
-            ],
-        },
-    },
-    5: {
-        name: "Marios Overalls",
+        name: "Plumber Overalls",
         components: {
             schematic: schematics.pants,
             craftedModules: [
@@ -157,8 +143,8 @@ let craftedItemData = {
             ],
         },
     },
-    6: {
-        name: "Mario Boots",
+    5: {
+        name: "Plumber Boots",
         components: {
             schematic: schematics.boots,
             craftedModules: [
@@ -171,6 +157,34 @@ let craftedItemData = {
                     module: modules.baiscPlate,
                     part: schematics.boots.parts.toe,
                     materials: [{ item: "wood" }],
+                },
+            ],
+        },
+    },
+    6: {
+        name: "Red shirt",
+        dye: items.pepper,
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.shirt.parts.body,
+                    materials: [{ item: "oldRag" }, { item: "oldRag" }],
+                },
+            ],
+        },
+    },
+    7: {
+        name: "Green shirt",
+        dye: items.cacti,
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.shirt.parts.body,
+                    materials: [{ item: "oldRag" }, { item: "oldRag" }],
                 },
             ],
         },

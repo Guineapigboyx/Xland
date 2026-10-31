@@ -92,6 +92,50 @@ const basePepole = {
             },
         ],
     },
+    luigi: {
+        id: "luigi",
+        name: "Luigi",
+        hp: 115,
+        stats: [
+            { stat: statTypes.strength, amount: 1 },
+            { stat: statTypes.defense, amount: 2 },
+            { stat: statTypes.speed, amount: 4 },
+            { stat: statTypes.endurance, amount: 5 },
+            { stat: statTypes.intelligence, amount: 5 },
+            { stat: statTypes.charisma, amount: 6 },
+            { stat: statTypes.crafting, amount: 2 },
+            { stat: statTypes.stealth, amount: 4 },
+            { stat: statTypes.cooking, amount: 2 },
+        ],
+        ability: [statusEffects.spontaneousFear],
+        //todo npcData: npcs.luigi
+        equiped: [
+            {
+                // overalls
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 4,
+                },
+            },
+            {
+                // shirt
+                slot: equipSlots.body,
+                item: {
+                    item: "chestplate",
+                    craftedItemId: 7,
+                },
+            },
+            {
+                // shoes
+                slot: equipSlots.feet,
+                item: {
+                    item: "boots",
+                    craftedItemId: 5,
+                },
+            },
+        ],
+    },
     mario: {
         id: "mario",
         name: "Mario",
@@ -112,7 +156,7 @@ const basePepole = {
         //todo npcData: npcs.mario
         equiped: [
             {
-                // marios overalls
+                // overalls
                 slot: equipSlots.pants,
                 item: {
                     item: "leggings",
@@ -120,19 +164,19 @@ const basePepole = {
                 },
             },
             {
-                // marios shirt
+                // shirt
                 slot: equipSlots.body,
                 item: {
                     item: "chestplate",
-                    craftedItemId: 5,
+                    craftedItemId: 6,
                 },
             },
             {
-                // marios shoes
+                // shoes
                 slot: equipSlots.feet,
                 item: {
                     item: "boots",
-                    craftedItemId: 6,
+                    craftedItemId: 5,
                 },
             },
         ],
