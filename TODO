@@ -46,8 +46,8 @@ crafting:
         [-] helmet
         [-] pendent
         [] leggings
-        [-] chestplate
-        [-] gloves
+        [x] chestplate
+        [x] gloves
         [-] boots
         [-] belt
         [-] backPack

@@ -102,9 +102,19 @@ const schematics = {
         itemName: "Pants",
         modularItem: items.leggings,
         parts: {
-            left: { name: "leftLeg", Optinal: true },
-            rightLed: { name: "rightLed", Optinal: true },
+            leftLeg: { name: "leftLeg", Optinal: true },
+            rightLeg: { name: "rightLeg", Optinal: true },
             waist: { name: "waist" },
+        },
+    },
+    shirt: {
+        name: "shirt",
+        itemName: "Shirt",
+        modularItem: items.chestplate,
+        parts: {
+            leftSleeve: { name: "leftSleeve", Optinal: true },
+            rightSleeve: { name: "rightSleeve", Optinal: true },
+            body: { name: "body" },
         },
     },
 };
@@ -1498,12 +1508,15 @@ const modules = {
             },
         ],
     },
-    //pants
+    //pants/chestplate
     fabric: {
         name: "Fabric",
         part: [
             schematics.pants.parts.leftLeg,
-            schematics.pants.parts.rightLed,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
         ],
         materials: [
@@ -1515,7 +1528,13 @@ const modules = {
     },
     plated: {
         name: "Plated",
-        part: [schematics.pants.parts.leftLeg, schematics.pants.parts.rightLed],
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
+        ],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.bone],
@@ -1528,7 +1547,10 @@ const modules = {
         name: "Chain",
         part: [
             schematics.pants.parts.leftLeg,
-            schematics.pants.parts.rightLed,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
         ],
         materials: [
@@ -1540,7 +1562,13 @@ const modules = {
     },
     studded: {
         name: "Studded",
-        part: [schematics.pants.parts.leftLeg, schematics.pants.parts.rightLed],
+        part: [
+            schematics.pants.parts.leftLeg,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
+        ],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.skin],
@@ -1557,7 +1585,10 @@ const modules = {
         name: "Wrapped",
         part: [
             schematics.pants.parts.leftLeg,
-            schematics.pants.parts.rightLed,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
         ],
         materials: [
@@ -1571,7 +1602,10 @@ const modules = {
         name: "splint",
         part: [
             schematics.pants.parts.leftLeg,
-            schematics.pants.parts.rightLed,
+            schematics.pants.parts.rightLeg,
+            schematics.shirt.parts.body,
+            schematics.shirt.parts.leftSleeve,
+            schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
         ],
         materials: [
@@ -1596,6 +1630,20 @@ const modules = {
                     materialTypes.bone,
                     materialTypes.stone,
                 ],
+                amount: 1,
+            },
+        ],
+    },
+    barbbed: {
+        name: "barbbed",
+        part: [schematics.shirt.parts.leftSleeve, schematics.shirt.parts.rightSleeve],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, materialTypes.wire],
+                amount: 2,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
                 amount: 1,
             },
         ],
