@@ -13,6 +13,7 @@
  * @property {foodData|undefined} foodData - data about this meal
  * @property {weaponData} weaponData - various properties about this item
  *
+ * @property {items.item} dye - item used to color this
  * @property {component} components - list of the matrials that make up this item
  *
  * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
@@ -1112,6 +1113,19 @@ let items = {
             flexibility: 4,
             sharpness: 1,
             materialType: materialTypes.plant,
+            foodData: {
+                foodType: foodTypes.grain,
+                maxUses: 1,
+                hpChange: -1,
+                prefix: foodPrefixes.earthy,
+                effect: [
+                    {
+                        effectGiven: statusEffects.gross,
+                        effectChance: 1,
+                        effectTime: 2,
+                    },
+                ],
+            },
         },
     },
     treeBranch: {
@@ -1435,14 +1449,14 @@ let items = {
             maxUses: 1,
             hpChange: -5,
             prefix: foodPrefixes.earthy,
+            effect: [
+                {
+                    effectGiven: statusEffects.gross,
+                    effectChance: 0.6,
+                    effectTime: 4,
+                },
+            ],
         },
-        effect: [
-            {
-                effectGiven: statusEffects.gross,
-                effectChance: 0.6,
-                effectTime: 4,
-            },
-        ],
     },
     rushrooms: {
         name: "Rushrooms",
@@ -3223,69 +3237,5 @@ let items = {
         weight: 1,
         weaponData: { weaponType: weaponTypes.axe },
         equipSlot: equipSlots.mainHand,
-    },
-};
-
-/**
- * @typedef {Object} craftedItemData - this holds data about a item that is overid
- * @property {Record<number, item>} - the key should be the ID, the data in the Object should be a item
- */
-let craftedItemData = {
-    1: {
-        name: "Koopas Underwear",
-        components: {
-            schematic: schematics.pants,
-            craftedModules: [
-                {
-                    module: modules.solid,
-                    part: schematics.pants.parts.waist,
-                    materials: [{ item: "shell" }],
-                },
-            ],
-        },
-    },
-    2: {
-        name: "Koopas Shell",
-        components: {
-            schematic: schematics.shirt,
-            craftedModules: [
-                {
-                    module: modules.shell,
-                    part: schematics.shirt.parts.body,
-                    materials: [
-                        { item: "shell" },
-                        { item: "shell" },
-                        { item: "shell" },
-                        { item: "shell" },
-                    ],
-                },
-            ],
-        },
-        weaponData: {
-            durablity: 50,
-        },
-    },
-    3: {
-        name: "Ripped pants",
-        components: {
-            schematic: schematics.pants,
-            craftedModules: [
-                {
-                    module: modules.fabric,
-                    part: schematics.pants.parts.waist,
-                    materials: [{ item: "leather" }, { item: "oldRag" }],
-                },
-                {
-                    module: modules.wrapped,
-                    part: schematics.pants.parts.leftLeg,
-                    materials: [{ item: "oldRag" }],
-                },
-                {
-                    module: modules.wrapped,
-                    part: schematics.pants.parts.rightLeg,
-                    materials: [{ item: "oldRag" }],
-                },
-            ],
-        },
     },
 };

@@ -57,3 +57,122 @@ function addNewTeamate(basePerson, text) {
 
     gameState.activeTeam[`${basePerson.name}${Object.keys(gameState.activeTeam).length}`] = person;
 }
+
+/**
+ * @typedef {Object} craftedItemData - this holds data about a item that is overid
+ * @property {Record<number, item>} - the key should be the ID, the data in the Object should be a item
+ */
+let craftedItemData = {
+    1: {
+        name: "Koopas Underwear",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [
+                {
+                    module: modules.solid,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "shell" }],
+                },
+            ],
+        },
+    },
+    2: {
+        name: "Koopas Shell",
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.shell,
+                    part: schematics.shirt.parts.body,
+                    materials: [
+                        { item: "shell" },
+                        { item: "shell" },
+                        { item: "shell" },
+                        { item: "shell" },
+                    ],
+                },
+            ],
+        },
+        weaponData: {
+            durablity: 50,
+        },
+    },
+    3: {
+        name: "Ripped pants",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "leather" }, { item: "oldRag" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.leftLeg,
+                    materials: [{ item: "oldRag" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.rightLeg,
+                    materials: [{ item: "oldRag" }],
+                },
+            ],
+        },
+    },
+    4: {
+        name: "Red shirt",
+        dye: items.pepper,
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.fabric,
+                    part: schematics.shirt.parts.body,
+                    materials: [{ item: "oldRag" }, { item: "oldRag" }],
+                },
+            ],
+        },
+    },
+    5: {
+        name: "Marios Overalls",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [
+                {
+                    module: modules.suppenders,
+                    part: schematics.pants.parts.waist,
+                    materials: [{ item: "leather" }, { item: "leather" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.leftLeg,
+                    materials: [{ item: "oldRag" }],
+                },
+                {
+                    module: modules.wrapped,
+                    part: schematics.pants.parts.rightLeg,
+                    materials: [{ item: "oldRag" }],
+                },
+            ],
+        },
+    },
+    6: {
+        name: "Mario Boots",
+        components: {
+            schematic: schematics.boots,
+            craftedModules: [
+                {
+                    module: modules.solid,
+                    part: schematics.boots.parts.body,
+                    materials: [{ item: "wood" }],
+                },
+                {
+                    module: modules.baiscPlate,
+                    part: schematics.boots.parts.toe,
+                    materials: [{ item: "wood" }],
+                },
+            ],
+        },
+    },
+};

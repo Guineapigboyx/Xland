@@ -35,8 +35,11 @@ const basePepole = {
             { stat: statTypes.speed, amount: 2 },
             { stat: statTypes.endurance, amount: 5 },
             { stat: statTypes.intelligence, amount: 3 },
-            { stat: statTypes.crafting, amount: 1 },
             { stat: statTypes.charisma, amount: 2 },
+            { stat: statTypes.crafting, amount: 3 },
+            { stat: statTypes.stealth, amount: 1 },
+            { stat: statTypes.courage, amount: 1 },
+            { stat: statTypes.Storage, amount: 4 },
         ],
         ability: [statusEffects.shellDefence],
         //todo npcData: npcs.koopa
@@ -60,18 +63,20 @@ const basePepole = {
             },
         ],
     },
-    koopa: {
+    locario: {
         id: "locario",
-        name: "locario",
-        hp: 100,
+        name: "Locario",
+        hp: 70,
         stats: [
-            { stat: statTypes.strength, amount: 3 },
-            { stat: statTypes.defense, amount: 3 },
-            { stat: statTypes.speed, amount: 2 },
-            { stat: statTypes.endurance, amount: 5 },
-            { stat: statTypes.intelligence, amount: 3 },
+            { stat: statTypes.strength, amount: 10 },
+            { stat: statTypes.defense, amount: 1 },
+            { stat: statTypes.speed, amount: 3 },
+            { stat: statTypes.endurance, amount: 7 },
+            { stat: statTypes.intelligence, amount: 2 },
+            { stat: statTypes.charisma, amount: 1 },
             { stat: statTypes.crafting, amount: 1 },
-            { stat: statTypes.charisma, amount: 2 },
+            { stat: statTypes.courage, amount: 4 },
+            { stat: statTypes.evasion, amount: 2 },
         ],
         ability: [statusEffects.angerIssues],
         //todo speicalMove: attacks.mineingSmash
@@ -83,6 +88,51 @@ const basePepole = {
                 item: {
                     item: "leggings",
                     craftedItemId: 3,
+                },
+            },
+        ],
+    },
+    mario: {
+        id: "mario",
+        name: "Mario",
+        hp: 225,
+        stats: [
+            { stat: statTypes.strength, amount: 2 },
+            { stat: statTypes.defense, amount: 8 },
+            { stat: statTypes.speed, amount: 1 },
+            { stat: statTypes.endurance, amount: 5 },
+            { stat: statTypes.intelligence, amount: 6 },
+            { stat: statTypes.charisma, amount: 2 },
+            { stat: statTypes.crafting, amount: 1 },
+            { stat: statTypes.courage, amount: 4 },
+            { stat: statTypes.evasion, amount: 2 },
+        ],
+        ability: [statusEffects.bellyArmor],
+        //todo speicalMove: attacks.stomp
+        //todo npcData: npcs.mario
+        equiped: [
+            {
+                // marios overalls
+                slot: equipSlots.pants,
+                item: {
+                    item: "leggings",
+                    craftedItemId: 4,
+                },
+            },
+            {
+                // marios shirt
+                slot: equipSlots.body,
+                item: {
+                    item: "chestplate",
+                    craftedItemId: 5,
+                },
+            },
+            {
+                // marios shoes
+                slot: equipSlots.feet,
+                item: {
+                    item: "boots",
+                    craftedItemId: 6,
                 },
             },
         ],

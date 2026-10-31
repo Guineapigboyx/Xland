@@ -124,7 +124,7 @@ const schematics = {
         parts: {
             toe: { name: "toe", Optinal: true },
             shaft: { name: "shaft", Optinal: true }, // the part your ankle goes in
-            body: { name: "body", Optinal: true },
+            body: { name: "body" },
         },
     },
     helmet: {
@@ -1199,7 +1199,12 @@ const modules = {
         part: [schematics.gloves.parts.knuckle, schematics.boots.parts.toe],
         materials: [
             {
-                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.gemStone,
+                    materialTypes.wood,
+                ],
                 amount: 1,
             },
         ],
@@ -1209,7 +1214,12 @@ const modules = {
         part: [schematics.gloves.parts.knuckle, schematics.boots.parts.toe],
         materials: [
             {
-                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.gemStone,
+                    materialTypes.wood,
+                ],
                 amount: 1,
             },
         ],
@@ -1229,7 +1239,7 @@ const modules = {
         part: [schematics.gloves.parts.knuckle],
         materials: [
             {
-                allowedMaterials: [materialTypes.metal, materialTypes.bone],
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.wood],
                 amount: 1,
             },
         ],
