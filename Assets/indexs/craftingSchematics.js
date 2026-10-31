@@ -1794,8 +1794,8 @@ const modules = {
             },
         ],
     },
-    naselHelm: {
-        name: "Nasal Helm",
+    sallet: {
+        name: "sallet",
         part: [schematics.helmet.parts.skull],
         materials: [
             {
@@ -1805,14 +1805,66 @@ const modules = {
             },
         ],
     },
-    greatHelm: {
-        name: "Great Helm",
-        part: [schematics.helmet.parts.skull],
+
+    // helmet visors
+    noseGuard: {
+        name: "Nose Guard",
+        part: [schematics.helmet.parts.visor],
         materials: [
             {
-                allowedMaterials: [materialTypes.wood, materialTypes.metal],
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.wood],
+                amount: 1,
+            },
+        ],
+    },
+    barredVisor: {
+        name: "Barred Visor",
+        part: [schematics.helmet.parts.visor],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.wood],
+                amount: 1,
+            },
+        ],
+    },
+    meshVisor: {
+        name: "Mesh Visor",
+        part: [schematics.helmet.parts.visor],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.wire, materialTypes.metal, materialTypes.skin],
+                amount: 1,
+            },
+        ],
+    },
+    fullMask: {
+        name: "Full Mask",
+        part: [schematics.helmet.parts.visor],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.wood,
+                    materialTypes.rock,
+                ],
                 amount: 2,
                 same: true,
+            },
+        ],
+    },
+    spikedVisor: {
+        name: "Spiked Visor",
+        part: [schematics.helmet.parts.visor],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.wood],
+                amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
+                amount: 1,
             },
         ],
     },
