@@ -48,7 +48,7 @@ crafting:
         [x] leggings
         [x] chestplate
         [x] gloves
-        [-] boots
+        [x] boots
         [-] belt
         [-] backPack
         [x] axe
@@ -109,10 +109,10 @@ UI:
         [-] bindings
 
 pepole:
-    [-] new names
+    [=] new names
     [] Koopa
     [] Lucario
-    [-] Mario
+    [] Mario
     [-] Luigi
     [-] Kirby
     [-] Toon Link

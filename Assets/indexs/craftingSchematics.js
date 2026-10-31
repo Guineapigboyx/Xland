@@ -123,7 +123,7 @@ const schematics = {
         modularItem: items.boots,
         parts: {
             toe: { name: "toe", Optinal: true },
-            shaft: { name: "backStay", Optinal: true }, // the part your ankle goes in
+            shaft: { name: "shaft", Optinal: true }, // the part your ankle goes in
             body: { name: "body", Optinal: true },
         },
     },
@@ -1196,7 +1196,7 @@ const modules = {
     // knuckle plates
     baiscPlate: {
         name: "Baisc Plate",
-        part: [schematics.gloves.parts.knuckle],
+        part: [schematics.gloves.parts.knuckle, schematics.boots.parts.toe],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
@@ -1206,7 +1206,7 @@ const modules = {
     },
     spikedPlate: {
         name: "Spiked Plate",
-        part: [schematics.gloves.parts.knuckle],
+        part: [schematics.gloves.parts.knuckle, schematics.boots.parts.toe],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.gemStone],
@@ -1527,7 +1527,7 @@ const modules = {
             },
         ],
     },
-    //pants/chestplate
+    //armor
     fabric: {
         name: "Fabric",
         part: [
@@ -1537,6 +1537,9 @@ const modules = {
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
+            schematics.boots.parts.toe,
         ],
         materials: [
             {
@@ -1558,6 +1561,8 @@ const modules = {
             schematics.shirt.parts.body,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
         ],
         materials: [
             {
@@ -1577,6 +1582,8 @@ const modules = {
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
             schematics.helmet.parts.skull,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
         ],
         materials: [
             {
@@ -1621,6 +1628,8 @@ const modules = {
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
         ],
         materials: [
             {
@@ -1643,6 +1652,8 @@ const modules = {
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
         ],
         materials: [
             {
@@ -1670,6 +1681,8 @@ const modules = {
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
             schematics.helmet.parts.skull,
+            schematics.boots.parts.body,
+            schematics.boots.parts.shaft,
         ],
         materials: [
             {
@@ -1687,7 +1700,7 @@ const modules = {
     },
     solid: {
         name: "Solid",
-        part: [schematics.pants.parts.waist],
+        part: [schematics.pants.parts.waist, schematics.boots.parts.body],
         materials: [
             {
                 allowedMaterials: [
