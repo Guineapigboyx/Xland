@@ -16,6 +16,7 @@
  * @typedef {Object} equiped
  * @property {equipSlots.slot} slot - the slot
  * @property {iventoryItem} item - item
+ * @property {Boolean|undefined} blocked - Can the player equip something in this slot.
  *
  * ----
  * @typedef {Object} stat - base stat ranges
@@ -41,9 +42,20 @@ const basePepole = {
         //todo npcData: npcs.koopa
         equiped: [
             {
+                // koopas underwear
                 slot: equipSlots.pants,
                 item: {
-                    item: "koopasUnderwear",
+                    item: "leggings",
+                    craftedItemId: 1,
+                },
+            },
+            {
+                // koopas shell
+                slot: equipSlots.body,
+                item: {
+                    item: "chestplate",
+                    craftedItemId: 2,
+                    blocked: true,
                 },
             },
         ],

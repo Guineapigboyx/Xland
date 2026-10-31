@@ -1648,4 +1648,15 @@ const modules = {
             },
         ],
     },
+    shell: {
+        name: "shell",
+        part: [schematics.shirt.parts.body],
+        materials: [
+            {
+                allowedMaterials: [materialTypes.bone, materialTypes.wood, materialTypes.metal],
+                amount: 4,
+                same: true,
+            },
+        ],
+    },
 };

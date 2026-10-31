@@ -69,12 +69,12 @@
  *
  * ---------------------------------------
  * @typedef {Object} component - the data relateing to how this item was crafted
- * @property {schematics.schematic}
- * @property {craftedModules[]} modules
+ * @property {schematics.schematic} schematic
+ * @property {craftedModules[]} craftedModules
  *
  * @typedef {object} craftedModules
- * @property {modules.module}
- * @property {iventoryItem[]|Object}
+ * @property {modules.module} module
+ * @property {iventoryItem[]|Object} materials
  *
  * ---------------------------------------
  * @typedef {Object} socketData
@@ -143,6 +143,20 @@ let items = {
             materialType: materialTypes.bone,
         },
         weaponData: { weaponType: weaponTypes.club },
+    },
+    shell: {
+        name: "Shell",
+        raritys: raritys.common,
+        weight: 2.2,
+        weaponData: { weaponType: weaponTypes.knife },
+        materialData: {
+            density: 2,
+            toughness: 3,
+            hardness: 2,
+            flexibility: 1,
+            sharpness: 1,
+            materialType: materialTypes.bone,
+        },
     },
     tin: {
         name: "Tin",
@@ -3199,6 +3213,34 @@ let items = {
 
 /**
  * @typedef {Object} craftedItemData - this holds data about a item that is overid
+ * @property {items.item} original - Orignal item that this is being applied to
  * @property {Record<number, item>} - the key should be the ID, the data in the Object should be a item
  */
-let craftedItemData = {};
+let craftedItemData = {
+    1: {
+        original: items.leggings,
+        name: "Koopas Underwear",
+        components: {
+            schematic: schematics.pants,
+            craftedModules: [{ module: modules.solid, materials: [{ item: "shell" }] }],
+        },
+    },
+    2: {
+        original: items.chestplate,
+        name: "Koopas Shell",
+        components: {
+            schematic: schematics.shirt,
+            craftedModules: [
+                {
+                    module: modules.shell,
+                    materials: [
+                        { item: "shell" },
+                        { item: "shell" },
+                        { item: "shell" },
+                        { item: "shell" },
+                    ],
+                },
+            ],
+        },
+    },
+};
