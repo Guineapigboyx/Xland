@@ -160,6 +160,30 @@ const schematics = {
  * @property {Number} amount - the amount of this material required
  * @property {boolean} same - the materials must both be the same
  *
+ * ---- from item.js
+ * @typedef {object} weaponData - properties about this item in combat
+ * @property {weaponTypes.weaponType} weaponType - what weapon type is this,
+ * @property {damageTypes.damagetype} damagetype - the damagetype this item gives
+ * @property {Number} durablity
+ * @property {Number|undefined} attack
+ * @property {Number|undefined} defense
+ * @property {Number|undefined} accuracy
+ * @property {Number|undefined} crit
+ * @property {Number|undefined} actionSurge - how much ep does it cost to action surge with this item (default = 3)
+ * @property {1|2|3|4|5|6|7|8|undefined} range - overides the weapon types with this range
+ * @property {Number} speed - starts at 5; every module only subtracts speed
+ *
+ * --- from item.js
+ * @typedef {object} materialData - data about a material if
+ * @property {Number} density
+ * @property {Number} hardness
+ * @property {Number} flexiblity
+ * @property {Number} toughness
+ * @property {Number} sharpness
+ *
+ * @property {damagetypes[]} damagetypes - amplify the power of this damage type when crafted with something that gives the same
+ * @property {effects[]} effects
+ * @property {materialTypes} materialType - the type of matrial this item is
  */
 const modules = {
     // tool heads
@@ -173,7 +197,20 @@ const modules = {
                 same: true,
             },
         ],
-        accuracy: -1,
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.28 + materialData.density * 0.07 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 1.5;
+            weaponData.attack -= materialData.flexiblity * 0.5;
+            weaponData.speed -= materialData.density * 0.25;
+            weaponData.speed -= materialData.toughness * 0.1;
+            weaponData.accuracy -= 1;
+            weaponData.durablity += materialData.hardness * 5;
+            weaponData.durablity -= materialData.sharpness * 2;
+
+            return weaponData;
+        },
     },
     axeHead: {
         name: "Axe",
@@ -190,6 +227,24 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.17 + materialData.density * 0.055 - materialData.flexibility * 0.024;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.sharpness * 1.5 +
+                materialData.hardness * 0.65 +
+                materialData.density * 0.35;
+            weaponData.accuracy -= 0.35;
+            weaponData.crit += materialData.sharpness * 0.15;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 1.5 -
+                materialData.sharpness * 0.7;
+            weaponData.speed -= materialData.density * 0.23;
+
+            return weaponData;
+        },
     },
     scytheHead: {
         name: "Scythe",
@@ -207,6 +262,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.55 + materialData.density * 0.08 - materialData.flexibility * 0.024;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.8 + materialData.flexiblity * 0.45;
+            weaponData.accuracy -= 0.7;
+            weaponData.crit += materialData.sharpness * 0.3;
+            weaponData.durablity +=
+                materialData.hardness * 3.5 + materialData.toughness - materialData.sharpness * 0.8;
+            weaponData.speed -= materialData.density * 0.2 + materialData.flexiblity * 0.025;
+
+            return weaponData;
+        },
     },
     pickaxeHead: {
         name: "Pickaxe",
@@ -224,6 +292,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.42 + materialData.density * 0.075 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.6 + materialData.density * 0.9;
+            weaponData.accuracy -= 0.5;
+            weaponData.crit += materialData.hardness * 0.08;
+            weaponData.durablity +=
+                materialData.hardness * 5 +
+                materialData.toughness * 2 -
+                materialData.sharpness * 0.4;
+            weaponData.speed -= materialData.density * 0.27;
+
+            return weaponData;
+        },
     },
     spikeHammerHead: {
         name: "Spiky Hammer",
@@ -239,6 +322,21 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.48 + materialData.density * 0.07 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.density * 1.2 + materialData.sharpness * 1.35;
+            weaponData.accuracy -= 0.6;
+            weaponData.crit += materialData.sharpness * 0.15;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 1.6 -
+                materialData.sharpness * 0.7;
+            weaponData.speed -= materialData.density * 0.28;
+
+            return weaponData;
+        },
     },
     sledgeHead: {
         name: "Sledge Hammer",
@@ -250,6 +348,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                1.18 + materialData.density * 0.105 - materialData.flexibility * 0.012;
+            weaponData.damagetype = damageTypes.crushing;
+            weaponData.attack += materialData.density * 2 + materialData.toughness * 0.8;
+            weaponData.accuracy -= 1.2;
+            weaponData.durablity += materialData.hardness * 6 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.38 + materialData.toughness * 0.09;
+
+            return weaponData;
+        },
     },
     clawHead: {
         name: "Claw",
@@ -267,6 +376,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.04 + materialData.density * 0.04 - materialData.flexibility * 0.03;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 0.95 + materialData.hardness * 0.6;
+            weaponData.accuracy += 0.25;
+            weaponData.crit += materialData.sharpness * 0.16;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 1.5 -
+                materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
+        },
     },
     // handles (shared)
     basicHandle: {
@@ -289,6 +413,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.22 + materialData.density * 0.024 - materialData.flexibility * 0.03;
+            weaponData.defense += materialData.toughness * 0.15;
+            weaponData.accuracy += materialData.flexiblity * 0.05;
+            weaponData.durablity += materialData.hardness * 1.6 + materialData.toughness * 2.5;
+            weaponData.speed -= materialData.density * 0.07;
+
+            return weaponData;
+        },
     },
     wrappedHandle: {
         name: "Wrapped Hilt",
@@ -319,6 +453,17 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.36 + materialData.density * 0.025 - materialData.flexibility * 0.045;
+            weaponData.defense += materialData.toughness * 0.25;
+            weaponData.accuracy += 0.35 + materialData.flexiblity * 0.14;
+            weaponData.durablity +=
+                materialData.hardness * 1.7 + materialData.toughness * 2 + materialData.flexiblity;
+            weaponData.speed -= materialData.density * 0.06;
+
+            return weaponData;
+        },
     },
     curvedHandle: {
         name: "Curved Handle",
@@ -341,6 +486,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.29 + materialData.density * 0.035 - materialData.flexibility * 0.045;
+            weaponData.accuracy += 0.15 + materialData.flexiblity * 0.15;
+            weaponData.crit += 0.1;
+            weaponData.durablity += materialData.hardness * 1.5 + materialData.toughness * 1.8;
+            weaponData.speed -= materialData.density * 0.09;
+
+            return weaponData;
+        },
     },
     shieldedHandle: {
         name: "Shielded Handle",
@@ -367,6 +522,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.17 + materialData.density * 0.045 - materialData.flexibility * 0.015;
+            weaponData.defense += materialData.toughness * 0.5 + materialData.hardness * 0.2;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2.5;
+            weaponData.speed -= materialData.density * 0.13;
+
+            return weaponData;
+        },
     },
     thickHandle: {
         name: "Thick Handle",
@@ -389,6 +554,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.33 + materialData.density * 0.064 - materialData.flexibility * 0.016;
+            weaponData.attack += materialData.density * 0.15;
+            weaponData.defense += materialData.toughness * 0.45;
+            weaponData.accuracy -= 0.2;
+            weaponData.durablity += materialData.hardness * 2.7 + materialData.toughness * 3.2;
+            weaponData.speed -= materialData.density * 0.14;
+
+            return weaponData;
+        },
     },
     hollowHandle: {
         name: "Hollow Handle",
@@ -410,6 +586,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.49 + materialData.density * 0.015 - materialData.flexibility * 0.035;
+            weaponData.accuracy += 0.2 + materialData.flexiblity * 0.12;
+            weaponData.durablity +=
+                materialData.hardness +
+                materialData.toughness * 1.5 -
+                materialData.flexiblity * 0.4;
+            weaponData.speed -= materialData.density * 0.025;
+
+            return weaponData;
+        },
     },
     stickyHandle: {
         name: "Sticky Handle",
@@ -432,6 +620,15 @@ const modules = {
             },
             { allowedMaterial: [materialTypes.sticky], amount: 2 },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.39 + materialData.density * 0.025 - materialData.flexibility * 0.025;
+            weaponData.accuracy += 0.4 + materialData.flexiblity * 0.1;
+            weaponData.durablity += materialData.hardness * 1.2 + materialData.toughness * 1.5;
+            weaponData.speed -= materialData.density * 0.06;
+
+            return weaponData;
+        },
     },
     longHandle: {
         name: "long Handle",
@@ -453,6 +650,17 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.13 + materialData.density * 0.045 - materialData.flexibility * 0.025;
+            weaponData.defense += materialData.toughness * 0.15;
+            weaponData.accuracy -= 0.15;
+            weaponData.crit += 0.1;
+            weaponData.durablity += materialData.hardness * 2.0 + materialData.toughness * 2.2;
+            weaponData.speed -= materialData.density * 0.12;
+
+            return weaponData;
+        },
     },
     flexibleHandle: {
         // whip
@@ -475,6 +683,20 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.38 + materialData.density * 0.025 - materialData.flexibility * 0.06;
+            weaponData.attack += materialData.flexiblity * 0.35;
+            weaponData.accuracy += materialData.flexiblity * 0.15 - 0.35;
+            weaponData.crit += materialData.flexiblity * 0.17;
+            weaponData.durablity +=
+                materialData.hardness * 0.7 +
+                materialData.toughness * 2.6 +
+                materialData.flexiblity * 1.2;
+            weaponData.speed -= materialData.density * 0.055;
+
+            return weaponData;
+        },
     },
     // binding
     glueBinding: {
@@ -491,6 +713,15 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.08 + materialData.density * 0.017 - materialData.flexibility * 0.035;
+            weaponData.accuracy += 0.05 + materialData.flexiblity * 0.08;
+            weaponData.durablity += materialData.toughness * 1.5 + materialData.flexiblity * 0.9;
+            weaponData.speed -= materialData.density * 0.025;
+
+            return weaponData;
+        },
     },
     stringBinding: {
         name: "String",
@@ -506,6 +737,15 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.13 + materialData.density * 0.015 - materialData.flexibility * 0.042;
+            weaponData.accuracy += materialData.flexiblity * 0.1;
+            weaponData.durablity += materialData.toughness * 1.9 + materialData.flexiblity * 1.2;
+            weaponData.speed -= materialData.density * 0.03;
+
+            return weaponData;
+        },
     },
     metalBinding: {
         name: "Bradied",
@@ -521,6 +761,16 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.08 + materialData.density * 0.04 - materialData.flexibility * 0.016;
+            weaponData.defense += materialData.toughness * 0.17;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.hardness * 2 + materialData.toughness * 2.1;
+            weaponData.speed -= materialData.density * 0.065;
+
+            return weaponData;
+        },
     },
     barbedBinding: {
         name: "Barbed",
@@ -535,6 +785,17 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.24 + materialData.density * 0.05 - materialData.flexibility * 0.012;
+            weaponData.attack += materialData.sharpness * 0.3;
+            weaponData.accuracy -= 0.1;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 1.8 + materialData.toughness * 1.3;
+            weaponData.speed -= materialData.density * 0.075;
+
+            return weaponData;
+        },
     },
     cuffBinding: {
         name: "Cuff",
@@ -550,6 +811,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.12 + materialData.density * 0.045 - materialData.flexibility * 0.018;
+            weaponData.defense += materialData.toughness * 0.2;
+            weaponData.accuracy += 0.12;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.085;
+
+            return weaponData;
+        },
     },
     // drill bits
     basicBit: {
@@ -561,6 +832,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.15 + materialData.density * 0.05 - materialData.flexibility * 0.015;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.15 + materialData.sharpness * 0.6;
+            weaponData.crit += materialData.sharpness * 0.07;
+            weaponData.durablity +=
+                materialData.hardness * 4 + materialData.toughness - materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     spadeBit: {
         name: "Spade",
@@ -572,6 +855,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.32 + materialData.density * 0.06 - materialData.flexibility * 0.016;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.2 + materialData.density * 0.3;
+            weaponData.accuracy -= 0.15;
+            weaponData.durablity += materialData.hardness * 4.2 + materialData.toughness * 1.2;
+            weaponData.speed -= materialData.density * 0.2;
+
+            return weaponData;
+        },
     },
     augerBit: {
         name: "Auger",
@@ -583,6 +877,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.55 + materialData.density * 0.07 - materialData.flexibility * 0.013;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.4 + materialData.sharpness * 0.9;
+            weaponData.accuracy -= 0.2;
+            weaponData.crit += materialData.sharpness * 0.06;
+            weaponData.durablity += materialData.hardness * 4 + materialData.toughness * 1.4;
+            weaponData.speed -= materialData.density * 0.24;
+
+            return weaponData;
+        },
     },
     coreBit: {
         name: "Core",
@@ -594,6 +900,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.24 + materialData.density * 0.053 - materialData.flexibility * 0.015;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.1 + materialData.sharpness * 0.4;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity += materialData.hardness * 5 + materialData.toughness * 1.5;
+            weaponData.speed -= materialData.density * 0.21;
+
+            return weaponData;
+        },
     },
     masonryBit: {
         name: "Masonry",
@@ -605,6 +922,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.43 + materialData.density * 0.065 - materialData.flexibility * 0.014;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.7 + materialData.density * 0.35;
+            weaponData.accuracy -= 0.3;
+            weaponData.durablity += materialData.hardness * 6 + materialData.toughness * 1.8;
+            weaponData.speed -= materialData.density * 0.25;
+
+            return weaponData;
+        },
     },
     stepBit: {
         name: "Step",
@@ -615,9 +943,21 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.3 + materialData.density * 0.053 - materialData.flexibility * 0.022;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.1 + materialData.sharpness * 0.8;
+            weaponData.accuracy += 0.15;
+            weaponData.crit += materialData.sharpness * 0.08;
+            weaponData.durablity += materialData.hardness * 3.5 + materialData.toughness;
+            weaponData.speed -= materialData.density * 0.2;
+
+            return weaponData;
+        },
     },
     lanceBit: {
-        name: "Armor Lance",
+        name: "Lance bit",
         part: [schematics.drill.parts.bit],
         materials: [
             {
@@ -631,6 +971,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.67 + materialData.density * 0.08 - materialData.flexibility * 0.012;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.hardness * 1.85 + materialData.sharpness * 0.8;
+            weaponData.accuracy -= 0.5;
+            weaponData.crit += materialData.hardness * 0.12;
+            weaponData.durablity += materialData.hardness * 5 + materialData.toughness * 1.7;
+            weaponData.speed -= materialData.density * 0.3;
+
+            return weaponData;
+        },
     },
     thinBit: {
         name: "Thin Bit",
@@ -641,6 +993,21 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.2 + materialData.density * 0.035 - materialData.flexibility * 0.03;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 0.9 + materialData.hardness * 0.55;
+            weaponData.accuracy += 0.4;
+            weaponData.crit += materialData.sharpness * 0.15;
+            weaponData.durablity +=
+                materialData.hardness * 2 +
+                materialData.toughness * 0.8 -
+                materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.09;
+
+            return weaponData;
+        },
     },
     // motor // it will use the xland V1 - V12 engine system
     motor: {
@@ -652,6 +1019,13 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.33 + materialData.density * 0.03 - materialData.flexibility * 0.009;
+            // todo add motors
+
+            return weaponData;
+        },
     },
     // drill handle
     basicGrip: {
@@ -667,6 +1041,16 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.16 + materialData.density * 0.023 - materialData.flexibility * 0.023;
+            weaponData.defense += materialData.toughness * 0.1;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.hardness * 1.6 + materialData.toughness * 1.8;
+            weaponData.speed -= materialData.density * 0.06;
+
+            return weaponData;
+        },
     },
     pistolGrip: {
         name: "Pistol Grip",
@@ -677,6 +1061,15 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.35 + materialData.density * 0.019 - materialData.flexibility * 0.045;
+            weaponData.accuracy += 0.3 + materialData.flexiblity * 0.07;
+            weaponData.durablity += materialData.hardness * 1.3 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.07;
+
+            return weaponData;
+        },
     },
     spadeGrip: {
         name: "Spade Grip",
@@ -687,6 +1080,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.12 + materialData.density * 0.03 - materialData.flexibility * 0.025;
+            weaponData.defense += materialData.toughness * 0.25;
+            weaponData.accuracy += 0.18;
+            weaponData.durablity += materialData.hardness * 2 + materialData.toughness * 2.5;
+            weaponData.speed -= materialData.density * 0.09;
+
+            return weaponData;
+        },
     },
     doubleSpadeGrid: {
         name: "Double Spade Grid",
@@ -697,6 +1100,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.24 + materialData.density * 0.045 - materialData.flexibility * 0.036;
+            weaponData.defense += materialData.toughness * 0.35;
+            weaponData.accuracy += 0.35;
+            weaponData.durablity += materialData.hardness * 2.4 + materialData.toughness * 2.8;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     // shield
     barGrip: {
@@ -708,6 +1121,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.1 + materialData.density * 0.03 - materialData.flexibility * 0.018;
+            weaponData.defense += materialData.toughness * 0.15;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.hardness * 1.5 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.06;
+
+            return weaponData;
+        },
     },
     holeGrip: {
         name: "Hole Grip",
@@ -718,6 +1141,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.32 + materialData.density * 0.018 - materialData.flexibility * 0.03;
+            weaponData.defense += materialData.toughness * 0.08;
+            weaponData.accuracy += 0.3;
+            weaponData.durablity += materialData.hardness + materialData.toughness * 1.3;
+            weaponData.speed -= materialData.density * 0.04;
+
+            return weaponData;
+        },
     },
     doubleBarGrip: {
         name: "Double Bar Grip",
@@ -728,6 +1161,16 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.08 + materialData.density * 0.04 - materialData.flexibility * 0.018;
+            weaponData.defense += materialData.toughness * 0.4;
+            weaponData.accuracy += 0.25;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.13;
+
+            return weaponData;
+        },
     },
     straps: {
         name: "Straps",
@@ -748,6 +1191,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.33 + materialData.density * 0.02 - materialData.flexibility * 0.049;
+            weaponData.defense += materialData.toughness * 0.2 + materialData.flexiblity * 0.1;
+            weaponData.accuracy += materialData.flexiblity * 0.13;
+            weaponData.durablity += materialData.toughness * 2.5 + materialData.flexiblity * 1.4;
+            weaponData.speed -= materialData.density * 0.045;
+
+            return weaponData;
+        },
     },
     guigeStrap: {
         name: "Guige Strap",
@@ -763,6 +1216,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.22 + materialData.density * 0.023 - materialData.flexibility * 0.038;
+            weaponData.defense += materialData.toughness * 0.25;
+            weaponData.accuracy += materialData.flexiblity * 0.06 - 0.15;
+            weaponData.durablity += materialData.toughness * 2.7 + materialData.hardness * 1.1;
+            weaponData.speed -= materialData.density * 0.08;
+
+            return weaponData;
+        },
     },
     // shield face
     flatFace: {
@@ -775,6 +1238,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.25 + materialData.density * 0.05 - materialData.flexibility * 0.015;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 0.22;
+            weaponData.defense += materialData.toughness * 1.4 + materialData.hardness * 0.6;
+            weaponData.durablity += materialData.hardness * 4.2 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.21;
+
+            return weaponData;
+        },
     },
     curvedFace: {
         name: "Curved Face",
@@ -786,6 +1260,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.08 + materialData.density * 0.045 - materialData.flexibility * 0.02;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 0.15;
+            weaponData.defense += materialData.toughness * 1.3 + materialData.hardness * 0.5;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity += materialData.hardness * 4 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.19;
+
+            return weaponData;
+        },
     },
     spikedFace: {
         name: "Spiked Face",
@@ -807,6 +1293,22 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.41 + materialData.density * 0.065 - materialData.flexibility * 0.012;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.1 + materialData.density * 0.35;
+            weaponData.defense += materialData.toughness * 1.2 + materialData.hardness * 0.55;
+            weaponData.accuracy -= 0.2;
+            weaponData.crit += materialData.sharpness * 0.12;
+            weaponData.durablity +=
+                materialData.hardness * 4.1 +
+                materialData.toughness * 2.4 -
+                materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.24;
+
+            return weaponData;
+        },
     },
     armoredFace: {
         name: "Armored Face",
@@ -823,6 +1325,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.82 + materialData.density * 0.09 - materialData.flexibility * 0.011;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 0.5;
+            weaponData.defense += materialData.toughness * 1.65 + materialData.hardness * 0.8;
+            weaponData.accuracy -= 0.25;
+            weaponData.durablity += materialData.hardness * 5.5 + materialData.toughness * 3.5;
+            weaponData.speed -= materialData.density * 0.32;
+
+            return weaponData;
+        },
     },
     barbedFace: {
         name: "Barbed Face",
@@ -839,6 +1353,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.42 + materialData.density * 0.06 - materialData.flexibility * 0.014;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 0.9;
+            weaponData.defense += materialData.toughness * 1.3 + materialData.hardness * 0.55;
+            weaponData.accuracy -= 0.1;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 4 + materialData.toughness * 2.8;
+            weaponData.speed -= materialData.density * 0.24;
+
+            return weaponData;
+        },
     },
     bladeFace: {
         name: "Blade Face",
@@ -854,6 +1381,22 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.37 + materialData.density * 0.053 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.4 + materialData.hardness * 0.3;
+            weaponData.defense += materialData.toughness * 1.25 + materialData.hardness * 0.5;
+            weaponData.accuracy -= 0.25;
+            weaponData.crit += materialData.sharpness * 0.14;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 2.5 -
+                materialData.sharpness * 0.6;
+            weaponData.speed -= materialData.density * 0.27;
+
+            return weaponData;
+        },
     },
     wideRimFace: {
         name: "Wide Rim Face",
@@ -870,6 +1413,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.58 + materialData.density * 0.07 - materialData.flexibility * 0.013;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 0.28;
+            weaponData.defense += materialData.toughness * 1.55 + materialData.hardness * 0.65;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 4.8 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.28;
+
+            return weaponData;
+        },
     },
     // sword blades
     basicBlade: {
@@ -887,6 +1442,20 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.16 + materialData.density * 0.045 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.25 + materialData.hardness * 0.5;
+            weaponData.crit += materialData.sharpness * 0.08;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 1.6 -
+                materialData.sharpness * 0.4;
+            weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
+        },
     },
     broadBlade: {
         name: "Broad Blade",
@@ -898,6 +1467,25 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.7 + materialData.density * 0.077 - materialData.flexibility * 0.012;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.sharpness * 1.1 +
+                materialData.hardness * 0.6 +
+                materialData.density * 0.55;
+            weaponData.defense += materialData.toughness * 0.15;
+            weaponData.accuracy -= 0.45;
+            weaponData.crit += materialData.sharpness * 0.09;
+            weaponData.durablity +=
+                materialData.hardness * 4.3 +
+                materialData.toughness * 2 -
+                materialData.sharpness * 0.45;
+            weaponData.speed -= materialData.density * 0.25;
+
+            return weaponData;
+        },
     },
     katanaBlade: {
         name: "Katana Blade",
@@ -914,6 +1502,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.04 + materialData.density * 0.044 - materialData.flexibility * 0.029;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.6 + materialData.hardness * 0.55;
+            weaponData.accuracy += 0.15;
+            weaponData.crit += materialData.sharpness * 0.19;
+            weaponData.durablity +=
+                materialData.hardness * 3.7 +
+                materialData.toughness * 1.3 -
+                materialData.sharpness * 0.6;
+            weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
+        },
     },
     rapierBlade: {
         name: "Rapier Blade",
@@ -924,6 +1527,21 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.39 + materialData.density * 0.027 - materialData.flexibility * 0.045;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.25 + materialData.hardness * 0.65;
+            weaponData.accuracy += 0.8;
+            weaponData.crit += materialData.sharpness * 0.23;
+            weaponData.durablity +=
+                materialData.hardness * 2.8 +
+                materialData.toughness * 0.9 -
+                materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.08;
+
+            return weaponData;
+        },
     },
     shortBlade: {
         name: "Short Blade",
@@ -940,6 +1558,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.24 + materialData.density * 0.03 - materialData.flexibility * 0.04;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 0.85 + materialData.hardness * 0.4;
+            weaponData.accuracy += 0.55;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 3.1 + materialData.toughness * 1.1;
+            weaponData.speed -= materialData.density * 0.095;
+
+            return weaponData;
+        },
     },
     knifeBlade: {
         name: "Knife Blade",
@@ -956,6 +1586,21 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.46 + materialData.density * 0.025 - materialData.flexibility * 0.045;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.2 + materialData.hardness * 0.25;
+            weaponData.accuracy += 0.6;
+            weaponData.crit += materialData.sharpness * 0.2;
+            weaponData.durablity +=
+                materialData.hardness * 2.7 +
+                materialData.toughness -
+                materialData.sharpness * 0.55;
+            weaponData.speed -= materialData.density * 0.075;
+
+            return weaponData;
+        },
     },
     macheteBlade: {
         name: "Machete Blade",
@@ -972,6 +1617,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.33 + materialData.density * 0.063 - materialData.flexibility * 0.016;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.sharpness * 1.25 +
+                materialData.density * 0.55 +
+                materialData.hardness * 0.25;
+            weaponData.accuracy -= 0.2;
+            weaponData.crit += materialData.sharpness * 0.08;
+            weaponData.durablity += materialData.hardness * 3.6 + materialData.toughness * 1.4;
+            weaponData.speed -= materialData.density * 0.21;
+
+            return weaponData;
+        },
     },
     // guards
     basicGuard: {
@@ -988,6 +1648,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.1 + materialData.density * 0.024 - materialData.flexibility * 0.015;
+            weaponData.defense += materialData.toughness * 0.2;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.hardness * 1.4 + materialData.toughness * 1.8;
+            weaponData.speed -= materialData.density * 0.045;
+
+            return weaponData;
+        },
     },
     shieldGuard: {
         name: "Shield Guard",
@@ -1007,6 +1677,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.24 + materialData.density * 0.065 - materialData.flexibility * 0.012;
+            weaponData.defense += materialData.toughness * 0.75 + materialData.hardness * 0.25;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 3 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.16;
+
+            return weaponData;
+        },
     },
     wideGuard: {
         name: "Wide Guard",
@@ -1022,6 +1702,16 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.17 + materialData.density * 0.046 - materialData.flexibility * 0.014;
+            weaponData.defense += materialData.toughness * 0.45 + materialData.hardness * 0.1;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 2.3 + materialData.toughness * 2.3;
+            weaponData.speed -= materialData.density * 0.1;
+
+            return weaponData;
+        },
     },
     sweptGuard: {
         name: "Swept Guard",
@@ -1032,6 +1722,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.16 + materialData.density * 0.035 - materialData.flexibility * 0.029;
+            weaponData.defense += materialData.toughness * 0.3;
+            weaponData.accuracy += 0.2;
+            weaponData.durablity += materialData.hardness * 1.9 + materialData.toughness * 1.9;
+            weaponData.speed -= materialData.density * 0.065;
+
+            return weaponData;
+        },
     },
     weightedGuard: {
         name: "Weighted Guard",
@@ -1047,6 +1747,17 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.45 + materialData.density * 0.07 - materialData.flexibility * 0.015;
+            weaponData.attack += materialData.density * 0.25;
+            weaponData.defense += materialData.toughness * 0.4;
+            weaponData.accuracy -= 0.18;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2.5;
+            weaponData.speed -= materialData.density * 0.18;
+
+            return weaponData;
+        },
     },
     // slackstick stones
     ball: {
@@ -1071,6 +1782,17 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.12 + materialData.density * 0.055 - materialData.flexibility * 0.012;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 1.05 + materialData.toughness * 0.3;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2.2;
+            weaponData.speed -= materialData.density * 0.18;
+
+            return weaponData;
+        },
     },
     spikyBall: {
         name: "Spiky Ball",
@@ -1103,6 +1825,21 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.29 + materialData.density * 0.063 - materialData.flexibility * 0.014;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.density * 0.9 + materialData.sharpness * 1.1;
+            weaponData.accuracy -= 0.25;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity +=
+                materialData.hardness * 2.8 +
+                materialData.toughness * 1.9 -
+                materialData.sharpness * 0.35;
+            weaponData.speed -= materialData.density * 0.22;
+
+            return weaponData;
+        },
     },
     largeBall: {
         name: "Large Ball",
@@ -1127,6 +1864,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.7 + materialData.density * 0.095 - materialData.flexibility * 0.011;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 1.75 + materialData.toughness * 0.45;
+            weaponData.accuracy -= 0.65;
+            weaponData.durablity += materialData.hardness * 3.5 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.3;
+
+            return weaponData;
+        },
     },
     // gloves
     basicGloves: {
@@ -1139,6 +1887,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.3 + materialData.density * 0.02 - materialData.flexibility * 0.045;
+            weaponData.defense += materialData.toughness * 0.7 + materialData.flexiblity * 0.15;
+            weaponData.accuracy += 0.25;
+            weaponData.durablity +=
+                materialData.toughness * 2.8 + materialData.flexiblity + materialData.hardness;
+            weaponData.speed -= materialData.density * 0.06;
+
+            return weaponData;
+        },
     },
     chainGloves: {
         name: "Chain Mail Gloves",
@@ -1150,6 +1909,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.03 + materialData.density * 0.038 - materialData.flexibility * 0.03;
+            weaponData.defense += materialData.toughness + materialData.hardness * 0.3;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity += materialData.hardness * 3.4 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.14;
+
+            return weaponData;
+        },
     },
     gauntlets: {
         name: "Gauntlets",
@@ -1161,6 +1930,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.48 + materialData.density * 0.07 - materialData.flexibility * 0.015;
+            weaponData.attack += materialData.density * 0.5;
+            weaponData.defense += materialData.toughness * 1.4 + materialData.hardness * 0.6;
+            weaponData.accuracy -= 0.25;
+            weaponData.durablity += materialData.hardness * 4.5 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.23;
+
+            return weaponData;
+        },
     },
     insulatedGloves: {
         name: "Insulated Gloves",
@@ -1177,6 +1957,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.21 + materialData.density * 0.025 - materialData.flexibility * 0.045;
+            weaponData.defense += materialData.toughness * 0.75 + materialData.flexiblity * 0.3;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.toughness * 3 + materialData.flexiblity * 1.7;
+            weaponData.speed -= materialData.density * 0.09;
+
+            return weaponData;
+        },
     },
     climbingGloves: {
         name: "Climbing Gloves",
@@ -1192,6 +1982,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.28 + materialData.density * 0.02 - materialData.flexibility * 0.045;
+            weaponData.defense += materialData.toughness * 0.45 + materialData.flexiblity * 0.2;
+            weaponData.accuracy += 0.5 + materialData.flexiblity * 0.1;
+            weaponData.durablity += materialData.toughness * 2.2 + materialData.flexiblity * 1.5;
+            weaponData.speed -= materialData.density * 0.08;
+
+            return weaponData;
+        },
     },
     // knuckle plates
     baiscPlate: {
@@ -1208,6 +2008,17 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.08 + materialData.density * 0.035 - materialData.flexibility * 0.018;
+            weaponData.attack += materialData.density * 0.6 + materialData.hardness * 0.2;
+            weaponData.defense += materialData.toughness * 0.45;
+            weaponData.accuracy -= 0.12;
+            weaponData.durablity += materialData.hardness * 2.8 + materialData.toughness * 1.6;
+            weaponData.speed -= materialData.density * 0.11;
+
+            return weaponData;
+        },
     },
     spikedPlate: {
         name: "Spiked Plate",
@@ -1223,6 +2034,22 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.2 + materialData.density * 0.044 - materialData.flexibility * 0.013;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.1 + materialData.density * 0.3;
+            weaponData.defense += materialData.toughness * 0.3;
+            weaponData.accuracy -= 0.18;
+            weaponData.crit += materialData.sharpness * 0.12;
+            weaponData.durablity +=
+                materialData.hardness * 2.6 +
+                materialData.toughness * 1.4 -
+                materialData.sharpness * 0.4;
+            weaponData.speed -= materialData.density * 0.13;
+
+            return weaponData;
+        },
     },
     gloveReinforcement: {
         name: "Glove Reinforcement",
@@ -1233,6 +2060,17 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.14 + materialData.density * 0.035 - materialData.flexibility * 0.016;
+            weaponData.attack += materialData.density * 0.2;
+            weaponData.defense += materialData.toughness * 0.75 + materialData.hardness * 0.15;
+            weaponData.accuracy -= 0.12;
+            weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2.2;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     dusters: {
         name: "Dusters",
@@ -1243,6 +2081,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.17 + materialData.density * 0.045 - materialData.flexibility * 0.018;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 0.8 + materialData.hardness * 0.25;
+            weaponData.defense += materialData.toughness * 0.25;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 3 + materialData.toughness * 1.6;
+            weaponData.speed -= materialData.density * 0.12;
+
+            return weaponData;
+        },
     },
     // bow stave
     basicStave: {
@@ -1255,6 +2105,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.16 + materialData.density * 0.055 - materialData.flexibility * 0.045;
+            weaponData.attack += materialData.flexiblity * 1.35 + materialData.toughness * 0.4;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity +=
+                materialData.toughness * 3.5 +
+                materialData.flexiblity * 1.7 +
+                materialData.hardness;
+            weaponData.speed -= materialData.density * 0.16;
+
+            return weaponData;
+        },
     },
     longStave: {
         name: "Long Stave",
@@ -1266,6 +2129,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.54 + materialData.density * 0.075 - materialData.flexibility * 0.045;
+            weaponData.attack += materialData.flexiblity * 1.5 + materialData.toughness * 0.6;
+            weaponData.accuracy -= 0.15;
+            weaponData.durablity +=
+                materialData.toughness * 4 +
+                materialData.flexiblity * 2 +
+                materialData.hardness * 1.2;
+            weaponData.speed -= materialData.density * 0.23;
+
+            return weaponData;
+        },
     },
     recursiveStave: {
         name: "Recursive Stave",
@@ -1277,6 +2153,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.03 + materialData.density * 0.05 - materialData.flexibility * 0.06;
+            weaponData.attack += materialData.flexiblity * 1.8 + materialData.toughness * 0.3;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity +=
+                materialData.toughness * 3.2 +
+                materialData.flexiblity * 1.9 +
+                materialData.hardness;
+            weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
+        },
     },
     warStave: {
         name: "War Stave",
@@ -1288,6 +2177,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.7 + materialData.density * 0.09 - materialData.flexibility * 0.035;
+            weaponData.attack += materialData.flexiblity * 1.25 + materialData.toughness * 0.9;
+            weaponData.accuracy -= 0.35;
+            weaponData.durablity +=
+                materialData.hardness * 2.5 + materialData.toughness * 4 + materialData.flexiblity;
+            weaponData.speed -= materialData.density * 0.28;
+
+            return weaponData;
+        },
     },
     compoundStave: {
         name: "Compound Stave",
@@ -1303,6 +2203,19 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.19 + materialData.density * 0.055 - materialData.flexibility * 0.043;
+            weaponData.attack += materialData.flexiblity * 1.7 + materialData.hardness * 0.55;
+            weaponData.accuracy += 0.35;
+            weaponData.durablity +=
+                materialData.hardness * 2.8 +
+                materialData.toughness * 2.5 +
+                materialData.flexiblity * 1.4;
+            weaponData.speed -= materialData.density * 0.21;
+
+            return weaponData;
+        },
     },
     stablizerStave: {
         name: "Stablizer Stave",
@@ -1324,6 +2237,19 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.18 + materialData.density * 0.049 - materialData.flexibility * 0.038;
+            weaponData.attack += materialData.flexiblity * 1.25 + materialData.toughness * 0.35;
+            weaponData.accuracy += 0.65;
+            weaponData.durablity +=
+                materialData.hardness * 2 +
+                materialData.toughness * 3 +
+                materialData.flexiblity * 1.5;
+            weaponData.speed -= materialData.density * 0.26;
+
+            return weaponData;
+        },
     },
     sightedStave: {
         name: "Sighted Stave",
@@ -1345,6 +2271,17 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.1 + materialData.density * 0.05 - materialData.flexibility * 0.039;
+            weaponData.attack += materialData.flexiblity * 1.3 + materialData.toughness * 0.3;
+            weaponData.accuracy += 0.85;
+            weaponData.durablity +=
+                materialData.hardness * 2 + materialData.toughness * 2.6 + materialData.flexiblity;
+            weaponData.speed -= materialData.density * 0.19;
+
+            return weaponData;
+        },
     },
     // bow string
     bowString: {
@@ -1356,6 +2293,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.2 + materialData.density * 0.022 - materialData.flexibility * 0.055;
+            weaponData.attack += materialData.flexiblity * 1.1 + materialData.toughness * 0.2;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.flexiblity * 1.5 + materialData.toughness * 3.5;
+            weaponData.speed -= materialData.density * 0.05;
+
+            return weaponData;
+        },
     },
     bowCable: {
         name: "Bow Cable",
@@ -1366,6 +2313,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.06 + materialData.density * 0.04 - materialData.flexibility * 0.042;
+            weaponData.attack += materialData.flexiblity * 0.95 + materialData.toughness * 0.6;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity += materialData.hardness * 2.8 + materialData.toughness * 3.5;
+            weaponData.speed -= materialData.density * 0.09;
+
+            return weaponData;
+        },
     },
     // spear head
     basicHead: {
@@ -1383,6 +2340,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.06 + materialData.density * 0.039 - materialData.flexibility * 0.026;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.3 + materialData.hardness * 0.5;
+            weaponData.accuracy += 0.35;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 3.5 + materialData.toughness * 1.4;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     glaiveHead: {
         name: "Glaive Head",
@@ -1400,6 +2369,24 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.19 + materialData.density * 0.055 - materialData.flexibility * 0.027;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.sharpness * 1.55 +
+                materialData.hardness * 0.6 +
+                materialData.density * 0.2;
+            weaponData.accuracy -= 0.05;
+            weaponData.crit += materialData.sharpness * 0.16;
+            weaponData.durablity +=
+                materialData.hardness * 3.9 +
+                materialData.toughness * 1.5 -
+                materialData.sharpness * 0.4;
+            weaponData.speed -= materialData.density * 0.21;
+
+            return weaponData;
+        },
     },
     halberdHead: {
         name: "Halberd Head",
@@ -1417,6 +2404,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.71 + materialData.density * 0.082 - materialData.flexibility * 0.019;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.sharpness * 1.2 +
+                materialData.hardness * 0.75 +
+                materialData.density * 0.7;
+            weaponData.accuracy -= 0.6;
+            weaponData.crit += materialData.sharpness * 0.12;
+            weaponData.durablity += materialData.hardness * 4.5 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.28;
+
+            return weaponData;
+        },
     },
     lanceHead: {
         name: "Lance Head",
@@ -1428,6 +2430,21 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.96 + materialData.density * 0.095 - materialData.flexibility * 0.015;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack +=
+                materialData.hardness * 1.2 +
+                materialData.sharpness * 0.75 +
+                materialData.density * 0.65;
+            weaponData.accuracy -= 0.65;
+            weaponData.crit += materialData.hardness * 0.1;
+            weaponData.durablity += materialData.hardness * 4.8 + materialData.toughness * 2.5;
+            weaponData.speed -= materialData.density * 0.31;
+
+            return weaponData;
+        },
     },
     naginataHead: {
         name: "Naginata Head",
@@ -1445,6 +2462,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.22 + materialData.density * 0.055 - materialData.flexibility * 0.031;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.6 + materialData.flexiblity * 0.25;
+            weaponData.accuracy += 0.15;
+            weaponData.crit += materialData.sharpness * 0.17;
+            weaponData.durablity += materialData.hardness * 3.7 + materialData.toughness * 1.4;
+            weaponData.speed -= materialData.density * 0.2;
+
+            return weaponData;
+        },
     },
     tridentHead: {
         name: "Trident Head",
@@ -1462,6 +2491,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.21 + materialData.density * 0.052 - materialData.flexibility * 0.019;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 1.15 + materialData.hardness * 0.75;
+            weaponData.accuracy += 0.1;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 4 + materialData.toughness * 1.7;
+            weaponData.speed -= materialData.density * 0.22;
+
+            return weaponData;
+        },
     },
     // club head
     batHead: {
@@ -1474,6 +2515,18 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.16 + materialData.density * 0.06 - materialData.flexibility * 0.019;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.damagetype = damageTypes.crushing;
+            weaponData.attack += materialData.density * 1.35 + materialData.toughness * 0.35;
+            weaponData.accuracy -= 0.15;
+            weaponData.durablity += materialData.hardness * 3.4 + materialData.toughness * 2.4;
+            weaponData.speed -= materialData.density * 0.24;
+
+            return weaponData;
+        },
     },
     armoredHead: {
         name: "Armored Head",
@@ -1490,6 +2543,19 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.67 + materialData.density * 0.087 - materialData.flexibility * 0.015;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.damagetype = damageTypes.crushing;
+            weaponData.attack += materialData.density * 1.65 + materialData.hardness * 0.4;
+            weaponData.defense += materialData.toughness * 0.2;
+            weaponData.accuracy -= 0.4;
+            weaponData.durablity += materialData.hardness * 5 + materialData.toughness * 3;
+            weaponData.speed -= materialData.density * 0.34;
+
+            return weaponData;
+        },
     },
     spikedHead: {
         name: "Spiked Head",
@@ -1510,6 +2576,21 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.48 + materialData.density * 0.078 - materialData.flexibility * 0.014;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.density * 1.05 + materialData.sharpness * 1.1;
+            weaponData.accuracy -= 0.25;
+            weaponData.crit += materialData.sharpness * 0.12;
+            weaponData.durablity +=
+                materialData.hardness * 4 +
+                materialData.toughness * 2.3 -
+                materialData.sharpness * 0.5;
+            weaponData.speed -= materialData.density * 0.27;
+
+            return weaponData;
+        },
     },
     barbedHead: {
         name: "Barbed Head",
@@ -1525,6 +2606,21 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.42 + materialData.density * 0.07 - materialData.flexibility * 0.02;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.density * 1.1 + materialData.sharpness * 0.95;
+            weaponData.accuracy -= 0.3;
+            weaponData.crit += materialData.sharpness * 0.13;
+            weaponData.durablity +=
+                materialData.hardness * 3.5 +
+                materialData.toughness * 2 -
+                materialData.sharpness * 0.3;
+            weaponData.speed -= materialData.density * 0.26;
+
+            return weaponData;
+        },
     },
     wingBatHead: {
         name: "Wing Head",
@@ -1536,6 +2632,17 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.07 + materialData.density * 0.05 - materialData.flexibility * 0.03;
+            weaponData.damagetype = damageTypes.blunt;
+            weaponData.attack += materialData.density * 1.15 + materialData.flexiblity * 0.2;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.hardness * 2.9 + materialData.toughness * 2.2;
+            weaponData.speed -= materialData.density * 0.19;
+
+            return weaponData;
+        },
     },
     //armor
     fabric: {
@@ -1562,6 +2669,16 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.15 + materialData.density * 0.019 - materialData.flexibility * 0.055;
+            weaponData.defense += materialData.toughness * 0.8 + materialData.flexiblity * 0.35;
+            weaponData.accuracy += 0.2;
+            weaponData.durablity += materialData.toughness * 2.5 + materialData.flexiblity * 1.6;
+            weaponData.speed -= materialData.density * 0.075;
+
+            return weaponData;
+        },
     },
     plated: {
         name: "Plated",
@@ -1581,6 +2698,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.45 + materialData.density * 0.075 - materialData.flexibility * 0.013;
+            weaponData.defense += materialData.toughness * 1.3 + materialData.hardness * 0.6;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 4.5 + materialData.toughness * 3.2;
+            weaponData.speed -= materialData.density * 0.22;
+
+            return weaponData;
+        },
     },
     chain: {
         name: "Chain",
@@ -1601,6 +2728,20 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.13 + materialData.density * 0.049 - materialData.flexibility * 0.031;
+            weaponData.defense +=
+                materialData.toughness * 1.05 +
+                materialData.hardness * 0.35 +
+                materialData.flexiblity * 0.2;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity +=
+                materialData.hardness * 3 + materialData.toughness * 2.5 + materialData.flexiblity;
+            weaponData.speed -= materialData.density * 0.13;
+
+            return weaponData;
+        },
     },
     studded: {
         name: "Studded",
@@ -1628,6 +2769,17 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.11 + materialData.density * 0.048 - materialData.flexibility * 0.028;
+            weaponData.attack += materialData.density * 0.12 + materialData.sharpness * 0.12;
+            weaponData.defense += materialData.toughness * 0.95 + materialData.hardness * 0.35;
+            weaponData.accuracy -= 0.05;
+            weaponData.durablity += materialData.hardness * 3 + materialData.toughness * 2.8;
+            weaponData.speed -= materialData.density * 0.155;
+
+            return weaponData;
+        },
     },
     wrapped: {
         name: "Wrapped",
@@ -1652,6 +2804,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.25 + materialData.density * 0.025 - materialData.flexibility * 0.05;
+            weaponData.defense += materialData.toughness * 0.55 + materialData.flexiblity * 0.5;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.toughness * 2.4 + materialData.flexiblity * 1.7;
+            weaponData.speed -= materialData.density * 0.065;
+
+            return weaponData;
+        },
     },
     splited: {
         name: "Splint",
@@ -1680,6 +2842,20 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.25 + materialData.density * 0.055 - materialData.flexibility * 0.028;
+            weaponData.defense +=
+                materialData.toughness * 1.2 +
+                materialData.hardness * 0.4 +
+                materialData.flexiblity * 0.25;
+            weaponData.accuracy -= 0.05;
+            weaponData.durablity +=
+                materialData.hardness * 3.5 + materialData.toughness * 3 + materialData.flexiblity;
+            weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
+        },
     },
     padded: {
         name: "Padded",
@@ -1707,6 +2883,16 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.32 + materialData.density * 0.035 - materialData.flexibility * 0.025;
+            weaponData.defense += materialData.toughness * 1.35 + materialData.flexiblity * 0.65;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.toughness * 3 + materialData.flexiblity * 2.5;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     solid: {
         name: "Solid",
@@ -1722,6 +2908,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.69 + materialData.density * 0.1 - materialData.flexibility * 0.012;
+            weaponData.defense += materialData.toughness * 1.6 + materialData.hardness * 0.65;
+            weaponData.accuracy -= 0.25;
+            weaponData.durablity += materialData.hardness * 4.8 + materialData.toughness * 3.8;
+            weaponData.speed -= materialData.density * 0.25;
+
+            return weaponData;
+        },
     },
     suppenders: {
         name: "Suppenders",
@@ -1734,6 +2930,16 @@ const modules = {
                 amount: 2,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.24 + materialData.density * 0.02 - materialData.flexibility * 0.042;
+            weaponData.defense += materialData.toughness * 0.18 + materialData.flexiblity * 0.25;
+            weaponData.accuracy += 0.2;
+            weaponData.durablity += materialData.toughness * 1.7 + materialData.flexiblity * 1.3;
+            weaponData.speed -= materialData.density * 0.04;
+
+            return weaponData;
+        },
     },
     barbbed: {
         name: "Barbbed",
@@ -1753,6 +2959,18 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.22 + materialData.density * 0.047 - materialData.flexibility * 0.029;
+            weaponData.attack += materialData.sharpness * 0.75;
+            weaponData.defense += materialData.toughness * 0.5 + materialData.flexiblity * 0.2;
+            weaponData.accuracy -= 0.08;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity += materialData.hardness * 2 + materialData.toughness * 2;
+            weaponData.speed -= materialData.density * 0.105;
+
+            return weaponData;
+        },
     },
     shell: {
         name: "Shell",
@@ -1769,6 +2987,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.79 + materialData.density * 0.105 - materialData.flexibility * 0.012;
+            weaponData.defense += materialData.toughness * 1.9 + materialData.hardness * 0.8;
+            weaponData.accuracy -= 0.3;
+            weaponData.durablity += materialData.hardness * 5 + materialData.toughness * 4;
+            weaponData.speed -= materialData.density * 0.33;
+
+            return weaponData;
+        },
     },
     longShirt: {
         name: "Long Shirt",
@@ -1784,6 +3012,16 @@ const modules = {
                 amount: 3,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.12 + materialData.density * 0.028 - materialData.flexibility * 0.038;
+            weaponData.defense += materialData.toughness * 0.85 + materialData.flexiblity * 0.3;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity += materialData.toughness * 2.8 + materialData.flexiblity * 1.4;
+            weaponData.speed -= materialData.density * 0.1;
+
+            return weaponData;
+        },
     },
     gambison: {
         name: "gambison",
@@ -1801,6 +3039,15 @@ const modules = {
                 amount: 5,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.44 + materialData.density * 0.038 - materialData.flexibility * 0.025;
+            weaponData.defense += materialData.toughness * 1.6 + materialData.flexiblity * 0.55;
+            weaponData.durablity += materialData.toughness * 3.4 + materialData.flexiblity * 2.3;
+            weaponData.speed -= materialData.density * 0.19;
+
+            return weaponData;
+        },
     },
     // helmets
     hat: {
@@ -1818,6 +3065,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.16 + materialData.density * 0.023 - materialData.flexibility * 0.042;
+            weaponData.defense += materialData.toughness * 0.6 + materialData.flexiblity * 0.25;
+            weaponData.accuracy += 0.15;
+            weaponData.durablity += materialData.toughness * 2.2 + materialData.flexiblity * 1.2;
+            weaponData.speed -= materialData.density * 0.05;
+
+            return weaponData;
+        },
     },
     halfShell: {
         name: "Half Shell",
@@ -1835,6 +3092,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.18 + materialData.density * 0.05 - materialData.flexibility * 0.014;
+            weaponData.defense += materialData.toughness * 1.15 + materialData.hardness * 0.45;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.hardness * 3.2 + materialData.toughness * 2.6;
+            weaponData.speed -= materialData.density * 0.15;
+
+            return weaponData;
+        },
     },
     sallet: {
         name: "sallet",
@@ -1846,6 +3113,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.62 + materialData.density * 0.077 - materialData.flexibility * 0.012;
+            weaponData.defense += materialData.toughness * 1.65 + materialData.hardness * 0.65;
+            weaponData.accuracy -= 0.1;
+            weaponData.durablity += materialData.hardness * 4.5 + materialData.toughness * 3.5;
+            weaponData.speed -= materialData.density * 0.24;
+
+            return weaponData;
+        },
     },
 
     // helmet visors
@@ -1858,6 +3135,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.03 + materialData.density * 0.03 - materialData.flexibility * 0.016;
+            weaponData.defense += materialData.toughness * 0.35 + materialData.hardness * 0.2;
+            weaponData.accuracy += 0.05;
+            weaponData.durablity += materialData.hardness * 1.8 + materialData.toughness * 1.6;
+            weaponData.speed -= materialData.density * 0.045;
+
+            return weaponData;
+        },
     },
     barredVisor: {
         name: "Barred Visor",
@@ -1868,6 +3155,16 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.2 + materialData.density * 0.055 - materialData.flexibility * 0.017;
+            weaponData.defense += materialData.toughness * 0.85 + materialData.hardness * 0.3;
+            weaponData.accuracy -= 0.15;
+            weaponData.durablity += materialData.hardness * 3 + materialData.toughness * 2.2;
+            weaponData.speed -= materialData.density * 0.12;
+
+            return weaponData;
+        },
     },
     meshVisor: {
         name: "Mesh Visor",
@@ -1878,6 +3175,17 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                -0.07 + materialData.density * 0.028 - materialData.flexibility * 0.035;
+            weaponData.defense += materialData.toughness * 0.45 + materialData.flexiblity * 0.35;
+            weaponData.accuracy += 0.1;
+            weaponData.durablity +=
+                materialData.toughness * 2 + materialData.flexiblity * 1.9 + materialData.hardness;
+            weaponData.speed -= materialData.density * 0.07;
+
+            return weaponData;
+        },
     },
     fullMask: {
         name: "Full Mask",
@@ -1894,6 +3202,16 @@ const modules = {
                 same: true,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.42 + materialData.density * 0.075 - materialData.flexibility * 0.012;
+            weaponData.defense += materialData.toughness * 1.45 + materialData.hardness * 0.55;
+            weaponData.accuracy -= 0.4;
+            weaponData.durablity += materialData.hardness * 4.3 + materialData.toughness * 3.3;
+            weaponData.speed -= materialData.density * 0.22;
+
+            return weaponData;
+        },
     },
     spikedVisor: {
         name: "Spiked Visor",
@@ -1909,5 +3227,20 @@ const modules = {
                 amount: 1,
             },
         ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge +=
+                0.35 + materialData.density * 0.065 - materialData.flexibility * 0.011;
+            weaponData.attack += materialData.sharpness * 0.8 + materialData.hardness * 0.2;
+            weaponData.defense += materialData.toughness * 1 + materialData.hardness * 0.45;
+            weaponData.accuracy -= 0.3;
+            weaponData.crit += materialData.sharpness * 0.1;
+            weaponData.durablity +=
+                materialData.hardness * 3.8 +
+                materialData.toughness * 2.6 -
+                materialData.sharpness * 0.4;
+            weaponData.speed -= materialData.density * 0.19;
+
+            return weaponData;
+        },
     },
 };

@@ -24,7 +24,7 @@ items:
 crafting:
     [] schematics/crafting molds
     [] modules
-    [] crafting stat combineing
+    [x] crafting stat combineing
     [-] socketing
     finshed types:
         [x] pickaxe
@@ -115,11 +115,11 @@ pepole:
     [] Mario
     [] Luigi
     [] Kirby
-    [-] Toon Link
-    [-] Link
+    [] Toon Link
+    [] Link
     [] Monferno
-    [-] Sonic
-    [-] Tails
+    [] Sonic
+    [=] Tails
 
 attacks:
     [] shared attacks
