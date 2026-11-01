@@ -146,6 +146,16 @@ button {
     padding: 0%;
 }
 
+.fit-svg {
+    height: 90%;
+    width: 100%;
+}
+
+svg > svg {
+    width: 100%;
+    height: 100%;
+}
+
 .bubble /* equivlent of scratch variable display */ {
     background-color: var(--bubble-color);
     border: calc(var(--scale) / 5) solid var(--border-Colors);
@@ -450,10 +460,9 @@ body {
 }
 
 /* classes for inven item just in case i forget them class="border-extra-thin fit-img context-pointer" */
-.inventory > img {
+.inventory > svg {
     background-color: var(--dark-bubble-color);
     aspect-ratio: 1/1;
-    width: 100%;
 }
 
 /* Equipment slots */

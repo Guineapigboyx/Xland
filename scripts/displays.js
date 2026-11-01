@@ -52,14 +52,26 @@ function fillInventory(selector, inventory) {
         console.warn("Invalid inventory selector", inventoryEl);
         return;
     }
-    inventoryEl.replaceChildren();
+    clearInventory(selector);
 
     for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
-        let item = document.createElement("img");
+        let item = document.createElement("svg");
         item.dataset.inslot = inventory[invenItems].item;
-        item.className = "border-extra-thin context-pointer";
+        //item.className = `border-extra-thin context-pointer item-${inventory[invenItems].item}`;
+        item.className = `border-extra-thin context-pointer item-wood fit-svg`;
+        item.dataset.material = items[inventory[invenItems].item].name.toLowerCase();
+
         inventoryEl.appendChild(item);
     }
+}
+
+function clearInventory(selector) {
+    const inventoryEl = document.querySelector(selector);
+    if (!inventoryEl) {
+        console.warn("Invalid inventory selector", inventoryEl);
+        return;
+    }
+    inventoryEl.replaceChildren();
 }
 
 // Drop downs

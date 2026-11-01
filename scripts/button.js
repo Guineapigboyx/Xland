@@ -29,3 +29,10 @@ function toggleScreen(buttonClicked) {
         removeClass("#bottom-null", "hide");
     }
 }
+
+function craftingScreen() {
+    document.querySelector("#crafting-player-dropdown").attributes.value.value = "N/A";
+    document.querySelector("#crafting-player-dropdown > label").textContent = "Select teamate";
+
+    toggleScreen("crafting");
+}

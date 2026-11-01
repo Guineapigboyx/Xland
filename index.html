@@ -30,6 +30,7 @@
         <!-- JS Scripts -->
         <script src="scripts/displays.js"></script>
         <script src="scripts/button.js"></script>
+        <script src="scripts/crafting.js"></script>
         <script src="scripts/misc.js"></script>
         <script src="scripts/ai.js"></script>
         <script src="scripts/event-listeners.js"></script>
@@ -76,7 +77,7 @@
                 <button
                     id="crafting-button"
                     class="button huge-text Header-text pointer hover"
-                    onclick="toggleScreen('crafting')"
+                    onclick="craftingScreen()"
                 >
                     crafting
                 </button>
@@ -91,11 +92,11 @@
                     onclick="
                         addItemToInventory(
                             makeInventoryItem(items.adamantite),
-                            gameState.persons.koopa.inventory,
+                            gameState.activeTeam.Koopa0.inventory,
                         )
                     "
                 >
-                    <svg class="item-wood" data-material="carbon bone"></svg>
+                    <svg class="item-wood" data-material="zinc"></svg>
                 </button>
             </div>
             <div class="bottom-section">
@@ -116,10 +117,15 @@
                             "
                             class="team-list dark-bubble square-bubble dropdown small-text upwards"
                             style="border-top: 0"
+                            value="N/A"
                         >
                             <label>Select teamate</label>
                             <section class="bubble hide">
                                 <option class="hover" value="N/A">Select teamate</option>
+                                <option class="hover" value="N/A">koopa0</option>
+                                <option class="hover" value="N/A">koopa1</option>
+                                <option class="hover" value="N/A">koopa2</option>
+                                <option class="hover" value="N/A">koopa3</option>
                             </section>
                         </div>
                     </div>
