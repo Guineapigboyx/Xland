@@ -107,56 +107,26 @@ const sharedSVGElements = `
 </defs>
 `;
 
-let svgGradientID = 0;
-function updateMaterialGradient(svg) {
-    let id = svg.dataset.gradientId;
-    if (id === undefined) return;
-
-    // Remove the inline override to read the actual CSS value
-    svg.style.removeProperty("--material-gradient");
-
-    let gradient = getComputedStyle(svg).getPropertyValue("--material-gradient").trim();
-
-    svg.style.setProperty(
-        "--material-gradient",
-        gradient.replace(/url\(#(ingot-linear|ingot-radial)\)/, `url(#$1-${id})`),
-    );
-}
-
-/**
- * Display a SVG
- * @param {String} selector - the selector you are wanting to put the svg on
- * @param {itemIcons.svgData} svg - the svgData
- * @param {String|undefined} - the material type that this SVG will be useing
- */
 function displayIcon() {
-    for (let icon = 0; icon < itemIcons.length; icon++) {
-        if (!itemIcons[icon].svg) continue;
+    for (let icon of itemIcons) {
+        if (!icon.svg) continue;
 
-        document.querySelectorAll(`.${itemIcons[icon].cssClass}`).forEach((svgIcon) => {
-            if (svgIcon.dataset.svgLoaded === itemIcons[icon].cssClass) return;
+        document.querySelectorAll(`item-icon.${icon.cssClass}`).forEach((element) => {
+            // Skip if the correct icon is already loaded
+            if (element.dataset.svgLoaded === icon.cssClass) return;
 
-            // Generate an ID only once per SVG element
-            let id = svgIcon.dataset.gradientId;
+            // Create or reuse the shadow root
+            let shadow =
+                element.shadowRoot ||
+                element.attachShadow({
+                    mode: "open",
+                });
 
-            if (id === undefined) {
-                id = svgGradientID++;
-                svgIcon.dataset.gradientId = id;
-            }
+            // Insert the SVG into the shadow root
+            shadow.innerHTML = icon.svg;
+            shadow.querySelector("svg").setAttribute("part", "svg");
 
-            // Replace the artwork
-            svgIcon.innerHTML = itemIcons[icon].svg;
-            svgIcon.setAttribute("viewBox", itemIcons[icon].viewBox);
-
-            // Give the gradients their existing unique IDs
-            svgIcon.querySelectorAll("linearGradient, radialGradient").forEach((gradient) => {
-                gradient.id += `-${id}`;
-            });
-
-            // Update the gradient reference only when needed
-            updateMaterialGradient(svgIcon);
-
-            svgIcon.dataset.svgLoaded = itemIcons[icon].cssClass;
+            element.dataset.svgLoaded = icon.cssClass;
         });
     }
 }
@@ -190,28 +160,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let node of mutation.addedNodes) {
                     if (node.nodeType !== 1) continue;
 
-                    if (node.matches("svg") || node.querySelector("svg")) {
+                    if (node.matches("item-icon") || node.querySelector("item-icon")) {
                         displayIcon();
                         return;
                     }
                 }
             }
 
-            if (mutation.type === "attributes") {
-                let svg = mutation.target;
-                if (!svg.matches("svg")) continue;
+            if (mutation.type === "attributes" && mutation.attributeName === "class") {
+                let element = mutation.target;
+                if (!element.matches("item-icon")) continue;
 
-                if (mutation.attributeName === "data-material") {
-                    updateMaterialGradient(svg);
-                }
+                let oldItem = (mutation.oldValue || "")
+                    .split(/\s+/)
+                    .find((c) => c.startsWith("item-"));
 
-                if (mutation.attributeName === "class") {
-                    let oldItem = (mutation.oldValue || "")
-                        .split(/\s+/)
-                        .find((c) => c.startsWith("item-"));
-                    let newItem = [...svg.classList].find((c) => c.startsWith("item-"));
+                let newItem = [...element.classList].find((c) => c.startsWith("item-"));
 
-                    if (oldItem !== newItem) displayIcon();
+                if (oldItem !== newItem) {
+                    displayIcon();
+                    return;
                 }
             }
         }
@@ -221,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ["class", "data-material"],
+        attributeFilter: ["class"],
         attributeOldValue: true,
     });
 });

@@ -39,7 +39,7 @@ Normaly they are #333 which is a very dark grey, but you can put any color in th
 */
 
 /* svg :root */
-svg {
+item-icon {
     /* for 2 color materials */
     --duo2-mix: color-mix(in srgb, var(--color1) 52%, var(--color4));
     --duo3-mix: color-mix(in srgb, var(--color1) 36%, var(--color4));
@@ -55,7 +55,7 @@ svg {
     --color-opacity: 0.7;
 }
 
-svg[data-material="wood"] svg[data-material="tree branch"] {
+item-icon[data-material="wood"] item-icon[data-material="tree branch"] {
     --color1: #b45f06;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -63,7 +63,7 @@ svg[data-material="wood"] svg[data-material="tree branch"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="stone"] {
+item-icon[data-material="stone"] {
     --color1: #595959ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -71,7 +71,7 @@ svg[data-material="stone"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="bone"] {
+item-icon[data-material="bone"] {
     --color1: #d5cfb2;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -79,7 +79,7 @@ svg[data-material="bone"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="shell"] {
+item-icon[data-material="shell"] {
     --color1: #38761dff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -87,7 +87,7 @@ svg[data-material="shell"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="tin"] {
+item-icon[data-material="tin"] {
     --color1: #eeeeee;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -95,10 +95,10 @@ svg[data-material="tin"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="iron"],
-svg[data-material="bolts"],
-svg[data-material="coil"],
-svg[data-material="gear"] {
+item-icon[data-material="iron"],
+item-icon[data-material="bolts"],
+item-icon[data-material="coil"],
+item-icon[data-material="gear"] {
     --color1: #b7b7b7ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -106,7 +106,7 @@ svg[data-material="gear"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="aluminum"] {
+item-icon[data-material="aluminum"] {
     --color1: #d9d9d9ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -114,8 +114,8 @@ svg[data-material="aluminum"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="copper"],
-svg[data-material="wire"] {
+item-icon[data-material="copper"],
+item-icon[data-material="wire"] {
     --color1: #f6b26bff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -123,7 +123,7 @@ svg[data-material="wire"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="zinc"] {
+item-icon[data-material="zinc"] {
     --color1: #4e29aaff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -131,7 +131,7 @@ svg[data-material="zinc"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="shiny stone"] {
+item-icon[data-material="shiny stone"] {
     --color1: #434343ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -139,7 +139,7 @@ svg[data-material="shiny stone"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="carbon"] {
+item-icon[data-material="carbon"] {
     --color1: #000;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -147,7 +147,7 @@ svg[data-material="carbon"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="carbon bone"] {
+item-icon[data-material="carbon bone"] {
     --color1: #22221e;
     --color2: #d5cfb2;
     --color3: var(--triple3-mix);
@@ -155,7 +155,7 @@ svg[data-material="carbon bone"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="silver"] {
+item-icon[data-material="silver"] {
     --color1: #f2f2f2ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -163,7 +163,7 @@ svg[data-material="silver"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="brass"] {
+item-icon[data-material="brass"] {
     --color1: #ff9900ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -171,7 +171,7 @@ svg[data-material="brass"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="uramite"] {
+item-icon[data-material="uramite"] {
     --color1: #45818eff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -179,7 +179,7 @@ svg[data-material="uramite"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="gold"] {
+item-icon[data-material="gold"] {
     --color1: #ffff00ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -187,7 +187,7 @@ svg[data-material="gold"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="steel"] {
+item-icon[data-material="steel"] {
     --color1: #fff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -195,7 +195,7 @@ svg[data-material="steel"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="lithum"] {
+item-icon[data-material="lithum"] {
     --color1: #000000ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -203,7 +203,7 @@ svg[data-material="lithum"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="carbon steel"] {
+item-icon[data-material="carbon steel"] {
     --color1: #696969ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -211,7 +211,7 @@ svg[data-material="carbon steel"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="platinum"] {
+item-icon[data-material="platinum"] {
     --color1: #efefefff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -219,7 +219,7 @@ svg[data-material="platinum"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="magnesium"] {
+item-icon[data-material="magnesium"] {
     --color1: #8e7cc3;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -227,7 +227,7 @@ svg[data-material="magnesium"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="lead"] {
+item-icon[data-material="lead"] {
     --color1: #000;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -235,7 +235,7 @@ svg[data-material="lead"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="mithril"] {
+item-icon[data-material="mithril"] {
     --color1: #134f5cff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -243,8 +243,8 @@ svg[data-material="mithril"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="crystal"],
-svg[data-material="glass"] {
+item-icon[data-material="crystal"],
+item-icon[data-material="glass"] {
     --color1: #bdffff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -253,7 +253,7 @@ svg[data-material="glass"] {
 }
 
 /* todo add the flame part of flameright */
-svg[data-material="flameright"] {
+item-icon[data-material="flameright"] {
     --color1: #cc4125ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -261,7 +261,7 @@ svg[data-material="flameright"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="adamantite"] {
+item-icon[data-material="adamantite"] {
     --color1: #980000ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -269,7 +269,7 @@ svg[data-material="adamantite"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="stainless steel"] {
+item-icon[data-material="stainless steel"] {
     --color1: #fff;
     --color2: #d9d9d9ff;
     --color3: var(--triple3-mix);
@@ -277,7 +277,7 @@ svg[data-material="stainless steel"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="uranium"] {
+item-icon[data-material="uranium"] {
     --color1: #ffc002ff;
     --color2: #00ff00ff;
     --color3: var(--triple3-mix);
@@ -285,7 +285,7 @@ svg[data-material="uranium"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="plutonium"] {
+item-icon[data-material="plutonium"] {
     --color1: #8e7cc3;
     --color2: #00ff00;
     --color3: #4c1130;
@@ -293,7 +293,7 @@ svg[data-material="plutonium"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="xtramite"] {
+item-icon[data-material="xtramite"] {
     --color1: #6aa84fff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -301,7 +301,7 @@ svg[data-material="xtramite"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="titanium"] {
+item-icon[data-material="titanium"] {
     --color1: #00ffff;
     --color2: #0000ff;
     --color3: var(--triple3-mix);
@@ -309,7 +309,7 @@ svg[data-material="titanium"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="titanium gold"] {
+item-icon[data-material="titanium gold"] {
     --color1: #ffc002ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -317,7 +317,7 @@ svg[data-material="titanium gold"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="master ore"] {
+item-icon[data-material="master ore"] {
     --color1: #ff9900;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -325,7 +325,7 @@ svg[data-material="master ore"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="pale"] {
+item-icon[data-material="pale"] {
     --color1: #fce5cdff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -333,7 +333,7 @@ svg[data-material="pale"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="raindite"] {
+item-icon[data-material="raindite"] {
     --color1: #ff0000ff;
     --color2: #ffff00ff;
     --color3: #00ff00ff;
@@ -341,7 +341,7 @@ svg[data-material="raindite"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="diamond"] {
+item-icon[data-material="diamond"] {
     --color1: #45cfe1;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -349,7 +349,7 @@ svg[data-material="diamond"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="ruby"] {
+item-icon[data-material="ruby"] {
     --color1: #ca4848;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -357,7 +357,7 @@ svg[data-material="ruby"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="saphire"] {
+item-icon[data-material="saphire"] {
     --color1: #09099e;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -365,7 +365,7 @@ svg[data-material="saphire"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="amethest"] {
+item-icon[data-material="amethest"] {
     --color1: #6d09b1;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -373,7 +373,7 @@ svg[data-material="amethest"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="emerald"] {
+item-icon[data-material="emerald"] {
     --color1: #12c312;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -381,7 +381,7 @@ svg[data-material="emerald"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="topaz"] {
+item-icon[data-material="topaz"] {
     --color1: #ffcd83;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -389,7 +389,7 @@ svg[data-material="topaz"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="amber"] {
+item-icon[data-material="amber"] {
     --color1: #c37c12;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -397,8 +397,8 @@ svg[data-material="amber"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="grass"],
-svg[data-material="leaf"] {
+item-icon[data-material="grass"],
+item-icon[data-material="leaf"] {
     --color1: #38761d;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -406,7 +406,7 @@ svg[data-material="leaf"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="leather"] {
+item-icon[data-material="leather"] {
     --color1: #dd7e6bff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -414,7 +414,7 @@ svg[data-material="leather"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="hide"] {
+item-icon[data-material="hide"] {
     --color1: #b45f06ff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -422,8 +422,8 @@ svg[data-material="hide"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="mud"],
-svg[data-material="glue"] {
+item-icon[data-material="mud"],
+item-icon[data-material="glue"] {
     --color1: #572c00ff;
     --color2: var(--duo2-mix);
     --color3: var(--duo3-mix);
@@ -431,7 +431,7 @@ svg[data-material="glue"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="flint"] {
+item-icon[data-material="flint"] {
     --color1: #fff;
     --color2: #595959ff;
     --color3: var(--triple3-mix);
@@ -439,7 +439,7 @@ svg[data-material="flint"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="radier scrap"] {
+item-icon[data-material="radier scrap"] {
     --color1: #fff;
     --color2: #ccccccff;
     --color3: #666666ff;
@@ -447,7 +447,7 @@ svg[data-material="radier scrap"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="super radier scrap"] {
+item-icon[data-material="super radier scrap"] {
     --color1: rgb(181, 0, 0);
     --color2: rgb(228, 78, 78);
     --color3: color-mix(in srgb, var(--color2) 22%, var(--color4));
@@ -455,7 +455,7 @@ svg[data-material="super radier scrap"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="string"] {
+item-icon[data-material="string"] {
     --color1: #fff;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -463,8 +463,8 @@ svg[data-material="string"] {
     --material-gradient: url(#ingot-linear);
 }
 
-svg[data-material="plastic"],
-svg[data-material="rubber"] {
+item-icon[data-material="plastic"],
+item-icon[data-material="rubber"] {
     --color1: #38761dff;
     --color2: #1c3b0fff;
     --color3: var(--triple3-mix);
@@ -472,8 +472,8 @@ svg[data-material="rubber"] {
     --material-gradient: url(#ingot-radial);
 }
 
-svg[data-material="cloth"],
-svg[data-material="old rag"] {
+item-icon[data-material="cloth"],
+item-icon[data-material="old rag"] {
     --color1: #dbce88ff;
     --color2: var(--color1);
     --color3: var(--color1);

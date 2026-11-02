@@ -147,11 +147,13 @@ button {
 }
 
 .fit-svg {
-    height: 90%;
+    height: auto;
     width: 100%;
+    aspect-ratio: 1/1;
 }
 
-svg > svg {
+/* css for the svg in the shadow DOM */
+item-icon::part(svg) {
     width: 100%;
     height: 100%;
 }
@@ -460,7 +462,7 @@ body {
 }
 
 /* classes for inven item just in case i forget them class="border-extra-thin fit-img context-pointer" */
-.inventory > svg {
+.inventory > item-icon {
     background-color: var(--dark-bubble-color);
     aspect-ratio: 1/1;
 }
