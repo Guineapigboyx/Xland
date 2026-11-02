@@ -1,41 +1,11 @@
-
-<svg
-    version="1.1"
-    viewBox="637.281 228.118 72.8347 42.8819"
-    xmlns="http://www.w3.org/2000/svg"
->
-
-    <!-- Front face -->
-    <path
-        data-material="1" data-gradient="ingot"
-        d="m638.2808 250.3861l49.56665 0l0 19.613907l-49.56665 0z"
-        fill-rule="evenodd"
-    />
-
-    <!-- side face -->
-    <path
-        data-material="1" data-gradient="ingot"
-        d="m687.8475 250.3861l21.268005 -21.26799l0 19.613907l-21.268005 21.26799z"
-        fill-rule="evenodd"
-        style="filter: brightness(0.8);"
-    />
-
-    <!-- Top face -->
-    <path
-        data-material="1" data-gradient="ingot"
-        d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l-21.268005 21.26799z"
-        fill-rule="evenodd"
-        style="filter: brightness(1.2);"
-    />
-
-    <!-- Original outline -->
-    <path
-        fill="none"
-        stroke="#b45f06"
-        stroke-width="2"
-        stroke-linejoin="round"
-        stroke-linecap="butt"
-        d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l0 19.613907l-21.268005 21.26799l-49.56665 0zm0 0l49.56665 0l21.268005 -21.26799m-21.268005 21.26799l0 19.613907"
-        fill-rule="evenodd"
-    />
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="637.281 228.118 72.8347 42.8819">
+  <!-- Front face -->
+  <path data-material="1" data-gradient="ingot" d="m638.2808 250.3861l49.56665 0l0 19.613907l-49.56665 0z" fill-rule="evenodd"/>
+  <!-- side face -->
+  <path data-material="1" data-gradient="ingot" d="m687.8475 250.3861l21.268005 -21.26799l0 19.613907l-21.268005 21.26799z" fill-rule="evenodd" style="filter: brightness(0.8);"/>
+  <!-- Top face -->
+  <path data-material="1" data-gradient="ingot" d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l-21.268005 21.26799z" fill-rule="evenodd" style="filter: brightness(1.2);"/>
+  <!-- Original outline -->
+  <path fill="none" stroke="#b45f06" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt" d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l0 19.613907l-21.268005 21.26799l-49.56665 0zm0 0l49.56665 0l21.268005 -21.26799m-21.268005 21.26799l0 19.613907" fill-rule="evenodd"/>
 </svg>
