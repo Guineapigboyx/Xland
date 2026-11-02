@@ -212,7 +212,14 @@ function displayIcon() {
                     .getPropertyValue(`--M${number}-material-gradient`)
                     .trim();
 
-                path.style.fill = `url(#M${number}-${layout}-${type})`;
+                const gradient = `url(#M${number}-${layout}-${type})`;
+
+                if (path.dataset.stroke === "true") {
+                    path.style.stroke = gradient;
+                    path.style.fill = "none";
+                } else {
+                    path.style.fill = gradient;
+                }
             });
         });
     }

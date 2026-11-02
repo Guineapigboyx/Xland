@@ -181,14 +181,14 @@ SVG:
         [-] sledgeHead
         [-] clawHead
     handdles:
-        [-] basicHandle
-        [-] wrappedHandle
-        [-] curvedHandle
-        [-] shieldedHandle
-        [-] thickHandle
-        [-] hollowHandle
-        [-] stickyHandle
-        [-] longHandle
+        [x] basicHandle
+        [x] wrappedHandle
+        [x] curvedHandle
+        [x] shieldedHandle
+        [x] thickHandle
+        [x] hollowHandle
+        [x] stickyHandle
+        [x] longHandle
     bindings: 
         [-] glueBinding
         [-] stringBinding
