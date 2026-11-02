@@ -71,42 +71,6 @@ UI:
     [=] cooking
     [=] climbing
     // there will most likely be more
-    SVG: 
-        [] apple
-        [] cloth
-        [] flower
-        [x] fumming flower // i did it but might not use
-        [] glass
-        [] goop
-        [] leaf
-        [] rice
-        [] meat
-        [] pikmin
-        [] pikmin meat
-        [=] pepper
-        [x] powder
-        [] string
-        [] water
-        [x] wood / ingot
-        [=] bulborb // since its also a animal diffrent colors make sense
-        [=] rat // since its also a animal diffrent colors make sense
-        [=] custom berry colors // might keep the 3 xland ones
-
-        [-] sword blades
-        [-] spear heads
-        [-] handles/shaft
-        [-] clubs
-        [-] bow stave
-        [-] bow string
-        [-] gloves
-        [-] slaptick balls
-        [-] shield faces
-        [-] shield handle
-        [-] drill bits
-        [-] drill grip
-        [-] hammer heads
-        [-] axe heads
-        [-] bindings
 
 pepole:
     [=] new names
@@ -186,3 +150,153 @@ other:
     [] npcs // there needs to be at least like 30
     [-] dynamic npcs // like a pool of properties genric npc's can pull from 
     [] statusEffects
+
+SVG: 
+    [] apple
+    [] cloth
+    [] flower
+    [x] fumming flower // i did it but might not use
+    [] glass
+    [] goop
+    [] leaf
+    [] rice
+    [] meat
+    [] pikmin
+    [] pikmin meat
+    [=] pepper
+    [x] powder
+    [] string
+    [] water
+    [x] wood / ingot
+    [=] bulborb // since its also a animal diffrent colors make sense
+    [=] rat // since its also a animal diffrent colors make sense
+    [=] custom berry colors // might keep the 3 xland ones
+
+    hammer:
+        [-] hammerHead
+        [-] axeHead
+        [-] scytheHead
+        [-] pickaxeHead
+        [-] spikeHammerHead
+        [-] sledgeHead
+        [-] clawHead
+    handdles:
+        [-] basicHandle
+        [-] wrappedHandle
+        [-] curvedHandle
+        [-] shieldedHandle
+        [-] thickHandle
+        [-] hollowHandle
+        [-] stickyHandle
+        [-] longHandle
+    bindings: 
+        [-] glueBinding
+        [-] stringBinding
+        [-] metalBinding
+        [-] barbedBinding
+        [-] cuffBinding
+    drill bits:
+        [-] basicBit
+        [-] spadeBit
+        [-] augerBit
+        [-] coreBit
+        [-] masonryBit
+        [-] stepBit
+        [-] lanceBit
+        [-] thinBit
+    drill grips:
+        [-] basicGrip
+        [-] pistolGrip
+        [-] spadeGrip
+        [-] doubleSpadeGrid
+    shield grips:
+        [-] barGrip
+        [-] holeGrip
+        [-] doubleBarGrip
+        [-] straps
+        [-] guigeStrap
+    sheild faces:
+        [-] flatFace
+        [-] curvedFace
+        [-] spikedFace
+        [-] armoredFace
+        [-] barbedFace
+        [-] bladeFace
+        [-] wideRimFace
+    sword blades:
+        [-] basicBlade
+        [-] broadBlade
+        [-] katanaBlade
+        [-] rapierBlade
+        [-] shortBlade
+        [-] knifeBlade
+        [-] macheteBlade
+    sword guards:
+        [-] basicGuard
+        [-] shieldGuard
+        [-] wideGuard
+        [-] sweptGuard
+        [-] weightedGuard
+    slapstick:
+        [-] ball
+        [-] spikyBall
+        [-] largeBall
+    glove bodys:
+        [-] basicGloves
+        [-] chainGloves
+        [-] gauntlets
+        [-] insulatedGloves
+        [-] climbingGloves
+    glove knuckles:
+        [-] baiscPlate
+        [-] spikedPlate
+        [-] gloveReinforcement
+        [-] dusters
+    blow staves:
+        [-] basicStave
+        [-] longStave
+        [-] recursiveStave
+        [-] warStave
+        [-] compoundStave
+        [-] stablizerStave
+        [-] sightedStave
+    bow string:
+        [-] bowString
+        [-] bowCable
+    spear heads:
+        [-] basicHead
+        [-] glaiveHead
+        [-] halberdHead
+        [-] lanceHead
+        [-] naginataHead
+        [-] tridentHead
+    club heads:
+        [-] batHead
+        [-] armoredHead
+        [-] spikedHead
+        [-] barbedHead
+        [-] wingBatHead
+    armor:
+        [-] fabric
+        [-] plated
+        [-] chain
+        [-] studded
+        [-] wrapped
+        [-] splited
+        [-] padded
+        [-] solid
+        [-] suppenders
+        [-] barbbed
+        [-] shell
+        [-] longShirt
+        [-] gambison
+        [-] hat
+        [-] halfShell
+        [-] sallet
+        [-] noseGuard
+        [-] barredVisor
+        [-] meshVisor
+        [-] fullMask
+        [-] spikedVisor
+    other:
+        [-] motor
