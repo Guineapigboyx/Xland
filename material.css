@@ -65,7 +65,7 @@ item-icon[data-material="wood"] item-icon[data-material="tree branch"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="stone"] {
@@ -73,7 +73,7 @@ item-icon[data-material="stone"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="bone"] {
@@ -81,7 +81,7 @@ item-icon[data-material="bone"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="shell"] {
@@ -89,7 +89,7 @@ item-icon[data-material="shell"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: rgb(27, 30, 30);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="tin"] {
@@ -97,7 +97,7 @@ item-icon[data-material="tin"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="iron"],
@@ -108,7 +108,7 @@ item-icon[data-material="gear"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="aluminum"] {
@@ -116,7 +116,7 @@ item-icon[data-material="aluminum"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="copper"],
@@ -125,7 +125,7 @@ item-icon[data-material="wire"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="zinc"] {
@@ -133,7 +133,7 @@ item-icon[data-material="zinc"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #1e123dff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="shiny stone"] {
@@ -141,7 +141,7 @@ item-icon[data-material="shiny stone"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #b7b7b7ff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="carbon"] {
@@ -149,7 +149,7 @@ item-icon[data-material="carbon"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="carbon bone"] {
@@ -157,7 +157,7 @@ item-icon[data-material="carbon bone"] {
     --color2: #d5cfb2;
     --color3: triple3-mix;
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="silver"] {
@@ -165,7 +165,7 @@ item-icon[data-material="silver"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #a6a6a6ff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="brass"] {
@@ -173,7 +173,7 @@ item-icon[data-material="brass"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="uramite"] {
@@ -181,7 +181,7 @@ item-icon[data-material="uramite"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #000;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="gold"] {
@@ -189,7 +189,7 @@ item-icon[data-material="gold"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="steel"] {
@@ -197,7 +197,7 @@ item-icon[data-material="steel"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #000;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="lithum"] {
@@ -205,7 +205,7 @@ item-icon[data-material="lithum"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="carbon steel"] {
@@ -213,7 +213,7 @@ item-icon[data-material="carbon steel"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #1d1d1dff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="platinum"] {
@@ -221,7 +221,7 @@ item-icon[data-material="platinum"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #434343ff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="magnesium"] {
@@ -229,7 +229,7 @@ item-icon[data-material="magnesium"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #1e123d;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="lead"] {
@@ -237,7 +237,7 @@ item-icon[data-material="lead"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #351c75ff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="mithril"] {
@@ -245,7 +245,7 @@ item-icon[data-material="mithril"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="crystal"],
@@ -254,7 +254,7 @@ item-icon[data-material="glass"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 /* todo add the flame part of flameright */
@@ -263,7 +263,7 @@ item-icon[data-material="flameright"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="adamantite"] {
@@ -271,7 +271,7 @@ item-icon[data-material="adamantite"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="stainless steel"] {
@@ -279,7 +279,7 @@ item-icon[data-material="stainless steel"] {
     --color2: #d9d9d9ff;
     --color3: triple3-mix;
     --color4: #000;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="uranium"] {
@@ -287,7 +287,7 @@ item-icon[data-material="uranium"] {
     --color2: #00ff00ff;
     --color3: triple3-mix;
     --color4: #795b04ff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="plutonium"] {
@@ -295,7 +295,7 @@ item-icon[data-material="plutonium"] {
     --color2: #00ff00;
     --color3: #4c1130;
     --color4: #741b47;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="xtramite"] {
@@ -303,7 +303,7 @@ item-icon[data-material="xtramite"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="titanium"] {
@@ -311,7 +311,7 @@ item-icon[data-material="titanium"] {
     --color2: #0000ff;
     --color3: triple3-mix;
     --color4: #00ff00;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="titanium gold"] {
@@ -319,7 +319,7 @@ item-icon[data-material="titanium gold"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #000;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="master ore"] {
@@ -327,7 +327,7 @@ item-icon[data-material="master ore"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #8e7cc3;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="pale"] {
@@ -335,7 +335,7 @@ item-icon[data-material="pale"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="raindite"] {
@@ -343,7 +343,7 @@ item-icon[data-material="raindite"] {
     --color2: #ffff00ff;
     --color3: #00ff00ff;
     --color4: #0000ffff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="diamond"] {
@@ -351,7 +351,7 @@ item-icon[data-material="diamond"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="ruby"] {
@@ -359,7 +359,7 @@ item-icon[data-material="ruby"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="saphire"] {
@@ -367,7 +367,7 @@ item-icon[data-material="saphire"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="amethest"] {
@@ -375,7 +375,7 @@ item-icon[data-material="amethest"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="emerald"] {
@@ -383,7 +383,7 @@ item-icon[data-material="emerald"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="topaz"] {
@@ -391,7 +391,7 @@ item-icon[data-material="topaz"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="amber"] {
@@ -399,7 +399,7 @@ item-icon[data-material="amber"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="grass"],
@@ -408,7 +408,7 @@ item-icon[data-material="leaf"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="leather"] {
@@ -416,7 +416,7 @@ item-icon[data-material="leather"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="hide"] {
@@ -424,7 +424,7 @@ item-icon[data-material="hide"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="mud"],
@@ -433,7 +433,7 @@ item-icon[data-material="glue"] {
     --color2: duo2-mix;
     --color3: duo3-mix;
     --color4: #b45f06ff;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="flint"] {
@@ -441,7 +441,7 @@ item-icon[data-material="flint"] {
     --color2: #595959ff;
     --color3: triple3-mix;
     --color4: #595959ff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="radier scrap"] {
@@ -449,7 +449,7 @@ item-icon[data-material="radier scrap"] {
     --color2: #ccccccff;
     --color3: #666666ff;
     --color4: #737373ff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="super radier scrap"] {
@@ -457,7 +457,7 @@ item-icon[data-material="super radier scrap"] {
     --color2: rgb(228, 78, 78);
     --color3: color-mix(in srgb, var(--color2) 22%, var(--color4));
     --color4: #f1c232ff;
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="string"] {
@@ -465,7 +465,7 @@ item-icon[data-material="string"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }
 
 item-icon[data-material="plastic"],
@@ -474,7 +474,7 @@ item-icon[data-material="rubber"] {
     --color2: #1c3b0fff;
     --color3: triple3-mix;
     --color4: #000;
-    --material-gradient: url(#ingot-radial);
+    --material-gradient: radial;
 }
 
 item-icon[data-material="cloth"],
@@ -483,5 +483,5 @@ item-icon[data-material="old rag"] {
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);
-    --material-gradient: url(#ingot-linear);
+    --material-gradient: linear;
 }

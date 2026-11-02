@@ -79,13 +79,62 @@ let itemIcons = [
     { cssClass: "item-wood", file: "items/wood.svg" },
     { cssClass: "item-xtramite", file: "items/Xtramite.svg" },
     { cssClass: "item-zinc", file: "items/zinc.svg" },
+
+    { cssClass: "item-basicHandle", file: "modules/basic handle.svg" },
+    { cssClass: "item-curvedHandle", file: "modules/curved handle.svg" },
+    { cssClass: "item-hollowHandle", file: "modules/hollow handle.svg" },
+    { cssClass: "item-shieldedHandle", file: "modules/shielded handle.svg" },
+    { cssClass: "item-stickyHandle", file: "modules/sticky handle.svg" },
+    { cssClass: "item-thickHandle", file: "modules/thick handle.svg" },
+    { cssClass: "item-wrapedHandle", file: "modules/wraped handle.svg" },
 ];
 
 /* Someones mad that XML does not support local scope */
 const sharedSVGElements = `
 <defs>
+    <!-- material 1 -->
+    <defs>
+        <linearGradient id="M1-center-linear"
+            x1="0%" y1="50%"
+            x2="100%" y2="50%">
+            <stop offset="0" stop-color="var(--M1-color1)" />
+            <stop offset="0.48" stop-color="var(--M1-color2)" />
+            <stop offset="0.64" stop-color="var(--M1-color3)" />
+            <stop offset="1" stop-color="var(--M1-color4)" />
+        </linearGradient>
+
+        <radialGradient id="M1-center-radial"
+            cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="var(--M1-color1)" />
+            <stop offset="0.48" stop-color="var(--M1-color2)" />
+            <stop offset="0.64" stop-color="var(--M1-color3)" />
+            <stop offset="1" stop-color="var(--M1-color4)" />
+        </radialGradient>
+    </defs>
+    <!-- material 2 -->
+    <defs>
+        <linearGradient id="M2-center-linear"
+            x1="0%" y1="50%"
+            x2="100%" y2="50%">
+            <stop offset="0" stop-color="var(--M2-color1)" />
+            <stop offset="0.48" stop-color="var(--M2-color2)" />
+            <stop offset="0.64" stop-color="var(--M2-color3)" />
+            <stop offset="1" stop-color="var(--M2-color4)" />
+        </linearGradient>
+
+        <radialGradient id="M2-center-radial"
+            cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="var(--M2-color1)" />
+            <stop offset="0.48" stop-color="var(--M2-color2)" />
+            <stop offset="0.64" stop-color="var(--M2-color3)" />
+            <stop offset="1" stop-color="var(--M2-color4)" />
+        </radialGradient>
+    </defs>
+
+    <!-- spillover graident the gradient travels across elements-->    ----------------------------
+    <!-- material 1 -->
     <linearGradient
-        id="M1-linear"
+        id="M1-ingot-linear"
         gradientUnits="userSpaceOnUse"
         x1="638" y1="250"
         x2="710" y2="250"
@@ -96,7 +145,7 @@ const sharedSVGElements = `
         <stop offset="1" stop-color="var(--M1-color4)" />
     </linearGradient>
     <radialGradient
-        id="M1-radial"
+        id="M1-ingot-radial"
         gradientUnits="userSpaceOnUse"
         cx="674" cy="250" r="40"
     >
@@ -107,7 +156,7 @@ const sharedSVGElements = `
     </radialGradient>
     <!-- material 2 -->
         <linearGradient
-        id="M2-linear"
+        id="M2-ingot-linear"
         gradientUnits="userSpaceOnUse"
         x1="638" y1="250"
         x2="710" y2="250"
@@ -118,7 +167,7 @@ const sharedSVGElements = `
         <stop offset="1" stop-color="var(--M2-color4)" />
     </linearGradient>
     <radialGradient
-        id="M2-radial"
+        id="M2-ingot-radial"
         gradientUnits="userSpaceOnUse"
         cx="674" cy="250" r="40"
     >
@@ -145,6 +194,7 @@ function displayIcon() {
                     mode: "open",
                 });
 
+            // apply the material colors
             applyIconMaterials(element);
 
             // Insert the SVG into the shadow root
@@ -152,6 +202,18 @@ function displayIcon() {
             shadow.querySelector("svg").setAttribute("part", "svg");
 
             element.dataset.svgLoaded = icon.cssClass;
+
+            // select if it should use ingot or center gradients
+            shadow.querySelectorAll("[data-material][data-gradient]").forEach((path) => {
+                const number = path.dataset.material;
+                const layout = path.dataset.gradient;
+
+                const type = getComputedStyle(element)
+                    .getPropertyValue(`--M${number}-material-gradient`)
+                    .trim();
+
+                path.style.fill = `url(#M${number}-${layout}-${type})`;
+            });
         });
     }
 }
@@ -184,8 +246,7 @@ function applyIconMaterials(icon) {
             // Rename variable references to the correct material slot
             value = value
                 .replace(/--color([1-4])/g, `--M${i}-color$1`)
-                .replace(/\b(duo2-mix|duo3-mix|triple3-mix)\b/g, `var(--M${i}-$1)`)
-                .replace(/#ingot-/g, `#M${i}-`);
+                .replace(/\b(duo2-mix|duo3-mix|triple3-mix)\b/g, `var(--M${i}-$1)`);
 
             if (value) {
                 icon.style.setProperty(`--M${i}-${name}`, value);
