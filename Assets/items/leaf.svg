@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="651.021 227.995 54.6239 62.3213" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10">
-  <path fill="#38761d" d="m658.65063 256.38504c-1.1828613 -12.933029 8.243835 -24.418518 21.055115 -25.65355q11.59845 -1.118103 23.196838 -2.2362213q1.0708618 11.708664 2.1417236 23.417328c1.1828613 12.933044 -8.243835 24.418518 -21.055115 25.653534c-12.811218 1.2350464 -24.1557 -8.248047 -25.338562 -21.181091z" fill-rule="evenodd"/>
+  <path style="filter: brightness(0.8);" data-material="1" data-gradient="center" d="m658.65063 256.38504c-1.1828613 -12.933029 8.243835 -24.418518 21.055115 -25.65355q11.59845 -1.118103 23.196838 -2.2362213q1.0708618 11.708664 2.1417236 23.417328c1.1828613 12.933044 -8.243835 24.418518 -21.055115 25.653534c-12.811218 1.2350464 -24.1557 -8.248047 -25.338562 -21.181091z" fill-rule="evenodd"/>
   <path stroke="#595959" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m658.65063 256.38504c-1.1828613 -12.933029 8.243835 -24.418518 21.055115 -25.65355q11.59845 -1.118103 23.196838 -2.2362213q1.0708618 11.708664 2.1417236 23.417328c1.1828613 12.933044 -8.243835 24.418518 -21.055115 25.653534c-12.811218 1.2350464 -24.1557 -8.248047 -25.338562 -21.181091z" fill-rule="evenodd"/>
-  <path stroke="#00ff00" stroke-width="12.0" stroke-linejoin="round" stroke-linecap="butt" d="m666.9593 272.2886l-11.2126465 14.330719" fill-rule="evenodd"/>
+  <path style="filter: brightness(1.5);" data-material="1" data-gradient="center" data-stroke="true" stroke-width="12.0" stroke-linejoin="round" stroke-linecap="butt" d="m666.9593 272.2886l-11.2126465 14.330719" fill-rule="evenodd"/>
 </svg>

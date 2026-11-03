@@ -92,84 +92,95 @@ let itemIcons = [
 /* Someones mad that XML does not support local scope */
 const sharedSVGElements = `
 <defs>
-    <!-- material 1 -->
-    <defs>
-        <linearGradient id="M1-center-linear"
-            x1="0%" y1="50%"
-            x2="100%" y2="50%">
-            <stop offset="0" stop-color="var(--M1-color1)" />
-            <stop offset="0.48" stop-color="var(--M1-color2)" />
-            <stop offset="0.64" stop-color="var(--M1-color3)" />
-            <stop offset="1" stop-color="var(--M1-color4)" />
-        </linearGradient>
-
-        <radialGradient id="M1-center-radial"
-            cx="50%" cy="50%" r="50%">
-            <stop offset="0" stop-color="var(--M1-color1)" />
-            <stop offset="0.48" stop-color="var(--M1-color2)" />
-            <stop offset="0.64" stop-color="var(--M1-color3)" />
-            <stop offset="1" stop-color="var(--M1-color4)" />
-        </radialGradient>
-    </defs>
-    <!-- material 2 -->
-    <defs>
-        <linearGradient id="M2-center-linear"
-            x1="0%" y1="50%"
-            x2="100%" y2="50%">
-            <stop offset="0" stop-color="var(--M2-color1)" />
-            <stop offset="0.48" stop-color="var(--M2-color2)" />
-            <stop offset="0.64" stop-color="var(--M2-color3)" />
-            <stop offset="1" stop-color="var(--M2-color4)" />
-        </linearGradient>
-
-        <radialGradient id="M2-center-radial"
-            cx="50%" cy="50%" r="50%">
-            <stop offset="0" stop-color="var(--M2-color1)" />
-            <stop offset="0.48" stop-color="var(--M2-color2)" />
-            <stop offset="0.64" stop-color="var(--M2-color3)" />
-            <stop offset="1" stop-color="var(--M2-color4)" />
-        </radialGradient>
-    </defs>
-
-    <!-- spillover graident the gradient travels across elements-->    ----------------------------
-    <!-- material 1 -->
+    <!-- material 1 (new gradient per path) -->
     <linearGradient
-        id="M1-ingot-linear"
-        gradientUnits="userSpaceOnUse"
-        x1="638" y1="250"
-        x2="710" y2="250"
+        id="M1-center-linear"
+        gradientUnits="objectBoundingBox"
+        x1="0%" y1="50%"
+        x2="100%" y2="50%"
     >
         <stop offset="0" stop-color="var(--M1-color1)" />
         <stop offset="0.48" stop-color="var(--M1-color2)" />
         <stop offset="0.64" stop-color="var(--M1-color3)" />
         <stop offset="1" stop-color="var(--M1-color4)" />
     </linearGradient>
+
     <radialGradient
-        id="M1-ingot-radial"
-        gradientUnits="userSpaceOnUse"
-        cx="674" cy="250" r="40"
+        id="M1-center-radial"
+        gradientUnits="objectBoundingBox"
+        cx="50%" cy="50%"
+        r="70%"
+        fx="40%" fy="35%"
     >
         <stop offset="0" stop-color="var(--M1-color1)" />
         <stop offset="0.48" stop-color="var(--M1-color2)" />
         <stop offset="0.64" stop-color="var(--M1-color3)" />
         <stop offset="1" stop-color="var(--M1-color4)" />
     </radialGradient>
+
     <!-- material 2 -->
-        <linearGradient
-        id="M2-ingot-linear"
-        gradientUnits="userSpaceOnUse"
-        x1="638" y1="250"
-        x2="710" y2="250"
+    <linearGradient
+        id="M2-center-linear"
+        gradientUnits="objectBoundingBox"
+        x1="0%" y1="50%"
+        x2="100%" y2="50%"
     >
         <stop offset="0" stop-color="var(--M2-color1)" />
         <stop offset="0.48" stop-color="var(--M2-color2)" />
         <stop offset="0.64" stop-color="var(--M2-color3)" />
         <stop offset="1" stop-color="var(--M2-color4)" />
     </linearGradient>
+
     <radialGradient
-        id="M2-ingot-radial"
+        id="M2-center-radial"
+        gradientUnits="objectBoundingBox"
+        cx="50%" cy="50%"
+        r="70%"
+        fx="40%" fy="35%"
+    >
+        <stop offset="0" stop-color="var(--M2-color1)" />
+        <stop offset="0.48" stop-color="var(--M2-color2)" />
+        <stop offset="0.64" stop-color="var(--M2-color3)" />
+        <stop offset="1" stop-color="var(--M2-color4)" />
+    </radialGradient>
+
+
+    <!-- spillover gradients (1 graident for all paths) -->
+    <!-- material 1 -->
+    <linearGradient
+        id="M1-spill-linear"
         gradientUnits="userSpaceOnUse"
-        cx="674" cy="250" r="40"
+    >
+        <stop offset="0" stop-color="var(--M1-color1)" />
+        <stop offset="0.48" stop-color="var(--M1-color2)" />
+        <stop offset="0.64" stop-color="var(--M1-color3)" />
+        <stop offset="1" stop-color="var(--M1-color4)" />
+    </linearGradient>
+
+    <radialGradient
+        id="M1-spill-radial"
+        gradientUnits="userSpaceOnUse"
+    >
+        <stop offset="0" stop-color="var(--M1-color1)" />
+        <stop offset="0.48" stop-color="var(--M1-color2)" />
+        <stop offset="0.64" stop-color="var(--M1-color3)" />
+        <stop offset="1" stop-color="var(--M1-color4)" />
+    </radialGradient>
+
+    <!-- material 2 -->
+    <linearGradient
+        id="M2-spill-linear"
+        gradientUnits="userSpaceOnUse"
+    >
+        <stop offset="0" stop-color="var(--M2-color1)" />
+        <stop offset="0.48" stop-color="var(--M2-color2)" />
+        <stop offset="0.64" stop-color="var(--M2-color3)" />
+        <stop offset="1" stop-color="var(--M2-color4)" />
+    </linearGradient>
+
+    <radialGradient
+        id="M2-spill-radial"
+        gradientUnits="userSpaceOnUse"
     >
         <stop offset="0" stop-color="var(--M2-color1)" />
         <stop offset="0.48" stop-color="var(--M2-color2)" />
@@ -266,11 +277,13 @@ function applyIconMaterials(icon) {
 
 async function loadIcons() {
     let fetcher;
+
     for (let icon = 0; icon < itemIcons.length; icon++) {
         if (!itemIcons[icon].file) {
             console.warn(`error loading icon ${icon}`);
             continue;
         }
+
         fetcher = await fetch(`Assets/${itemIcons[icon].file}`);
         itemIcons[icon].svg = await fetcher.text();
 
@@ -280,8 +293,30 @@ async function loadIcons() {
         ).documentElement;
 
         svg.insertAdjacentHTML("afterbegin", sharedSVGElements);
+
+        // Automatically position spill gradients
+        const [x, y, width, height] = svg
+            .getAttribute("viewBox")
+            .trim()
+            .split(/[\s,]+/)
+            .map(Number);
+
+        svg.querySelectorAll('[id$="-spill-linear"]').forEach((gradient) => {
+            gradient.setAttribute("x1", x);
+            gradient.setAttribute("y1", y + height / 2);
+            gradient.setAttribute("x2", x + width);
+            gradient.setAttribute("y2", y + height / 2);
+        });
+
+        svg.querySelectorAll('[id$="-spill-radial"]').forEach((gradient) => {
+            gradient.setAttribute("cx", x + width / 2);
+            gradient.setAttribute("cy", y + height / 2);
+            gradient.setAttribute("r", Math.max(width, height) / 2);
+        });
+
         itemIcons[icon].svg = svg.outerHTML;
     }
+
     displayIcon();
 }
 loadIcons();

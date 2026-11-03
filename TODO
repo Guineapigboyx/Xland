@@ -152,13 +152,13 @@ other:
     [] statusEffects
 
 SVG: 
-    [] apple
-    [] cloth
-    [] flower
+    [x] apple
+    [x] cloth
+    [x] flower
     [x] fumming flower // i did it but might not use
     [] glass
-    [] goop
-    [] leaf
+    [x] goop
+    [x] leaf
     [] rice
     [] meat
     [] pikmin
