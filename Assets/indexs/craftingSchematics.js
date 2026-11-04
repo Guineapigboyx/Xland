@@ -1457,8 +1457,8 @@ const modules = {
             return weaponData;
         },
     },
-    broadBlade: {
-        name: "Broad Blade",
+    claymoreBlade: {
+        name: "Claymore Blade",
         part: [schematics.sword.parts.blade],
         materials: [
             {
@@ -1475,14 +1475,13 @@ const modules = {
                 materialData.sharpness * 1.1 +
                 materialData.hardness * 0.6 +
                 materialData.density * 0.55;
-            weaponData.defense += materialData.toughness * 0.15;
             weaponData.accuracy -= 0.45;
             weaponData.crit += materialData.sharpness * 0.09;
             weaponData.durablity +=
                 materialData.hardness * 4.3 +
                 materialData.toughness * 2 -
                 materialData.sharpness * 0.45;
-            weaponData.speed -= materialData.density * 0.25;
+            weaponData.speed -= materialData.density * 0.3;
 
             return weaponData;
         },
@@ -1543,6 +1542,33 @@ const modules = {
             return weaponData;
         },
     },
+    jagidBlade: {
+        name: "Jagid Blade",
+        part: [schematics.sword.parts.blade],
+        materials: [
+            {
+                allowedMaterials: [
+                    materialTypes.metal,
+                    materialTypes.bone,
+                    materialTypes.gemStone,
+                    materialTypes.rock,
+                    materialTypes.wood,
+                ],
+                amount: 1,
+            },
+        ],
+        itemStats: (weaponData, materialData) => {
+            weaponData.actionSurge += 0.08 + materialData.density * 0.044;
+            weaponData.damagetype = damageTypes.sharp;
+            weaponData.attack += materialData.sharpness * 0.8 + materialData.hardness * 0.7;
+            weaponData.accuracy -= materialData.density * 0.1;
+            weaponData.durablity +=
+                materialData.hardness * 1.7 +
+                materialData.toughness * 1 -
+                materialData.sharpness * 0.6;
+            weaponData.speed -= materialData.density * 0.17;
+        },
+    },
     shortBlade: {
         name: "Short Blade",
         part: [schematics.sword.parts.blade],
@@ -1567,37 +1593,6 @@ const modules = {
             weaponData.crit += materialData.sharpness * 0.1;
             weaponData.durablity += materialData.hardness * 3.1 + materialData.toughness * 1.1;
             weaponData.speed -= materialData.density * 0.095;
-
-            return weaponData;
-        },
-    },
-    knifeBlade: {
-        name: "Knife Blade",
-        part: [schematics.sword.parts.blade],
-        materials: [
-            {
-                allowedMaterials: [
-                    materialTypes.wood,
-                    materialTypes.metal,
-                    materialTypes.bone,
-                    materialTypes.rock,
-                    materialTypes.gemStone,
-                ],
-                amount: 1,
-            },
-        ],
-        itemStats: (weaponData, materialData) => {
-            weaponData.actionSurge +=
-                -0.46 + materialData.density * 0.025 - materialData.flexibility * 0.045;
-            weaponData.damagetype = damageTypes.sharp;
-            weaponData.attack += materialData.sharpness * 1.2 + materialData.hardness * 0.25;
-            weaponData.accuracy += 0.6;
-            weaponData.crit += materialData.sharpness * 0.2;
-            weaponData.durablity +=
-                materialData.hardness * 2.7 +
-                materialData.toughness -
-                materialData.sharpness * 0.55;
-            weaponData.speed -= materialData.density * 0.075;
 
             return weaponData;
         },

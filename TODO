@@ -226,11 +226,11 @@ SVG:
         [-] wideRimFace
     sword blades:
         [-] basicBlade
-        [-] broadBlade
+        [-] claymoreBlade
         [-] katanaBlade
         [-] rapierBlade
+        [-] jagidBlade
         [-] shortBlade
-        [-] knifeBlade
         [-] macheteBlade
     sword guards:
         [-] basicGuard
