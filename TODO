@@ -189,6 +189,7 @@ SVG:
         [x] hollowHandle
         [x] stickyHandle
         [x] longHandle
+        [x] flexibleHandle
     bindings: 
         [-] glueBinding
         [-] stringBinding

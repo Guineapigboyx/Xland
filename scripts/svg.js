@@ -87,6 +87,7 @@ let itemIcons = [
     { cssClass: "item-stickyHandle", file: "modules/sticky handle.svg" },
     { cssClass: "item-thickHandle", file: "modules/thick handle.svg" },
     { cssClass: "item-wrapedHandle", file: "modules/wraped handle.svg" },
+    { cssClass: "item-flexibleHandle", file: "modules/flexible handle.svg" },
 ];
 
 /* Someones mad that XML does not support local scope */
