@@ -80,14 +80,22 @@ let itemIcons = [
     { cssClass: "item-xtramite", file: "items/Xtramite.svg" },
     { cssClass: "item-zinc", file: "items/zinc.svg" },
 
-    { cssClass: "item-basicHandle", file: "modules/basic handle.svg" },
-    { cssClass: "item-curvedHandle", file: "modules/curved handle.svg" },
-    { cssClass: "item-hollowHandle", file: "modules/hollow handle.svg" },
-    { cssClass: "item-shieldedHandle", file: "modules/shielded handle.svg" },
-    { cssClass: "item-stickyHandle", file: "modules/sticky handle.svg" },
-    { cssClass: "item-thickHandle", file: "modules/thick handle.svg" },
-    { cssClass: "item-wrapedHandle", file: "modules/wraped handle.svg" },
-    { cssClass: "item-flexibleHandle", file: "modules/flexible handle.svg" },
+    { cssClass: "item-basicHandle", file: "modules/handle/basic handle.svg" },
+    { cssClass: "item-curvedHandle", file: "modules/handle/curved handle.svg" },
+    { cssClass: "item-hollowHandle", file: "modules/handle/hollow handle.svg" },
+    { cssClass: "item-shieldedHandle", file: "modules/handle/shielded handle.svg" },
+    { cssClass: "item-stickyHandle", file: "modules/handle/sticky handle.svg" },
+    { cssClass: "item-thickHandle", file: "modules/handle/thick handle.svg" },
+    { cssClass: "item-wrapedHandle", file: "modules/handle/wraped handle.svg" },
+    { cssClass: "item-flexibleHandle", file: "modules/handle/flexible handle.svg" },
+
+    { cssClass: "item-basicBlade", file: "modules/blade/basic blade.svg" },
+    { cssClass: "item-claymoreBlade", file: "modules/blade/claymore blade.svg" },
+    { cssClass: "item-jagidBlade", file: "modules/blade/jagid blade.svg" },
+    { cssClass: "item-katanaBlade", file: "modules/blade/katana blade.svg" },
+    { cssClass: "item-macheteBlade", file: "modules/blade/machete blade.svg" },
+    { cssClass: "item-rapierBlade", file: "modules/blade/rapier blade.svg" },
+    { cssClass: "item-shortBlade", file: "modules/blade/short blade.svg" },
 ];
 
 /* Someones mad that XML does not support local scope */
@@ -230,6 +238,11 @@ function displayIcon() {
                     path.style.stroke = gradient;
                     path.style.fill = "none";
                 } else {
+                    path.style.fill = gradient;
+                }
+
+                // special stroke butts have both fill and fill
+                if (path.dataset.stokebutt === "true") {
                     path.style.fill = gradient;
                 }
             });
