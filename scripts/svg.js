@@ -76,7 +76,7 @@ let itemIcons = [
     { cssClass: "item-water", file: "items/water.svg" },
     { cssClass: "item-watermelon", file: "items/watermelon.svg" },
     { cssClass: "item-wheat", file: "items/wheat.svg" },
-    { cssClass: "item-wood", file: "items/wood.svg" },
+    { cssClass: "item-ingot", file: "items/ingot.svg" },
     { cssClass: "item-xtramite", file: "items/Xtramite.svg" },
     { cssClass: "item-zinc", file: "items/zinc.svg" },
 
