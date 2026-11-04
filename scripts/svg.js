@@ -226,7 +226,7 @@ function displayIcon() {
 
                 const gradient = `url(#M${number}-${layout}-${type})`;
 
-                if (path.dataset.stroke === "true") {
+                if (path.getAttribute("stroke-width")) {
                     path.style.stroke = gradient;
                     path.style.fill = "none";
                 } else {

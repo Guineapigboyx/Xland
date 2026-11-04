@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.0 0.0 672.0 672.0" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10">
     <path data-material="1" data-gradient="center" d="m281.22577 251.18285l-211.50914 230.63313l-6.282181 131.2984l101.754654 -17.93042l86.73532 -51.442444l124.66725 -230.56241z" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m244.04462 292.96588l94.834656 90.299225" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m201.99213 336.0l105.13385 105.00787" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m268.43307 266.8924l86.897644 85.322815" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m226.38058 309.9265l97.88977 98.897644" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m169.96063 374.69028l112.75589 109.95276" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m194.34908 348.6168l104.34645 109.543304" fill-rule="evenodd"/>
-    <path data-material="2" data-gradient="center" data-stroke="true" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m152.29659 391.6509l118.110245 118.55118" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m244.04462 292.96588l94.834656 90.299225" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m201.99213 336.0l105.13385 105.00787" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m268.43307 266.8924l86.897644 85.322815" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m226.38058 309.9265l97.88977 98.897644" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m169.96063 374.69028l112.75589 109.95276" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m194.34908 348.6168l104.34645 109.543304" fill-rule="evenodd"/>
+    <path data-material="2" data-gradient="center" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt" d="m152.29659 391.6509l118.110245 118.55118" fill-rule="evenodd"/>
 </svg>
