@@ -136,168 +136,334 @@ animals:
     [-] level 5
     [-] level 6
     [-] level MAX // strange lv MAX technicly is not MAX but thats how its always been so whatever
-    [-] giga beasts  
 
-world Gen:
-    [-] towns
-    [-] continets // the base everything is placed on 
-    [-] ocean
-    [-] poi placer
-    [-] battle area generator
-    [-] biome placement
+    giga beasts:
+        [=] newbilly king (Not a giga beast but treated as the giga beast of new billy) 
+        [-] black mambo
+        [-] Frog warrior
+        [-] Dragon (maybe a better name)
+        [-] Missive plane (maybe a better name)
+        [-] Bowser (if person names change this should change)
+        [-] Lugia (if person names change this should change)
+        [-] Ganon (if person names change this should change)
+        [-] Yveltal[final boss] (if person names change this should change)
+        [-] The Knight[jland final boss] (if person names change this should change)
 
 other:
     [] npcs // there needs to be at least like 30
     [-] dynamic npcs // like a pool of properties genric npc's can pull from 
     [] statusEffects
 
-SVG: 
-    [x] apple
-    [x] cloth
-    [x] flower
-    [x] fumming flower // i did it but might not use
-    [] glass
-    [x] goop
-    [x] leaf
-    [] rice
-    [] meat
-    [] pikmin
-    [] pikmin meat
-    [=] pepper
-    [x] powder
-    [] string
-    [] water
-    [x] wood / ingot
-    [=] bulborb // since its also a animal diffrent colors make sense
-    [=] rat // since its also a animal diffrent colors make sense
-    [=] custom berry colors // might keep the 3 xland ones
+world Gen:
+    [-] poi placer
+    [-] biome placer
+    [-] battle area generator
+    [-] raindite spawning rules
 
-    hammer:
-        [-] hammerHead
-        [-] axeHead
-        [-] scytheHead
-        [-] pickaxeHead
-        [-] spikeHammerHead
-        [-] sledgeHead
-        [-] clawHead
-    handdles:
-        [x] basicHandle
-        [x] wrappedHandle
-        [x] curvedHandle
-        [x] shieldedHandle
-        [x] thickHandle
-        [x] hollowHandle
-        [x] stickyHandle
-        [x] longHandle
-        [x] flexibleHandle
-    bindings: 
-        [-] glueBinding
-        [-] stringBinding
-        [-] metalBinding
-        [-] barbedBinding
-        [-] cuffBinding
-    drill bits:
-        [-] basicBit
-        [-] spadeBit
-        [-] augerBit
-        [-] coreBit
-        [-] masonryBit
-        [-] stepBit
-        [-] lanceBit
-        [-] thinBit
-    drill grips:
-        [-] basicGrip
-        [-] pistolGrip
-        [-] spadeGrip
-        [-] doubleSpadeGrid
-    shield grips:
-        [-] barGrip
-        [-] holeGrip
-        [-] doubleBarGrip
-        [-] straps
-        [-] guigeStrap
-    sheild faces:
-        [-] flatFace
-        [-] curvedFace
-        [-] spikedFace
-        [-] armoredFace
-        [-] barbedFace
-        [-] bladeFace
-        [-] wideRimFace
-    sword blades:
-        [x] basicBlade
-        [x] claymoreBlade
-        [x] katanaBlade
-        [x] rapierBlade
-        [x] jagidBlade
-        [x] shortBlade
-        [x] macheteBlade
-    sword guards:
-        [-] basicGuard
-        [-] shieldGuard
-        [-] wideGuard
-        [-] sweptGuard
-        [-] weightedGuard
-    slapstick:
-        [-] ball
-        [-] spikyBall
-        [-] largeBall
-    glove bodys:
-        [-] basicGloves
-        [-] chainGloves
-        [-] gauntlets
-        [-] insulatedGloves
-        [-] climbingGloves
-    glove knuckles:
-        [-] baiscPlate
-        [-] spikedPlate
-        [-] gloveReinforcement
-        [-] dusters
-    blow staves:
-        [-] basicStave
-        [-] longStave
-        [-] recursiveStave
-        [-] warStave
-        [-] compoundStave
-        [-] stablizerStave
-        [-] sightedStave
-    bow string:
-        [-] bowString
-        [-] bowCable
-    spear heads:
-        [-] basicHead
-        [-] glaiveHead
-        [-] halberdHead
-        [-] lanceHead
-        [-] naginataHead
-        [-] tridentHead
-    club heads:
-        [-] batHead
-        [-] armoredHead
-        [-] spikedHead
-        [-] barbedHead
-        [-] wingBatHead
-    armor:
-        [-] fabric
-        [-] plated
-        [-] chain
-        [-] studded
-        [-] wrapped
-        [-] splited
-        [-] padded
-        [-] solid
-        [-] suppenders
-        [-] barbbed
-        [-] shell
-        [-] longShirt
-        [-] gambison
-        [-] hat
-        [-] halfShell
-        [-] sallet
-        [-] noseGuard
-        [-] barredVisor
-        [-] meshVisor
-        [-] fullMask
-        [-] spikedVisor
-    other:
-        [-] motor
+    continets:
+        New billy archipelago:
+            [-] Shice Mountain (mountain)
+            towns: 
+                [-] New Billy (captial)
+                [-] New Caper
+            regions: 
+                [-] New Outpost
+                [-] New Guinea
+                [-] New Shice
+                [-] New Lucario
+ 
+        reptilea:
+            [-] Hammered Snake (mountain)
+            [-] center monument (major poi)
+            towns: 
+                [-] New Billy (captial)
+                [-] New Caper
+            regions: 
+                // all are unamed on map zooms
+                [-] Tail
+                [-] left
+                [-] center
+                [-] right
+                [-] Head
+
+        xavie:
+            [-] Gartu Plateau (mountain)
+            [-] xavie volcano (major poi)
+            [-] THE equator (major poi)
+            towns: 
+                [-] Guinea (captial)
+            regions: 
+                [-] Gartu
+                [-] Sunnyside
+                [-] Vasil
+                [-] Guinea
+                [-] Paese
+                [-] SMGland
+
+        Sword island:
+            [-] Wind Valley Range (mountain)
+            [-] desert monument (major poi)
+            towns: 
+                [-] Sheath city (captial)
+            regions: 
+                [-] Deserto
+                [-] Desert Colossus
+                [-] Landerous
+                [-] Lake Entente
+                [-] Sheath
+                [-] Port Arthur
+                [-] New Port
+
+        Snes island:
+            [-] Morrison Ridge (mountain)
+            [-] X button monument (major poi)
+            towns: 
+                [-] SNES City (captial)
+            regions: 
+                [-] Old Consequences
+                [-] Saint Morris
+                [-] New Start
+                [-] Fiery Desert
+
+        plushia:
+            [-] Final Peaks (mountain)
+            [-] Unarious Heights (mountain)
+            [-] tri state monument (major poi)
+            towns: 
+                [-] Final Frontier (captial)
+            regions: 
+                [-] Port Wick
+                [-] Fort Latere
+                [-] Collegamento
+                [-] Dankus
+                [-] New Link
+                [-] Port Kirby (if person names this should change)
+                [-] Final Frontier
+                [-] myterious dunes
+
+        jules:
+            [-] Raindite Falls (mountain)
+            [-] Kingdoms Edge (mountain)
+            [-] Dual Peaks (mountain)
+            [-] Amethyst mountain range monument (major poi)
+            towns: 
+                [-] New Reid (captial)
+            regions: 
+                [-] New Raindite
+                [-] New Reid
+                [-] Amethyst
+                [-] Kingsland (comeon julian from 10 years ago camel case that)
+                [-] New Duel Point
+                [-] Resting Grounds
+
+SVG: 
+    [-] bone
+    [-] shell
+    [] geode
+    [] plastic
+    [] rubber
+    [] bolts
+    [] coil
+    [] gear
+    [-] radier scrap
+    [=] super radier scrap
+    [] campfire
+    [] furnace
+    [] workbench
+    [] anvil
+    [] morterPestal
+    [] crusher
+    [] brewerMixer
+    [] godsForge
+    [] bed
+    [] smallBox
+    [] bigBox
+    [] hugeBox
+    [] smallTrap
+    [] bigTrap
+    [] hugeTrap
+    [] floatingTrap
+    [] largeCanister
+    [] massiveCanister
+    [-] table
+    [-] chair
+
+    fallback:
+        [-] pickaxe
+        [-] hammer
+        [-] guardingHammer
+        [-] drill
+        [-] shield
+        [-] knife
+        [-] sword
+        [-] guardingSword
+        [-] slapstick
+        [-] gloves
+        [-] gunFast
+        [-] gunSlow
+        [-] bow
+        [-] spear
+        [-] club
+        [-] whip
+        [-] helmet
+        [-] pendent
+        [-] leggings
+        [-] chestplate
+        [-] gloves
+        [-] boots
+        [-] belt
+        [-] backPack
+        [-] axe
+        
+    custom coloring:
+        [x] apple
+        [x] cloth
+        [x] flower
+        [x] fumming flower // i did it but might not use
+        [] glass
+        [x] goop
+        [x] leaf
+        [] rice
+        [] meat
+        [] pikmin
+        [] pikmin meat
+        [=] pepper
+        [x] powder
+        [] string
+        [] water
+        [] tree branch
+        [x] wood / ingot
+        [=] bulborb // since its also a animal diffrent colors make sense
+        [=] rat // since its also a animal diffrent colors make sense
+        [=] custom berry colors // might keep the 3 xland ones
+
+    modules: 
+            hammer:
+            [-] hammerHead
+            [-] axeHead
+            [-] scytheHead
+            [-] pickaxeHead
+            [-] spikeHammerHead
+            [-] sledgeHead
+            [-] clawHead
+        handdles:
+            [x] basicHandle
+            [x] wrappedHandle
+            [x] curvedHandle
+            [x] shieldedHandle
+            [x] thickHandle
+            [x] hollowHandle
+            [x] stickyHandle
+            [x] longHandle
+            [x] flexibleHandle
+        bindings: 
+            [-] glueBinding
+            [-] stringBinding
+            [-] metalBinding
+            [-] barbedBinding
+            [-] cuffBinding
+        drill bits:
+            [-] basicBit
+            [-] spadeBit
+            [-] augerBit
+            [-] coreBit
+            [-] masonryBit
+            [-] stepBit
+            [-] lanceBit
+            [-] thinBit
+        drill grips:
+            [-] basicGrip
+            [-] pistolGrip
+            [-] spadeGrip
+            [-] doubleSpadeGrid
+        shield grips:
+            [-] barGrip
+            [-] holeGrip
+            [-] doubleBarGrip
+            [-] straps
+            [-] guigeStrap
+        sheild faces:
+            [-] flatFace
+            [-] curvedFace
+            [-] spikedFace
+            [-] armoredFace
+            [-] barbedFace
+            [-] bladeFace
+            [-] wideRimFace
+        sword blades:
+            [x] basicBlade
+            [x] claymoreBlade
+            [x] katanaBlade
+            [x] rapierBlade
+            [x] jagidBlade
+            [x] shortBlade
+            [x] macheteBlade
+        sword guards:
+            [-] basicGuard
+            [-] shieldGuard
+            [-] wideGuard
+            [-] sweptGuard
+            [-] weightedGuard
+        slapstick:
+            [-] ball
+            [-] spikyBall
+            [-] largeBall
+        glove bodys:
+            [-] basicGloves
+            [-] chainGloves
+            [-] gauntlets
+            [-] insulatedGloves
+            [-] climbingGloves
+        glove knuckles:
+            [-] baiscPlate
+            [-] spikedPlate
+            [-] gloveReinforcement
+            [-] dusters
+        blow staves:
+            [-] basicStave
+            [-] longStave
+            [-] recursiveStave
+            [-] warStave
+            [-] compoundStave
+            [-] stablizerStave
+            [-] sightedStave
+        bow string:
+            [-] bowString
+            [-] bowCable
+        spear heads:
+            [-] basicHead
+            [-] glaiveHead
+            [-] halberdHead
+            [-] lanceHead
+            [-] naginataHead
+            [-] tridentHead
+        club heads:
+            [-] batHead
+            [-] armoredHead
+            [-] spikedHead
+            [-] barbedHead
+            [-] wingBatHead
+        armor:
+            [-] fabric
+            [-] plated
+            [-] chain
+            [-] studded
+            [-] wrapped
+            [-] splited
+            [-] padded
+            [-] solid
+            [-] suppenders
+            [-] barbbed
+            [-] shell
+            [-] longShirt
+            [-] gambison
+            [-] hat
+            [-] halfShell
+            [-] sallet
+            [-] noseGuard
+            [-] barredVisor
+            [-] meshVisor
+            [-] fullMask
+            [-] spikedVisor
+        other:
+            [-] motor
