@@ -58,9 +58,7 @@ const schematics = {
         parts: {
             stick: { name: "stick" },
             string: { name: "string" },
-            ball1: { name: "ball1" },
-            ball2: { name: "ball2", Optinal: true },
-            ball3: { name: "ball3", Optinal: true },
+            ball: { name: "ball" },
         },
     },
     gloves: {
@@ -1757,11 +1755,7 @@ const modules = {
     // slackstick stones
     ball: {
         name: "Ball",
-        part: [
-            schematics.slapstick.parts.ball1,
-            schematics.slapstick.parts.ball2,
-            schematics.slapstick.parts.ball3,
-        ],
+        part: [schematics.slapstick.parts.ball],
         materials: [
             {
                 allowedMaterials: [
@@ -1774,7 +1768,7 @@ const modules = {
                     materialTypes.gemStone,
                     materialTypes.sticky,
                 ],
-                amount: 1,
+                amount: 3,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1791,11 +1785,7 @@ const modules = {
     },
     spikyBall: {
         name: "Spiky Ball",
-        part: [
-            schematics.slapstick.parts.ball1,
-            schematics.slapstick.parts.ball2,
-            schematics.slapstick.parts.ball3,
-        ],
+        part: [schematics.slapstick.parts.ball],
         materials: [
             {
                 allowedMaterials: [
@@ -1817,7 +1807,7 @@ const modules = {
                     materialTypes.bone,
                     materialTypes.rock,
                 ],
-                amount: 1,
+                amount: 3,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1838,11 +1828,7 @@ const modules = {
     },
     largeBall: {
         name: "Large Ball",
-        part: [
-            schematics.slapstick.parts.ball1,
-            schematics.slapstick.parts.ball2,
-            schematics.slapstick.parts.ball3,
-        ],
+        part: [schematics.slapstick.parts.ball],
         materials: [
             {
                 allowedMaterials: [
@@ -1855,7 +1841,7 @@ const modules = {
                     materialTypes.gemStone,
                     materialTypes.sticky,
                 ],
-                amount: 2,
+                amount: 6,
                 same: true,
             },
         ],
@@ -2280,8 +2266,8 @@ const modules = {
     },
     // bow string
     bowString: {
-        name: "Bow String",
-        part: [schematics.bow.parts.string],
+        name: "String",
+        part: [schematics.bow.parts.string, schematics.slapstick.parts.string],
         materials: [
             {
                 allowedMaterials: [materialTypes.wire],
@@ -2300,8 +2286,8 @@ const modules = {
         },
     },
     bowCable: {
-        name: "Bow Cable",
-        part: [schematics.bow.parts.string],
+        name: "Cable",
+        part: [schematics.bow.parts.string, schematics.slapstick.parts.string],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal],
