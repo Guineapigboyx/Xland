@@ -70,3 +70,57 @@ function hasClass(selector, classToCheck) {
 function resetDropdown(dropDownOptionsEL) {
     dropDownOptionsEL.replaceChildren(dropdownOptionsEL.firstElementChild);
 }
+
+/*
+Basic function for testing parts of xland
+
+Gives a full team with (koopa,locario,link)
+Unlocks every person
+
+Gives koopa every item in the game. (with the material1 set to urainum and material2 set to raindite)
+Gives locario every module (not crafted items). (with the material1 set to urainum and material2 set to raindite)
+gives link every material as ingot.
+*/
+function testingFunction() {
+    const keysPerson = Object.keys(basePepole);
+    const itemKeys = Object.keys(items);
+    const moduleKeys = Object.keys(modules);
+
+    for (let i = 0; i < keysPerson.length; i++) {
+        addNewTeamate(basePepole[keysPerson[i]]);
+    }
+
+    addToTeam(gameState.persons.koopa);
+    addToTeam(gameState.persons.locario);
+    addToTeam(gameState.persons.link);
+
+    // give koopa every item
+    for (let i = 0; i < itemKeys.length; i++) {
+        addItemToInventory(
+            makeInventoryItem(itemKeys[i], undefined, "uranium", "raindite"),
+            gameState.persons.koopa.inventory,
+        );
+    }
+
+    // give locario every module
+    for (let i = 0; i < moduleKeys.length; i++) {
+        const module = {
+            item: moduleKeys[i],
+            craftedItemID: undefined,
+            material1: "uranium",
+            material2: "raindite",
+            inventory: [],
+            timesUsed: 0,
+        };
+
+        addItemToInventory(module, gameState.persons.locario.inventory);
+    }
+
+    // give every material to link
+    for (let i = 0; i < materials.length; i++) {
+        addItemToInventory(
+            makeInventoryItem("wood", undefined, materials[i]),
+            gameState.persons.link.inventory,
+        );
+    }
+}

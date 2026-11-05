@@ -57,8 +57,9 @@ function fillInventory(selector, inventory) {
     for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
         let item = document.createElement("item-icon");
         item.dataset.inslot = inventory[invenItems].item;
-        item.className = `border-extra-thin context-pointer fit-svg item-${inventory[invenItems].item}`;
-        item.dataset.material = items[inventory[invenItems].item].name.toLowerCase();
+        item.className = `border-extra-thin context-pointer fit-svg ${items[inventory[invenItems].item].SVG}`;
+        item.dataset.material = inventory[invenItems].material1;
+        item.dataset.material2 = inventory[invenItems].material2;
 
         inventoryEl.appendChild(item);
     }

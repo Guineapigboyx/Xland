@@ -7,5 +7,5 @@
   <!-- Top face -->
   <path style="filter: brightness(1.2);" data-material="1" data-gradient="spill" d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l-21.268005 21.26799z" fill-rule="evenodd" />
   <!-- Original outline -->
-  <path fill="none" stroke="#b45f06" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt" d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l0 19.613907l-21.268005 21.26799l-49.56665 0zm0 0l49.56665 0l21.268005 -21.26799m-21.268005 21.26799l0 19.613907" fill-rule="evenodd"/>
+  <path style="filter: brightness(0.5); opacity: 0.7" data-material="1" data-gradient="spill" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt" d="m638.2808 250.3861l21.268005 -21.26799l49.56665 0l0 19.613907l-21.268005 21.26799l-49.56665 0zm0 0l49.56665 0l21.268005 -21.26799m-21.268005 21.26799l0 19.613907" fill-rule="evenodd"/>
 </svg>

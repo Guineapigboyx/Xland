@@ -11,8 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        if (!gameState.persons[dropdownValue]) {
+            console.warn("invalid person");
+            return;
+        }
+
         // fill inventory
-        fillInventory(".craft-screen > .inventory", gameState.activeTeam[dropdownValue].inventory);
+        fillInventory(".craft-screen > .inventory", gameState.persons[dropdownValue].inventory);
     });
 
     observer.observe(dropdown, {

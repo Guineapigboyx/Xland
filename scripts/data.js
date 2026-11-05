@@ -2,13 +2,17 @@
  * Convert a items.item into a inventoryItem
  * @param {String|items.item} item
  * @param {Number|undefined} craftingId
+ * @param {String|undefined} material1
+ * @param {String|undefined} material2
  */
-function makeInventoryItem(item, craftingId) {
+function makeInventoryItem(item, craftingId, material1, material2) {
     if (typeof item === "string" && items[item]) {
         // if useing a item key id
         return {
             item: item,
             craftedItemID: craftingId,
+            material1: material1,
+            material2: material2,
             inventory: [],
             timesUsed: 0,
         };
@@ -23,6 +27,8 @@ function makeInventoryItem(item, craftingId) {
         return {
             item: itemKey,
             craftedItemID: craftingId,
+            material1: material1,
+            material2: material2,
             inventory: [],
             timesUsed: 0,
         };
@@ -32,6 +38,39 @@ function makeInventoryItem(item, craftingId) {
     }
 }
 
-function addItemToInventory(inventoryItem, inventory) {
-    inventory.push(inventoryItem);
+/**
+ * Add a item to a inventory
+ *
+ * @param {items.item|inventoryItem} item - the item being put in the inventory
+ * @param {gameState.persons.person.inventory} inventory  - the inventory to put the item into
+ * @returns
+ */
+function addItemToInventory(item, inventory) {
+    if (inventory.length === undefined) {
+        console.warn("could not get inventory to add item to", inventory);
+        return;
+    }
+
+    if (typeof item !== "object") {
+        console.warn("invalid item", item);
+        return;
+    }
+    if (!item.item) {
+        // checks to see if the item is a item or inventoryItem
+        item = makeInventoryItem(item);
+    }
+
+    inventory.push(item);
+}
+
+function getActiveTeamates() {
+    const teamates = Object.fromEntries(
+        Object.entries(gameState.persons).filter(([id, person]) => person.inActiveTeam),
+    );
+    // Also check if there are too many teamates in the party
+    if (teamates.length > 3) {
+        console.log("There are more than 3 teamates in the party");
+    }
+
+    return teamates;
 }

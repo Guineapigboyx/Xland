@@ -2,6 +2,8 @@
  * @typedef {Object} iventoryItem
  * @property {String} item - the item that is stored, it should be a items.item key
  * @property {Number|undefined} craftedItemID - the position in the craftedItemData Object that craftingData for crafted item items is found
+ * @property {string} material1 - material from material.css (ignored if craftedItemID has one)
+ * @property {string} material2 - material2 from material.css (ignored if craftedItemID has one)
  * @property {iventoryItem[]|undefined} inventory - items held inside of this item
  * @property {Number|undefined} timesUsed - how many times the item was used
  */
@@ -36,14 +38,14 @@
  * ----
  */
 let gameState = {
-    activeTeam: {},
+    activeTeam: [],
     persons: {},
 };
 
 /**
  * @param {basePepole.person} basePerson -  1 of the base pepole
  */
-function addNewTeamate(basePerson, text) {
+function addNewTeamate(basePerson) {
     let person = {
         personData: basePerson,
         inventory: [],
@@ -53,9 +55,38 @@ function addNewTeamate(basePerson, text) {
         ep: basePerson.stats.find((stat) => stat.stat === statTypes.endurance).amount,
         hp: basePerson.hp,
         activeEffects: [],
+        inActiveTeam: false,
     };
 
-    gameState.activeTeam[`${basePerson.name}${Object.keys(gameState.activeTeam).length}`] = person;
+    gameState.persons[basePerson.id] = person;
+}
+
+/**
+ * Adds a person from gamestate.persons to your team
+ *
+ * @param {gameState.persons.person} person - person that is inside of gameState.persons
+ */
+function addToTeam(person) {
+    if (!person) {
+        console.warn("invalid person", person);
+        return;
+    }
+    if (!person.personData) {
+        console.warn("invalid person", person);
+        return;
+    }
+
+    if (typeof gameState.persons[person.personData.id] !== "object") {
+        console.warn("person not unlocked", person);
+        return;
+    }
+    if (!Object.keys(gameState.activeTeam).length >= 3) {
+        console.warn("full team can't add person to team");
+        return;
+    }
+
+    gameState.activeTeam.push(person.personData.id);
+    person.inActiveTeam = true;
 }
 
 /**

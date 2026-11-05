@@ -84,3 +84,24 @@ const materialTypes = {
     wire: "wire", // would call it string but "String" is used by JS
     other: "other",
 };
+
+let materials;
+document.addEventListener("DOMContentLoaded", () => {
+    materials = [
+        ...new Set(
+            [...document.styleSheets]
+                .flatMap((sheet) => {
+                    try {
+                        return [...sheet.cssRules];
+                    } catch {
+                        return [];
+                    }
+                })
+                .flatMap((rule) =>
+                    [...(rule.selectorText?.matchAll(/data-material=["']([^"']+)["']/g) ?? [])].map(
+                        (match) => match[1],
+                    ),
+                ),
+        ),
+    ];
+});

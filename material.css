@@ -60,8 +60,9 @@ item-icon {
     --color-opacity: 0.7;
 }
 
-item-icon[data-material="wood"] item-icon[data-material="tree branch"] {
-    --color1: #b45f06;
+item-icon[data-material="wood"],
+item-icon[data-material="tree branch"] {
+    --color1: #834605;
     --color2: var(--color1);
     --color3: var(--color1);
     --color4: var(--color1);

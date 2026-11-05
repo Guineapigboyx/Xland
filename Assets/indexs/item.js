@@ -4,6 +4,7 @@
  *
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
+ * @property {String} SVG - the CSS class SVG for the item
  * @property {Number} weight
  * @property {raritys.rarity} raritys - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {Number|undefined} storageCapacity
@@ -106,6 +107,7 @@
 let items = {
     wood: {
         name: "Wood",
+        SVG: "item-ingot",
         rarity: raritys.basic,
         weight: 2.18,
         materialData: {
