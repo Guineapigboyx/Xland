@@ -122,6 +122,7 @@ let items = {
     },
     stone: {
         name: "Stone",
+        SVG: "item-stone",
         rarity: raritys.basic,
         weight: 4.36,
         materialData: {
@@ -2346,6 +2347,7 @@ let items = {
     },
     apple: {
         name: "Apple",
+        SVG: "item-apple",
         raritys: raritys.common,
         weight: 0.22,
         weaponData: { weaponType: weaponTypes.gloves },

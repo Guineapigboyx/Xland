@@ -58,8 +58,13 @@ function fillInventory(selector, inventory) {
         let item = document.createElement("item-icon");
         item.dataset.inslot = inventory[invenItems].item;
         item.className = `border-extra-thin context-pointer fit-svg ${items[inventory[invenItems].item].SVG}`;
-        item.dataset.material = inventory[invenItems].material1;
-        item.dataset.material2 = inventory[invenItems].material2;
+
+        if (inventory[invenItems].material1) {
+            item.dataset.material = inventory[invenItems].material1;
+            item.dataset.material2 = inventory[invenItems].material2;
+        } else {
+            item.dataset.material = items[inventory[invenItems].item].name.toLowerCase();
+        }
 
         inventoryEl.appendChild(item);
     }

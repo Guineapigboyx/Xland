@@ -77,7 +77,7 @@ Basic function for testing parts of xland
 Gives a full team with (koopa,locario,link)
 Unlocks every person
 
-Gives koopa every item in the game. (with the material1 set to urainum and material2 set to raindite)
+Gives koopa every item in the game.
 Gives locario every module (not crafted items). (with the material1 set to urainum and material2 set to raindite)
 gives link every material as ingot.
 */
@@ -96,10 +96,7 @@ function testingFunction() {
 
     // give koopa every item
     for (let i = 0; i < itemKeys.length; i++) {
-        addItemToInventory(
-            makeInventoryItem(itemKeys[i], undefined, "uranium", "raindite"),
-            gameState.persons.koopa.inventory,
-        );
+        addItemToInventory(makeInventoryItem(itemKeys[i]), gameState.persons.koopa.inventory);
     }
 
     // give locario every module

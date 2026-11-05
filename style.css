@@ -150,6 +150,8 @@ button {
     height: auto;
     width: 100%;
     aspect-ratio: 1/1;
+    contain: strict;
+    overflow: hidden;
 }
 
 /* css for the svg in the shadow DOM */

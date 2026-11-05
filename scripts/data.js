@@ -5,14 +5,14 @@
  * @param {String|undefined} material1
  * @param {String|undefined} material2
  */
-function makeInventoryItem(item, craftingId, material1, material2) {
+function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
     if (typeof item === "string" && items[item]) {
         // if useing a item key id
         return {
             item: item,
             craftedItemID: craftingId,
-            material1: material1,
-            material2: material2,
+            material1: materialCss1,
+            material2: materialCss2,
             inventory: [],
             timesUsed: 0,
         };
