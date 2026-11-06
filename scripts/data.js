@@ -74,3 +74,27 @@ function getActiveTeamates() {
 
     return teamates;
 }
+
+function getCraftedItem(inventoryItem) {
+    if (typeof inventoryItem !== "object") {
+        console.warn("not a inventoryItem, can't get crafted data", inventoryItem);
+        return;
+    }
+
+    let craftedItem = {};
+    const craftedData = craftedItemData[inventoryItem.craftedItemID];
+    const baseItem = items[inventoryItem.item];
+
+    if (!baseItem) {
+        console.warn("Can't get inventoryItem.item", inventoryItem);
+        return;
+    }
+
+    if (!craftedData) {
+        console.log("Has no craftedItemID", inventoryItem);
+        return;
+    }
+
+    craftedItem = { ...baseItem, ...craftedData };
+    return craftedItem;
+}

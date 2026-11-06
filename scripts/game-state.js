@@ -2,8 +2,6 @@
  * @typedef {Object} iventoryItem
  * @property {String} item - the item that is stored, it should be a items.item key
  * @property {Number|undefined} craftedItemID - the position in the craftedItemData Object that craftingData for crafted item items is found
- * @property {string} material1 - material from material.css (ignored if craftedItemID has one)
- * @property {string} material2 - material2 from material.css (ignored if craftedItemID has one)
  * @property {iventoryItem[]|undefined} inventory - items held inside of this item
  * @property {Number|undefined} timesUsed - how many times the item was used
  */
@@ -40,6 +38,7 @@
 let gameState = {
     activeTeam: [],
     persons: {},
+    gigaBeastsKilled: 0,
 };
 
 /**

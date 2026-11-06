@@ -4,7 +4,6 @@
  *
  * @typedef {object} item - data about this item
  * @property {String} name - name of the item
- * @property {String} SVG - the CSS class SVG for the item
  * @property {Number} weight
  * @property {raritys.rarity} raritys - Hardcoded rarity of a item, if undifined it is determined from the materials
  * @property {Number|undefined} storageCapacity
@@ -16,6 +15,9 @@
  *
  * @property {items.item} dye - item used to color this
  * @property {component} components - list of the matrials that make up this item
+ * @property {String} SVG - the CSS class SVG for the item (ignore the item- part)
+ * @property {string} material1 - material from material.css
+ * @property {string} material2 - material2 from material.css
  *
  * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
  * @property {Boolean|undefined} preferWater - wants to be floating in water
@@ -107,7 +109,7 @@
 let items = {
     wood: {
         name: "Wood",
-        SVG: "item-ingot",
+        SVG: "ingot",
         rarity: raritys.basic,
         weight: 2.18,
         materialData: {
@@ -122,7 +124,6 @@ let items = {
     },
     stone: {
         name: "Stone",
-        SVG: "item-stone",
         rarity: raritys.basic,
         weight: 4.36,
         materialData: {

@@ -232,3 +232,90 @@ function showContextMenu(x, y, options) {
 
     return removal;
 }
+
+/**
+ * This is for get icon data for non crafted item icons (icons that are only 1 SVG)
+ *
+ * @param {string|items.item|iventoryItem} icon - either a item iventoryItem or a item-icon CSS class
+ * @param {string} material - data-material "does nothing for crafted items"
+ */
+function getIcon(icon, material) {
+    let iconData = [];
+
+    if (!icon) {
+        console.warn("can't get data for invalid icon", icon);
+        return;
+    }
+
+    if (icon.craftedItemID) {
+        // this is a crafted item
+        const craftedItem = getCraftedItem(icon);
+        for (let i = 0; i < craftedItem.components.craftedModules.length; i++) {
+            const craftedModule = craftedItem.components.craftedModules[i];
+            // the materials in module.materials[0] are for material1 while module.materials[1] are for material 2
+            const materialOffset = craftedModule.module.materials[0].amount;
+
+            let currentIcon = {
+                class: craftedModule.module.SVG,
+                material: craftedModule.materials[0],
+                material2: craftedModule.materials[0 + materialOffset],
+            };
+            console.log(materialOffset);
+
+            // If the material is a valid item switch it to the items name
+            // prettier-ignore
+            if (currentIcon.material) 
+                currentIcon.material = items[currentIcon.material.item].name;
+
+            if (currentIcon.material2)
+                currentIcon.material2 = items[currentIcon.material2.item].name;
+
+            iconData.push(currentIcon);
+        }
+        return iconData;
+    }
+
+    // non crafted items --------------------------------------------
+
+    iconData.push({
+        class: undefined,
+        material: undefined,
+        material2: undefined,
+    });
+
+    if (icon.SVG) {
+        // this is a items.item
+        iconData[0].class = `item-${icon.SVG}`;
+        iconData[0].material = icon.name.toLocaleLowerCase();
+    } else if (items[icon.item] && !icon.craftedItemID) {
+        if (!items[icon.item].SVG) {
+            console.log("Item has no SVG", icon);
+            return;
+        }
+
+        iconData[0].class = `item-${items[icon.item].SVG}`;
+        iconData[0].material = items[icon.item].name.toLocaleLowerCase();
+    } else if (itemIcons.find((itemIcon) => itemIcon.cssClass === icon)) {
+        // It is item-icon class
+        iconData[0].class = icon;
+
+        // find if this icon has a material
+        const iconName = (iconData[0].material = icon.split("-")[1]);
+        const relatedItem = Object.values(items).find((item) => item.SVG === iconName);
+
+        if (relatedItem) {
+            // use the material of a item that shares this icon
+            iconData[0].material = relatedItem.name.toLocaleLowerCase();
+        } else {
+            // use the icon name (like copper) as the material
+            iconData[0].material = iconName;
+        }
+    } else {
+        console.warn("can't find data for invalid icon", icon);
+        return;
+    }
+
+    if (material) iconData[0].material = material;
+
+    return iconData;
+}
