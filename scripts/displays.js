@@ -239,7 +239,7 @@ function showContextMenu(x, y, options) {
  * @param {string|items.item|iventoryItem} icon - either a item iventoryItem or a item-icon CSS class
  * @param {string} material - data-material "does nothing for crafted items"
  */
-function getIcon(icon, material) {
+function getIcon(icon, materialOveride) {
     let iconData = [];
 
     if (!icon) {
@@ -250,17 +250,23 @@ function getIcon(icon, material) {
     if (icon.craftedItemID) {
         // this is a crafted item
         const craftedItem = getCraftedItem(icon);
+        const commonPart = craftedItem.components.schematic.commonPart;
+
         for (let i = 0; i < craftedItem.components.craftedModules.length; i++) {
             const craftedModule = craftedItem.components.craftedModules[i];
             // the materials in module.materials[0] are for material1 while module.materials[1] are for material 2
             const materialOffset = craftedModule.module.materials[0].amount;
 
+            // Module key name and item- class are the same
+            // prettier-ignore
+            const moduleName = Object.keys(modules).find((module) => modules[module].name === craftedModule.module.name,);
+
             let currentIcon = {
-                class: craftedModule.module.SVG,
+                class: `item-${moduleName}`,
                 material: craftedModule.materials[0],
-                material2: craftedModule.materials[0 + materialOffset],
+                material2: craftedModule.materials[materialOffset],
+                layer: craftedModule.part.layer,
             };
-            console.log(materialOffset);
 
             // If the material is a valid item switch it to the items name
             // prettier-ignore
@@ -271,17 +277,32 @@ function getIcon(icon, material) {
                 currentIcon.material2 = items[currentIcon.material2.item].name;
 
             iconData.push(currentIcon);
+
+            // if the schmatic has a common SVG apply it
+            if (commonPart) {
+                if (commonPart.material !== craftedModule.part.name) continue;
+                iconData.push({
+                    class: commonPart.SVG,
+                    material: currentIcon.material,
+                    material2: currentIcon.material2,
+                    layer: 0,
+                });
+            }
         }
+
         return iconData;
     }
 
     // non crafted items --------------------------------------------
 
-    iconData.push({
-        class: undefined,
-        material: undefined,
-        material2: undefined,
-    });
+    iconData.push([
+        {
+            class: undefined,
+            material: undefined,
+            material2: undefined,
+            layer: 0,
+        },
+    ]);
 
     if (icon.SVG) {
         // this is a items.item
@@ -315,7 +336,7 @@ function getIcon(icon, material) {
         return;
     }
 
-    if (material) iconData[0].material = material;
+    if (materialOveride) iconData[0].material = materialOveride;
 
     return iconData;
 }

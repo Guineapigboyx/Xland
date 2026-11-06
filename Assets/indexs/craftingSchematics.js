@@ -6,12 +6,19 @@
  * @property {String} name - name of the schematic
  * @property {String} itemName - the item made by the schematic (the name would be "{socket prefix}{material name}{itemName}")
  * @property {String} modularItem - the item that is stored, it should be a items.item key
+ * @property {commonPart} commonPart - A special SVG that is put below all the parts
  * @property {part[]} parts - parts of the schematic that modules go in
  *
  * ----
  * @typedef {Object} part - parts of the schematic that modules go in
  * @property {String} name - name of the part
+ * @property {Number} layer - which layer is this on, must be a unique number (1 is the bottom)(layer 0 is the schematics common SVG)
  * @property {Boolean|undefined} optional - Is it not nessary for this schematic
+ *
+ * ----
+ * @typedef {Object} commonPart
+ * @property {String} SVG - SVG class for the common part
+ * @property {String} material - The part that the common part gets its color from
  */
 const schematics = {
     hammer: {
@@ -20,25 +27,29 @@ const schematics = {
         itemName: "Hammer",
         modularItem: items.hammer,
         parts: {
-            leftHead: { name: "leftHead", Optinal: true },
-            rightHead: { name: "rightHead" },
-            handle: { name: "handle" },
-            binding: { name: "binding" },
+            leftHead: { name: "leftHead", layer: 2, Optinal: true },
+            rightHead: { name: "rightHead", layer: 3 },
+            handle: { name: "handle", layer: 1 },
+            binding: { name: "binding", layer: 4 },
         },
     },
     drill: {
         name: "drill",
         itemName: "Drill",
         modularItem: items.drill,
-        parts: { bit: { name: "bit" }, motor: { name: "motor" }, grip: { name: "grip" } },
+        parts: {
+            bit: { name: "bit", layer: 3 },
+            motor: { name: "motor", layer: 2 },
+            grip: { name: "grip", layer: 1 },
+        },
     },
     shield: {
         name: "shield",
         itemName: "Shield",
         modularItem: items.shield,
         parts: {
-            face: { name: "face" },
-            grip: { name: "grip" },
+            face: { name: "face", layer: 2 },
+            grip: { name: "grip", layer: 1 },
         },
     },
     sword: {
@@ -46,34 +57,40 @@ const schematics = {
         itemName: "Sword",
         modularItem: items.sword,
         parts: {
-            blade: { name: "blade" },
-            hilt: { name: "hilt" },
-            guard: { name: "guard", Optinal: true },
+            blade: { name: "blade", layer: 1 },
+            hilt: { name: "hilt", layer: 2 },
+            guard: { name: "guard", layer: 3, Optinal: true },
         },
     },
     slapstick: {
         name: "slapstick",
         itemName: "Slapstick",
         modularItem: items.slapstick,
+        commonPart: { SVG: "item-common-slapstick", material: "stick" },
         parts: {
-            stick: { name: "stick" },
-            string: { name: "string" },
-            ball: { name: "ball" },
+            stick: { name: "stick", layer: 1 },
+            string: { name: "string", layer: 2 },
+            ball1: { name: "ball1", layer: 3 },
+            ball2: { name: "ball2", layer: 4, Optinal: true },
+            ball3: { name: "ball3", layer: 5, Optinal: true },
         },
     },
     gloves: {
         name: "gloves",
         itemName: "Gloves",
         modularItem: items.gloves,
-        parts: { knuckle: { name: "knuckle", Optinal: true }, body: { name: "body" } },
+        parts: {
+            knuckle: { name: "knuckle", layer: 2, Optinal: true },
+            body: { name: "body", layer: 1 },
+        },
     },
     bow: {
         name: "bow",
         itemName: "Bow",
         modularItem: items.bow,
         parts: {
-            stave: { name: "stave" },
-            string: { name: "string" },
+            stave: { name: "stave", layer: 2 },
+            string: { name: "string", layer: 1 },
         },
     },
     spear: {
@@ -81,9 +98,9 @@ const schematics = {
         itemName: "Spear",
         modularItem: items.spear,
         parts: {
-            head: { name: "head" },
-            shaft: { name: "shaft" },
-            binding: { name: "binding" },
+            head: { name: "head", layer: 2 },
+            shaft: { name: "shaft", layer: 1 },
+            binding: { name: "binding", layer: 3 },
         },
     },
     club: {
@@ -91,8 +108,8 @@ const schematics = {
         itemName: "Club",
         modularItem: items.club,
         parts: {
-            head: { name: "head" },
-            handle: { name: "handle" },
+            head: { name: "head", layer: 2 },
+            handle: { name: "handle", layer: 1 },
         },
     },
     pants: {
@@ -100,9 +117,9 @@ const schematics = {
         itemName: "Pants",
         modularItem: items.leggings,
         parts: {
-            leftLeg: { name: "leftLeg", Optinal: true },
-            rightLeg: { name: "rightLeg", Optinal: true },
-            waist: { name: "waist" },
+            leftLeg: { name: "leftLeg", layer: 1, Optinal: true },
+            rightLeg: { name: "rightLeg", layer: 2, Optinal: true },
+            waist: { name: "waist", layer: 3 },
         },
     },
     shirt: {
@@ -110,9 +127,9 @@ const schematics = {
         itemName: "Shirt",
         modularItem: items.chestplate,
         parts: {
-            leftSleeve: { name: "leftSleeve", Optinal: true },
-            rightSleeve: { name: "rightSleeve", Optinal: true },
-            body: { name: "body" },
+            leftSleeve: { name: "leftSleeve", layer: 1, Optinal: true },
+            rightSleeve: { name: "rightSleeve", layer: 2, Optinal: true },
+            body: { name: "body", layer: 3 },
         },
     },
     boots: {
@@ -120,9 +137,9 @@ const schematics = {
         itemName: "Boots",
         modularItem: items.boots,
         parts: {
-            toe: { name: "toe", Optinal: true },
-            shaft: { name: "shaft", Optinal: true }, // the part your ankle goes in
-            body: { name: "body" },
+            toe: { name: "toe", layer: 3, Optinal: true },
+            shaft: { name: "shaft", layer: 2, Optinal: true }, // the part your ankle goes in
+            body: { name: "body", layer: 1 },
         },
     },
     helmet: {
@@ -130,8 +147,8 @@ const schematics = {
         itemName: "Helmet",
         modularItem: items.helmet,
         parts: {
-            skull: { name: "skull" },
-            visor: { name: "visor", Optinal: true },
+            skull: { name: "skull", layer: 1 },
+            visor: { name: "visor", layer: 2, Optinal: true },
         },
     },
 };
@@ -646,6 +663,7 @@ const modules = {
                     materialTypes.bone,
                 ],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -702,7 +720,6 @@ const modules = {
         part: [
             schematics.hammer.parts.binding,
             schematics.sword.parts.guard,
-            schematics.slapstick.parts.string,
             schematics.spear.parts.binding,
         ],
         materials: [
@@ -776,6 +793,7 @@ const modules = {
             schematics.hammer.parts.binding,
             schematics.sword.parts.guard,
             schematics.spear.parts.binding,
+            schematics.slapstick.parts.string,
         ],
         materials: [
             {
@@ -1755,7 +1773,11 @@ const modules = {
     // slackstick stones
     ball: {
         name: "Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
@@ -1768,7 +1790,7 @@ const modules = {
                     materialTypes.gemStone,
                     materialTypes.sticky,
                 ],
-                amount: 3,
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1785,7 +1807,11 @@ const modules = {
     },
     spikyBall: {
         name: "Spiky Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
@@ -1807,7 +1833,7 @@ const modules = {
                     materialTypes.bone,
                     materialTypes.rock,
                 ],
-                amount: 3,
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1828,7 +1854,11 @@ const modules = {
     },
     largeBall: {
         name: "Large Ball",
-        part: [schematics.slapstick.parts.ball],
+        part: [
+            schematics.slapstick.parts.ball1,
+            schematics.slapstick.parts.ball2,
+            schematics.slapstick.parts.ball3,
+        ],
         materials: [
             {
                 allowedMaterials: [
@@ -1841,7 +1871,7 @@ const modules = {
                     materialTypes.gemStone,
                     materialTypes.sticky,
                 ],
-                amount: 6,
+                amount: 2,
                 same: true,
             },
         ],
@@ -2267,7 +2297,7 @@ const modules = {
     // bow string
     bowString: {
         name: "String",
-        part: [schematics.bow.parts.string, schematics.slapstick.parts.string],
+        part: [schematics.bow.parts.string],
         materials: [
             {
                 allowedMaterials: [materialTypes.wire],
@@ -2287,7 +2317,7 @@ const modules = {
     },
     bowCable: {
         name: "Cable",
-        part: [schematics.bow.parts.string, schematics.slapstick.parts.string],
+        part: [schematics.bow.parts.string],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal],

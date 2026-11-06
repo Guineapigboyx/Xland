@@ -80,6 +80,7 @@ let itemIcons = [
     { cssClass: "item-xtramite", file: "items/Xtramite.svg" },
     { cssClass: "item-zinc", file: "items/zinc.svg" },
 
+    // handles
     { cssClass: "item-basicHandle", file: "modules/handle/basic handle.svg" },
     { cssClass: "item-curvedHandle", file: "modules/handle/curved handle.svg" },
     { cssClass: "item-hollowHandle", file: "modules/handle/hollow handle.svg" },
@@ -88,6 +89,8 @@ let itemIcons = [
     { cssClass: "item-thickHandle", file: "modules/handle/thick handle.svg" },
     { cssClass: "item-wrapedHandle", file: "modules/handle/wraped handle.svg" },
     { cssClass: "item-flexibleHandle", file: "modules/handle/flexible handle.svg" },
+    // schematic common handles
+    { cssClass: "item-common-slapstick", file: "modules/common/slapstick.svg" },
 
     { cssClass: "item-basicBlade", file: "modules/blade/basic blade.svg" },
     { cssClass: "item-claymoreBlade", file: "modules/blade/claymore blade.svg" },
