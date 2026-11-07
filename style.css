@@ -464,7 +464,7 @@ body {
 }
 
 /* classes for inven item just in case i forget them class="border-extra-thin fit-img context-pointer" */
-.inventory > item-icon {
+.inventory > section {
     background-color: var(--dark-bubble-color);
     aspect-ratio: 1/1;
 }

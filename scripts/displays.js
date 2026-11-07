@@ -46,39 +46,6 @@ function createTeamCtx(selector, reset) {
     return options;
 }
 
-function fillInventory(selector, inventory) {
-    const inventoryEl = document.querySelector(selector);
-    if (!inventoryEl) {
-        console.warn("Invalid inventory selector", inventoryEl);
-        return;
-    }
-    clearInventory(selector);
-
-    for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
-        let item = document.createElement("item-icon");
-        item.dataset.inslot = inventory[invenItems].item;
-        item.className = `border-extra-thin context-pointer fit-svg ${items[inventory[invenItems].item].SVG}`;
-
-        if (inventory[invenItems].material1) {
-            item.dataset.material = inventory[invenItems].material1;
-            item.dataset.material2 = inventory[invenItems].material2;
-        } else {
-            item.dataset.material = items[inventory[invenItems].item].name.toLowerCase();
-        }
-
-        inventoryEl.appendChild(item);
-    }
-}
-
-function clearInventory(selector) {
-    const inventoryEl = document.querySelector(selector);
-    if (!inventoryEl) {
-        console.warn("Invalid inventory selector", inventoryEl);
-        return;
-    }
-    inventoryEl.replaceChildren();
-}
-
 // Drop downs
 
 /**
@@ -234,109 +201,44 @@ function showContextMenu(x, y, options) {
 }
 
 /**
- * This is for get icon data for non crafted item icons (icons that are only 1 SVG)
  *
- * @param {string|items.item|iventoryItem} icon - either a item iventoryItem or a item-icon CSS class
- * @param {string} material - data-material "does nothing for crafted items"
+ * @param {String} selector - CSS selector for where the icons go
+ * @param {Array} inventory - should be a array of inventoryItems
+ * @returns
  */
-function getIcon(icon, materialOveride) {
-    let iconData = [];
-
-    if (!icon) {
-        console.warn("can't get data for invalid icon", icon);
+function fillInventory(selector, inventory) {
+    const inventoryEl = document.querySelector(selector);
+    if (!inventoryEl) {
+        console.warn("Invalid inventory selector", inventoryEl);
         return;
     }
+    clearInventory(selector);
 
-    if (icon.craftedItemID) {
-        // this is a crafted item
-        const craftedItem = getCraftedItem(icon);
-        const commonPart = craftedItem.components.schematic.commonPart;
-
-        for (let i = 0; i < craftedItem.components.craftedModules.length; i++) {
-            const craftedModule = craftedItem.components.craftedModules[i];
-            // the materials in module.materials[0] are for material1 while module.materials[1] are for material 2
-            const materialOffset = craftedModule.module.materials[0].amount;
-
-            // Module key name and item- class are the same
-            // prettier-ignore
-            const moduleName = Object.keys(modules).find((module) => modules[module].name === craftedModule.module.name,);
-
-            let currentIcon = {
-                class: `item-${moduleName}`,
-                material: craftedModule.materials[0],
-                material2: craftedModule.materials[materialOffset],
-                layer: craftedModule.part.layer,
-            };
-
-            // If the material is a valid item switch it to the items name
-            // prettier-ignore
-            if (currentIcon.material) 
-                currentIcon.material = items[currentIcon.material.item].name;
-
-            if (currentIcon.material2)
-                currentIcon.material2 = items[currentIcon.material2.item].name;
-
-            iconData.push(currentIcon);
-
-            // if the schmatic has a common SVG apply it
-            if (commonPart) {
-                if (commonPart.material !== craftedModule.part.name) continue;
-                iconData.push({
-                    class: commonPart.SVG,
-                    material: currentIcon.material,
-                    material2: currentIcon.material2,
-                    layer: 0,
-                });
-            }
+    for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
+        iconData = getIcon(inventory[invenItems]);
+        if (!iconData) {
+            console.warn("Failed to get icon Data");
+            continue;
         }
 
-        return iconData;
+        let icon = createItemIcon(iconData);
+        if (!icon) {
+            console.warn("Failed to create icon");
+            continue;
+        }
+
+        icon.dataset.inslot = inventory[invenItems].item;
+        icon.classList.add("border-extra-thin", "context-pointer", "fit-svg");
+
+        inventoryEl.appendChild(icon);
     }
+}
 
-    // non crafted items --------------------------------------------
-
-    iconData.push([
-        {
-            class: undefined,
-            material: undefined,
-            material2: undefined,
-            layer: 0,
-        },
-    ]);
-
-    if (icon.SVG) {
-        // this is a items.item
-        iconData[0].class = `item-${icon.SVG}`;
-        iconData[0].material = icon.name.toLocaleLowerCase();
-    } else if (items[icon.item] && !icon.craftedItemID) {
-        if (!items[icon.item].SVG) {
-            console.log("Item has no SVG", icon);
-            return;
-        }
-
-        iconData[0].class = `item-${items[icon.item].SVG}`;
-        iconData[0].material = items[icon.item].name.toLocaleLowerCase();
-    } else if (itemIcons.find((itemIcon) => itemIcon.cssClass === icon)) {
-        // It is item-icon class
-        iconData[0].class = icon;
-
-        // find if this icon has a material
-        const iconName = (iconData[0].material = icon.split("-")[1]);
-        const relatedItem = Object.values(items).find((item) => item.SVG === iconName);
-
-        if (relatedItem) {
-            // use the material of a item that shares this icon
-            iconData[0].material = relatedItem.name.toLocaleLowerCase();
-        } else {
-            // use the icon name (like copper) as the material
-            iconData[0].material = iconName;
-        }
-    } else {
-        console.warn("can't find data for invalid icon", icon);
+function clearInventory(selector) {
+    const inventoryEl = document.querySelector(selector);
+    if (!inventoryEl) {
+        console.warn("Invalid inventory selector", inventoryEl);
         return;
     }
-
-    if (materialOveride) iconData[0].material = materialOveride;
-
-    return iconData;
+    inventoryEl.replaceChildren();
 }

@@ -90,7 +90,7 @@ let itemIcons = [
     { cssClass: "item-wrapedHandle", file: "modules/handle/wraped handle.svg" },
     { cssClass: "item-flexibleHandle", file: "modules/handle/flexible handle.svg" },
     // schematic common handles
-    { cssClass: "item-common-slapstick", file: "modules/common/slapstick.svg" },
+    { cssClass: "item-commonSlapstick", file: "modules/common/slapstick.svg" },
 
     { cssClass: "item-basicBlade", file: "modules/blade/basic blade.svg" },
     { cssClass: "item-claymoreBlade", file: "modules/blade/claymore blade.svg" },
@@ -378,3 +378,156 @@ document.addEventListener("DOMContentLoaded", () => {
         attributeOldValue: true,
     });
 });
+
+// Icon data
+
+/**
+ * This is for get icon data for non crafted item icons (icons that are only 1 SVG)
+ *
+ * @param {string|items.item|iventoryItem} icon - either a item iventoryItem or a item-icon CSS class
+ * @param {string} material - data-material "does nothing for crafted items"
+ * @returns {iconData[]}
+ *
+ * @typedef {Object} iconData
+ * @property {String} class - the item-icon class
+ * @property {String} material - data-material
+ * @property {String} material2 - data-material2
+ * @property {Number} layer - which that the svgs appear ontop of each other
+ */
+function getIcon(icon, materialOveride) {
+    let iconData = [];
+
+    if (!icon) {
+        console.warn("can't get data for invalid icon", icon);
+        return;
+    }
+
+    if (icon.craftedItemID) {
+        // this is a crafted item
+        const craftedItem = getCraftedItem(icon);
+        const commonPart = craftedItem.components.schematic.commonPart;
+
+        for (let i = 0; i < craftedItem.components.craftedModules.length; i++) {
+            const craftedModule = craftedItem.components.craftedModules[i];
+            // the materials in module.materials[0] are for material1 while module.materials[1] are for material 2
+            const materialOffset = craftedModule.module.materials[0].amount;
+
+            // Module key name and item- class are the same
+            // prettier-ignore
+            const moduleName = Object.keys(modules).find((module) => modules[module].name === craftedModule.module.name,);
+
+            let currentIcon = {
+                class: `item-${moduleName}`,
+                material: craftedModule.materials[0],
+                material2: craftedModule.materials[materialOffset],
+                layer: craftedModule.part.layer,
+            };
+
+            // If the material is a valid item switch it to the items name
+            if (items[currentIcon.material.item].material) {
+                currentIcon.material = items[currentIcon.material.item].material;
+            } else {
+                currentIcon.material = currentIcon.material.item;
+            }
+
+            if (currentIcon.material2) currentIcon.material2 = currentIcon.material2.item;
+
+            iconData.push(currentIcon);
+
+            // if the schmatic has a common SVG apply it
+            if (commonPart) {
+                if (commonPart.material !== craftedModule.part.name) continue;
+                iconData.push({
+                    class: commonPart.SVG,
+                    material: currentIcon.material,
+                    material2: currentIcon.material2,
+                    layer: 0,
+                });
+            }
+        }
+
+        return iconData;
+    }
+
+    // non crafted items --------------------------------------------
+
+    let iconClass;
+    let material;
+
+    // Convert a inventory.item to a items.item
+    if (items[icon.item]) {
+        if (icon.material1) materialOveride = icon.material1;
+
+        icon = items[icon.item];
+    }
+
+    if (Object.keys(items).find((item) => items[item].name === icon.name)) {
+        // this is a items.item
+        if (icon.SVG) {
+            // with SVG overide
+            iconClass = `item-${icon.SVG}`;
+        } else {
+            // no SVG
+            iconClass = `item-${Object.keys(items).find((itemName) => items[itemName].name === icon.name)}`;
+        }
+
+        if (icon.material) {
+            material = icon.material;
+        } else {
+            material = icon.name.toLocaleLowerCase();
+        }
+    } else if (itemIcons.find((itemIcon) => itemIcon.cssClass === icon)) {
+        // It is item-icon class
+        iconClass = icon;
+
+        // find if this icon has a material
+        const iconName = (material = icon.split("-")[1]);
+        const relatedItem = Object.values(items).find((item) => item.SVG === iconName);
+
+        if (relatedItem) {
+            // use the material of a item that shares this icon
+            material = relatedItem.name.toLocaleLowerCase();
+        } else {
+            // use the icon name (like copper) as the material
+            material = iconName;
+        }
+    } else {
+        console.warn("can't find data for invalid icon", icon);
+        return;
+    }
+
+    if (materialOveride) material = materialOveride;
+
+    return [
+        {
+            class: iconClass,
+            material: material,
+            material2: undefined,
+            layer: 0,
+        },
+    ];
+}
+/**
+ *
+ * @param {Object} iconData - iconData from getIcon()
+ * @returns {HTMLElement} - a section element with all the item-icons in them
+ */
+function createItemIcon(iconData) {
+    let iconGroup = document.createElement("section");
+    for (let i = 0; i < iconData.length; i++) {
+        const icon = document.createElement("item-icon");
+
+        if (!iconData[i].class || !iconData[i].material || typeof iconData[i].layer !== "number") {
+            console.warn(`Icon ${i} is missing data`, iconData);
+            continue;
+        }
+
+        icon.className = iconData[i].class;
+        icon.dataset.material = iconData[i].material;
+        if (icon.dataset.material2) icon.dataset.material2 = iconData[i].material2;
+        icon.style.zIndex = iconData[i].layer;
+
+        iconGroup.appendChild(icon);
+    }
+    return iconGroup;
+}

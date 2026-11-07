@@ -66,7 +66,7 @@ const schematics = {
         name: "slapstick",
         itemName: "Slapstick",
         modularItem: items.slapstick,
-        commonPart: { SVG: "item-common-slapstick", material: "stick" },
+        commonPart: { SVG: "item-commonSlapstick", material: "stick" },
         parts: {
             stick: { name: "stick", layer: 1 },
             string: { name: "string", layer: 2 },

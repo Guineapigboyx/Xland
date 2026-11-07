@@ -16,8 +16,7 @@
  * @property {items.item} dye - item used to color this
  * @property {component} components - list of the matrials that make up this item
  * @property {String} SVG - the CSS class SVG for the item (ignore the item- part)
- * @property {string} material1 - material from material.css
- * @property {string} material2 - material2 from material.css
+ * @property {string} material - material from material.css
  *
  * @property {1|2|3|4|5|undefined} placementSize - how big is this item when placed
  * @property {Boolean|undefined} preferWater - wants to be floating in water
@@ -2348,7 +2347,6 @@ let items = {
     },
     apple: {
         name: "Apple",
-        SVG: "item-apple",
         raritys: raritys.common,
         weight: 0.22,
         weaponData: { weaponType: weaponTypes.gloves },
