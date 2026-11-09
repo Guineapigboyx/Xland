@@ -10,14 +10,15 @@
 let itemIcons = [
     { cssClass: "item-adamantite", file: "items/adamantite.svg" },
     { cssClass: "item-aluminum", file: "items/aluminum.svg" },
-    { cssClass: "item-amber", file: "items/amber.svg" },
     { cssClass: "item-apple", file: "items/apple.svg" },
     { cssClass: "item-bean", file: "items/bean.svg" },
     { cssClass: "item-blue-berry", file: "items/blue berry.svg" },
+    { cssClass: "item-bone", file: "items/bone.svg" },
+    { cssClass: "item-shell", file: "items/shell.svg" },
     { cssClass: "item-bulborb", file: "items/bulborb.svg" },
     { cssClass: "item-cactus", file: "items/cactus.svg" },
     { cssClass: "item-cloth", file: "items/cloth.svg" },
-    { cssClass: "item-coal", file: "items/coal.svg" },
+    { cssClass: "item-carbon", file: "items/carbon.svg" },
     { cssClass: "item-copper", file: "items/copper.svg" },
     { cssClass: "item-corn", file: "items/corn.svg" },
     { cssClass: "item-crystalFlower", file: "items/crystal flower.svg" },
@@ -31,6 +32,7 @@ let itemIcons = [
     { cssClass: "item-flint", file: "items/flint.svg" },
     { cssClass: "item-flower", file: "items/flower.svg" },
     { cssClass: "item-fummingFlower", file: "items/fumming flower.svg" },
+    { cssClass: "item-gemstone", file: "items/gemstone.svg" },
     { cssClass: "item-ghostPepper", file: "items/ghost pepper.svg" },
     { cssClass: "item-glass", file: "items/glass.svg" },
     { cssClass: "item-gold", file: "items/gold.svg" },
@@ -207,8 +209,15 @@ function displayIcon() {
         if (!icon.svg) continue;
 
         document.querySelectorAll(`item-icon.${icon.cssClass}`).forEach((element) => {
-            // Skip if the correct icon is already loaded
-            if (element.dataset.svgLoaded === icon.cssClass) return;
+            // Store the icon class and materials
+            const loaded = JSON.stringify([
+                icon.cssClass,
+                element.dataset.material,
+                element.dataset.material2,
+            ]);
+
+            // Skip if the correct icon and materials are already loaded
+            if (element.dataset.loaded === loaded) return;
 
             // Create or reuse the shadow root
             let shadow =
@@ -217,16 +226,16 @@ function displayIcon() {
                     mode: "open",
                 });
 
-            // apply the material colors
+            // Apply the material colors
             applyIconMaterials(element);
 
             // Insert the SVG into the shadow root
             shadow.innerHTML = icon.svg;
             shadow.querySelector("svg").setAttribute("part", "svg");
 
-            element.dataset.svgLoaded = icon.cssClass;
+            element.dataset.loaded = loaded;
 
-            // select if it should use ingot or center gradients
+            // Select if it should use ingot or center gradients
             shadow.querySelectorAll("[data-material][data-gradient]").forEach((path) => {
                 const number = path.dataset.material;
                 const layout = path.dataset.gradient;
@@ -244,7 +253,7 @@ function displayIcon() {
                     path.style.fill = gradient;
                 }
 
-                // special stroke butts have both fill and fill
+                // Special stroke butts have both fill and stroke
                 if (path.dataset.stokebutt === "true") {
                     path.style.fill = gradient;
                 }
@@ -259,13 +268,15 @@ function applyIconMaterials(icon) {
 
         if (!material) break;
 
-        // Get the existing material CSS
-        const temp = document.createElement("item-icon");
-        temp.dataset.material = material;
-        temp.style.cssText = "position:absolute;visibility:hidden";
-        document.body.appendChild(temp);
+        if (!materials.includes(material)) console.log(`invalid material, ${material}`);
 
-        const style = getComputedStyle(temp);
+        // Get the existing material CSS
+        const itemIcon = document.createElement("item-icon");
+        itemIcon.dataset.material = material;
+        itemIcon.style.cssText = "position:absolute;visibility:hidden";
+        document.body.appendChild(itemIcon);
+
+        const style = getComputedStyle(itemIcon);
 
         // Copy and rename the material variables
         for (const name of [
@@ -288,7 +299,7 @@ function applyIconMaterials(icon) {
             }
         }
 
-        temp.remove();
+        itemIcon.remove();
     }
 }
 
@@ -341,6 +352,11 @@ loadIcons();
 document.addEventListener("DOMContentLoaded", () => {
     const svgObserver = new MutationObserver((mutations) => {
         for (let mutation of mutations) {
+            const element = mutation.target;
+
+            // Ignore changes inside item-icon elements
+            if (element.closest("item-icon") && !element.matches("item-icon")) continue;
+
             if (mutation.type === "childList") {
                 for (let node of mutation.addedNodes) {
                     if (node.nodeType !== 1) continue;
@@ -352,19 +368,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            if (mutation.type === "attributes" && mutation.attributeName === "class") {
-                let element = mutation.target;
-                if (!element.matches("item-icon")) continue;
+            if (mutation.type === "attributes" && element.matches("item-icon")) {
+                const name = mutation.attributeName;
 
-                let oldItem = (mutation.oldValue || "")
-                    .split(/\s+/)
-                    .find((c) => c.startsWith("item-"));
+                // Check material changes (data-material, data-material2, etc.)
+                if (/^data-material\d*$/.test(name)) {
+                    if (mutation.oldValue !== element.getAttribute(name)) {
+                        displayIcon();
+                        return;
+                    }
+                }
 
-                let newItem = [...element.classList].find((c) => c.startsWith("item-"));
+                // Check item-* class changes
+                if (name === "class") {
+                    const oldItem = (mutation.oldValue || "")
+                        .split(/\s+/)
+                        .find((c) => c.startsWith("item-"));
 
-                if (oldItem !== newItem) {
-                    displayIcon();
-                    return;
+                    const newItem = [...element.classList].find((c) => c.startsWith("item-"));
+
+                    if (oldItem !== newItem) {
+                        displayIcon();
+                        return;
+                    }
                 }
             }
         }
@@ -374,7 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ["class"],
         attributeOldValue: true,
     });
 });

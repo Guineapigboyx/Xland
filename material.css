@@ -129,7 +129,8 @@ item-icon[data-material="wire"] {
     --material-gradient: linear;
 }
 
-item-icon[data-material="zinc"] {
+item-icon[data-material="zinc"],
+item-icon[data-material="rushroom"] {
     --color1: #4e29aaff;
     --color2: duo2-mix;
     --color3: duo3-mix;
@@ -363,7 +364,7 @@ item-icon[data-material="ruby"] {
     --material-gradient: linear;
 }
 
-item-icon[data-material="saphire"] {
+item-icon[data-material="sapphire"] {
     --color1: #09099e;
     --color2: var(--color1);
     --color3: var(--color1);
@@ -371,7 +372,7 @@ item-icon[data-material="saphire"] {
     --material-gradient: linear;
 }
 
-item-icon[data-material="amethest"] {
+item-icon[data-material="amethyst"] {
     --color1: #6d09b1;
     --color2: var(--color1);
     --color3: var(--color1);

@@ -257,14 +257,15 @@ world Gen:
                 [-] Resting Grounds
 
 SVG: 
-    [-] bone
-    [-] shell
+    [x] bone
+    [x] shell
     [] geode
     [] plastic
     [] rubber
     [] bolts
     [] coil
     [] gear
+    [x] crystal (also would share with all the gems)
     [-] radier scrap
     [=] super radier scrap
     [] campfire
@@ -327,6 +328,7 @@ SVG:
         [] meat
         [] pikmin
         [] pikmin meat
+        [x] mushroom
         [=] pepper
         [x] powder
         [] string
@@ -338,7 +340,7 @@ SVG:
         [=] custom berry colors // might keep the 3 xland ones
 
     modules: 
-            hammer:
+        hammer:
             [-] hammerHead
             [-] axeHead
             [-] scytheHead

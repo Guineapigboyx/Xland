@@ -332,6 +332,7 @@ let items = {
     },
     carbonBone: {
         name: "Carbon Bone",
+        SVG: "bone",
         rarity: raritys.uncommon,
         weight: 1.13,
         materialData: {
@@ -386,6 +387,7 @@ let items = {
     },
     brass: {
         name: "Brass",
+        SVG: "ingot",
         rarity: raritys.uncommon,
         weight: 3.82,
         materialData: {
@@ -451,6 +453,7 @@ let items = {
     },
     steel: {
         name: "Steel",
+        SVG: "ingot",
         rarity: raritys.uncommon,
         weight: 6.11,
         materialData: {
@@ -519,6 +522,7 @@ let items = {
     },
     carbonSteel: {
         name: "Carbon steel",
+        SVG: "ingot",
         rarity: raritys.rare,
         weight: 8.29,
         materialData: {
@@ -531,7 +535,7 @@ let items = {
         },
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
-    platium: {
+    platinum: {
         name: "Platium",
         rarity: raritys.rare,
         weight: 5.78,
@@ -701,6 +705,7 @@ let items = {
     },
     stainlessSteel: {
         name: "Stainless Steel",
+        SVG: "ingot",
         rarity: raritys.master,
         weight: 9.05,
         materialData: {
@@ -822,6 +827,7 @@ let items = {
     },
     titaniumGold: {
         name: "Titanium gold",
+        SVG: "ingot",
         rarity: raritys.legendary,
         weight: 6.0,
         materialData: {
@@ -872,6 +878,7 @@ let items = {
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     raindite: {
+        SVG: "gemstone",
         name: "Raindite",
         rarity: raritys.ultraRank,
         weight: 2.18,
@@ -888,6 +895,7 @@ let items = {
     },
     diamond: {
         name: "Diamond",
+        SVG: "gemstone",
         rarity: raritys.master,
         weight: 0.82,
         materialData: {
@@ -909,6 +917,7 @@ let items = {
     },
     ruby: {
         name: "Ruby",
+        SVG: "gemstone",
         rarity: raritys.rare,
         weight: 0.82,
         materialData: {
@@ -940,6 +949,7 @@ let items = {
     },
     sapphire: {
         name: "Sapphire",
+        SVG: "gemstone",
         rarity: raritys.uncommon,
         weight: 0.82,
         materialData: {
@@ -977,6 +987,7 @@ let items = {
     },
     amethyst: {
         name: "Amethyst",
+        SVG: "gemstone",
         rarity: raritys.common,
         weight: 0.82,
         materialData: {
@@ -1008,6 +1019,7 @@ let items = {
     },
     emerald: {
         name: "Emerald",
+        SVG: "gemstone",
         rarity: raritys.rare,
         weight: 0.82,
         materialData: {
@@ -1035,6 +1047,7 @@ let items = {
     },
     amber: {
         name: "Amber",
+        SVG: "gemstone",
         rarity: raritys.rare,
         weight: 3.27,
         materialData: {
@@ -1068,6 +1081,7 @@ let items = {
     },
     topaz: {
         name: "Topaz",
+        SVG: "gemstone",
         rarity: raritys.legendary,
         weight: 1.64,
         materialData: {
@@ -1161,6 +1175,7 @@ let items = {
     },
     oldRag: {
         name: "Old Rag",
+        SVG: "cloth",
         rarity: raritys.basic,
         weight: 0.8,
         weaponData: { weaponType: weaponTypes.whip },
@@ -1189,6 +1204,7 @@ let items = {
     },
     hide: {
         name: "Hide",
+        SVG: "leather",
         rarity: raritys.uncommon,
         weight: 1.64,
         weaponData: { weaponType: weaponTypes.whip },
@@ -1407,7 +1423,7 @@ let items = {
         },
     },
     // food -------------------------------------------------
-    hyruleHerbs: {
+    hyruleHerb: {
         name: "Hyrule Herbs",
         raritys: raritys.common,
         weight: 0.22,
@@ -1419,8 +1435,9 @@ let items = {
             prefix: foodPrefixes.starchy,
         },
     },
-    coffeeBeans: {
+    coffeeBean: {
         name: "Coffee Beans",
+        SVG: "bean",
         raritys: raritys.common,
         weight: 0.11,
         weaponData: { weaponType: weaponTypes.gloves },
@@ -1442,8 +1459,9 @@ let items = {
             ],
         },
     },
-    hyruleMushrooms: {
+    hyruleMushroom: {
         name: "Hyrule Mushrooms",
+        SVG: "mushroom",
         raritys: raritys.common,
         weight: 0.22,
         weaponData: { weaponType: weaponTypes.gloves },
@@ -1461,8 +1479,9 @@ let items = {
             ],
         },
     },
-    rushrooms: {
+    rushroom: {
         name: "Rushrooms",
+        SVG: "mushroom",
         raritys: raritys.common,
         weight: 0.33,
         weaponData: { weaponType: weaponTypes.gloves },
