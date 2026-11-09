@@ -624,6 +624,7 @@ let items = {
     },
     crystal: {
         name: "Crystal",
+        SVG: "gemstone",
         rarity: raritys.master,
         weight: 3.27,
         materialData: {

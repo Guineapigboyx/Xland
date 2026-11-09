@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // fill inventory
+        // crafting screen with that persons data
         fillInventory(".craft-screen > .inventory", gameState.persons[dropdownValue].inventory);
     });
 

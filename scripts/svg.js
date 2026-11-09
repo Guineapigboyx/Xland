@@ -538,7 +538,7 @@ function getIcon(icon, materialOveride) {
  * @returns {HTMLElement} - a section element with all the item-icons in them
  */
 function createItemIcon(iconData) {
-    let iconGroup = document.createElement("section");
+    let iconGroup = document.createElement("item-group");
     for (let i = 0; i < iconData.length; i++) {
         const icon = document.createElement("item-icon");
 
