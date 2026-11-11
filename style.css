@@ -300,6 +300,10 @@ item-group {
     grid-template-rows: 70% 30%;
 }
 
+.button-icon.selected {
+    outline: var(--border-super-thin-width) solid gold;
+}
+
 .dropdown {
     display: grid;
     grid-template-columns: auto 15%;
@@ -621,5 +625,11 @@ body {
     grid-auto-columns: calc(var(--scale) * 7);
     padding: 1%;
     overflow: scroll hidden;
-    justify-content: center;
+    contain: strict;
+    grid-auto-flow: column;
+    text-wrap-mode: nowrap;
+}
+
+#schematics-picker > button {
+    border-radius: calc(var(--scale) * 2);
 }
