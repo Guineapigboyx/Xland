@@ -512,3 +512,36 @@ item-icon[data-material="fumming flower"] {
     --color4: var(--color1);
     --material-gradient: linear;
 }
+
+/* Color for schematics and non matrial spesific coloring */
+item-icon[data-material="schematic"] {
+    --color1: color-mix(in srgb, var(--background-primary) 32%, #000);
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: linear;
+}
+
+item-icon[data-material="schematic2"] {
+    --color1: color-mix(color-mix(in srgb, var(--background-primary) 20%, #245) 42%, #000);
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: linear;
+}
+
+item-icon[data-material="schematic3"] {
+    --color1: color-mix(color-mix(in srgb, var(--background-primary) 20%, #825) 42%, #000);
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: linear;
+}
+
+item-icon[data-material="schematic4"] {
+    --color1: color-mix(color-mix(in srgb, var(--background-primary) 20%, #170) 42%, #000);
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: linear;
+}
