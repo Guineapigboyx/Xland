@@ -301,7 +301,7 @@ item-group {
 }
 
 .button-icon.selected {
-    outline: var(--border-super-thin-width) solid gold;
+    box-shadow: 0 0 calc(var(--scale) / 5) calc(var(--scale) / 5) darkgoldenrod;
 }
 
 .dropdown {
@@ -627,6 +627,7 @@ body {
     overflow: scroll hidden;
     contain: strict;
     grid-auto-flow: column;
+    column-gap: calc(var(--scale) / 2.5);
     text-wrap-mode: nowrap;
 }
 

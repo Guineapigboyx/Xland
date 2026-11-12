@@ -443,16 +443,18 @@ function getIcon(icon, materialOveride) {
 
             let currentIcon = {
                 class: `item-${moduleName}`,
-                material: craftedModule.materials[0],
+                material: craftedModule.materials[0].item,
                 material2: craftedModule.materials[materialOffset],
                 layer: craftedModule.part.layer,
             };
 
-            // If the material is a valid item switch it to the items name
-            if (items[currentIcon.material.item].material) {
-                currentIcon.material = items[currentIcon.material.item].material;
-            } else {
-                currentIcon.material = currentIcon.material.item;
+            // If the material is a valid item switch the material to the items name
+            if (items[currentIcon.material.item]) {
+                if (items[currentIcon.material.item].material) {
+                    currentIcon.material = items[currentIcon.material.item].material;
+                } else {
+                    currentIcon.material = currentIcon.material.item;
+                }
             }
 
             if (currentIcon.material2) currentIcon.material2 = currentIcon.material2.item;

@@ -34,5 +34,21 @@ function craftingScreen() {
     document.querySelector("#crafting-player-dropdown").attributes.value.value = "N/A";
     document.querySelector("#crafting-player-dropdown > label").textContent = "Select teamate";
 
+    // hide all schematic buttons
+    addClass("#schematics-picker > button", "hide");
+    // deselect all schematic buttons
+    removeClass("#schematics-picker > button", "selected");
+
+    addClass("#crafting-player-dropdown > section", "hide");
+
+    // show unlocked schematic buttons
+    const unlockedSchematics = gameState.unlocked.schematic;
+    for (let i = 0; i < unlockedSchematics.length; i++) {
+        const schematicButton = document.querySelector(
+            `#schematics-picker > [data-schematic="${unlockedSchematics[i]}"]`,
+        );
+        if (schematicButton) schematicButton.classList.remove("hide");
+    }
+
     toggleScreen("crafting");
 }

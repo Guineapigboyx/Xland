@@ -8,6 +8,7 @@
  * @property {String} modularItem - the item that is stored, it should be a items.item key
  * @property {commonPart} commonPart - A special SVG that is put below all the parts
  * @property {part[]} parts - parts of the schematic that modules go in
+ * @property {Number} iconID - the crafted item ID associated with this item
  *
  * ----
  * @typedef {Object} part - parts of the schematic that modules go in
@@ -32,6 +33,7 @@ const schematics = {
             handle: { name: "handle", layer: 1 },
             binding: { name: "binding", layer: 4 },
         },
+        iconID: 10,
     },
     drill: {
         name: "drill",
@@ -42,6 +44,7 @@ const schematics = {
             motor: { name: "motor", layer: 2 },
             grip: { name: "grip", layer: 1 },
         },
+        iconID: 11,
     },
     shield: {
         name: "shield",
@@ -51,6 +54,7 @@ const schematics = {
             face: { name: "face", layer: 2 },
             grip: { name: "grip", layer: 1 },
         },
+        iconID: 12,
     },
     sword: {
         name: "sword",
@@ -61,6 +65,7 @@ const schematics = {
             hilt: { name: "hilt", layer: 2 },
             guard: { name: "guard", layer: 3, Optinal: true },
         },
+        iconID: 13,
     },
     slapstick: {
         name: "slapstick",
@@ -74,6 +79,7 @@ const schematics = {
             ball2: { name: "ball2", layer: 4, Optinal: true },
             ball3: { name: "ball3", layer: 5, Optinal: true },
         },
+        iconID: 14,
     },
     gloves: {
         name: "gloves",
@@ -83,6 +89,7 @@ const schematics = {
             knuckle: { name: "knuckle", layer: 2, Optinal: true },
             body: { name: "body", layer: 1 },
         },
+        iconID: 15,
     },
     bow: {
         name: "bow",
@@ -92,6 +99,7 @@ const schematics = {
             stave: { name: "stave", layer: 2 },
             string: { name: "string", layer: 1 },
         },
+        iconID: 16,
     },
     spear: {
         name: "spear",
@@ -102,6 +110,7 @@ const schematics = {
             shaft: { name: "shaft", layer: 1 },
             binding: { name: "binding", layer: 3 },
         },
+        iconID: 17,
     },
     club: {
         name: "club",
@@ -111,6 +120,7 @@ const schematics = {
             head: { name: "head", layer: 2 },
             handle: { name: "handle", layer: 1 },
         },
+        iconID: 18,
     },
     pants: {
         name: "pants",
@@ -121,6 +131,7 @@ const schematics = {
             rightLeg: { name: "rightLeg", layer: 2, Optinal: true },
             waist: { name: "waist", layer: 3 },
         },
+        iconID: 19,
     },
     shirt: {
         name: "shirt",
@@ -131,6 +142,7 @@ const schematics = {
             rightSleeve: { name: "rightSleeve", layer: 2, Optinal: true },
             body: { name: "body", layer: 3 },
         },
+        iconID: 20,
     },
     boots: {
         name: "boots",
@@ -141,6 +153,7 @@ const schematics = {
             shaft: { name: "shaft", layer: 2, Optinal: true }, // the part your ankle goes in
             body: { name: "body", layer: 1 },
         },
+        iconID: 21,
     },
     helmet: {
         name: "helmet",
@@ -150,6 +163,7 @@ const schematics = {
             skull: { name: "skull", layer: 1 },
             visor: { name: "visor", layer: 2, Optinal: true },
         },
+        iconID: 22,
     },
 };
 

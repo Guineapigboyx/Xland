@@ -515,7 +515,7 @@ item-icon[data-material="fumming flower"] {
 }
 
 /* Color for schematics and non matrial spesific coloring */
-item-icon[data-material="schematic"] {
+item-icon[data-material="schematic1"] {
     --color1: color-mix(in srgb, var(--background-primary) 52%, #000);
     --color2: var(--color1);
     --color3: var(--color1);
