@@ -657,6 +657,7 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
     contain: strict;
+    row-gap: 5%;
 }
 
 #module-selector > div {

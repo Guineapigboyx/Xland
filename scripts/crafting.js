@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             // add css classes
-            partBubble.className = "bubble fit-div";
+            partBubble.className = "blue-bubble fit-div";
             dropDownRoot.className = "dropdown fit-div";
             partName.className = "large-text";
 
