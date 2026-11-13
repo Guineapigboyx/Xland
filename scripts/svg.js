@@ -91,6 +91,7 @@ let itemIcons = [
     { cssClass: "item-thickHandle", file: "modules/handle/thick handle.svg" },
     { cssClass: "item-wrapedHandle", file: "modules/handle/wraped handle.svg" },
     { cssClass: "item-flexibleHandle", file: "modules/handle/flexible handle.svg" },
+    { cssClass: "item-longHandle", file: "modules/handle/long handle.svg" },
     // schematic common handles
     { cssClass: "item-commonSlapstick", file: "modules/common/slapstick.svg" },
 
@@ -229,11 +230,17 @@ function displayIcon() {
             // Apply the material colors
             applyIconMaterials(element);
 
+            element.dataset.loaded = loaded;
+
             // Insert the SVG into the shadow root
             shadow.innerHTML = icon.svg;
+
+            // Add css selectors to the svg and svg > path elements in the shadow doms
             shadow.querySelector("svg").setAttribute("part", "svg");
 
-            element.dataset.loaded = loaded;
+            shadow.querySelectorAll("svg > path").forEach((path) => {
+                path.setAttribute("part", "path");
+            });
 
             // Select if it should use ingot or center gradients
             shadow.querySelectorAll("[data-material][data-gradient]").forEach((path) => {

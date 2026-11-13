@@ -108,6 +108,7 @@ button {
     cursor: not-allowed;
 }
 
+/* hover effects */
 .hover:hover {
     background-image: linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 10%));
 }
@@ -122,6 +123,21 @@ button {
 
 .svg-hover-light:hover {
     filter: brightness(1.5);
+}
+
+/* make it so it only highlights the svg when you hove your mosue over filled areas, not just the viewbox */
+item-icon.svg-hover-light::part(svg),
+item-icon.svg-hover::part(svg) {
+    pointer-events: none;
+}
+
+item-icon.svg-hover-light,
+item-icon.svg-hover {
+    pointer-events: none !important;
+}
+
+item-icon::part(path) {
+    pointer-events: visiblePainted;
 }
 
 .border-super-thin {
@@ -596,7 +612,7 @@ body {
 }
 
 #crafting-grid {
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 60% 40%;
     grid-template-rows: 27.5% 72.5%;
     display: grid;
 }
@@ -633,4 +649,15 @@ body {
 
 #schematics-picker > button {
     border-radius: calc(var(--scale) * 2);
+}
+
+#module-preview {
+    display: grid;
+    grid-auto-rows: 20%;
+}
+
+#module-preview > div {
+    display: grid;
+    grid-template-rows: 40% 60%;
+    padding-left: 3%;
 }

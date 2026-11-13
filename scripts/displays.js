@@ -110,22 +110,27 @@ function createOptions(list, requirements, removeInvalid) {
     let badList = [];
     let keyList = [];
 
-    if (typeof list === "object") {
+    if (typeof list === "object" && !Array.isArray(list)) {
         keyList = Object.keys(list);
         badList = keyList.filter((key) => !requirements(list[key]));
 
+        // find which items in the list do not fit the requiremnt
         if (!badList) {
             badList = [];
-        } else if (removeInvalid) {
+        } else if (removeInvalid && typeof removeInvalid === "boolean") {
             keyList = keyList.filter((key) => !badList.includes(key));
             badList = [];
         }
 
+        // build options
         for (let i = 0; i < keyList.length; i++) {
             options.push({ label: keyList[i], invalid: badList.includes(keyList[i]) });
         }
-    } else if (typeof list === "array") {
-        options.push({ label: keyList[i], invalid: false });
+    } else if (Array.isArray(list)) {
+        // build options
+        for (let i = 0; i < list.length; i++) {
+            options.push({ label: list[i], invalid: false });
+        }
     } else {
         console.warn("invalid list to create options");
     }

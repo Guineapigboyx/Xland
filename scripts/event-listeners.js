@@ -8,24 +8,6 @@ document.addEventListener("keyup", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Make vertical scrolling horizntal
-    document.querySelector("#schematics-picker").onwheel = (e) => {
-        e.preventDefault();
-        e.currentTarget.scrollBy({
-            left: e.deltaY,
-            behavior: "smooth",
-        });
-    };
-
-    document.querySelector("#schematics-picker").addEventListener("click", (e) => {
-        const button = e.target.closest("button.button-icon");
-
-        if (!button) return;
-
-        document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
-        button.classList.add("selected");
-    });
-
     // right click actions
     document.querySelectorAll(".person-overview > *[data-equipment]").forEach((el) => {
         el.addEventListener("contextmenu", (event) => {

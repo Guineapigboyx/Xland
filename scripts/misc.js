@@ -71,6 +71,21 @@ function resetDropdown(dropDownOptionsEL) {
     dropDownOptionsEL.replaceChildren(dropdownOptionsEL.firstElementChild);
 }
 
+/**
+ * Runs map() with a speical path
+ *
+ * @param {object} object - the object you will map
+ * @param {string} path - the path you are maping like for items.name you would put "name"
+ */
+function mapObject(object, path) {
+    if (typeof object !== "object" || Array.isArray(object)) {
+        console.log("Invalid data for mapObject()", object);
+        return;
+    }
+
+    return Object.values(object).map((x) => x[path]);
+}
+
 /*
 Basic function for testing parts of xland
 

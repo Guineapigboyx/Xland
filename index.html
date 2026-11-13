@@ -96,10 +96,41 @@
                         <section
                             id="schematics-picker"
                             class="dark-bubble square-bubble"
-                            onwheel="this.scrollLeft += event.deltaY"
+                            onwheel="
+                                this.scrollLeft += event.deltaY // up/down scroll -> left/right scroll
+                            "
                         >
                             <!-- JS inserts al the craftable schematics-->
                         </section>
+                        <section
+                            class="fit-div"
+                            id="craft-preview"
+                            onclick="selectModulePart(event)"
+                            data-craftData="N/A"
+                        ></section>
+                        <div class="dark-bubble" id="module-preview">
+                            <div class="bubble">
+                                <span class="large-text">skull</span>
+                                <div
+                                    class="dropdown fit-div"
+                                    onclick="
+                                        clickDropDown(
+                                            '#fuckoff',
+                                            createOptions(
+                                                mapObject(schematics.hammer.parts, 'partName'),
+                                            ),
+                                            event,
+                                        )
+                                    "
+                                    id="fuckoff"
+                                >
+                                    <label class="normal-text">Select module</label>
+                                    <section class="bubble hide">
+                                        <option class="hover" value="N/A">Select module</option>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="inventory blue-bubble"></div>
                     <div id="crafting-info" class="border-super-thin">

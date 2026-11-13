@@ -56,10 +56,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // crafting screen with that persons data
         fillInventory(".craft-screen > .inventory", gameState.persons[dropdownValue].inventory);
+        addClass(".craft-screen > .inventory > item-group", "svg-hover");
     });
 
     observer.observe(dropdown, {
         attributes: true,
         attributeFilter: ["value"],
     });
+
+    // selecting a schematic
+    document.querySelector("#schematics-picker").addEventListener("click", (e) => {
+        const button = e.target.closest("button.button-icon");
+
+        if (!button) return;
+
+        document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
+        button.classList.add("selected");
+
+        //generate preview
+        iconData = getIcon({
+            item: button.dataset.schematic,
+            craftedItemID: schematics[button.dataset.schematic].iconID,
+        });
+
+        if (!iconData) {
+            console.warn("Failed to get icon Data");
+            return;
+        }
+
+        let icon = createItemIcon(iconData);
+        if (!icon) {
+            console.warn("Failed to create icon");
+            return;
+        }
+
+        icon.classList.add("fit-div");
+
+        // put the icon in the preview
+        const craftPreview = document.getElementById("craft-preview");
+        craftPreview.replaceChildren();
+        document.getElementById("craft-preview").appendChild(icon);
+
+        // makes it so the parts of the modules highlight when hovering over them
+        addClass("#craft-preview > item-group > item-icon", "svg-hover-light");
+    });
 });
+
+/** Selecting a module in the material preview */
+function selectModulePart(event) {
+    const clickedModule = event.target.closest("item-icon");
+}
