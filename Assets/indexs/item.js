@@ -3212,15 +3212,15 @@ let items = {
         weaponData: { weaponType: weaponTypes.slapstick },
         equipSlot: equipSlots.necklace,
     },
-    leggings: {
-        name: "leggings",
+    pants: {
+        name: "pants",
         raritys: raritys.basic,
         weight: 1,
         weaponData: { weaponType: weaponTypes.hammer },
         equipSlot: equipSlots.pants,
     },
-    chestplate: {
-        name: "chestplate",
+    shirt: {
+        name: "shirt",
         raritys: raritys.basic,
         weight: 1,
         weaponData: { weaponType: weaponTypes.shield },

@@ -45,8 +45,8 @@ crafting:
         [x] whip
         [x] helmet
         [-] pendent
-        [x] leggings
-        [x] chestplate
+        [x] pants
+        [x] shirt
         [x] gloves
         [x] boots
         [-] belt
@@ -308,8 +308,8 @@ SVG:
         [-] whip
         [-] helmet
         [-] pendent
-        [-] leggings
-        [-] chestplate
+        [-] pants
+        [-] shirt
         [-] gloves
         [-] boots
         [-] belt

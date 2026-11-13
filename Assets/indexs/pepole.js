@@ -48,7 +48,7 @@ const basePepole = {
                 // koopas underwear
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 1,
                 },
             },
@@ -56,7 +56,7 @@ const basePepole = {
                 // koopas shell
                 slot: equipSlots.body,
                 item: {
-                    item: "chestplate",
+                    item: "shirt",
                     craftedItemId: 2,
                     blocked: true,
                 },
@@ -86,7 +86,7 @@ const basePepole = {
                 // locarios pants
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 3,
                 },
             },
@@ -114,7 +114,7 @@ const basePepole = {
                 // plumbers overalls
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 4,
                 },
             },
@@ -122,7 +122,7 @@ const basePepole = {
                 // luigis shirt
                 slot: equipSlots.body,
                 item: {
-                    item: "chestplate",
+                    item: "shirt",
                     craftedItemId: 7,
                 },
             },
@@ -159,7 +159,7 @@ const basePepole = {
                 // plumbers overalls
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 4,
                 },
             },
@@ -167,7 +167,7 @@ const basePepole = {
                 // marios shirt
                 slot: equipSlots.body,
                 item: {
-                    item: "chestplate",
+                    item: "shirt",
                     craftedItemId: 6,
                 },
             },
@@ -204,7 +204,7 @@ const basePepole = {
                 // ripped pants
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 3,
                 },
             },
@@ -250,7 +250,7 @@ const basePepole = {
                 // basic underwear
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 8,
                 },
             },
@@ -258,7 +258,7 @@ const basePepole = {
                 // basic tunic
                 slot: equipSlots.body,
                 item: {
-                    item: "chestplate",
+                    item: "shirt",
                     craftedItemId: 9,
                 },
             },
@@ -303,7 +303,7 @@ const basePepole = {
                 // basic underwear
                 slot: equipSlots.pants,
                 item: {
-                    item: "leggings",
+                    item: "pants",
                     craftedItemId: 8,
                 },
             },
@@ -311,7 +311,7 @@ const basePepole = {
                 // basic tunic
                 slot: equipSlots.body,
                 item: {
-                    item: "chestplate",
+                    item: "shirt",
                     craftedItemId: 9,
                 },
             },

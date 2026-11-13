@@ -125,7 +125,7 @@ const schematics = {
     pants: {
         name: "pants",
         itemName: "Pants",
-        modularItem: items.leggings,
+        modularItem: items.pants,
         parts: {
             leftLeg: { name: "leftLeg", partName: "Left Leg", layer: 1, Optinal: true },
             rightLeg: { name: "rightLeg", partName: "Right Leg", layer: 2, Optinal: true },
@@ -136,7 +136,7 @@ const schematics = {
     shirt: {
         name: "shirt",
         itemName: "Shirt",
-        modularItem: items.chestplate,
+        modularItem: items.shirt,
         parts: {
             leftSleeve: { name: "leftSleeve", partName: "Left Sleeve", layer: 1, Optinal: true },
             rightSleeve: { name: "rightSleeve", partName: "Right Sleeve", layer: 2, Optinal: true },
