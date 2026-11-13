@@ -67,8 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // selecting a schematic
     document.querySelector("#schematics-picker").addEventListener("click", (e) => {
         const button = e.target.closest("button.button-icon");
-
         if (!button) return;
+
+        const schematic = schematics[button.dataset.schematic];
+        if (!schematic) return;
 
         document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
         button.classList.add("selected");
@@ -76,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //generate preview
         iconData = getIcon({
             item: button.dataset.schematic,
-            craftedItemID: schematics[button.dataset.schematic].iconID,
+            craftedItemID: schematic.iconID,
         });
 
         if (!iconData) {
@@ -99,6 +101,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // makes it so the parts of the modules highlight when hovering over them
         addClass("#craft-preview > item-group > item-icon", "svg-hover-light");
+
+        // fill in module selector
+        const moduleSelector = document.getElementById("module-selector");
+        moduleSelector.replaceChildren();
+        for (let i = 0; i < Object.values(schematic.parts).length; i++) {
+            let partBubble = document.createElement("div");
+            let dropDownRoot = document.createElement("div");
+            let partName = document.createElement("span");
+
+            partName.textContent = Object.values(schematic.parts)[i].partName;
+            partBubble.dataset.slot = i;
+
+            createDropDown(
+                dropDownRoot,
+                createOptions(
+                    getUnlockedModules(schematic, false, Object.values(schematic.parts)[i].name),
+                ),
+                `#module-selector > [data-slot="${i}"] > .dropdown`,
+                "Select Module",
+            );
+
+            // add css classes
+            partBubble.className = "bubble fit-div";
+            dropDownRoot.className = "dropdown fit-div";
+            partName.className = "large-text";
+
+            // make it so the dropdowns don't cover each other up
+            partBubble.style.zIndex = Object.values(schematic.parts).length - i;
+
+            // insert all the elements
+            partBubble.appendChild(partName);
+            partBubble.appendChild(dropDownRoot);
+            moduleSelector.appendChild(partBubble);
+        }
     });
 });
 

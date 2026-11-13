@@ -39,13 +39,28 @@
  * ----
  * @typedef {Object} unlocked
  * @property {Array} schematic - the schematics unlocked
- * @property {Array} modules - the modules unlocked
+ * @property {Array} module - the modules unlocked
  */
 let gameState = {
     activeTeam: [],
     persons: {},
     gigaBeastsKilled: 0,
-    unlocked: { schematic: ["sword", "hammer"] },
+    unlocked: {
+        // things you unlock at the start of the game
+        schematic: ["sword", "hammer", "shield", "pants", "shirt", "club"],
+        module: [
+            "basicHandle",
+            "hammerHead",
+            "pickaxeHead",
+            "stringBinding",
+            "jagidBlade",
+            "basicGuard",
+            "flatFace",
+            "barGrip",
+            "wingBatHead",
+            "fabric",
+        ],
+    },
 };
 
 /**

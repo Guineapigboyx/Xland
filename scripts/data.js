@@ -98,3 +98,69 @@ function getCraftedItem(inventoryItem) {
     craftedItem = { ...baseItem, ...craftedData };
     return craftedItem;
 }
+
+/**
+ * Get all of the modules that you have unlocked for a specific schematic.
+ *
+ * @param {schematics.schematic|string} schematic - The schematic object or its .name
+ */
+function getUnlockedModules(schematic) {
+    if (typeof schematic === "object" && schematic !== null) {
+        schematic = schematic.name;
+    }
+
+    if (!schematics[schematic]) {
+        console.log("Could not find schematic:", schematic);
+        return [];
+    }
+
+    let validParts = gameState.unlocked.module;
+
+    if (!validParts.length) {
+        console.log("Malformed schematic:", schematic);
+        return [];
+    }
+
+    return Object.values(modules).filter((module) =>
+        mapObject(module.part, "name").some((part) => validParts.includes(part)),
+    );
+}
+
+/**
+ * Get all unlocked modules compatible with a specific schematic.
+ *
+ * @param {schematics.schematic|string} schematic - Schematic object or its .name
+ * @param {Boolean|undefined} giveFull - give the full modules.module or just the names
+ * @param {string|string[]|undefined} parts - Specific schematic parts to get modules for
+ */
+function getUnlockedModules(schematic, giveFull, parts) {
+    if (typeof schematic === "object" && schematic !== null) {
+        schematic = schematic.name;
+    }
+
+    if (!schematics[schematic]?.parts) {
+        console.log("Could not find schematic:", schematic);
+        return [];
+    }
+
+    let validParts = Object.keys(schematics[schematic].parts);
+
+    if (parts) {
+        parts = Array.isArray(parts) ? parts : [parts];
+        validParts = validParts.filter((part) => parts.includes(part));
+    }
+
+    if (!validParts.length) return [];
+
+    let validModules = Object.fromEntries(
+        Object.entries(modules).filter(
+            ([id, module]) =>
+                gameState.unlocked.module.includes(id) &&
+                mapObject(module.part, "name").some((part) => validParts.includes(part)),
+        ),
+    );
+
+    if (giveFull) {
+        return validModules;
+    } else return mapObject(validModules, "name");
+}

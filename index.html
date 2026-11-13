@@ -108,28 +108,8 @@
                             onclick="selectModulePart(event)"
                             data-craftData="N/A"
                         ></section>
-                        <div class="dark-bubble" id="module-preview">
-                            <div class="bubble">
-                                <span class="large-text">skull</span>
-                                <div
-                                    class="dropdown fit-div"
-                                    onclick="
-                                        clickDropDown(
-                                            '#fuckoff',
-                                            createOptions(
-                                                mapObject(schematics.hammer.parts, 'partName'),
-                                            ),
-                                            event,
-                                        )
-                                    "
-                                    id="fuckoff"
-                                >
-                                    <label class="normal-text">Select module</label>
-                                    <section class="bubble hide">
-                                        <option class="hover" value="N/A">Select module</option>
-                                    </section>
-                                </div>
-                            </div>
+                        <div class="dark-bubble" id="module-selector">
+                            <!-- JS inserts al the module dropdowns -->
                         </div>
                     </div>
                     <div class="inventory blue-bubble"></div>

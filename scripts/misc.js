@@ -72,18 +72,19 @@ function resetDropdown(dropDownOptionsEL) {
 }
 
 /**
- * Runs map() with a speical path
+ * Runs map() with a specified property.
+ * Bassicly allows you to make a new array one Object deeper
  *
- * @param {object} object - the object you will map
- * @param {string} path - the path you are maping like for items.name you would put "name"
+ * @param {Object|Array} object - The object or array you want to map.
+ * @param {string} path - The property you want to retrieve.
  */
 function mapObject(object, path) {
-    if (typeof object !== "object" || Array.isArray(object)) {
+    if (typeof object !== "object" || object === null) {
         console.log("Invalid data for mapObject()", object);
-        return;
+        return [];
     }
 
-    return Object.values(object).map((x) => x[path]);
+    return (Array.isArray(object) ? object : Object.values(object)).map((x) => x?.[path]);
 }
 
 /*

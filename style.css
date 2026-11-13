@@ -651,12 +651,15 @@ body {
     border-radius: calc(var(--scale) * 2);
 }
 
-#module-preview {
+#module-selector {
     display: grid;
-    grid-auto-rows: 20%;
+    grid-auto-rows: 15%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    contain: strict;
 }
 
-#module-preview > div {
+#module-selector > div {
     display: grid;
     grid-template-rows: 40% 60%;
     padding-left: 3%;
