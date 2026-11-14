@@ -28,7 +28,7 @@ const schematics = {
         itemName: "Hammer",
         modularItem: items.hammer,
         parts: {
-            leftHead: { name: "leftHead", partName: "Left Head", layer: 2, Optinal: true },
+            leftHead: { name: "leftHead", partName: "Left Head", layer: 2, optional: true },
             rightHead: { name: "rightHead", partName: "Right Head", layer: 3 },
             handle: { name: "handle", partName: "Handle", layer: 1 },
             binding: { name: "binding", partName: "Binding", layer: 4 },
@@ -63,7 +63,7 @@ const schematics = {
         parts: {
             blade: { name: "blade", partName: "Blade", layer: 1 },
             hilt: { name: "hilt", partName: "Hilt", layer: 2 },
-            guard: { name: "guard", partName: "Guard", layer: 3, Optinal: true },
+            guard: { name: "guard", partName: "Guard", layer: 3, optional: true },
         },
         iconID: 13,
     },
@@ -76,8 +76,8 @@ const schematics = {
             stick: { name: "stick", partName: "Stick", layer: 1 },
             string: { name: "string", partName: "String", layer: 2 },
             ball1: { name: "ball1", partName: "Ball 1", layer: 3 },
-            ball2: { name: "ball2", partName: "Ball 2", layer: 4, Optinal: true },
-            ball3: { name: "ball3", partName: "Ball 3", layer: 5, Optinal: true },
+            ball2: { name: "ball2", partName: "Ball 2", layer: 4, optional: true },
+            ball3: { name: "ball3", partName: "Ball 3", layer: 5, optional: true },
         },
         iconID: 14,
     },
@@ -86,7 +86,7 @@ const schematics = {
         itemName: "Gloves",
         modularItem: items.gloves,
         parts: {
-            knuckle: { name: "knuckle", partName: "Knuckle", layer: 2, Optinal: true },
+            knuckle: { name: "knuckle", partName: "Knuckle", layer: 2, optional: true },
             body: { name: "body", partName: "Body", layer: 1 },
         },
         iconID: 15,
@@ -127,8 +127,8 @@ const schematics = {
         itemName: "Pants",
         modularItem: items.pants,
         parts: {
-            leftLeg: { name: "leftLeg", partName: "Left Leg", layer: 1, Optinal: true },
-            rightLeg: { name: "rightLeg", partName: "Right Leg", layer: 2, Optinal: true },
+            leftLeg: { name: "leftLeg", partName: "Left Leg", layer: 1, optional: true },
+            rightLeg: { name: "rightLeg", partName: "Right Leg", layer: 2, optional: true },
             waist: { name: "waist", partName: "Waist", layer: 3 },
         },
         iconID: 19,
@@ -138,8 +138,13 @@ const schematics = {
         itemName: "Shirt",
         modularItem: items.shirt,
         parts: {
-            leftSleeve: { name: "leftSleeve", partName: "Left Sleeve", layer: 1, Optinal: true },
-            rightSleeve: { name: "rightSleeve", partName: "Right Sleeve", layer: 2, Optinal: true },
+            leftSleeve: { name: "leftSleeve", partName: "Left Sleeve", layer: 1, optional: true },
+            rightSleeve: {
+                name: "rightSleeve",
+                partName: "Right Sleeve",
+                layer: 2,
+                optional: true,
+            },
             body: { name: "body", partName: "Body", layer: 3 },
         },
         iconID: 20,
@@ -149,8 +154,8 @@ const schematics = {
         itemName: "Boots",
         modularItem: items.boots,
         parts: {
-            toe: { name: "toe", partName: "Toe", layer: 3, Optinal: true },
-            shaft: { name: "shaft", partName: "Shaft", layer: 2, Optinal: true }, // the part your ankle goes in
+            toe: { name: "toe", partName: "Toe", layer: 3, optional: true },
+            shaft: { name: "shaft", partName: "Shaft", layer: 2, optional: true }, // the part your ankle goes in
             body: { name: "body", partName: "Body", layer: 1 },
         },
         iconID: 21,
@@ -161,7 +166,7 @@ const schematics = {
         modularItem: items.helmet,
         parts: {
             skull: { name: "skull", partName: "Skull", layer: 1 },
-            visor: { name: "visor", partName: "Visor", layer: 2, Optinal: true },
+            visor: { name: "visor", partName: "Visor", layer: 2, optional: true },
         },
         iconID: 22,
     },

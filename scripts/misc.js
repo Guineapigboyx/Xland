@@ -68,7 +68,7 @@ function hasClass(selector, classToCheck) {
 
 // clear drop down options
 function resetDropdown(dropDownOptionsEL) {
-    dropDownOptionsEL.replaceChildren(dropdownOptionsEL.firstElementChild);
+    dropDownOptionsEL.replaceChildren(dropDownOptionsEL.firstElementChild);
 }
 
 /**

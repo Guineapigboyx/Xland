@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const schematicPicker = document.getElementById("schematics-picker");
 
-    // construct elements for craft screen picker
+    // construct elements for craft screen picker ------------------------------------------------
     for (let i = 0; i < Object.keys(schematics).length; i++) {
         // schematic picker
         const currentSchematic = schematics[Object.keys(schematics)[i]];
@@ -37,34 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         schematicPicker.appendChild(button);
     }
 
-    const dropdown = document.querySelector("#crafting-player-dropdown");
-
-    // prettier-ignore
-    const observer = new MutationObserver(() => {
-        const dropdownValue = document.getElementById("crafting-player-dropdown").attributes.value.value;
-
-        // reset craft screen
-        if (dropdownValue === "N/A") {
-            clearInventory(".craft-screen > .inventory");
-            return;
-        }
-
-        if (!gameState.persons[dropdownValue]) {
-            console.warn("invalid person");
-            return;
-        }
-
-        // crafting screen with that persons data
-        fillInventory(".craft-screen > .inventory", gameState.persons[dropdownValue].inventory);
-        addClass(".craft-screen > .inventory > item-group", "svg-hover");
-    });
-
-    observer.observe(dropdown, {
-        attributes: true,
-        attributeFilter: ["value"],
-    });
-
-    // selecting a schematic
+    // selecting a schematic ------------------------------------------------
     document.querySelector("#schematics-picker").addEventListener("click", (e) => {
         const button = e.target.closest("button.button-icon");
         if (!button) return;
@@ -120,10 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 ),
                 `#module-selector > [data-slot="${i}"] > .dropdown`,
                 "Select Module",
+                "crafting-module",
             );
 
             // add css classes
-            partBubble.className = "blue-bubble fit-div";
+            partBubble.className = "blue-bubble fit-div pointer";
             dropDownRoot.className = "dropdown fit-div";
             partName.className = "large-text";
 
@@ -134,6 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
             partBubble.appendChild(partName);
             partBubble.appendChild(dropDownRoot);
             moduleSelector.appendChild(partBubble);
+
+            // make it so you can click anywhere in the part bubble
+            partBubble.onclick = dropDownRoot.onclick;
+            dropDownRoot.onclick = "";
         }
     });
 });

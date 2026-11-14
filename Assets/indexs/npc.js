@@ -1,7 +1,7 @@
 /**
  * NPC formating
  *
- * @property {String[]} name - [first,last(optinal)]
+ * @property {String[]} name - [first,last(optional)]
  * @property {String} home - Where they live or if none put null and it will put them as traveling
  * @property {Number} level - what level is this NPC, this also determnites various other things
  * @property {[Number, Number]} maxHp - health range [min, max]
