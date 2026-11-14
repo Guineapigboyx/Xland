@@ -45,35 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const schematic = schematics[button.dataset.schematic];
         if (!schematic) return;
 
+        // clear craft preview
+        document.querySelector("#craft-preview").replaceChildren();
+
         document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
         button.classList.add("selected");
-
-        //generate preview
-        iconData = getIcon({
-            item: button.dataset.schematic,
-            craftedItemID: schematic.iconID,
-        });
-
-        if (!iconData) {
-            console.warn("Failed to get icon Data");
-            return;
-        }
-
-        let icon = createItemIcon(iconData);
-        if (!icon) {
-            console.warn("Failed to create icon");
-            return;
-        }
-
-        icon.classList.add("fit-div");
-
-        // put the icon in the preview
-        const craftPreview = document.getElementById("craft-preview");
-        craftPreview.replaceChildren();
-        document.getElementById("craft-preview").appendChild(icon);
-
-        // makes it so the parts of the modules highlight when hovering over them
-        addClass("#craft-preview > item-group > item-icon", "svg-hover-light");
 
         // fill in module selector
         const moduleSelector = document.getElementById("module-selector");

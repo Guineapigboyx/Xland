@@ -58,6 +58,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 addClass(".craft-screen > .inventory > item-group", "svg-hover");
                 break;
+            // the module selectors
+            case "crafting-module":
+                // reset craft screen
+                if (value === "N/A") {
+                    return;
+                }
+
+                // get the schematic
+                // prettier-ignore
+                const schematic = document.querySelector("#schematics-picker > .selected").dataset.schematic;
+                if (!schematic) {
+                    console.log("invalid schematic selected", value);
+                    break;
+                }
+
+                // get the module
+                // prettier-ignore
+                const selectedModule = Object.keys(modules).find((key) => modules[key].name === value);
+                if (!selectedModule) {
+                    console.log("invalid module selected", value);
+                    break;
+                }
+
+                //generate preview
+                iconData = getIcon(`item-${selectedModule}`, "schematic5");
+
+                if (!iconData) {
+                    console.warn("Failed to get icon Data");
+                    return;
+                }
+
+                let icon = createItemIcon(iconData);
+                if (!icon) {
+                    console.warn("Failed to create icon");
+                    return;
+                }
+
+                icon.classList.add("fit-div");
+
+                // put the icon in the preview
+                const craftPreview = document.getElementById("craft-preview");
+                document.getElementById("craft-preview").appendChild(icon);
+
+                // makes it so the parts of the modules highlight when hovering over them
+                addClass("#craft-preview > item-group > item-icon", "svg-hover-light");
+
+                break;
         }
     });
 });

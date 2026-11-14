@@ -546,3 +546,11 @@ item-icon[data-material="schematic4"] {
     --color4: var(--color1);
     --material-gradient: linear;
 }
+
+item-icon[data-material="schematic5"] {
+    --color1: #1d1b18;
+    --color2: var(--color1);
+    --color3: var(--color1);
+    --color4: var(--color1);
+    --material-gradient: linear;
+}
