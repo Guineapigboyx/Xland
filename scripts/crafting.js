@@ -195,7 +195,7 @@ function updateMaterialSelectors() {
         details.className = "material-selector flex-down small-text bubble square-bubble";
         details.dataset.slot = partKey;
 
-        summary.textContent = part.partName;
+        summary.textContent = `${part.partName} => ${moduleName}`;
 
         details.appendChild(summary);
 
