@@ -175,8 +175,8 @@ const schematics = {
  * @typedef {Object} module - a specific part you can put materials in
  * @property {string} name - the name of this module
  * @property {schematics.schematic.part[]} part - all the schematic part this module can be used in
- * @property {allowedMaterial[]|undefined} materials - the sets materials needed to make this
- * lets say you want a module that needs both bolts and wood in the to do that you make 2 allowedMaterial objects one for wood another for bolts
+ * @property {allowedMaterials[]|undefined} materials - the sets materials needed to make this
+ * lets say you want a module that needs both bolts and wood in the to do that you make 2 allowedMaterials objects one for wood another for bolts
  *
  * @property {Function} itemStats - a function for setting all the values in {items.item.weaponData}
  *
@@ -184,7 +184,7 @@ const schematics = {
  * @property {weaponTypes.weaponType|undefined} weaponType - if a item is made with this module it will use this instead of the schematics
  * if you try to craft a item with multiple modules with diffrent weaponTypes it will say they are incompatible
  * ----
- * @typedef {Object} allowedMaterial
+ * @typedef {Object} allowedMaterials
  * @property {(items.item|materialTypes|foodTypes)[]} material - every material or type that can be used here
  * lets say you can make this with wood or metal you would put both of those material types here
  * @property {Number} amount - the amount of this material required
@@ -348,7 +348,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [materialTypes.metal, materialTypes.gemStone],
+                allowedMaterials: [materialTypes.metal, materialTypes.gemStone],
                 amount: 1,
             },
         ],
@@ -474,7 +474,7 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterial: [
+                allowedMaterials: [
                     materialTypes.wire,
                     materialTypes.plants,
                     materialTypes.skin,
@@ -547,7 +547,7 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterial: [materialTypes.metal, materialTypes.wire],
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
                 amount: 2,
                 same: true,
             },
@@ -648,7 +648,7 @@ const modules = {
                 ],
                 amount: 1,
             },
-            { allowedMaterial: [materialTypes.sticky], amount: 2 },
+            { allowedMaterials: [materialTypes.sticky], amount: 2 },
         ],
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
@@ -1218,7 +1218,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [materialTypes.sticky],
+                allowedMaterials: [materialTypes.sticky],
                 amount: 1,
             },
         ],
@@ -1243,7 +1243,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [materialTypes.sticky],
+                allowedMaterials: [materialTypes.sticky],
                 amount: 1,
             },
         ],
@@ -1408,7 +1408,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [items.metal],
+                allowedMaterials: [items.metal],
                 amount: 2,
             },
         ],
@@ -2004,7 +2004,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [materialTypes.sticky],
+                allowedMaterials: [materialTypes.sticky],
                 amount: 1,
             },
         ],
@@ -2225,7 +2225,7 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterial: [items.gear],
+                allowedMaterials: [items.gear],
                 amount: 2,
             },
         ],
