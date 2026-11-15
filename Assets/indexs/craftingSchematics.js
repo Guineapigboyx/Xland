@@ -74,7 +74,7 @@ const schematics = {
         commonPart: { SVG: "item-commonSlapstick", material: "stick" },
         parts: {
             stick: { name: "stick", partName: "Stick", layer: 1 },
-            string: { name: "string", partName: "String", layer: 2 },
+            slapstickString: { name: "slapstickString", partName: "String", layer: 2 },
             ball1: { name: "ball1", partName: "Ball 1", layer: 3 },
             ball2: { name: "ball2", partName: "Ball 2", layer: 4, optional: true },
             ball3: { name: "ball3", partName: "Ball 3", layer: 5, optional: true },
@@ -87,7 +87,7 @@ const schematics = {
         modularItem: items.gloves,
         parts: {
             knuckle: { name: "knuckle", partName: "Knuckle", layer: 2, optional: true },
-            body: { name: "body", partName: "Body", layer: 1 },
+            gloveBody: { name: "gloveBody", partName: "Body", layer: 1 },
         },
         iconID: 15,
     },
@@ -97,7 +97,7 @@ const schematics = {
         modularItem: items.bow,
         parts: {
             stave: { name: "stave", partName: "Stave", layer: 2 },
-            string: { name: "string", partName: "String", layer: 1 },
+            bowString: { name: "bowString", partName: "String", layer: 1 },
         },
         iconID: 16,
     },
@@ -106,7 +106,7 @@ const schematics = {
         itemName: "Spear",
         modularItem: items.spear,
         parts: {
-            head: { name: "head", partName: "Head", layer: 2 },
+            spearHead: { name: "spearHead", partName: "Head", layer: 2 },
             shaft: { name: "shaft", partName: "Shaft", layer: 1 },
             binding: { name: "binding", partName: "Binding", layer: 3 },
         },
@@ -117,7 +117,7 @@ const schematics = {
         itemName: "Club",
         modularItem: items.club,
         parts: {
-            head: { name: "head", partName: "Head", layer: 2 },
+            clubHead: { name: "clubHead", partName: "Head", layer: 2 },
             handle: { name: "handle", partName: "Handle", layer: 1 },
         },
         iconID: 18,
@@ -137,15 +137,11 @@ const schematics = {
         name: "shirt",
         itemName: "Shirt",
         modularItem: items.shirt,
+        // prettier-ignore
         parts: {
             leftSleeve: { name: "leftSleeve", partName: "Left Sleeve", layer: 1, optional: true },
-            rightSleeve: {
-                name: "rightSleeve",
-                partName: "Right Sleeve",
-                layer: 2,
-                optional: true,
-            },
-            body: { name: "body", partName: "Body", layer: 3 },
+            rightSleeve: {name: "rightSleeve", partName: "Right Sleeve", layer: 2, optional: true,},
+            shirtBody: { name: "shirtBody", partName: "Body", layer: 3 },
         },
         iconID: 20,
     },
@@ -155,8 +151,8 @@ const schematics = {
         modularItem: items.boots,
         parts: {
             toe: { name: "toe", partName: "Toe", layer: 3, optional: true },
-            shaft: { name: "shaft", partName: "Shaft", layer: 2, optional: true }, // the part your ankle goes in
-            body: { name: "body", partName: "Body", layer: 1 },
+            shaft: { name: "bootShaft", partName: "Shaft", layer: 2, optional: true }, // the part your ankle goes in
+            bootBody: { name: "bootBody", partName: "Body", layer: 1 },
         },
         iconID: 21,
     },
@@ -762,7 +758,7 @@ const modules = {
         part: [
             schematics.hammer.parts.binding,
             schematics.sword.parts.guard,
-            schematics.slapstick.parts.string,
+            schematics.slapstick.parts.slapstickString,
             schematics.spear.parts.binding,
         ],
         materials: [
@@ -786,7 +782,7 @@ const modules = {
         part: [
             schematics.hammer.parts.binding,
             schematics.sword.parts.guard,
-            schematics.slapstick.parts.string,
+            schematics.slapstick.parts.slapstickString,
             schematics.spear.parts.binding,
         ],
         materials: [
@@ -812,7 +808,7 @@ const modules = {
             schematics.hammer.parts.binding,
             schematics.sword.parts.guard,
             schematics.spear.parts.binding,
-            schematics.slapstick.parts.string,
+            schematics.slapstick.parts.slapstickString,
         ],
         materials: [
             {
@@ -1909,7 +1905,7 @@ const modules = {
     // gloves
     basicGloves: {
         name: "Basic Gloves",
-        part: [schematics.gloves.parts.body],
+        part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
                 allowedMaterials: [materialTypes.skin, materialTypes.plants, items.rubber],
@@ -1931,7 +1927,7 @@ const modules = {
     },
     chainGloves: {
         name: "Chain Mail Gloves",
-        part: [schematics.gloves.parts.body],
+        part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal],
@@ -1952,7 +1948,7 @@ const modules = {
     },
     gauntlets: {
         name: "Gauntlets",
-        part: [schematics.gloves.parts.body],
+        part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal],
@@ -1974,7 +1970,7 @@ const modules = {
     },
     insulatedGloves: {
         name: "Insulated Gloves",
-        part: [schematics.gloves.parts.body],
+        part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
                 allowedMaterials: [materialTypes.skin, materialTypes.plants],
@@ -2000,7 +1996,7 @@ const modules = {
     },
     climbingGloves: {
         name: "Climbing Gloves",
-        part: [schematics.gloves.parts.body],
+        part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
                 allowedMaterials: [materialTypes.skin, materialTypes.plants],
@@ -2316,7 +2312,7 @@ const modules = {
     // bow string
     bowString: {
         name: "String",
-        part: [schematics.bow.parts.string],
+        part: [schematics.bow.parts.bowString],
         materials: [
             {
                 allowedMaterials: [materialTypes.wire],
@@ -2336,7 +2332,7 @@ const modules = {
     },
     bowCable: {
         name: "Cable",
-        part: [schematics.bow.parts.string],
+        part: [schematics.bow.parts.bowString],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal],
@@ -2357,7 +2353,7 @@ const modules = {
     // spear head
     basicHead: {
         name: "Basic Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [
@@ -2385,7 +2381,7 @@ const modules = {
     },
     glaiveHead: {
         name: "Glaive Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [
@@ -2420,7 +2416,7 @@ const modules = {
     },
     halberdHead: {
         name: "Halberd Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [
@@ -2452,7 +2448,7 @@ const modules = {
     },
     lanceHead: {
         name: "Lance Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2478,7 +2474,7 @@ const modules = {
     },
     naginataHead: {
         name: "Naginata Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [
@@ -2507,7 +2503,7 @@ const modules = {
     },
     tridentHead: {
         name: "Trident Head",
-        part: [schematics.spear.parts.head],
+        part: [schematics.spear.parts.spearHead],
         materials: [
             {
                 allowedMaterials: [
@@ -2537,7 +2533,7 @@ const modules = {
     // club head
     batHead: {
         name: "Bat Head",
-        part: [schematics.club.parts.head],
+        part: [schematics.club.parts.clubHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2560,7 +2556,7 @@ const modules = {
     },
     armoredHead: {
         name: "Armored Head",
-        part: [schematics.club.parts.head],
+        part: [schematics.club.parts.clubHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2589,7 +2585,7 @@ const modules = {
     },
     spikedHead: {
         name: "Spiked Head",
-        part: [schematics.club.parts.head],
+        part: [schematics.club.parts.clubHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2624,7 +2620,7 @@ const modules = {
     },
     barbedHead: {
         name: "Barbed Head",
-        part: [schematics.club.parts.head],
+        part: [schematics.club.parts.clubHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2654,7 +2650,7 @@ const modules = {
     },
     wingBatHead: {
         name: "Wing Head",
-        part: [schematics.club.parts.head],
+        part: [schematics.club.parts.clubHead],
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wood, materialTypes.rock],
@@ -2680,12 +2676,12 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
             schematics.boots.parts.toe,
         ],
         materials: [
@@ -2715,11 +2711,11 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
         ],
         materials: [
             {
@@ -2744,13 +2740,13 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
             schematics.helmet.parts.skull,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
         ],
         materials: [
             {
@@ -2778,7 +2774,7 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.helmet.parts.skull,
@@ -2816,12 +2812,12 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
         ],
         materials: [
             {
@@ -2850,12 +2846,12 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
         ],
         materials: [
             {
@@ -2892,13 +2888,13 @@ const modules = {
         part: [
             schematics.pants.parts.leftLeg,
             schematics.pants.parts.rightLeg,
-            schematics.shirt.parts.body,
+            schematics.shirt.parts.shirtBody,
             schematics.shirt.parts.leftSleeve,
             schematics.shirt.parts.rightSleeve,
             schematics.pants.parts.waist,
             schematics.helmet.parts.skull,
-            schematics.boots.parts.body,
-            schematics.boots.parts.shaft,
+            schematics.boots.parts.bootBody,
+            schematics.boots.parts.bootShaft,
         ],
         materials: [
             {
@@ -2926,7 +2922,7 @@ const modules = {
     },
     solid: {
         name: "Solid",
-        part: [schematics.pants.parts.waist, schematics.boots.parts.body],
+        part: [schematics.pants.parts.waist, schematics.boots.parts.bootBody],
         materials: [
             {
                 allowedMaterials: [
@@ -3004,7 +3000,7 @@ const modules = {
     },
     shell: {
         name: "Shell",
-        part: [schematics.shirt.parts.body],
+        part: [schematics.shirt.parts.shirtBody],
         materials: [
             {
                 allowedMaterials: [
@@ -3030,7 +3026,7 @@ const modules = {
     },
     longShirt: {
         name: "Long Shirt",
-        part: [schematics.shirt.parts.body],
+        part: [schematics.shirt.parts.shirtBody],
         materials: [
             {
                 allowedMaterials: [
@@ -3055,7 +3051,7 @@ const modules = {
     },
     gambison: {
         name: "gambison",
-        part: [schematics.shirt.parts.body],
+        part: [schematics.shirt.parts.shirtBody],
         materials: [
             {
                 allowedMaterials: [

@@ -135,7 +135,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.shell,
-                    part: schematics.shirt.parts.body,
+                    part: schematics.shirt.parts.shirtBody,
                     materials: [
                         { item: "shell" },
                         { item: "shell" },
@@ -202,7 +202,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.solid,
-                    part: schematics.boots.parts.body,
+                    part: schematics.boots.parts.bootBody,
                     materials: [{ item: "wood" }],
                 },
                 {
@@ -221,7 +221,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.fabric,
-                    part: schematics.shirt.parts.body,
+                    part: schematics.shirt.parts.shirtBody,
                     materials: [{ item: "oldRag" }, { item: "oldRag" }],
                 },
             ],
@@ -235,7 +235,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.fabric,
-                    part: schematics.shirt.parts.body,
+                    part: schematics.shirt.parts.shirtBody,
                     materials: [{ item: "oldRag" }, { item: "oldRag" }],
                 },
             ],
@@ -261,7 +261,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.longShirt,
-                    part: schematics.shirt.parts.body,
+                    part: schematics.shirt.parts.shirtBody,
                     materials: [{ item: "oldRag" }, { item: "oldRag" }, { item: "oldRag" }],
                 },
             ],
@@ -361,7 +361,7 @@ let craftedItemData = {
                 },
                 {
                     module: modules.stringBinding,
-                    part: schematics.slapstick.parts.string,
+                    part: schematics.slapstick.parts.slapstickString,
                     materials: [{ item: "schematic4" }],
                 },
                 {
@@ -384,7 +384,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.basicGloves,
-                    part: schematics.gloves.parts.body,
+                    part: schematics.gloves.parts.gloveBody,
                     materials: [{ item: "schematic" }],
                 },
             ],
@@ -402,7 +402,7 @@ let craftedItemData = {
                 },
                 {
                     module: modules.bowString,
-                    part: schematics.bow.parts.string,
+                    part: schematics.bow.parts.bowString,
                     materials: [{ item: "schematic2" }],
                 },
             ],
@@ -415,7 +415,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.basicHead,
-                    part: schematics.spear.parts.head,
+                    part: schematics.spear.parts.spearHead,
                     materials: [{ item: "schematic3" }],
                 },
                 {
@@ -433,7 +433,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.batHead,
-                    part: schematics.club.parts.head,
+                    part: schematics.club.parts.clubHead,
                     materials: [{ item: "schematic1" }],
                 },
                 {
@@ -474,7 +474,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.fabric,
-                    part: schematics.shirt.parts.body,
+                    part: schematics.shirt.parts.shirtBody,
                     materials: [{ item: "schematic2" }],
                 },
                 {
@@ -497,7 +497,7 @@ let craftedItemData = {
             craftedModules: [
                 {
                     module: modules.fabric,
-                    part: schematics.boots.parts.body,
+                    part: schematics.boots.parts.bootBody,
                     materials: [{ item: "schematic1" }],
                 },
                 {
