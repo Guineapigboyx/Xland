@@ -57,3 +57,26 @@ function craftingScreen() {
 
     toggleScreen("crafting");
 }
+
+// switch the part selector
+function clickPartNav(section) {
+    let otherSection;
+
+    // finds out which section you clicked on
+    if (section === "material") {
+        otherSection = "module";
+    } else if (section === "module") {
+        otherSection = "material";
+    } else {
+        console.warn("Nav button broken", section);
+        return;
+    }
+
+    // add selected class to nav button
+    modfiyClass(`#part-selectors > nav > [data-slot="${section}"]`, "selected", "add");
+    modfiyClass(`#part-selectors > nav > [data-slot="${otherSection}"]`, "selected", "remove");
+
+    // hides/shows modules/materials
+    modfiyClass(`#${otherSection}-selector`, "hide", "add");
+    modfiyClass(`#${section}-selector`, "hide", "remove");
+}

@@ -53,17 +53,17 @@
         <header></header>
         <main class="main-content">
             <div class="toolbar">
-                <button class="button huge-text Header-text pointer"></button>
+                <button class="border-normal button huge-text header-text pointer"></button>
                 <button
                     id="interact-button"
-                    class="button huge-text Header-text pointer hover"
+                    class="border-normal button huge-text header-text pointer hover"
                     onclick="toggleScreen('interact')"
                 >
                     Interact
                 </button>
                 <button
                     id="status-button"
-                    class="button huge-text Header-text pointer hover"
+                    class="border-normal button huge-text header-text pointer hover"
                     onclick="toggleScreen('status')"
                 >
                     Status
@@ -75,14 +75,14 @@
                 </div>
                 <button
                     id="crafting-button"
-                    class="button huge-text Header-text pointer hover"
+                    class="border-normal button huge-text header-text pointer hover"
                     onclick="craftingScreen()"
                 >
                     crafting
                 </button>
-                <button class="button huge-text Header-text pointer hover"></button>
+                <button class="border-normal button huge-text header-text pointer hover"></button>
                 <button
-                    class="button huge-text Header-text pointer hover"
+                    class="border-normal button huge-text header-text pointer hover"
                     onclick="testingFunction()"
                 >
                     <item-icon class="fit-svg item-apple" data-material="apple"></item-icon>
@@ -107,9 +107,26 @@
                             id="craft-preview"
                             onclick="selectModulePart(event)"
                         ></item-group>
-                        <div class="dark-bubble" id="module-selector">
-                            <!-- JS inserts al the module dropdowns -->
-                        </div>
+                        <section class="flex-down" id="part-selectors">
+                            <nav class="flex">
+                                <button
+                                    class="button-tertiary border-thin fit-div-W medium-text header-text"
+                                    onclick="clickPartNav('module')"
+                                    data-slot="module"
+                                >
+                                    Module
+                                </button>
+                                <button
+                                    class="button-tertiary border-thin fit-div-W medium-text header-text"
+                                    onclick="clickPartNav('material')"
+                                    data-slot="material"
+                                >
+                                    Matrial
+                                </button>
+                            </nav>
+                            <div class="fit-div hide" id="module-selector"></div>
+                            <div class="fit-div hide" id="material-selector"></div>
+                        </section>
                     </div>
                     <div class="inventory blue-bubble"></div>
                     <div id="crafting-info" class="border-super-thin">

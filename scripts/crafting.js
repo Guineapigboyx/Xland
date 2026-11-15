@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const schematicPicker = document.getElementById("schematics-picker");
 
-    // construct elements for craft screen picker ------------------------------------------------
+    // construct elements for craft screen picker ------------------------------------------------------------------------------------------------
     for (let i = 0; i < Object.keys(schematics).length; i++) {
         // schematic picker
         const currentSchematic = schematics[Object.keys(schematics)[i]];
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         schematicPicker.appendChild(button);
     }
 
-    // selecting a schematic ------------------------------------------------
+    // selecting a schematic ------------------------------------------------------------------------------------------------
     document.querySelector("#schematics-picker").addEventListener("click", (e) => {
         const button = e.target.closest("button.button-icon");
         if (!button) return;
@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modfiyClass("#schematics-picker .selected", "selected", "remove");
         modfiyClass(button, "selected", "add");
+
+        //Select the modules menue
+        clickPartNav("module");
 
         // fill in module selector
         const moduleSelector = document.querySelector("#module-selector");
@@ -153,4 +156,8 @@ function updateCraftPreview() {
 /** Selecting a module in the material preview */
 function selectModulePart(event) {
     const clickedModule = event.target.closest("item-icon");
+
+    clickPartNav("material");
+
+    // might do some more with this at some point
 }
