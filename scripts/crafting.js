@@ -54,20 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // fill in module selector
         const moduleSelector = document.getElementById("module-selector");
         moduleSelector.replaceChildren();
-        for (let i = 0; i < Object.values(schematic.parts).length; i++) {
+        const schematicParts = Object.entries(schematic.parts);
+
+        for (let i = 0; i < schematicParts.length; i++) {
+            const [partKey, part] = schematicParts[i];
+
             let partBubble = document.createElement("div");
             let dropDownRoot = document.createElement("div");
             let partName = document.createElement("span");
 
-            partName.textContent = Object.values(schematic.parts)[i].partName;
-            partBubble.dataset.slot = i;
+            partName.textContent = part.partName;
+            partBubble.dataset.slot = partKey;
 
             createDropDown(
                 dropDownRoot,
-                createOptions(
-                    getUnlockedModules(schematic, false, Object.values(schematic.parts)[i].name),
-                ),
-                `#module-selector > [data-slot="${i}"] > .dropdown`,
+                createOptions(getUnlockedModules(schematic, false, partKey)),
+                `#module-selector > [data-slot="${partKey}"] > .dropdown`,
                 "Select Module",
                 "crafting-module",
             );
@@ -78,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             partName.className = "large-text";
 
             // make it so the dropdowns don't cover each other up
-            partBubble.style.zIndex = Object.values(schematic.parts).length - i;
+            partBubble.style.zIndex = schematicParts.length - i;
 
             // insert all the elements
             partBubble.appendChild(partName);
@@ -91,6 +93,62 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+/**
+ * Builds the craft preview from the modules currently selected in the module picker
+ */
+function updateCraftPreview() {
+    const selectedSchematic = document.querySelector("#schematics-picker > .selected")?.dataset
+        .schematic;
+    const craftPreview = document.getElementById("craft-preview");
+
+    if (!selectedSchematic || !craftPreview) return;
+
+    const schematic = schematics[selectedSchematic];
+    const iconData = [];
+
+    for (const [partKey, part] of Object.entries(schematic.parts)) {
+        const dropdown = document.querySelector(
+            `#module-selector > [data-slot="${partKey}"] > .dropdown`,
+        );
+
+        const moduleName = dropdown?.getAttribute("value");
+
+        if (!moduleName || moduleName === "N/A") continue;
+
+        const moduleKey = Object.keys(modules).find((key) => modules[key].name === moduleName);
+
+        if (!moduleKey) {
+            console.warn("Could not find module:", moduleName);
+            continue;
+        }
+
+        iconData.push({
+            class: `item-${moduleKey}`,
+            material: "schematic5",
+            material2: "schematic1",
+            layer: part.layer,
+        });
+
+        // Add the schematic's shared SVG when its associated part is selected.
+        if (schematic.commonPart?.material === partKey) {
+            iconData.push({
+                class: schematic.commonPart.SVG,
+                material: "schematic5",
+                material2: "schematic1",
+                layer: 0,
+            });
+        }
+    }
+
+    const iconGroup = createItemIcon(iconData);
+
+    // craft-preview is already an item-group, so place the icons directly inside it.
+    craftPreview.replaceChildren(...iconGroup.children);
+
+    // Make the individual modules highlight when hovered.
+    addClass("#craft-preview > item-icon", "svg-hover-light");
+}
 
 /** Selecting a module in the material preview */
 function selectModulePart(event) {
