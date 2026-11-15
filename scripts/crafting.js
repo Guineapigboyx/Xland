@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modfiyClass(button, "selected", "add");
 
         // fill in module selector
-        const moduleSelector = document.getElementById("module-selector");
+        const moduleSelector = document.querySelector("#module-selector");
         clearDiv(moduleSelector);
         const schematicParts = Object.entries(schematic.parts);
 

@@ -154,7 +154,7 @@ function clearDiv(selector, offset) {
     }
 
     if (!(selector instanceof Element)) {
-        console.warn("Invalid inventory selector", selector);
+        console.warn("Invalid selector could not clear", selector);
         return;
     }
     if (offset < 1 || typeof offset !== "number") offset = 0;

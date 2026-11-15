@@ -448,8 +448,6 @@ function getIcon(icon, materialOveride) {
             // prettier-ignore
             const moduleName = Object.keys(modules).find((module) => modules[module].name === craftedModule.module.name,);
 
-            console.log(craftedModule);
-
             let currentIcon = {
                 class: `item-${moduleName}`,
                 material: craftedModule.materials[0].item,
