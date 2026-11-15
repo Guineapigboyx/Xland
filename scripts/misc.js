@@ -140,6 +140,10 @@ function testingFunction() {
             gameState.persons.link.inventory,
         );
     }
+
+    // give every module and schematic
+    gameState.unlocked.schematic = Object.keys(schematics);
+    gameState.unlocked.module = Object.keys(modules);
 }
 
 /**

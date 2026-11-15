@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // the module selectors
             case "crafting-module":
                 updateCraftPreview();
+                updateMaterialSelectors();
                 break;
         }
     });

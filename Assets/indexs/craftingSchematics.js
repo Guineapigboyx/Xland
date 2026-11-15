@@ -787,7 +787,7 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [items.wire, materialTypes.metal, materialTypes.skin],
+                allowedMaterials: [materialTypes.wire, materialTypes.metal, materialTypes.skin],
                 amount: 3,
             },
         ],

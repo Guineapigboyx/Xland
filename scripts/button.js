@@ -43,6 +43,7 @@ function craftingScreen() {
 
     // clear module selector, craft preview, inventory
     clearDiv("#module-selector");
+    clearDiv("#material-selector");
     clearDiv("#craft-preview");
     clearDiv(".craft-screen > .inventory");
 

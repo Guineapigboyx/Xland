@@ -744,11 +744,6 @@ body {
     margin-bottom: 5%;
 }
 
-.material-selector {
-    row-gap: calc(var(--scale) * 0.3);
-    margin-left: -3%;
-}
-
 .material-selector > div {
     display: grid;
     grid-template-columns: 14% auto max-content;

@@ -45,8 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const schematic = schematics[button.dataset.schematic];
         if (!schematic) return;
 
-        // clear craft preview
+        // clear craft and material preview
         clearDiv("#craft-preview");
+        clearDiv("#material-selector");
 
         modfiyClass("#schematics-picker .selected", "selected", "remove");
         modfiyClass(button, "selected", "add");
@@ -131,6 +132,7 @@ function updateCraftPreview() {
             material: "schematic5",
             material2: "schematic1",
             layer: part.layer,
+            slot: partKey,
         });
 
         // Add the schematic's shared SVG when its associated part is selected.
@@ -145,6 +147,13 @@ function updateCraftPreview() {
     }
 
     const iconGroup = createItemIcon(iconData);
+    const previewIcons = [...iconGroup.children];
+
+    for (let i = 0; i < previewIcons.length; i++) {
+        if (iconData[i].slot) {
+            previewIcons[i].dataset.slot = iconData[i].slot;
+        }
+    }
 
     // craft-preview is already an item-group, so place the icons directly inside it.
     craftPreview.replaceChildren(...iconGroup.children);
@@ -153,11 +162,144 @@ function updateCraftPreview() {
     modfiyClass("#craft-preview > item-icon", "svg-hover-light", "add");
 }
 
-/** Selecting a module in the material preview */
-function selectModulePart(event) {
-    const clickedModule = event.target.closest("item-icon");
+/**
+ * Builds the material selectors for all currently selected modules.
+ */
+function updateMaterialSelectors() {
+    // prettier-ignore
+    const selectedSchematic = document.querySelector("#schematics-picker > .selected")?.dataset.schematic;
+    const materialSelector = document.getElementById("material-selector");
 
+    if (!selectedSchematic || !materialSelector) return;
+    clearDiv(materialSelector);
+
+    const schematic = schematics[selectedSchematic];
+
+    for (const [partKey, part] of Object.entries(schematic.parts)) {
+        const dropdown = document.querySelector(
+            `#module-selector > [data-slot="${partKey}"] > .dropdown`,
+        );
+
+        const moduleName = dropdown?.getAttribute("value");
+        if (!moduleName || moduleName === "N/A") continue;
+
+        const moduleKey = Object.keys(modules).find((key) => modules[key].name === moduleName);
+        if (!moduleKey) continue;
+
+        const selectedModule = modules[moduleKey];
+
+        // Create the details element for this part.
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+
+        details.className = "material-selector flex-down small-text bubble square-bubble";
+        details.dataset.slot = partKey;
+
+        summary.textContent = part.partName;
+
+        details.appendChild(summary);
+
+        // Create one material selector for each requirement.
+        for (let i = 0; i < selectedModule.materials.length; i++) {
+            const requirement = selectedModule.materials[i];
+
+            const materialSlot = document.createElement("div");
+            const materialName = document.createElement("p");
+            const materialAmount = document.createElement("p");
+            const materialIcon = document.createElement("item-icon");
+
+            // Get the allowed material names.
+            const allowedMaterials = requirement.allowedMaterials.flat(Infinity);
+
+            //prettier-ignore
+            const allowedNames = allowedMaterials.map((material) => {
+                if (typeof material === "string") {return material;}
+                return material.name;
+            });
+
+            // Use a generic icon representing the first allowed material.
+            const firstMaterial = allowedMaterials[0];
+
+            let iconClass = "item-ingot";
+
+            if (typeof firstMaterial === "string") {
+                const materialIcons = {
+                    [materialTypes.metal]: "item-ingot",
+                    [materialTypes.rock]: "item-stone",
+                    [materialTypes.wood]: "item-treeBranch",
+                    [materialTypes.bone]: "item-bone",
+                    [materialTypes.gemStone]: "item-gemstone",
+                    [materialTypes.plants]: "item-leaf",
+                    [materialTypes.liquid]: "item-water",
+                    [materialTypes.meat]: "item-meat",
+                    [materialTypes.skin]: "item-leather",
+                    [materialTypes.sticky]: "item-goop",
+                    [materialTypes.wire]: "item-string",
+                };
+
+                iconClass = materialIcons[firstMaterial] || "item-ingot";
+            } else if (firstMaterial) {
+                const itemKey = Object.keys(items).find((key) => items[key] === firstMaterial);
+
+                iconClass = `item-${firstMaterial.SVG || itemKey}`;
+            }
+
+            // Configure the material icon.
+            materialIcon.className = `fit-svg ${iconClass}`;
+            materialIcon.dataset.material = "schematic5";
+
+            // Configure the material requirement label.
+            if (allowedMaterials.every((material) => typeof material === "string")) {
+                materialName.textContent = `Any ${allowedNames.join(" / ")}`;
+            } else {
+                materialName.textContent = allowedNames.join(" / ");
+            }
+
+            materialAmount.textContent = `${requirement.amount}x`;
+
+            // Style the material amount
+            materialAmount.className =
+                "small-text center-text header-text dark-bubble square-bubble";
+
+            // semi auto scale text for material name
+            if (materialName.textContent.length > 30) {
+                materialName.className = "tiny-text";
+            } else if (materialName.textContent.length > 20) {
+                materialName.className = "small-text";
+            } else {
+                materialName.className = "medium-text";
+            }
+            modfiyClass(materialName, "center-text", "add");
+
+            // Configure the material slot.
+            materialSlot.className = "material-slot border-super-thin bad";
+            materialSlot.dataset.part = partKey;
+            materialSlot.dataset.materialSlot = i;
+
+            materialSlot.append(materialIcon, materialName, materialAmount);
+
+            details.appendChild(materialSlot);
+        }
+
+        materialSelector.appendChild(details);
+    }
+}
+
+/** Select a module in the material preview */
+function selectModulePart(event) {
+    const clickedModule = event.target.closest("item-icon[data-slot]");
+
+    if (!clickedModule) return;
+
+    const partKey = clickedModule.dataset.slot;
+
+    // Switch to the material selector menu.
     clickPartNav("material");
 
-    // might do some more with this at some point
+    // Find the corresponding material details.
+    const details = document.querySelector(`#material-selector > details[data-slot="${partKey}"]`);
+
+    if (!details) return;
+
+    details.open = true;
 }
