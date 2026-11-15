@@ -89,7 +89,7 @@ let itemIcons = [
     { cssClass: "item-shieldedHandle", file: "modules/handle/shielded handle.svg" },
     { cssClass: "item-stickyHandle", file: "modules/handle/sticky handle.svg" },
     { cssClass: "item-thickHandle", file: "modules/handle/thick handle.svg" },
-    { cssClass: "item-wrapedHandle", file: "modules/handle/wraped handle.svg" },
+    { cssClass: "item-wrappedHandle", file: "modules/handle/wrapped handle.svg" },
     { cssClass: "item-flexibleHandle", file: "modules/handle/flexible handle.svg" },
     { cssClass: "item-longHandle", file: "modules/handle/long handle.svg" },
     // schematic common handles
@@ -558,7 +558,7 @@ function createItemIcon(iconData) {
 
         icon.className = iconData[i].class;
         icon.dataset.material = iconData[i].material;
-        if (icon.dataset.material2) icon.dataset.material2 = iconData[i].material2;
+        if (iconData[i].material2) icon.dataset.material2 = iconData[i].material2;
         icon.style.zIndex = iconData[i].layer;
 
         iconGroup.appendChild(icon);
