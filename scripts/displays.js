@@ -75,7 +75,7 @@ function clickDropDown(selector, options, clicked) {
             dropdownOptionsEL.style.transform = "";
         }
 
-        resetDropdown(dropdownOptionsEL);
+        clearDiv(dropdownOptionsEL, 1);
 
         // create the dropdown options
         for (let i = 0; i < options.length; i++) {
@@ -237,7 +237,7 @@ function fillInventory(selector, inventory) {
         console.warn("Invalid inventory selector", inventoryEl);
         return;
     }
-    clearInventory(selector);
+    clearDiv(selector);
 
     for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
         iconData = getIcon(inventory[invenItems]);
@@ -257,15 +257,6 @@ function fillInventory(selector, inventory) {
 
         inventoryEl.appendChild(icon);
     }
-}
-
-function clearInventory(selector) {
-    const inventoryEl = document.querySelector(selector);
-    if (!inventoryEl) {
-        console.warn("Invalid inventory selector", inventoryEl);
-        return;
-    }
-    inventoryEl.replaceChildren();
 }
 
 /**

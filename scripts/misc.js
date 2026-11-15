@@ -66,11 +66,6 @@ function hasClass(selector, classToCheck) {
     } else return false;
 }
 
-// clear drop down options
-function resetDropdown(dropDownOptionsEL) {
-    dropDownOptionsEL.replaceChildren(dropDownOptionsEL.firstElementChild);
-}
-
 /**
  * Runs map() with a specified property.
  * Bassicly allows you to make a new array one Object deeper
@@ -136,4 +131,25 @@ function testingFunction() {
             gameState.persons.link.inventory,
         );
     }
+}
+
+/**
+ * Clear the children of a element but preserve a set number of elements at the top
+ *
+ * @param {String|HTMLElement} selector - css selector or html element
+ * @param {Number|undefined} offset - how many children should be preserved
+ */
+function clearDiv(selector, offset) {
+    if (typeof selector === "string") {
+        selector = document.querySelector(selector);
+    }
+
+    if (!(selector instanceof Element)) {
+        console.warn("Invalid inventory selector", selector);
+        return;
+    }
+    if (offset < 1) offset = 0;
+
+    // Slice off all elements past the offset child
+    selector.replaceChildren(...Array.from(selector.children).slice(0, offset));
 }

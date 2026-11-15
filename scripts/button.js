@@ -42,9 +42,9 @@ function craftingScreen() {
     addClass("#crafting-player-dropdown > section", "hide");
 
     // clear module selector, craft preview, inventory
-    document.querySelector("#module-selector").replaceChildren();
-    document.querySelector("#craft-preview").replaceChildren();
-    clearInventory(".craft-screen > .inventory");
+    clearDiv("#module-selector");
+    clearDiv("#craft-preview");
+    clearDiv(".craft-screen > .inventory");
 
     // show unlocked schematic buttons
     const unlockedSchematics = gameState.unlocked.schematic;

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             case "crafting-player":
                 // reset craft screen
                 if (value === "N/A") {
-                    clearInventory(".craft-screen > .inventory");
+                    clearDiv(".craft-screen > .inventory");
                     return;
                 }
 

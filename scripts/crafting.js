@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!schematic) return;
 
         // clear craft preview
-        document.querySelector("#craft-preview").replaceChildren();
+        clearDiv("#craft-preview");
 
         document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
         button.classList.add("selected");
 
         // fill in module selector
         const moduleSelector = document.getElementById("module-selector");
-        moduleSelector.replaceChildren();
+        clearDiv(moduleSelector);
         const schematicParts = Object.entries(schematic.parts);
 
         for (let i = 0; i < schematicParts.length; i++) {
