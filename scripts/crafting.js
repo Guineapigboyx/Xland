@@ -188,16 +188,16 @@ function updateMaterialSelectors() {
 
         const selectedModule = modules[moduleKey];
 
-        // Create the details element for this part.
-        const details = document.createElement("details");
+        // Create the material bubble element for this part.
+        const materialBubble = document.createElement("div");
         const summary = document.createElement("summary");
 
-        details.className = "material-selector flex-down small-text bubble square-bubble";
-        details.dataset.slot = partKey;
+        materialBubble.className = "material-selector flex-down small-text bubble square-bubble";
+        materialBubble.dataset.slot = partKey;
 
         summary.textContent = `${part.partName} => ${moduleName}`;
 
-        details.appendChild(summary);
+        materialBubble.appendChild(summary);
 
         // Create one material selector for each requirement.
         for (let i = 0; i < selectedModule.materials.length; i++) {
@@ -278,10 +278,10 @@ function updateMaterialSelectors() {
 
             materialSlot.append(materialIcon, materialName, materialAmount);
 
-            details.appendChild(materialSlot);
+            materialBubble.appendChild(materialSlot);
         }
 
-        materialSelector.appendChild(details);
+        materialSelector.appendChild(materialBubble);
     }
 }
 
@@ -297,7 +297,7 @@ function selectModulePart(event) {
     clickPartNav("material");
 
     // Find the corresponding material details.
-    const details = document.querySelector(`#material-selector > details[data-slot="${partKey}"]`);
+    const details = document.querySelector(`#material-selector > div[data-slot="${partKey}"]`);
 
     if (!details) return;
 

@@ -716,13 +716,18 @@ body {
     border-radius: calc(var(--scale) * 2);
 }
 
-#module-selector {
+#module-selector,
+#material-selector {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     overflow-x: hidden;
     contain: strict;
     row-gap: 5%;
+}
+
+#material-selector {
+    row-gap: 1.5%;
 }
 
 /* part bubble ------------------------------------------------------------------------------------------------------------ */
