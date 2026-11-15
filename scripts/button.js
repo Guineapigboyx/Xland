@@ -17,16 +17,16 @@ function toggleScreen(buttonClicked) {
     for (let i = 0; i < Object.keys(navButton).length; i++) {
         section = navButton[Object.keys(navButton)[i]];
         updateTextContent(section.id, section.buttonText);
-        addClass(section.sectionClass, "hide");
+        modfiyClass(section.sectionClass, "hide", "add");
     }
 
     // If the screens sectionClass is hidden show it and switch the button to say retur
     if (buttonAlredayActive) {
-        addClass("#bottom-null", "hide");
+        modfiyClass("#bottom-null", "hide", "add");
         updateTextContent(navButtonClicked.id, "return");
-        removeClass(navButtonClicked.sectionClass, "hide");
+        modfiyClass(navButtonClicked.sectionClass, "hide", "remove");
     } else {
-        removeClass("#bottom-null", "hide");
+        modfiyClass("#bottom-null", "hide", "remove");
     }
 }
 
@@ -35,11 +35,11 @@ function craftingScreen() {
     document.querySelector("#crafting-player-dropdown > label").textContent = "Select teamate";
 
     // hide all schematic buttons
-    addClass("#schematics-picker > button", "hide");
+    modfiyClass("#schematics-picker > button", "hide", "add");
     // deselect all schematic buttons
-    removeClass("#schematics-picker > button", "selected");
+    modfiyClass("#schematics-picker > button", "selected", "remove");
     // hide play dropdown options
-    addClass("#crafting-player-dropdown > section", "hide");
+    modfiyClass("#crafting-player-dropdown > section", "hide", "add");
 
     // clear module selector, craft preview, inventory
     clearDiv("#module-selector");
@@ -52,7 +52,7 @@ function craftingScreen() {
         const schematicButton = document.querySelector(
             `#schematics-picker > [data-schematic="${unlockedSchematics[i]}"]`,
         );
-        if (schematicButton) schematicButton.classList.remove("hide");
+        if (schematicButton) modfiyClass(schematicButton, "hide", "remove");
     }
 
     toggleScreen("crafting");

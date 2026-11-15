@@ -1,19 +1,28 @@
 // Class helpers --------------------------------------------------------------
-function toggleClass(selector, classNameToToggle) {
-    document.querySelectorAll(selector).forEach((el) => {
-        el.classList.toggle(classNameToToggle);
-    });
-}
 
-function addClass(selector, classNameToToggle) {
-    document.querySelectorAll(selector).forEach((el) => {
-        el.classList.add(classNameToToggle);
-    });
-}
+/**
+ * Add, remove, or toggle a class on elements.
+ *
+ * @param {String|HTMLElement|HTMLElement[]} selector - CSS selector or HTML element(s)
+ * @param {String} className - The class to modify
+ * @param {"add"|"remove"|"toggle"} action - What to do with the class
+ */
+function modfiyClass(selector, className, action) {
+    let elements = [];
 
-function removeClass(selector, classNameToToggle) {
-    document.querySelectorAll(selector).forEach((el) => {
-        el.classList.remove(classNameToToggle);
+    if (typeof selector === "string") {
+        elements = document.querySelectorAll(selector);
+    } else if (Array.isArray(selector)) {
+        elements = selector;
+    } else if (selector instanceof Element) {
+        elements = [selector];
+    } else {
+        console.warn("Can't modify class since invalid:", selector);
+        return;
+    }
+
+    elements.forEach((el) => {
+        el.classList[action](...className.split(" "));
     });
 }
 

@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // crafting screen with that persons data
                 fillInventory(".craft-screen > .inventory", gameState.persons[value].inventory);
 
-                addClass(".craft-screen > .inventory > item-group", "svg-hover");
+                modfiyClass(".craft-screen > .inventory > item-group", "svg-hover", "add");
                 break;
             // the module selectors
             case "crafting-module":

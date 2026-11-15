@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // clear craft preview
         clearDiv("#craft-preview");
 
-        document.querySelector("#schematics-picker .selected")?.classList.remove("selected");
-        button.classList.add("selected");
+        modfiyClass("#schematics-picker .selected", "selected", "remove");
+        modfiyClass(button, "selected", "add");
 
         // fill in module selector
         const moduleSelector = document.getElementById("module-selector");
@@ -147,7 +147,7 @@ function updateCraftPreview() {
     craftPreview.replaceChildren(...iconGroup.children);
 
     // Make the individual modules highlight when hovered.
-    addClass("#craft-preview > item-icon", "svg-hover-light");
+    modfiyClass("#craft-preview > item-icon", "svg-hover-light", "add");
 }
 
 /** Selecting a module in the material preview */

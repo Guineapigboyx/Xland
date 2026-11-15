@@ -66,7 +66,7 @@ function clickDropDown(selector, options, clicked) {
     // hide/show dropdown
     if (dropdownOptionsEL.classList.contains("hide")) {
         // show dropdown-----------------------------------------------
-        dropdownOptionsEL.classList.remove("hide");
+        modfiyClass(dropdownOptionsEL, "hide", "remove");
 
         // make the dropdown go upwards
         if (dropdownEL.classList.contains("upwards")) {
@@ -111,7 +111,7 @@ function clickDropDown(selector, options, clicked) {
             }
         }
 
-        dropdownOptionsEL.classList.add("hide");
+        modfiyClass(dropdownOptionsEL, "hide", "add");
     }
 }
 
@@ -163,7 +163,7 @@ function createOptions(list, requirements, removeInvalid) {
 function showContextMenu(x, y, options) {
     // Create the context menu container
     const menu = document.createElement("div");
-    menu.classList.add("context-menu");
+    modfiyClass(menu, "context-menu", "add");
     menu.style.left = x + "px";
     menu.style.top = y + "px";
 
@@ -171,7 +171,7 @@ function showContextMenu(x, y, options) {
     options.forEach((option) => {
         const button = document.createElement("button");
         button.textContent = option.label;
-        button.classList.add("context-button hover");
+        modfiyClass(button, "context-button hover", "add");
 
         button.onclick = (e) => {
             e.stopPropagation();
@@ -253,7 +253,7 @@ function fillInventory(selector, inventory) {
         }
 
         icon.dataset.inslot = inventory[invenItems].item;
-        icon.classList.add("border-extra-thin", "context-pointer", "fit-svg");
+        modfiyClass(icon, "border-extra-thin context-pointer fit-svg", "add");
 
         inventoryEl.appendChild(icon);
     }
