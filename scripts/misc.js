@@ -148,7 +148,7 @@ function clearDiv(selector, offset) {
         console.warn("Invalid inventory selector", selector);
         return;
     }
-    if (offset < 1) offset = 0;
+    if (offset < 1 || typeof offset !== "number") offset = 0;
 
     // Slice off all elements past the offset child
     selector.replaceChildren(...Array.from(selector.children).slice(0, offset));
