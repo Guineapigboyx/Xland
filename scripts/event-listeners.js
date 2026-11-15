@@ -60,8 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             // the module selectors
             case "crafting-module":
-                updateCraftPreview();
-                break;
+                if (value === "N/A") {
+                    // clear craft preview
+                    document.querySelector("#craft-preview").replaceChildren();
+                    break;
+                } else {
+                    updateCraftPreview();
+                    break;
+                }
         }
     });
 });

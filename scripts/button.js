@@ -38,8 +38,13 @@ function craftingScreen() {
     addClass("#schematics-picker > button", "hide");
     // deselect all schematic buttons
     removeClass("#schematics-picker > button", "selected");
-
+    // hide play dropdown options
     addClass("#crafting-player-dropdown > section", "hide");
+
+    // clear module selector, craft preview, inventory
+    document.querySelector("#module-selector").replaceChildren();
+    document.querySelector("#craft-preview").replaceChildren();
+    clearInventory(".craft-screen > .inventory");
 
     // show unlocked schematic buttons
     const unlockedSchematics = gameState.unlocked.schematic;
