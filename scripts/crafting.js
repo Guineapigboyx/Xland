@@ -288,18 +288,10 @@ function updateMaterialSelectors() {
 /** Select a module in the material preview */
 function selectModulePart(event) {
     const clickedModule = event.target.closest("item-icon[data-slot]");
-
     if (!clickedModule) return;
 
     const partKey = clickedModule.dataset.slot;
 
     // Switch to the material selector menu.
     clickPartNav("material");
-
-    // Find the corresponding material details.
-    const details = document.querySelector(`#material-selector > div[data-slot="${partKey}"]`);
-
-    if (!details) return;
-
-    details.open = true;
 }

@@ -45,7 +45,7 @@ function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
  *
  * @param {items.item|inventoryItem} item - the item being put in the inventory
  * @param {gameState.persons.person.inventory} inventory - the inventory to put the item into
- * @param {boolean} noCombine - does not combine like items
+ * @param {boolean|undefined} noCombine - does not combine like items
  * @returns
  */
 function addItemToInventory(item, inventory, noCombine) {
@@ -74,6 +74,11 @@ function addItemToInventory(item, inventory, noCombine) {
         (invenItem) =>
             invenItem.item === item.item && invenItem.craftedItemID === item.craftedItemID,
     );
+
+    if (typeof item.count !== "number") {
+        console.log("Invalid count", item);
+        item.count = 1;
+    }
 
     if (combineItem && !noCombine) {
         combineItem.count += 1;

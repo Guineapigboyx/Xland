@@ -128,6 +128,7 @@ function testingFunction() {
             material2: "raindite",
             inventory: [],
             timesUsed: 0,
+            count: 1,
         };
 
         addItemToInventory(module, gameState.persons.locario.inventory);
@@ -138,6 +139,7 @@ function testingFunction() {
         addItemToInventory(
             makeInventoryItem("wood", undefined, materials[i]),
             gameState.persons.link.inventory,
+            true,
         );
     }
 
