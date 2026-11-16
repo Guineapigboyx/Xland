@@ -75,8 +75,10 @@ function addItemToInventory(item, inventory, noCombine) {
             invenItem.item === item.item && invenItem.craftedItemID === item.craftedItemID,
     );
 
-    if (combineItem && noCombine) {
+    if (combineItem && !noCombine) {
         combineItem.count += 1;
+        if (item.material1) combineItem.material1 = item.material1;
+        if (item.material2) combineItem.material2 = item.material2;
     } else {
         inventory.push(item);
     }

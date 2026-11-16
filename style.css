@@ -577,6 +577,8 @@ body {
     height: 80%;
 }
 
+/* inventory ------------------------------------------------------------------------------------------------------------ */
+
 .person-inventory {
     grid-column: 1/4;
     padding-right: 5%;
@@ -587,6 +589,12 @@ body {
 .inventory > item-group {
     background-color: var(--dark-bubble-color);
     aspect-ratio: 1/1;
+}
+
+.count-indictor {
+    transform: translateY(-95%);
+    justify-self: end;
+    width: min-content;
 }
 
 /* Equipment slots ------------------------------------------------------------------------------------------------------------ */
