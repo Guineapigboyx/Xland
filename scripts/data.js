@@ -2,8 +2,8 @@
  * Convert a items.item into a inventoryItem
  * @param {String|items.item} item
  * @param {Number|undefined} craftingId
- * @param {String|undefined} material1
- * @param {String|undefined} material2
+ * @param {String|undefined} materialCss1
+ * @param {String|undefined} materialCss2
  */
 function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
     if (typeof item === "string" && items[item]) {
@@ -15,10 +15,11 @@ function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
             material2: materialCss2,
             inventory: [],
             timesUsed: 0,
+            count: 1,
         };
     } else if (typeof item === "object") {
         // If using an item object reference
-        itemKey = Object.keys(items).find((key) => items[key] === item);
+        let itemKey = Object.keys(items).find((key) => items[key] === item);
         if (itemKey === undefined) {
             console.warn(`Invalid Item reference`, item);
             return false;
@@ -27,10 +28,11 @@ function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
         return {
             item: itemKey,
             craftedItemID: craftingId,
-            material1: material1,
-            material2: material2,
+            material1: materialCss1,
+            material2: materialCss1,
             inventory: [],
             timesUsed: 0,
+            count: 1,
         };
     } else {
         console.warn(`Invalid Item reference or item ID`, item);
@@ -42,25 +44,42 @@ function makeInventoryItem(item, craftingId, materialCss1, materialCss2) {
  * Add a item to a inventory
  *
  * @param {items.item|inventoryItem} item - the item being put in the inventory
- * @param {gameState.persons.person.inventory} inventory  - the inventory to put the item into
+ * @param {gameState.persons.person.inventory} inventory - the inventory to put the item into
+ * @param {boolean} noCombine - does not combine like items
  * @returns
  */
-function addItemToInventory(item, inventory) {
+function addItemToInventory(item, inventory, noCombine) {
     if (inventory.length === undefined) {
         console.warn("could not get inventory to add item to", inventory);
         return;
     }
 
-    if (typeof item !== "object") {
+    if (typeof item !== "object" && isArray(item)) {
         console.warn("invalid item", item);
         return;
     }
-    if (!item.item) {
+
+    if (typeof item === "string" || Object.values(items).find((x) => x.name === item.name)) {
         // checks to see if the item is a item or inventoryItem
         item = makeInventoryItem(item);
     }
 
-    inventory.push(item);
+    if (!item.item) {
+        console.warn("Failed to crate item");
+        return;
+    }
+
+    // Combine like items
+    let combineItem = inventory.find(
+        (invenItem) =>
+            invenItem.item === item.item && invenItem.craftedItemID === item.craftedItemID,
+    );
+
+    if (combineItem && noCombine) {
+        combineItem.count += 1;
+    } else {
+        inventory.push(item);
+    }
 }
 
 function getActiveTeamates() {
