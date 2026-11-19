@@ -316,3 +316,117 @@ function createDropDown(dropDownRoot, options, selector, baseValue, type) {
         clickDropDown(selector, options, event);
     };
 }
+
+/**
+ * Creates a positioned container relative to a target element
+ * @param {string|Element} targetSelector - CSS selector or DOM Element
+ * @returns {{container: HTMLElement, inner: HTMLElement, target: Element, verticalPos: string, horizontalPos: string, removal: Function} | null}
+ */
+function createPositionedContainer(targetSelector) {
+    //there are 2 unused classes
+    // top what flips the speach bubble upsidedown
+    // left what makes the bubble come from the right side insted of left
+    let target = null;
+    if (typeof targetSelector === "string") {
+        target = document.querySelector(targetSelector);
+    } else if (targetSelector instanceof Element) {
+        target = targetSelector;
+    }
+
+    if (!target) return null;
+
+    // Get position of the target element
+    const targetRect = target.getBoundingClientRect();
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // Determine where the bubble extends based on where the target is
+    let verticalPos = "top";
+    if (targetRect.y < screenHeight / 3) {
+        // Top 1/3 of the screen, flip the box down
+        verticalPos = "bottom";
+    }
+
+    let horizontalPos = "right";
+    if (targetRect.x > screenWidth / 3) {
+        // Right 2/3 of the screen, flip the box to the left
+        horizontalPos = "left";
+    }
+
+    // Bounding box for transformations
+    const container = document.createElement("div");
+    container.classList.add("textcontainerbox");
+
+    container.style.top = targetRect.y + "px"; // Distance from the top of the viewport
+    container.style.left = targetRect.x + "px"; // Distance from the left of the viewport
+    container.style.width = target.offsetWidth + "px"; // Width of target
+    container.style.height = target.offsetHeight + "px"; // Height of target
+
+    // Inner container for horizontal positioning
+    const inner = document.createElement("div");
+    inner.classList.add("innertext", verticalPos, horizontalPos);
+    if (horizontalPos === "left") {
+        inner.style.width = target.offsetLeft + "px"; // Distance from the edge of the parent container
+    }
+    inner.style.height = target.offsetHeight + "px"; // Height of target
+
+    document.body.appendChild(container);
+    container.appendChild(inner);
+
+    const removal = () => container.remove();
+
+    return { container, inner, target, verticalPos, horizontalPos, removal };
+}
+
+/**
+ * Shows a speech bubble text box near the target element for a given duration.
+ * @param {string|HTMLElement} targetSelector - CSS selector for the target element or DOM Element
+ * @param {string} text - text to display
+ * @param {number} time - duration in milliseconds
+ * @param {boolean} waitForRemoval - if true, holds up the caller until the box disappears
+ * @returns {Promise<void>|void}
+ */
+async function spawnTextBox(targetSelector, text, time, waitForRemoval = false) {
+    const positioned = createPositionedContainer(targetSelector);
+    if (!positioned) return;
+
+    const { inner, target, verticalPos, horizontalPos, removal } = positioned;
+
+    // Create the textbox
+    const textbox = document.createElement("dialog");
+    textbox.classList.add("textbox", verticalPos, horizontalPos);
+    if (horizontalPos === "right") {
+        textbox.style.width = target.offsetLeft + target.offsetWidth + "px";
+    }
+    textbox.textContent = text;
+    textbox.setAttribute("open", "");
+
+    inner.appendChild(textbox);
+
+    // If time is 0, wait for Shift key release to remove
+    if (time === 0) {
+        return new Promise((resolve) => {
+            function onShiftRelease(e) {
+                if (e.key === "Shift") {
+                    document.removeEventListener("keyup", onShiftRelease);
+                    removal();
+                    resolve();
+                }
+            }
+            document.addEventListener("keyup", onShiftRelease);
+        });
+    }
+
+    // Remove the text box after the specified time
+    if (waitForRemoval) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                removal();
+                resolve();
+            }, time);
+        });
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, time));
+    removal();
+}

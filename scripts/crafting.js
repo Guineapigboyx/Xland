@@ -354,7 +354,8 @@ function selectMaterialSel(event) {
             requirement.allowedMaterials.includes(item.name) ||
             requirement.allowedMaterials.includes(item.materialData.materialType)   
     )) {
-        console.log("Invalid material"); // todo add a ingame warning for it being invalid
+        playSound(sounds.System.Basic_sounds.invalid);
+        spawnTextBox(clickedSlot,"Invalid material",2000)
         return;
     }
 
@@ -397,15 +398,14 @@ function updateCraftingInventory() {
             const selectedModule = modules[selectedPart.module];
             const requirement = selectedModule.materials[Number(materialSlot.dataset.materialSlot)];
 
-            modfiyClass(materialSlot, "good warn bad", "remove");
+            modfiyClass(materialSlot, "good bad", "remove");
 
             if (remaining >= requirement.amount) {
                 modfiyClass(materialSlot, "good", "add");
                 remaining -= requirement.amount;
             } else {
-                modfiyClass(materialSlot, "warn", "add");
-                remaining = 0;
-                // todo replace with a real warning
+                modfiyClass(materialSlot, "bad", "add");
+                playSound(sounds.System.Basic_sounds.invalid);
             }
         }
 
