@@ -478,9 +478,9 @@ const modules = {
                     materialTypes.wire,
                     materialTypes.plants,
                     materialTypes.skin,
-                    items.rubber,
+                    "Rubber",
                 ],
-                amount: 3,
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -705,12 +705,7 @@ const modules = {
         ],
         materials: [
             {
-                allowedMaterials: [
-                    materialTypes.skin,
-                    materialTypes.plants,
-                    items.xtramite,
-                    items.rubber,
-                ],
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, "Xtramite", "Rubber"],
                 amount: 1,
             },
         ],
@@ -764,7 +759,11 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [materialTypes.wire, materialTypes.plants],
-                amount: 2,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.wire, materialTypes.plants],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -788,7 +787,15 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [materialTypes.wire, materialTypes.metal, materialTypes.skin],
-                amount: 3,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.wire, materialTypes.metal, materialTypes.skin],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.wire, materialTypes.metal, materialTypes.skin],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -813,7 +820,15 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wire],
-                amount: 3,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -972,6 +987,7 @@ const modules = {
             {
                 allowedMaterials: [materialTypes.metal],
                 amount: 3,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1046,7 +1062,7 @@ const modules = {
         part: [schematics.drill.parts.motor],
         materials: [
             {
-                allowedMaterials: [items.motor],
+                allowedMaterials: ["Motor"],
                 amount: 1,
             },
         ],
@@ -1068,8 +1084,12 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterials: [items.bolts],
-                amount: 2,
+                allowedMaterials: ["Bolts"],
+                amount: 1,
+            },
+            {
+                allowedMaterials: ["Bolts"],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1189,7 +1209,11 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
-                amount: 2,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.wood, materialTypes.metal, materialTypes.bone],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1212,7 +1236,7 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.wire,
                     materialTypes.plants,
-                    items.xtramite,
+                    "Xtramite",
                 ],
                 amount: 2,
                 same: true,
@@ -1408,8 +1432,9 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterials: [items.metal],
+                allowedMaterials: [materialTypes.metal],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1699,7 +1724,7 @@ const modules = {
                 amount: 1,
             },
             {
-                allowedMaterials: [items.shield],
+                allowedMaterials: ["Shield"],
                 amount: 1,
             },
         ],
@@ -1726,6 +1751,7 @@ const modules = {
                     materialTypes.rock,
                 ],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1771,6 +1797,7 @@ const modules = {
                     materialTypes.rock,
                 ],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -1908,7 +1935,7 @@ const modules = {
         part: [schematics.gloves.parts.gloveBody],
         materials: [
             {
-                allowedMaterials: [materialTypes.skin, materialTypes.plants, items.rubber],
+                allowedMaterials: [materialTypes.skin, materialTypes.plants, "Rubber"],
                 amount: 2,
                 same: true,
             },
@@ -2084,6 +2111,7 @@ const modules = {
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.bone, materialTypes.skin],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2225,8 +2253,12 @@ const modules = {
                 same: true,
             },
             {
-                allowedMaterials: [items.gear],
-                amount: 2,
+                allowedMaterials: ["Gear"],
+                amount: 1,
+            },
+            {
+                allowedMaterials: ["Gear"],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2600,6 +2632,7 @@ const modules = {
                     materialTypes.bone,
                 ],
                 amount: 2,
+                same: true,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2629,7 +2662,11 @@ const modules = {
             },
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wire],
-                amount: 2,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2690,9 +2727,18 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.plants,
                     materialTypes.wire,
-                    items.rubber,
+                    "Rubber",
                 ],
-                amount: 2,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    "Rubber",
+                ],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2785,7 +2831,7 @@ const modules = {
                     materialTypes.metal,
                     materialTypes.wood,
                     materialTypes.skin,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 2,
                 same: true,
@@ -2825,7 +2871,7 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.plants,
                     materialTypes.wire,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 1,
             },
@@ -2863,7 +2909,7 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.plants,
                     materialTypes.wire,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 1,
             },
@@ -2899,14 +2945,22 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [
-                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, "Rubber"],
                 ],
                 amount: 2,
                 same: true,
             },
             {
-                allowedMaterials: [[materialTypes.skin, materialTypes.plants, items.rubber]],
-                amount: 3,
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2951,9 +3005,15 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [
-                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, "Rubber"],
                 ],
                 amount: 2,
+            },
+            {
+                allowedMaterials: [
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, "Rubber"],
+                ],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -2976,9 +3036,14 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.plants,
                     materialTypes.wire,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 2,
+                same: true,
+            },
+            {
+                allowedMaterials: [materialTypes.metal, materialTypes.wire],
+                amount: 1,
             },
             {
                 allowedMaterials: [materialTypes.metal, materialTypes.wire],
@@ -3033,9 +3098,27 @@ const modules = {
                     materialTypes.skin,
                     materialTypes.plants,
                     materialTypes.wire,
-                    items.rubber,
+                    "Rubber",
                 ],
-                amount: 3,
+                amount: 1,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    "Rubber",
+                ],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [
+                    materialTypes.skin,
+                    materialTypes.plants,
+                    materialTypes.wire,
+                    "Rubber",
+                ],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -3055,14 +3138,22 @@ const modules = {
         materials: [
             {
                 allowedMaterials: [
-                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, items.rubber],
+                    [materialTypes.skin, materialTypes.plants, materialTypes.wire, "Rubber"],
                 ],
                 amount: 3,
                 same: true,
             },
             {
-                allowedMaterials: [[materialTypes.skin, materialTypes.plants, items.rubber]],
-                amount: 5,
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
+            },
+            {
+                allowedMaterials: [[materialTypes.skin, materialTypes.plants, "Rubber"]],
+                amount: 1,
             },
         ],
         itemStats: (weaponData, materialData) => {
@@ -3086,7 +3177,7 @@ const modules = {
                     materialTypes.wood,
                     materialTypes.metal,
                     materialTypes.skin,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 1,
             },
@@ -3113,7 +3204,7 @@ const modules = {
                     materialTypes.metal,
                     materialTypes.skin,
                     materialTypes.rock,
-                    items.rubber,
+                    "Rubber",
                 ],
                 amount: 1,
             },

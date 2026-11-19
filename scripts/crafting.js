@@ -1,3 +1,19 @@
+/**
+ * @property {string} person - the person crafting from the dropdown
+ * @property {schematics.schematic} schematic - the schematic crafting with
+ * @property {parts[]} parts - all the parts of the schematic and their materials
+ *
+ * @typedef {Object} Parts - all the parts of the schematic and their materials
+ * @property {String} name - part key
+ * @property {modules.module} module - the module that is applied to this slot
+ * @property {Number[]} materials - the index number from the person.inventory for the material used
+ */
+let craftingTempData = {
+    person: "",
+    schematic: "",
+    parts: {},
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const schematicPicker = document.getElementById("schematics-picker");
 
@@ -55,6 +71,19 @@ document.addEventListener("DOMContentLoaded", () => {
         //Select the modules menue
         clickPartNav("module");
 
+        // fill in schematic data in tempdata
+        craftingTempData.schematic = schematic;
+        craftingTempData.parts = {};
+        for (let i = 0; i < Object.keys(schematic.parts).length; i++) {
+            const partKey = Object.keys(schematic.parts)[i];
+            craftingTempData.parts[partKey] = {
+                module: null,
+                materials: [],
+            };
+        }
+
+        updateCraftingInventory();
+
         // fill in module selector
         const moduleSelector = document.querySelector("#module-selector");
         clearDiv(moduleSelector);
@@ -99,66 +128,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Builds the craft preview from the modules currently selected in the module picker
+ * Builds the craft preview from the selected modules.
  */
 function updateCraftPreview() {
-    const selectedSchematic = document.querySelector("#schematics-picker > .selected")?.dataset
-        .schematic;
     const craftPreview = document.getElementById("craft-preview");
+    if (!craftPreview) return;
 
-    if (!selectedSchematic || !craftPreview) return;
+    const schematic = craftingTempData.schematic;
+    if (!schematic) return;
 
-    const schematic = schematics[selectedSchematic];
+    const parts = Object.keys(craftingTempData.parts);
+
+    // make the icon
     const iconData = [];
+    for (let i = 0; i < parts.length; i++) {
+        //cthe current part
+        const partKey = parts[i];
+        const part = craftingTempData.parts[partKey];
 
-    for (const [partKey, part] of Object.entries(schematic.parts)) {
-        const dropdown = document.querySelector(
-            `#module-selector > [data-slot="${partKey}"] > .dropdown`,
-        );
+        if (!part) continue;
 
-        const moduleName = dropdown?.getAttribute("value");
-
-        if (!moduleName || moduleName === "N/A") continue;
-
-        const moduleKey = Object.keys(modules).find((key) => modules[key].name === moduleName);
-
-        if (!moduleKey) {
-            console.warn("Could not find module:", moduleName);
-            continue;
-        }
-
+        // Add the main icon
         iconData.push({
-            class: `item-${moduleKey}`,
+            class: `item-${part.module}`,
             material: "schematic5",
             material2: "schematic1",
-            layer: part.layer,
+            layer: schematic.parts[partKey].layer,
             slot: partKey,
         });
 
-        // Add the schematic's shared SVG when its associated part is selected.
-        if (schematic.commonPart?.material === partKey) {
-            iconData.push({
-                class: schematic.commonPart.SVG,
-                material: "schematic5",
-                material2: "schematic1",
-                layer: 0,
-            });
-        }
+        // if this part has a common shematic SVG add it
+        if (!schematic.commonPart) continue;
+        if (!schematic.commonPart.material === partKey) continue;
+
+        iconData.push({
+            class: schematic.commonPart.SVG,
+            material: "schematic5",
+            material2: "schematic1",
+            layer: 0,
+        });
     }
 
+    // Put a data-slot on every item-icon in in the craft preview
     const iconGroup = createItemIcon(iconData);
-    const previewIcons = [...iconGroup.children];
 
-    for (let i = 0; i < previewIcons.length; i++) {
+    for (let i = 0; i < iconGroup.children.length; i++) {
         if (iconData[i].slot) {
-            previewIcons[i].dataset.slot = iconData[i].slot;
+            iconGroup.children[i].dataset.slot = iconData[i].slot;
         }
     }
 
-    // craft-preview is already an item-group, so place the icons directly inside it.
+    // Put all of the item-icons into the craft preview instead of nesting item-groups
     craftPreview.replaceChildren(...iconGroup.children);
 
-    // Make the individual modules highlight when hovered.
     modfiyClass("#craft-preview > item-icon", "svg-hover-light", "add");
 }
 
@@ -166,27 +188,19 @@ function updateCraftPreview() {
  * Builds the material selectors for all currently selected modules.
  */
 function updateMaterialSelectors() {
-    // prettier-ignore
-    const selectedSchematic = document.querySelector("#schematics-picker > .selected")?.dataset.schematic;
     const materialSelector = document.getElementById("material-selector");
+    if (!materialSelector) return;
 
-    if (!selectedSchematic || !materialSelector) return;
     clearDiv(materialSelector);
 
-    const schematic = schematics[selectedSchematic];
+    const schematic = craftingTempData.schematic;
 
-    for (const [partKey, part] of Object.entries(schematic.parts)) {
-        const dropdown = document.querySelector(
-            `#module-selector > [data-slot="${partKey}"] > .dropdown`,
-        );
+    for (const partKey of Object.keys(schematic.parts)) {
+        const part = craftingTempData.parts[partKey];
 
-        const moduleName = dropdown?.getAttribute("value");
-        if (!moduleName || moduleName === "N/A") continue;
+        if (!part.module) continue;
 
-        const moduleKey = Object.keys(modules).find((key) => modules[key].name === moduleName);
-        if (!moduleKey) continue;
-
-        const selectedModule = modules[moduleKey];
+        const selectedModule = modules[part.module];
 
         // Create the material bubble element for this part.
         const materialBubble = document.createElement("div");
@@ -195,7 +209,7 @@ function updateMaterialSelectors() {
         materialBubble.className = "material-selector flex-down small-text bubble square-bubble";
         materialBubble.dataset.slot = partKey;
 
-        summary.textContent = `${part.partName} => ${moduleName}`;
+        summary.textContent = `${schematic.parts[partKey].partName} => ${selectedModule.name}`;
 
         materialBubble.appendChild(summary);
 
@@ -211,9 +225,11 @@ function updateMaterialSelectors() {
             // Get the allowed material names.
             const allowedMaterials = requirement.allowedMaterials.flat(Infinity);
 
-            //prettier-ignore
             const allowedNames = allowedMaterials.map((material) => {
-                if (typeof material === "string") {return material;}
+                if (typeof material === "string") {
+                    return material;
+                }
+
                 return material.name;
             });
 
@@ -241,7 +257,11 @@ function updateMaterialSelectors() {
             } else if (firstMaterial) {
                 const itemKey = Object.keys(items).find((key) => items[key] === firstMaterial);
 
-                iconClass = `item-${firstMaterial.SVG || itemKey}`;
+                if (firstMaterial.SVG) {
+                    iconClass = `item-${firstMaterial.SVG}`;
+                } else if (itemKey) {
+                    iconClass = `item-${itemKey}`;
+                }
             }
 
             // Configure the material icon.
@@ -257,11 +277,11 @@ function updateMaterialSelectors() {
 
             materialAmount.textContent = `${requirement.amount}x`;
 
-            // Style the material amount
+            // Style the material amount.
             materialAmount.className =
                 "small-text center-text header-text dark-bubble square-bubble";
 
-            // semi auto scale text for material name
+            // Semi-auto scale text for material name.
             if (materialName.textContent.length > 30) {
                 materialName.className = "tiny-text";
             } else if (materialName.textContent.length > 20) {
@@ -269,12 +289,15 @@ function updateMaterialSelectors() {
             } else {
                 materialName.className = "medium-text";
             }
+
             modfiyClass(materialName, "center-text", "add");
 
             // Configure the material slot.
             materialSlot.className = "material-slot border-super-thin bad";
             materialSlot.dataset.part = partKey;
             materialSlot.dataset.materialSlot = i;
+            materialSlot.dataset.module = part.module;
+            materialSlot.dataset.selected = "";
 
             materialSlot.append(materialIcon, materialName, materialAmount);
 
@@ -290,8 +313,101 @@ function selectModulePart(event) {
     const clickedModule = event.target.closest("item-icon[data-slot]");
     if (!clickedModule) return;
 
-    const partKey = clickedModule.dataset.slot;
-
     // Switch to the material selector menu.
     clickPartNav("material");
+}
+
+function selectMaterialSel(event) {
+    const clickedSlot = event.target.closest(".material-slot");
+    if (!clickedSlot || !craftingTempData.person) return;
+
+    // Get the selected inventory item.
+    let clickedMaterial = document.querySelectorAll(".craft-screen > .inventory > .selected");
+
+    if (clickedMaterial.length === 0) return console.log("No material selected");
+    if (clickedMaterial.length > 1) console.log("Multiple materials selected", clickedMaterial);
+
+    clickedMaterial = clickedMaterial[0];
+
+    // Get the item.
+    const item = items[clickedMaterial.dataset.inslot];
+    if (!item) return console.log("Can't get item");
+
+    // Get the part and its selected module.
+    const part = craftingTempData.parts[clickedSlot.dataset.part];
+    if (!part || !part.module) return console.log("No module selected");
+
+    const module = modules[part.module];
+    if (!module) return console.log("Invalid module");
+
+    // Get the material requirement.
+    const materialSlot = Number(clickedSlot.dataset.materialSlot);
+    const requirement = module.materials[materialSlot];
+
+    if (!requirement) return console.warn("Malformed module", module);
+
+    // Check if the material is allowed.
+    const allowedMaterials = requirement.allowedMaterials.flat(Infinity);
+
+    // prettier-ignore
+    if (!(
+            requirement.allowedMaterials.includes(item.name) ||
+            requirement.allowedMaterials.includes(item.materialData.materialType)   
+    )) {
+        console.log("Invalid material"); // todo add a ingame warning for it being invalid
+        return;
+    }
+
+    // Save the selected inventory slot.
+    part.materials[materialSlot] = Number(clickedMaterial.dataset.slot);
+
+    console.log(craftingTempData);
+
+    // Update inventory quantities.
+    updateCraftingInventory();
+}
+
+/**
+ * Recalculates inventory quantities based on currently assigned materials.
+ */
+function updateCraftingInventory() {
+    if (!craftingTempData.person) return;
+    const inventory = gameState.persons[craftingTempData.person].inventory;
+
+    const inventorySlots = document.querySelectorAll(".craft-screen > .inventory > [data-slot]");
+
+    const materialSlots = document.querySelectorAll("#material-selector .material-slot");
+
+    for (let i = 0; i < inventorySlots.length; i++) {
+        const inventorySlot = inventorySlots[i];
+        const slotID = Number(inventorySlot.dataset.slot);
+
+        let remaining = inventory[slotID].count;
+
+        for (let j = 0; j < materialSlots.length; j++) {
+            const materialSlot = materialSlots[j];
+            const selectedPart = craftingTempData.parts[materialSlot.dataset.part];
+
+            if (
+                !selectedPart ||
+                selectedPart.materials[Number(materialSlot.dataset.materialSlot)] !== slotID
+            )
+                continue;
+
+            const selectedModule = modules[selectedPart.module];
+            const requirement = selectedModule.materials[Number(materialSlot.dataset.materialSlot)];
+
+            modfiyClass(materialSlot, "good warn bad", "remove");
+
+            if (remaining >= requirement.amount) {
+                modfiyClass(materialSlot, "good", "add");
+                remaining -= requirement.amount;
+            } else {
+                modfiyClass(materialSlot, "warn", "add");
+                remaining = 0;
+            }
+        }
+
+        inventorySlot.querySelector("span").textContent = remaining;
+    }
 }

@@ -16,6 +16,8 @@ function modfiyClass(selector, className, action) {
         elements = selector;
     } else if (selector instanceof Element) {
         elements = [selector];
+    } else if (selector instanceof NodeList) {
+        elements = Array.from(selector);
     } else {
         console.warn("Can't modify class since invalid:", selector);
         return;

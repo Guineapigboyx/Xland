@@ -125,10 +125,17 @@
                                 </button>
                             </nav>
                             <div class="fit-div hide" id="module-selector"></div>
-                            <div class="fit-div hide" id="material-selector"></div>
+                            <div
+                                class="fit-div hide"
+                                id="material-selector"
+                                onclick="selectMaterialSel(event)"
+                            ></div>
                         </section>
                     </div>
-                    <div class="inventory blue-bubble"></div>
+                    <div
+                        class="inventory blue-bubble"
+                        onclick="selectDiv(event, '.craft-screen > .inventory', '.inventory-item')"
+                    ></div>
                     <div id="crafting-info" class="border-super-thin">
                         <div
                             id="crafting-player-dropdown"

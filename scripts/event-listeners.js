@@ -53,16 +53,51 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
+                craftingTempData.person = value;
+
                 // crafting screen with that persons data
                 fillInventory(".craft-screen > .inventory", gameState.persons[value].inventory);
-
-                modfiyClass(".craft-screen > .inventory > item-group", "svg-hover", "add");
                 break;
             // the module selectors
             case "crafting-module":
+                // update craftingData
+                const slot = dropdown.parentElement.dataset.slot;
+                const module = Object.keys(modules).find((x) => modules[x].name === value);
+                craftingTempData.parts[slot].module = module;
+
                 updateCraftPreview();
                 updateMaterialSelectors();
+                updateCraftingInventory();
                 break;
         }
     });
 });
+
+/**
+ *  click handler for clikcing on materials in the craft inventory
+ *
+ * @param {Event} event - the onclick event
+ * @param {String|HTMLElement} groupSel - the selector for the element holding the thing being clicked on
+ * @param {String|HTMLElement} clickedSel - the class you are clicking on
+ */
+function selectDiv(event, groupSel, clickedSel) {
+    const clickedDiv = event.target.closest(clickedSel);
+    if (!clickedDiv) return;
+
+    let selectedSlots;
+    if (groupSel instanceof Element) {
+        selectedSlots = groupSel;
+    } else if (typeof groupSel === "string") {
+        if (!document.querySelector(groupSel)) return;
+        selectedSlots = document.querySelectorAll(`${groupSel} > .selected`);
+    } else {
+        console.warn("Invalid selector", `${groupSel} > .selected`);
+        return;
+    }
+
+    // add/remove selected class
+
+    if (selectedSlots) modfiyClass(selectedSlots, "selected", "remove");
+
+    modfiyClass(clickedDiv, "selected", "add");
+}

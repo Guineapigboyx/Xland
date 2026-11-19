@@ -586,9 +586,13 @@ body {
 }
 
 /* classes for inven item just in case i forget them class="border-extra-thin fit-img context-pointer" */
-.inventory > item-group {
+.inventory-item {
     background-color: var(--dark-bubble-color);
     aspect-ratio: 1/1;
+}
+
+.inventory-item.selected {
+    filter: invert(1);
 }
 
 .count-indictor {
@@ -755,6 +759,10 @@ body {
 
 #part-selectors > nav {
     margin-bottom: 5%;
+}
+
+.material-slot.selected {
+    filter: sepia(1);
 }
 
 .material-selector > div {

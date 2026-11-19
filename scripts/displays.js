@@ -253,13 +253,16 @@ function fillInventory(selector, inventory) {
         }
 
         icon.dataset.inslot = inventory[invenItems].item;
-        modfiyClass(icon, "border-extra-thin context-pointer fit-svg", "add");
+        modfiyClass(icon, "border-extra-thin context-pointer fit-svg inventory-item", "add");
 
         // item count number
         let countIndicator = document.createElement("span");
         countIndicator.textContent = inventory[invenItems].count;
         countIndicator.className = "bubble square-bubble small-text count-indictor";
         icon.appendChild(countIndicator);
+
+        // put data in attributes
+        icon.dataset.slot = invenItems;
 
         inventoryEl.appendChild(icon);
     }
