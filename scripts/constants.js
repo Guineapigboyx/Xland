@@ -85,6 +85,12 @@ const materialTypes = {
     other: "other",
 };
 
+/**
+ * All the material colors found in material.css
+ *
+ * @typedef {Array} materials - a array of the name of every material color
+ * @property {String} - Material names
+ */
 let materials;
 document.addEventListener("DOMContentLoaded", () => {
     materials = [

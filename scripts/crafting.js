@@ -405,6 +405,7 @@ function updateCraftingInventory() {
             } else {
                 modfiyClass(materialSlot, "warn", "add");
                 remaining = 0;
+                // todo replace with a real warning
             }
         }
 
