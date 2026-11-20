@@ -55,6 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 craftingTempData.person = value;
 
+                // clear material selections
+                for (let i = 0; i < Object.keys(craftingTempData.parts).length; i++) {
+                    const partKey = Object.keys(craftingTempData.parts)[i];
+                    if (!partKey) continue;
+
+                    craftingTempData.parts[partKey].materials = [];
+                }
+                updateCraftPreview();
+                if (Object.keys(craftingTempData.parts).length > 0) updateMaterialSelectors();
+
                 // crafting screen with that persons data
                 fillInventory(".craft-screen > .inventory", gameState.persons[value].inventory);
                 break;
@@ -64,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const slot = dropdown.parentElement.dataset.slot;
                 const module = Object.keys(modules).find((x) => modules[x].name === value);
                 craftingTempData.parts[slot].module = module;
+                // clears materials
+                craftingTempData.parts[slot].materials = [];
 
                 updateCraftPreview();
                 updateMaterialSelectors();

@@ -1,4 +1,5 @@
 /**
+ * @typedef {object} craftingTempData
  * @property {string} person - the person crafting from the dropdown
  * @property {schematics.schematic} schematic - the schematic crafting with
  * @property {parts[]} parts - all the parts of the schematic and their materials
@@ -142,29 +143,47 @@ function updateCraftPreview() {
     // make the icon
     const iconData = [];
     for (let i = 0; i < parts.length; i++) {
-        //cthe current part
+        //the current part
         const partKey = parts[i];
         const part = craftingTempData.parts[partKey];
-
         if (!part) continue;
+
+        // get materials
+        let materials = [];
+        for (let i = 0; i < part.materials.length; i++) {
+            let invenItem = gameState.persons[craftingTempData.person].inventory[part.materials[i]];
+            if (!invenItem) continue;
+            invenItem = invenItem.item;
+            if (!items[invenItem]) continue;
+
+            let material = invenItem;
+            if (items[invenItem].material) {
+                material = items[invenItem].material;
+            }
+
+            materials.push(material);
+        }
+
+        if (!materials[0]) materials.push("schematic5");
+        if (!materials[1]) materials.push("schematic1");
 
         // Add the main icon
         iconData.push({
             class: `item-${part.module}`,
-            material: "schematic5",
-            material2: "schematic1",
+            material: materials[0],
+            material2: materials[1],
             layer: schematic.parts[partKey].layer,
             slot: partKey,
         });
 
         // if this part has a common shematic SVG add it
         if (!schematic.commonPart) continue;
-        if (!schematic.commonPart.material === partKey) continue;
+        if (schematic.commonPart.material !== partKey) continue;
 
         iconData.push({
             class: schematic.commonPart.SVG,
-            material: "schematic5",
-            material2: "schematic1",
+            material: materials[0],
+            material2: materials[1],
             layer: 0,
         });
     }
@@ -366,6 +385,7 @@ function selectMaterialSel(event) {
 
     // Update inventory quantities.
     updateCraftingInventory();
+    updateCraftPreview();
 }
 
 /**

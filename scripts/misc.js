@@ -118,7 +118,9 @@ function testingFunction() {
 
     // give koopa every item
     for (let i = 0; i < itemKeys.length; i++) {
-        addItemToInventory(makeInventoryItem(itemKeys[i]), gameState.persons.koopa.inventory);
+        for (let x = 0; x !== 9; x++) {
+            addItemToInventory(makeInventoryItem(itemKeys[i]), gameState.persons.koopa.inventory);
+        }
     }
 
     // give locario every module
