@@ -508,7 +508,7 @@ function getIcon(icon, materialOveride) {
         if (icon.material) {
             material = icon.material;
         } else {
-            material = icon.name.toLocaleLowerCase();
+            material = icon.name.toLowerCase();
         }
     } else if (itemIcons.find((itemIcon) => itemIcon.cssClass === icon)) {
         // It is item-icon class
@@ -520,7 +520,7 @@ function getIcon(icon, materialOveride) {
 
         if (relatedItem) {
             // use the material of a item that shares this icon
-            material = relatedItem.name.toLocaleLowerCase();
+            material = relatedItem.name.toLowerCase();
         } else {
             // use the icon name (like copper) as the material
             material = iconName;

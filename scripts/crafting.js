@@ -153,12 +153,12 @@ function updateCraftPreview() {
         for (let i = 0; i < part.materials.length; i++) {
             let invenItem = gameState.persons[craftingTempData.person].inventory[part.materials[i]];
             if (!invenItem) continue;
-            invenItem = invenItem.item;
-            if (!items[invenItem]) continue;
+            invenItem = items[invenItem.item];
+            if (!invenItem) continue;
 
-            let material = invenItem;
-            if (items[invenItem].material) {
-                material = items[invenItem].material;
+            let material = invenItem.name.toLowerCase();
+            if (invenItem.material) {
+                material = invenItem.material;
             }
 
             materials.push(material);

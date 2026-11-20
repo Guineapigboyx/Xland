@@ -536,7 +536,7 @@ let items = {
         weaponData: { weaponType: weaponTypes.bluntObject },
     },
     platinum: {
-        name: "Platium",
+        name: "Platinum",
         rarity: raritys.rare,
         weight: 5.78,
         materialData: {

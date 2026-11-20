@@ -202,7 +202,7 @@ item-icon[data-material="steel"] {
     --material-gradient: linear;
 }
 
-item-icon[data-material="lithum"] {
+item-icon[data-material="lithium"] {
     --color1: #000000ff;
     --color2: var(--color1);
     --color3: var(--color1);
