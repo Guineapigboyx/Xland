@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         }
 
-        updateCraftingInventory();
+        updateCraftScreen();
 
         // fill in module selector
         const moduleSelector = document.querySelector("#module-selector");
@@ -381,11 +381,8 @@ function selectMaterialSel(event) {
     // Save the selected inventory slot.
     part.materials[materialSlot] = Number(clickedMaterial.dataset.slot);
 
-    console.log(craftingTempData);
-
     // Update inventory quantities.
-    updateCraftingInventory();
-    updateCraftPreview();
+    updateCraftScreen();
 }
 
 /**
@@ -430,5 +427,13 @@ function updateCraftingInventory() {
         }
 
         inventorySlot.querySelector("span").textContent = remaining;
+    }
+}
+
+function updateCraftScreen() {
+    if (craftingTempData.person) updateCraftingInventory();
+    if (Object.keys(craftingTempData.parts).length > 0) {
+        updateCraftPreview();
+        updateMaterialSelectors();
     }
 }

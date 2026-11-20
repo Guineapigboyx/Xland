@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     craftingTempData.parts[partKey].materials = [];
                 }
-                updateCraftPreview();
+                updateCraftScreen();
                 if (Object.keys(craftingTempData.parts).length > 0) updateMaterialSelectors();
 
                 // crafting screen with that persons data
@@ -77,9 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // clears materials
                 craftingTempData.parts[slot].materials = [];
 
-                updateCraftPreview();
-                updateMaterialSelectors();
-                updateCraftingInventory();
+                updateCraftScreen();
                 break;
         }
     });
