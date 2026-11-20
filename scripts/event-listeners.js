@@ -89,8 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
  * @param {Event} event - the onclick event
  * @param {String|HTMLElement} groupSel - the selector for the element holding the thing being clicked on
  * @param {String|HTMLElement} clickedSel - the class you are clicking on
+ * @param {boolean|undefined} remove - if clicked and it alreday has selected remove selected
  */
-function selectDiv(event, groupSel, clickedSel) {
+function selectDiv(event, groupSel, clickedSel, remove) {
     const clickedDiv = event.target.closest(clickedSel);
     if (!clickedDiv) return;
 
@@ -107,7 +108,10 @@ function selectDiv(event, groupSel, clickedSel) {
 
     // add/remove selected class
 
+    const hasSelected = clickedDiv.classList.contains("selected");
+
     if (selectedSlots) modifyClass(selectedSlots, "selected", "remove");
 
-    modifyClass(clickedDiv, "selected", "add");
+    // only add the class if remove on click is false and it has the class
+    if (!(remove && hasSelected)) modifyClass(clickedDiv, "selected", "add");
 }
