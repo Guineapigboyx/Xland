@@ -107,7 +107,7 @@ function selectDiv(event, groupSel, clickedSel) {
 
     // add/remove selected class
 
-    if (selectedSlots) modfiyClass(selectedSlots, "selected", "remove");
+    if (selectedSlots) modifyClass(selectedSlots, "selected", "remove");
 
-    modfiyClass(clickedDiv, "selected", "add");
+    modifyClass(clickedDiv, "selected", "add");
 }

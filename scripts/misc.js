@@ -7,7 +7,7 @@
  * @param {String} className - The class to modify
  * @param {"add"|"remove"|"toggle"} action - What to do with the class
  */
-function modfiyClass(selector, className, action) {
+function modifyClass(selector, className, action) {
     let elements = [];
 
     if (typeof selector === "string") {

@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clearDiv("#craft-preview");
         clearDiv("#material-selector");
 
-        modfiyClass("#schematics-picker .selected", "selected", "remove");
-        modfiyClass(button, "selected", "add");
+        modifyClass("#schematics-picker .selected", "selected", "remove");
+        modifyClass(button, "selected", "add");
 
         //Select the modules menue
         clickPartNav("module");
@@ -200,7 +200,7 @@ function updateCraftPreview() {
     // Put all of the item-icons into the craft preview instead of nesting item-groups
     craftPreview.replaceChildren(...iconGroup.children);
 
-    modfiyClass("#craft-preview > item-icon", "svg-hover-light", "add");
+    modifyClass("#craft-preview > item-icon", "svg-hover-light", "add");
 }
 
 /**
@@ -309,7 +309,7 @@ function updateMaterialSelectors() {
                 materialName.className = "medium-text";
             }
 
-            modfiyClass(materialName, "center-text", "add");
+            modifyClass(materialName, "center-text", "add");
 
             // Configure the material slot.
             materialSlot.className = "material-slot border-super-thin bad";
@@ -415,13 +415,13 @@ function updateCraftingInventory() {
             const selectedModule = modules[selectedPart.module];
             const requirement = selectedModule.materials[Number(materialSlot.dataset.materialSlot)];
 
-            modfiyClass(materialSlot, "good bad", "remove");
+            modifyClass(materialSlot, "good bad", "remove");
 
             if (remaining >= requirement.amount) {
-                modfiyClass(materialSlot, "good", "add");
+                modifyClass(materialSlot, "good", "add");
                 remaining -= requirement.amount;
             } else {
-                modfiyClass(materialSlot, "bad", "add");
+                modifyClass(materialSlot, "bad", "add");
                 playSound(sounds.System.Basic_sounds.invalid);
             }
         }
