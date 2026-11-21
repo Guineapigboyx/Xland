@@ -394,7 +394,7 @@ function updateCraftingInventory() {
 
     const inventorySlots = document.querySelectorAll(".craft-screen > .inventory > [data-slot]");
 
-    const materialSlots = document.querySelectorAll("#material-selector .material-slot");
+    const materialSlots = document.querySelectorAll(".material-selector > .material-slot");
 
     for (let i = 0; i < inventorySlots.length; i++) {
         const inventorySlot = inventorySlots[i];
@@ -402,8 +402,8 @@ function updateCraftingInventory() {
 
         let remaining = inventory[slotID].count;
 
-        for (let j = 0; j < materialSlots.length; j++) {
-            const materialSlot = materialSlots[j];
+        for (let x = 0; x < materialSlots.length; x++) {
+            const materialSlot = materialSlots[x];
             const selectedPart = craftingTempData.parts[materialSlot.dataset.part];
 
             if (
@@ -430,10 +430,13 @@ function updateCraftingInventory() {
     }
 }
 
+function updateCraftValues() {}
+
 function updateCraftScreen() {
-    if (craftingTempData.person) updateCraftingInventory();
     if (Object.keys(craftingTempData.parts).length > 0) {
-        updateCraftPreview();
-        updateMaterialSelectors();
+        updateCraftPreview(); // big preview of what it looks like
+        updateMaterialSelectors(); // the material selectors
+        updateCraftValues(); // the values for the materials used
     }
+    updateCraftingInventory(); // the inventory on the craft screen
 }
