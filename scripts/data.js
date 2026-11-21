@@ -126,6 +126,48 @@ function getCraftedItem(inventoryItem) {
 }
 
 /**
+ * Gives the stats fro a module with a set of materials
+ *
+ * @param {Function} statsFunction - function from itemStats
+ * @param {materialData[]|items.item|inventoryItem|string} materials - material put into the itemstats function
+ */
+function getCraftedStats(statsFunction, materials) {
+    if (typeof statsFunction !== "function") return false;
+
+    let materialData = [];
+    // translate all of the materials into materialData
+    for (let i = 0; i < materials.length; i++) {
+        let material;
+        if (materials[i].item) {
+            // is a inventory item
+            if (materials[i].craftedItemID) {
+                material = getCraftedItem(materials[i]);
+            } else {
+                material = items[materials[i].item];
+            }
+
+            if (!material) return false;
+            if (!material.materialData) return false;
+
+            material = material.materialData;
+        } else if (materials[i].materialData) {
+            // is a items.item
+            material = materials[i].materialData;
+        } else {
+            // is alreday materialData
+            material = materials[i];
+        }
+
+        if (!material.durablity) {
+            console.warn("not valid material data");
+            return false;
+        }
+
+        materialData.push(material);
+    }
+}
+
+/**
  * Get all of the modules that you have unlocked for a specific schematic.
  *
  * @param {schematics.schematic|string} schematic - The schematic object or its .name
