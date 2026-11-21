@@ -696,8 +696,24 @@ body {
 
 #crafting-info {
     display: grid;
-    grid-template-rows: 35% 50%;
-    grid-template-columns: 30% 20% 50%;
+    grid-template-rows: 35% 65%;
+    grid-template-columns: 32% 34.5% 34.5%;
+}
+
+#crafting-info > section {
+    grid-row: 1/3;
+    overflow: scroll;
+    text-indent: 4%;
+}
+
+#crafting-info > [data-slot="stats"] > div {
+    border-bottom: calc(var(--scale) / 8) solid var(--border-Colors);
+}
+
+#crafting-player-dropdown {
+    grid-column: 1;
+    grid-row: 1;
+    margin-right: 5%;
 }
 
 .inventory {
@@ -741,7 +757,6 @@ body {
 #material-selector {
     row-gap: 1.5%;
 }
-
 /* part bubble ------------------------------------------------------------------------------------------------------------ */
 #module-selector > div {
     display: grid;
