@@ -1623,6 +1623,8 @@ const modules = {
                 materialData.toughness * 1 -
                 materialData.sharpness * 0.6;
             weaponData.speed -= materialData.density * 0.17;
+
+            return weaponData;
         },
     },
     shortBlade: {
