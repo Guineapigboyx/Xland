@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Builds the craft preview from the selected modules.
+ * Builds the craft preview from the selected modules
  */
 function updateCraftPreview() {
     const craftPreview = document.getElementById("craft-preview");
@@ -440,7 +440,47 @@ function updateCraftingInventory() {
     }
 }
 
-function updateCraftValues() {}
+/**
+ * Updates the stats preview based on the currently selected modules
+ * and materials.
+ */
+function updateCraftValues() {
+    const statsPreview = document.querySelector('#crafting-info > [data-slot="stats"]');
+    if (!statsPreview) return;
+
+    let materialData = [];
+    // For finding out which material is for which icon without changeing materialData
+    let partMap = [];
+
+    for (let i = 0; i < Object.keys(craftingTempData.parts).length; i++) {
+        const partKey = Object.keys(craftingTempData.parts)[i];
+        const materials = craftingTempData.parts[partKey].materials;
+
+        for (let x = 0; x < materials.length; x++) {
+            const item = gameState.persons[craftingTempData.person].inventory[materials[x]];
+
+            const itemData = getMatrialData(item);
+            if (!itemData) return;
+            materialData.push(itemData);
+            partMap.push(partKey);
+        }
+    }
+
+    // get modules from partMap
+    let moduleList = [];
+    for (let i = 0; i < partMap.length; i++) {
+        const partKey = partMap[i];
+
+        const module = modules[craftingTempData.parts[partKey].module];
+        if (module) moduleList.push(module);
+    }
+
+    console.log(moduleList, materialData);
+
+    const data = getCraftedStats(moduleList, materialData);
+    console.log(data);
+    if (!data) return;
+}
 
 function updateCraftScreen() {
     if (Object.keys(craftingTempData.parts).length > 0) {

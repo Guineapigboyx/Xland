@@ -129,42 +129,81 @@ function getCraftedItem(inventoryItem) {
  * Gives the stats fro a module with a set of materials
  *
  * @param {Function} statsFunction - function from itemStats
- * @param {materialData[]|items.item|inventoryItem|string} materials - material put into the itemstats function
+ * @param {materialData|items.item|inventoryItem|string} material - material put into the itemstats function
  */
-function getCraftedStats(statsFunction, materials) {
-    if (typeof statsFunction !== "function") return false;
+function getMatrialData(material) {
+    if (typeof material !== "object" || Array.isArray(material)) return false;
 
-    let materialData = [];
     // translate all of the materials into materialData
-    for (let i = 0; i < materials.length; i++) {
-        let material;
-        if (materials[i].item) {
-            // is a inventory item
-            if (materials[i].craftedItemID) {
-                material = getCraftedItem(materials[i]);
-            } else {
-                material = items[materials[i].item];
-            }
-
-            if (!material) return false;
-            if (!material.materialData) return false;
-
-            material = material.materialData;
-        } else if (materials[i].materialData) {
-            // is a items.item
-            material = materials[i].materialData;
+    if (material.item) {
+        // is a inventory item
+        if (material.craftedItemID) {
+            // is a crafted item
+            material = getCraftedItem(material);
+        } else if (items[material.item]) {
+            // is a non crafted item
+            material = items[material.item];
         } else {
-            // is alreday materialData
-            material = materials[i];
-        }
-
-        if (!material.durablity) {
-            console.warn("not valid material data");
+            console.warn("Malformed Inventory Item", material);
             return false;
         }
 
-        materialData.push(material);
+        if (!material.materialData) return false;
+
+        material = material.materialData;
+    } else if (material.materialData) {
+        // is a items.item
+        material = material.materialData;
     }
+    // is alreday material data
+
+    if (
+        !(
+            material.density &&
+            material.toughness &&
+            material.hardness &&
+            material.flexiblity &&
+            material.sharpness
+        )
+    ) {
+        console.warn("not valid material data", material);
+        return false;
+    }
+
+    return material;
+}
+
+/**
+ * Gets the stats for a set of material data with a set of modules
+ *
+ * @param {modules.module[]} modules - array that lines up with materialData to say which modules functions should be used for which material
+ * @param {materialData[]} materialData - array of materialData
+ */
+function getCraftedStats(modules, materialData) {
+    if (!Array.isArray(modules) || !Array.isArray(materialData))
+        return console.log("getCraftedStats got non arrays", modules, materialData);
+
+    if (modules.length !== materialData.length)
+        return console.log("getCraftedStats arrays do not line up", modules, materialData);
+
+    let weaponData = {
+        actionSurge: 0,
+        attack: 0,
+        defense: 0,
+        accuracy: 3,
+        crit: 0,
+        durablity: 0,
+        speed: 5,
+    };
+    for (let i = 0; i < materialData.length; i++) {
+        const material = materialData[i];
+        const module = modules[i];
+        if (!material || !module) continue;
+
+        weaponData = module.itemStats(weaponData, material);
+    }
+
+    return weaponData;
 }
 
 /**
