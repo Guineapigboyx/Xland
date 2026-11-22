@@ -204,7 +204,7 @@ function updateCraftPreview() {
 }
 
 /**
- * Builds the material selectors for all currently selected modules.
+ * Builds the material selectors for all currently selected modules
  */
 function updateMaterialSelectors() {
     const materialSelector = document.getElementById("material-selector");
@@ -221,7 +221,7 @@ function updateMaterialSelectors() {
 
         const selectedModule = modules[part.module];
 
-        // Create the material bubble element for this part.
+        // Create the material bubble element for this part
         const materialBubble = document.createElement("div");
         const summary = document.createElement("summary");
 
@@ -232,14 +232,15 @@ function updateMaterialSelectors() {
 
         materialBubble.appendChild(summary);
 
-        // Create one material selector for each requirement.
+        // Create one material selector for each requirement
         for (let i = 0; i < selectedModule.materials.length; i++) {
             const requirement = selectedModule.materials[i];
+
+            const materialInslot = craftingTempData.parts[partKey].materials[i];
 
             const materialSlot = document.createElement("div");
             const materialName = document.createElement("p");
             const materialAmount = document.createElement("p");
-            const materialIcon = document.createElement("item-icon");
 
             // Get the allowed material names.
             const allowedMaterials = requirement.allowedMaterials.flat(Infinity);
@@ -252,42 +253,51 @@ function updateMaterialSelectors() {
                 return material.name;
             });
 
-            // Use a generic icon representing the first allowed material.
-            const firstMaterial = allowedMaterials[0];
+            let materialIcon;
+            // make material Icon
+            if (!materialInslot || !craftingTempData.person) {
+                // Use a generic icon representing the first allowed material
+                const firstMaterial = allowedMaterials[0];
 
-            let iconClass = "item-ingot";
+                let iconClass = "item-ingot";
 
-            if (typeof firstMaterial === "string") {
-                const materialIcons = {
-                    [materialTypes.metal]: "item-ingot",
-                    [materialTypes.rock]: "item-stone",
-                    [materialTypes.wood]: "item-treeBranch",
-                    [materialTypes.bone]: "item-bone",
-                    [materialTypes.gemStone]: "item-gemstone",
-                    [materialTypes.plants]: "item-leaf",
-                    [materialTypes.liquid]: "item-water",
-                    [materialTypes.meat]: "item-meat",
-                    [materialTypes.skin]: "item-leather",
-                    [materialTypes.sticky]: "item-goop",
-                    [materialTypes.wire]: "item-string",
-                };
+                if (typeof firstMaterial === "string") {
+                    const materialIcons = {
+                        [materialTypes.metal]: "item-ingot",
+                        [materialTypes.rock]: "item-stone",
+                        [materialTypes.wood]: "item-treeBranch",
+                        [materialTypes.bone]: "item-bone",
+                        [materialTypes.gemStone]: "item-gemstone",
+                        [materialTypes.plants]: "item-leaf",
+                        [materialTypes.liquid]: "item-water",
+                        [materialTypes.meat]: "item-meat",
+                        [materialTypes.skin]: "item-leather",
+                        [materialTypes.sticky]: "item-goop",
+                        [materialTypes.wire]: "item-string",
+                    };
 
-                iconClass = materialIcons[firstMaterial] || "item-ingot";
-            } else if (firstMaterial) {
-                const itemKey = Object.keys(items).find((key) => items[key] === firstMaterial);
+                    iconClass = materialIcons[firstMaterial] || "item-ingot";
+                } else if (firstMaterial) {
+                    const itemKey = Object.keys(items).find((key) => items[key] === firstMaterial);
 
-                if (firstMaterial.SVG) {
-                    iconClass = `item-${firstMaterial.SVG}`;
-                } else if (itemKey) {
-                    iconClass = `item-${itemKey}`;
+                    if (firstMaterial.SVG) {
+                        iconClass = `item-${firstMaterial.SVG}`;
+                    } else if (itemKey) {
+                        iconClass = `item-${itemKey}`;
+                    }
                 }
+
+                // Make the material icon
+                materialIcon = createItemIcon(getIcon(iconClass, "schematic5"));
+            } else {
+                // Icon preview for ones that alreday have a material selected
+                const craftingWith =
+                    gameState.persons[craftingTempData.person].inventory[materialInslot];
+
+                materialIcon = createItemIcon(getIcon(craftingWith));
             }
 
-            // Configure the material icon.
-            materialIcon.className = `fit-svg ${iconClass}`;
-            materialIcon.dataset.material = "schematic5";
-
-            // Configure the material requirement label.
+            // Configure the material requirement label
             if (allowedMaterials.every((material) => typeof material === "string")) {
                 materialName.textContent = `Any ${allowedNames.join(" / ")}`;
             } else {
@@ -296,11 +306,11 @@ function updateMaterialSelectors() {
 
             materialAmount.textContent = `${requirement.amount}x`;
 
-            // Style the material amount.
+            // Style the material amount
             materialAmount.className =
                 "small-text center-text header-text dark-bubble square-bubble";
 
-            // Semi-auto scale text for material name.
+            // Semi-auto scale text for material name
             if (materialName.textContent.length > 30) {
                 materialName.className = "tiny-text";
             } else if (materialName.textContent.length > 20) {
@@ -311,7 +321,7 @@ function updateMaterialSelectors() {
 
             modifyClass(materialName, "center-text", "add");
 
-            // Configure the material slot.
+            // Configure the material slot
             materialSlot.className = "material-slot border-super-thin bad";
             materialSlot.dataset.part = partKey;
             materialSlot.dataset.materialSlot = i;
