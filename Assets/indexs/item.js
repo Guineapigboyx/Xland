@@ -51,7 +51,8 @@
  * @property {1|2|3|4|undefined} speed - how fast the weapon is (default = 2)
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - sound category this item uses
  * @property {attacks.attack[]|undefined} speicalAttack - special attack that is added to this item
- * @property {Function} onHit - when you hit something this function runs
+ * @property {Function|undefined} onHit - when you hit something this function runs
+ * @property {String|undefined} onHitName - If you give a name it will add it as a property of the item
  *
  * ---------------------------------------
  * @typedef {Object} foodData

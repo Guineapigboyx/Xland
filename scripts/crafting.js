@@ -445,7 +445,7 @@ function updateCraftingInventory() {
  * and materials.
  */
 function updateCraftValues() {
-    const statsPreview = document.querySelector('#crafting-info > [data-slot="stats"]');
+    const statsPreview = document.querySelector("#craft-values");
     if (!statsPreview) return;
 
     let materialData = [];
@@ -478,8 +478,9 @@ function updateCraftValues() {
     console.log(moduleList, materialData);
 
     const data = getCraftedStats(moduleList, materialData);
-    console.log(data);
     if (!data) return;
+
+    // Create stats preview
 }
 
 function updateCraftScreen() {

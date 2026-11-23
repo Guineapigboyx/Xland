@@ -697,23 +697,26 @@ body {
 #crafting-info {
     display: grid;
     grid-template-rows: 35% 65%;
-    grid-template-columns: 32% 34.5% 34.5%;
-}
-
-#crafting-info > section {
-    grid-row: 1/3;
-    overflow: scroll;
-    text-indent: 4%;
-}
-
-#crafting-info > [data-slot="stats"] > div {
-    border-bottom: calc(var(--scale) / 8) solid var(--border-Colors);
+    grid-template-columns: 30% 70%;
 }
 
 #crafting-player-dropdown {
     grid-column: 1;
     grid-row: 1;
-    margin-right: 5%;
+}
+
+#craft-values {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: var(--dark-bubble-text);
+    grid-row: 1/3;
+    overflow: scroll;
+    text-indent: calc(var(--scale) * 0.8);
+    border-left: calc(var(--scale) / 8) solid var(--border-Colors);
+}
+
+#craft-values > div {
+    border-bottom: calc(var(--scale) / 8) solid var(--border-Colors);
 }
 
 .inventory {
