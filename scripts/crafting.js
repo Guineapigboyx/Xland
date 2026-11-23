@@ -466,6 +466,18 @@ function updateCraftValues() {
         }
     }
 
+    // Should the craft button be enabled
+    const mandotoryParts = Object.keys(craftingTempData.schematic.parts).filter(
+        (part) => !craftingTempData.schematic.parts[part].optional,
+    );
+
+    modifyClass("#craft-button", "good bad pointer disabled-click", "remove");
+    if (mandotoryParts.every((part) => partMap.includes(part))) {
+        modifyClass("#craft-button", "good pointer", "add");
+    } else {
+        modifyClass("#craft-button", "bad disabled-click", "add");
+    }
+
     // get modules from partMap
     let moduleList = [];
     for (let i = 0; i < partMap.length; i++) {
