@@ -47,6 +47,11 @@ function craftingScreen() {
     clearDiv("#craft-preview");
     clearDiv(".craft-screen > .inventory");
 
+    // clear craft preview
+    modifyClass("#craft-values > div", "hide", "add");
+    modifyClass("#craft-button", "good mid", "remove");
+    modifyClass("#craft-button", "bad", "add");
+
     // show unlocked schematic buttons
     const unlockedSchematics = gameState.unlocked.schematic;
     for (let i = 0; i < unlockedSchematics.length; i++) {

@@ -475,12 +475,31 @@ function updateCraftValues() {
         if (module) moduleList.push(module);
     }
 
-    console.log(moduleList, materialData);
+    const weaponData = getCraftedStats(moduleList, materialData);
+    if (!weaponData) return;
 
-    const data = getCraftedStats(moduleList, materialData);
-    if (!data) return;
+    // Update stats preview
+    modifyClass(Array.from(statsPreview.children), "hide", "add");
 
-    // Create stats preview
+    // This is to make it so all the craft values are hidden when no modles are selected
+    if (moduleList.length === 0 || materialData.length === 0) return;
+
+    const weaponKeys = Object.keys(weaponData);
+    for (let i = 0; i < weaponKeys.length; i++) {
+        const statPreview = document.querySelector(
+            `#craft-values > div > [data-slot="${weaponKeys[i]}"]`,
+        );
+        if (!statPreview) continue;
+
+        // round the number to make it look nice
+        if (!isNaN(weaponData[weaponKeys[i]])) {
+            weaponData[weaponKeys[i]] = round(weaponData[weaponKeys[i]], 2);
+        }
+
+        if (weaponData[weaponKeys[i]] <= 0) continue;
+        statPreview.textContent = weaponData[weaponKeys[i]];
+        modifyClass(statPreview.parentElement, "hide", "remove");
+    }
 }
 
 function updateCraftScreen() {

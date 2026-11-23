@@ -194,6 +194,7 @@ function getCraftedStats(modules, materialData) {
         crit: 0,
         durablity: 0,
         speed: 5,
+        range: 0,
     };
     for (let i = 0; i < materialData.length; i++) {
         const material = materialData[i];

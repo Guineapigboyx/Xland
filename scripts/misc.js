@@ -172,3 +172,9 @@ function clearDiv(selector, offset) {
     // Slice off all elements past the offset child
     selector.replaceChildren(...Array.from(selector.children).slice(0, offset));
 }
+
+//Round to n decimal places
+function round(num, places) {
+    var multiplier = Math.pow(10, places);
+    return Math.round(num * multiplier) / multiplier;
+}
