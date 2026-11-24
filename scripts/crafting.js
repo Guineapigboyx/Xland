@@ -383,7 +383,7 @@ function selectMaterialSel(event) {
             requirement.allowedMaterials.includes(item.name) ||
             requirement.allowedMaterials.includes(item.materialData.materialType)   
     )) {
-        playSound(sounds.System.Basic_sounds.invalid);
+        playSound(sounds.basic_sounds.error.invalidSelect);
         spawnTextBox(clickedSlot,"Invalid material",2000)
         return;
     }
@@ -432,7 +432,7 @@ function updateCraftingInventory() {
                 remaining -= requirement.amount;
             } else {
                 modifyClass(materialSlot, "bad", "add");
-                playSound(sounds.System.Basic_sounds.invalid);
+                playSound(sounds.basic_sounds.error.invalidSelect);
             }
         }
 
@@ -514,6 +514,7 @@ function updateCraftValues() {
     }
 }
 
+/** Updates the craft screen */
 function updateCraftScreen() {
     if (Object.keys(craftingTempData.parts).length > 0) {
         updateCraftPreview(); // big preview of what it looks like
