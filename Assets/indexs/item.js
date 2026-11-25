@@ -33,14 +33,14 @@
  * @property {Number} toughness
  * @property {Number} sharpness
  *
- * @property {damagetypes[]} damagetypes - amplify the power of this damage type when crafted with something that gives the same
+ * @property {damageTypes.damageType} damagetype - amplify the power of this damage type when crafted with something that gives the same
  * @property {effects[]} effects
  * @property {materialTypes} materialType - the type of matrial this item is
  *
  * ---------------------------------------
  * @typedef {object} weaponData - properties about this item in combat
  * @property {weaponTypes.weaponType} weaponType - what weapon type is this,
- * @property {damageTypes.damagetype} damagetype - the damagetype this item gives
+ * @property {damageTypes.damageType} damageType - the damageType this item gives
  * @property {Number} durablity
  * @property {Number|undefined} attack
  * @property {Number|undefined} defense
@@ -94,7 +94,7 @@
  * @property {Number} attack - attack bonus added to any item with this socket
  * @property {Number} accuracy - accuracy bonus added to any item with this socket
  * @property {Number} defense - defense bonus added to any item with this socket
- * @property {damageTypes.damagetype} damagetype - the damagetype this socket changes the wepon to have
+ * @property {damageTypes.damageType} damageType - the damageType this socket changes the wepon to have
  * @property {attack[]|undefined} instantAction - when the socket is activated the attack it activates
  * @property {boolean|undefined} actionCost - the action still has a EP cost
  *

@@ -355,7 +355,7 @@ function createPositionedContainer(targetSelector) {
 
     // Bounding box for transformations
     const container = document.createElement("div");
-    container.classList.add("textcontainerbox");
+    modifyClass(container, "textcontainerbox", "add");
 
     container.style.top = targetRect.y + "px"; // Distance from the top of the viewport
     container.style.left = targetRect.x + "px"; // Distance from the left of the viewport
@@ -364,7 +364,7 @@ function createPositionedContainer(targetSelector) {
 
     // Inner container for horizontal positioning
     const inner = document.createElement("div");
-    inner.classList.add("innertext", verticalPos, horizontalPos);
+    modifyClass(inner, `innertext ${verticalPos} ${horizontalPos}`, "add");
     if (horizontalPos === "left") {
         inner.style.width = target.offsetLeft + "px"; // Distance from the edge of the parent container
     }
@@ -394,7 +394,7 @@ async function spawnTextBox(targetSelector, text, time, waitForRemoval = false) 
 
     // Create the textbox
     const textbox = document.createElement("dialog");
-    textbox.classList.add("textbox", verticalPos, horizontalPos);
+    modifyClass(textbox, `textbox ${verticalPos} ${horizontalPos}`, "add");
     if (horizontalPos === "right") {
         textbox.style.width = target.offsetLeft + target.offsetWidth + "px";
     }

@@ -65,7 +65,7 @@ Tho for the most part battles are like DND just without bonus actions or spell s
  * @property {statTypes.statType|undefined} rollFor - what stat are you rolling with for this attack
  *
  * @property {small|mid|large|huge} aoiSize - size of this attack if it is a aoi
- * @property {damagetype[]|undefined} damagetype - array of every element this attack has
+ * @property {damageType[]|undefined} damageType - array of every element this attack has
  * @property {effect[]|undefined} effect - array of every satus effect that is given by this weapon
  *
  * @property {Function|undefined} requirements - function to check if the user meets the special requirements to use this move
@@ -183,7 +183,7 @@ const attacks = {
         epCost: 1,
         level: 1,
         damageMult: 0.4,
-        damagetype: [damageTypes.pushing],
+        damageType: [damageTypes.pushing],
         rollFor: statTypes.strength,
     },
     shieldJump: {

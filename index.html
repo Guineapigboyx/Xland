@@ -22,8 +22,8 @@
         <script src="Assets/indexs/foodPrefixes.js"></script>
         <script src="Assets/indexs/attacks.js"></script>
         <script src="Assets/indexs/item.js"></script>
-        <!-- character data -->
         <script src="Assets/indexs/craftingSchematics.js"></script>
+        <!-- character data -->
         <script src="Assets/indexs/npc.js"></script>
         <script src="scripts/game-state.js"></script>
         <script src="Assets/indexs/pepole.js"></script>
@@ -129,7 +129,7 @@
                             <div
                                 class="fit-div hide"
                                 id="material-selector"
-                                onclick="selectMaterialSel(event)"
+                                onclick="selectMaterialSelector(event)"
                             ></div>
                         </section>
                     </div>
@@ -168,11 +168,12 @@
                             <div> <span>Defense:</span> <span data-slot="defense">N/A</span> </div>
                             <div> <span>Accuracy bonus:</span> <span data-slot="accuracy">N/A</span> </div>
                             <div> <span>Crit chance:</span> <span data-slot="crit">N/A</span> </div>
-                            <div> <span>Surge Cost:</span> <span data-slot="actionSurge">N/A</span> </div>
+                            <div> <span>Surge cost:</span> <span data-slot="actionSurge">N/A</span> </div>
                             <div> <span>Speed:</span> <span data-slot="speed">N/A</span> </div>
                             <div> <span>Range:</span> <span data-slot="range">N/A</span> </div>
-                            <div> <span>Speical Move:</span> <span data-slot="speicalAttack">N/A</span> </div>
-                            <div> <span>Hit Effects:</span> <span data-slot="onHitName">N/A</span> </div>
+                            <div> <span>Damage Type:</span> <span data-slot="damageType">N/A</span> </div>
+                            <div> <span>Speical move:</span> <span data-slot="speicalAttack">N/A</span> </div>
+                            <div> <span>Hit effects:</span> <span data-slot="onHitName">N/A</span> </div>
                             <div> <span>Effect 1:</span> <span data-slot="effect1">N/A</span> </div>
                             <div> <span>Effect 2:</span> <span data-slot="effect2">N/A</span> </div>
                             <div> <span>Effect 3:</span> <span data-slot="effect3">N/A</span> </div>
@@ -181,6 +182,7 @@
                         <button
                             id="craft-button"
                             class="square-bubble header-text massive-text bad disabled-click"
+                            onclick="craftButton()"
                         >
                             CRAFT
                         </button>

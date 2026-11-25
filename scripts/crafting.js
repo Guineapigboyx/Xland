@@ -346,7 +346,8 @@ function selectModulePart(event) {
     clickPartNav("material");
 }
 
-function selectMaterialSel(event) {
+function selectMaterialSelector(event) {
+    // the module material selector
     const clickedSlot = event.target.closest(".material-slot");
     if (!clickedSlot || !craftingTempData.person) return;
 
@@ -356,6 +357,7 @@ function selectMaterialSel(event) {
     if (clickedMaterial.length === 0) return console.log("No material selected");
     if (clickedMaterial.length > 1) console.log("Multiple materials selected", clickedMaterial);
 
+    // selects the first one in the selectorAll
     clickedMaterial = clickedMaterial[0];
 
     // Get the item.
@@ -385,6 +387,21 @@ function selectMaterialSel(event) {
     )) {
         playSound(sounds.basic_sounds.error.invalidSelect);
         spawnTextBox(clickedSlot,"Invalid material",2000)
+        return;
+    }
+
+    // check if you have enough of the material
+    let amountInInventory = Array.from(clickedMaterial.children).find((x) => x.nodeName === "SPAN");
+    if (!amountInInventory) return;
+    amountInInventory = Number(amountInInventory.textContent);
+
+    const amountNeeded = module.materials[materialSlot].amount;
+
+    console.log(amountInInventory, amountNeeded);
+
+    if (!(amountNeeded <= amountInInventory)) {
+        playSound(sounds.basic_sounds.error.invalidSelect);
+        spawnTextBox(clickedSlot, "Not enough material", 2000);
         return;
     }
 
@@ -432,7 +449,6 @@ function updateCraftingInventory() {
                 remaining -= requirement.amount;
             } else {
                 modifyClass(materialSlot, "bad", "add");
-                playSound(sounds.basic_sounds.error.invalidSelect);
             }
         }
 
@@ -490,6 +506,10 @@ function updateCraftValues() {
     const weaponData = getCraftedStats(moduleList, materialData);
     if (!weaponData) return;
 
+    if (typeof weaponData.damageType === "object") {
+        weaponData.damageType = weaponData.damageType.name;
+    }
+
     // Update stats preview
     modifyClass(Array.from(statsPreview.children), "hide", "add");
 
@@ -502,11 +522,6 @@ function updateCraftValues() {
             `#craft-values > div > [data-slot="${weaponKeys[i]}"]`,
         );
         if (!statPreview) continue;
-
-        // round the number to make it look nice
-        if (!isNaN(weaponData[weaponKeys[i]])) {
-            weaponData[weaponKeys[i]] = round(weaponData[weaponKeys[i]], 2);
-        }
 
         if (weaponData[weaponKeys[i]] <= 0) continue;
         statPreview.textContent = weaponData[weaponKeys[i]];

@@ -86,3 +86,105 @@ function clickPartNav(section) {
     modifyClass(`#${otherSection}-selector`, "hide", "add");
     modifyClass(`#${section}-selector`, "hide", "remove");
 }
+
+function craftButton() {
+    if (hasClass("#craft-button", "disabled-click"))
+        return playSound(sounds.basic_sounds.error.invalidSelect);
+
+    const inventory = gameState.persons[craftingTempData.person].inventory;
+    const schematic = craftingTempData.schematic;
+
+    let materialData = [];
+    let moduleList = [];
+    let craftedModules = [];
+    let inventoryUsage = {};
+
+    // Build the crafted modules
+    const partKeys = Object.keys(craftingTempData.parts);
+
+    for (let i = 0; i < partKeys.length; i++) {
+        const partKey = partKeys[i];
+        const part = craftingTempData.parts[partKey];
+        const module = modules[part.module];
+
+        if (!module) continue;
+
+        let craftedMaterials = [];
+
+        // Get the materials assigned to this module
+        for (let x = 0; x < part.materials.length; x++) {
+            const inventorySlot = part.materials[x];
+            const material = inventory[inventorySlot];
+            const requirement = module.materials[x];
+
+            // Store material stats for calculating the items stats
+            materialData.push(getMaterialData(material));
+            moduleList.push(module);
+
+            // Track how many items need to be consumed
+            inventoryUsage[inventorySlot] =
+                (inventoryUsage[inventorySlot] || 0) + requirement.amount;
+
+            // Store the material in the crafted item
+            // Repeat it to represent the actual number of materials used
+            for (let y = 0; y < requirement.amount; y++) {
+                craftedMaterials.push({
+                    item: material.item,
+                    craftedItemID: material.craftedItemID,
+                    material1: material.material1,
+                    material2: material.material2,
+                });
+            }
+        }
+
+        craftedModules.push({
+            module: module,
+            part: schematic.parts[partKey],
+            materials: craftedMaterials,
+        });
+    }
+
+    // Calculate the items stats
+    const weaponData = getCraftedStats(moduleList, materialData);
+
+    // Merge with the base items weapon data
+    const finalWeaponData = {
+        ...schematic.modularItem.weaponData,
+        ...weaponData,
+    };
+
+    // Create a new crafted item ID
+    const craftedItemID = Math.max(0, ...Object.keys(craftedItemData).map(Number)) + 1;
+
+    // Register the crafted item
+    craftedItemData[craftedItemID] = {
+        name: schematic.itemName,
+        components: {
+            schematic: schematic,
+            craftedModules: craftedModules,
+        },
+        weaponData: finalWeaponData,
+    };
+
+    // Consume materials, it goes backwards so the item slots don't shift
+    for (let i = inventory.length - 1; i >= 0; i--) {
+        if (!inventoryUsage[i]) continue;
+        inventory[i].count -= inventoryUsage[i];
+
+        if (inventory[i].count <= 0) {
+            inventory.splice(i, 1);
+        }
+    }
+
+    // Add the crafted item to inventory
+    addItemToInventory(makeInventoryItem(schematic.modularItem, craftedItemID), inventory);
+
+    // Clear selected materials but keep the modules
+    for (let i = 0; i < partKeys.length; i++) {
+        craftingTempData.parts[partKeys[i]].materials = [];
+    }
+
+    // Refresh the crafting screen
+    fillInventory(".craft-screen > .inventory", inventory);
+    updateCraftScreen();
+}

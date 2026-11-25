@@ -204,6 +204,21 @@ function getCraftedStats(modules, materialData) {
         weaponData = module.itemStats(weaponData, material);
     }
 
+    // round the number to make it look nice
+    const weaponKeys = Object.keys(weaponData);
+
+    // todo add effects
+
+    // todo add onhit
+
+    console.log(weaponData);
+
+    for (let i = 0; i < weaponKeys.length; i++) {
+        if (!isNaN(weaponData[weaponKeys[i]])) {
+            weaponData[weaponKeys[i]] = round(weaponData[weaponKeys[i]], 2);
+        }
+    }
+
     return weaponData;
 }
 

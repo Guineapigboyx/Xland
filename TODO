@@ -66,8 +66,8 @@ UI:
     [-] conversation
     [-] map
     [-] adventure log
-    [] material colors
-    [] crafting
+    [x] material colors
+    [x] crafting
     [=] cooking
     [=] climbing
     // there will most likely be more
@@ -121,6 +121,7 @@ gameplay:
     [-] dialoage
     [-] climbing
     [-] exploreing
+    [] crafting
     [-] traps
     [-] tradeing
     [-] stealth

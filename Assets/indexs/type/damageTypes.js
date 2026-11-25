@@ -1,8 +1,8 @@
 /**
  * @typedef {object} damageTypes - elements like fire, lighting, ice
- * @property {damagetype}
+ * @property {damageType}
  *
- * @typedef {object} damagetype - the type of damage and the properties of it
+ * @typedef {object} damageType - the type of damage and the properties of it
  * @property {string} name - name of the damage type
  * @property {string} CssColor - the color of this damage type (IT MUST BE A CSS VARIABLE)
  * @property {Number|undefined} damage - bonus damage added ontop of any damage source that uses this type

@@ -850,7 +850,7 @@ item-group {
     margin-right: -1%;
     display: flex;
     padding: calc(var(--scale) / 5);
-    width: fit-content;
+    width: max-content;
     white-space: pre-line;
 }
 

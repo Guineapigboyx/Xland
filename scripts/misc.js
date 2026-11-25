@@ -23,6 +23,9 @@ function modifyClass(selector, className, action) {
         return;
     }
 
+    if (!(action === "add" || action === "remove" || action === "toggle"))
+        return console.warn("invalid modifyClass operation", action);
+
     elements.forEach((el) => {
         el.classList[action](...className.split(" "));
     });

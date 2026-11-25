@@ -7,7 +7,7 @@
  * @property {Number} weightThreshold - If the weight is above this amount it becomes 2 handed. Put 0 for always 2 handed
  * @property {statTypes.statType} attackBonus - the stat to calculate the modifer for actions with this weapon
  * @property {"stab"|"slash"|"slam"|"boom"|"swoosh"|"mechnical"} sound - fallback for if a move does not spesfiy
- * @property {damageTypes.damagetype} damagetype - fallback damage type if a item does not have one
+ * @property {damageTypes.damageType} damageType - fallback damage type if a item does not have one
  *
  * @property {undefined|1|2|3} rockBreaker - gets a bonus if used for destorying rocky objects
  * @property {undefined|1|2|3} metalBreaker - gets a bonus if used for destorying metal objects

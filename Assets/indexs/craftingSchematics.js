@@ -193,7 +193,7 @@ const schematics = {
  * ---- from item.js
  * @typedef {object} weaponData - properties about this item in combat
  * @property {weaponTypes.weaponType} weaponType - what weapon type is this,
- * @property {damageTypes.damagetype} damagetype - the damagetype this item gives
+ * @property {damageTypes.damageType} damageType - the damageType this item gives
  * @property {Number} durablity
  * @property {Number|undefined} attack
  * @property {Number|undefined} defense
@@ -230,7 +230,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.28 + materialData.density * 0.07 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.5;
             weaponData.attack -= materialData.flexiblity * 0.5;
             weaponData.speed -= materialData.density * 0.25;
@@ -260,7 +264,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.17 + materialData.density * 0.055 - materialData.flexiblity * 0.024;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.sharpness * 1.5 +
                 materialData.hardness * 0.65 +
@@ -295,7 +303,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.55 + materialData.density * 0.08 - materialData.flexiblity * 0.024;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.8 + materialData.flexiblity * 0.45;
             weaponData.accuracy -= 0.7;
             weaponData.crit += materialData.sharpness * 0.3;
@@ -325,7 +337,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.42 + materialData.density * 0.075 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.6 + materialData.density * 0.9;
             weaponData.accuracy -= 0.5;
             weaponData.crit += materialData.hardness * 0.08;
@@ -355,7 +371,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.48 + materialData.density * 0.07 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.density * 1.2 + materialData.sharpness * 1.35;
             weaponData.accuracy -= 0.6;
             weaponData.crit += materialData.sharpness * 0.15;
@@ -381,7 +401,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 1.18 + materialData.density * 0.105 - materialData.flexiblity * 0.012;
-            weaponData.damagetype = damageTypes.crushing;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.crushing;
+            }
             weaponData.attack += materialData.density * 2 + materialData.toughness * 0.8;
             weaponData.accuracy -= 1.2;
             weaponData.durablity += materialData.hardness * 6 + materialData.toughness * 3;
@@ -409,7 +433,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.04 + materialData.density * 0.04 - materialData.flexiblity * 0.03;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 0.95 + materialData.hardness * 0.6;
             weaponData.accuracy += 0.25;
             weaponData.crit += materialData.sharpness * 0.16;
@@ -881,7 +909,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.15 + materialData.density * 0.05 - materialData.flexiblity * 0.015;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.15 + materialData.sharpness * 0.6;
             weaponData.crit += materialData.sharpness * 0.07;
             weaponData.durablity +=
@@ -904,7 +936,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.32 + materialData.density * 0.06 - materialData.flexiblity * 0.016;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.2 + materialData.density * 0.3;
             weaponData.accuracy -= 0.15;
             weaponData.durablity += materialData.hardness * 4.2 + materialData.toughness * 1.2;
@@ -926,7 +962,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.55 + materialData.density * 0.07 - materialData.flexiblity * 0.013;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.4 + materialData.sharpness * 0.9;
             weaponData.accuracy -= 0.2;
             weaponData.crit += materialData.sharpness * 0.06;
@@ -949,7 +989,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.24 + materialData.density * 0.053 - materialData.flexiblity * 0.015;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.1 + materialData.sharpness * 0.4;
             weaponData.accuracy += 0.1;
             weaponData.durablity += materialData.hardness * 5 + materialData.toughness * 1.5;
@@ -971,7 +1015,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.43 + materialData.density * 0.065 - materialData.flexiblity * 0.014;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.7 + materialData.density * 0.35;
             weaponData.accuracy -= 0.3;
             weaponData.durablity += materialData.hardness * 6 + materialData.toughness * 1.8;
@@ -993,7 +1041,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.3 + materialData.density * 0.053 - materialData.flexiblity * 0.022;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.1 + materialData.sharpness * 0.8;
             weaponData.accuracy += 0.15;
             weaponData.crit += materialData.sharpness * 0.08;
@@ -1021,7 +1073,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.67 + materialData.density * 0.08 - materialData.flexiblity * 0.012;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.hardness * 1.85 + materialData.sharpness * 0.8;
             weaponData.accuracy -= 0.5;
             weaponData.crit += materialData.hardness * 0.12;
@@ -1043,7 +1099,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 -0.2 + materialData.density * 0.035 - materialData.flexiblity * 0.03;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 0.9 + materialData.hardness * 0.55;
             weaponData.accuracy += 0.4;
             weaponData.crit += materialData.sharpness * 0.15;
@@ -1296,7 +1356,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.25 + materialData.density * 0.05 - materialData.flexiblity * 0.015;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 0.22;
             weaponData.defense += materialData.toughness * 1.4 + materialData.hardness * 0.6;
             weaponData.durablity += materialData.hardness * 4.2 + materialData.toughness * 3;
@@ -1318,7 +1382,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.08 + materialData.density * 0.045 - materialData.flexiblity * 0.02;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 0.15;
             weaponData.defense += materialData.toughness * 1.3 + materialData.hardness * 0.5;
             weaponData.accuracy += 0.1;
@@ -1351,7 +1419,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.41 + materialData.density * 0.065 - materialData.flexiblity * 0.012;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.1 + materialData.density * 0.35;
             weaponData.defense += materialData.toughness * 1.2 + materialData.hardness * 0.55;
             weaponData.accuracy -= 0.2;
@@ -1383,7 +1455,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.82 + materialData.density * 0.09 - materialData.flexiblity * 0.011;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 0.5;
             weaponData.defense += materialData.toughness * 1.65 + materialData.hardness * 0.8;
             weaponData.accuracy -= 0.25;
@@ -1411,7 +1487,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.42 + materialData.density * 0.06 - materialData.flexiblity * 0.014;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 0.9;
             weaponData.defense += materialData.toughness * 1.3 + materialData.hardness * 0.55;
             weaponData.accuracy -= 0.1;
@@ -1440,7 +1520,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.37 + materialData.density * 0.053 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.4 + materialData.hardness * 0.3;
             weaponData.defense += materialData.toughness * 1.25 + materialData.hardness * 0.5;
             weaponData.accuracy -= 0.25;
@@ -1472,7 +1556,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.58 + materialData.density * 0.07 - materialData.flexiblity * 0.013;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 0.28;
             weaponData.defense += materialData.toughness * 1.55 + materialData.hardness * 0.65;
             weaponData.accuracy -= 0.1;
@@ -1501,7 +1589,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.16 + materialData.density * 0.045 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.25 + materialData.hardness * 0.5;
             weaponData.crit += materialData.sharpness * 0.08;
             weaponData.durablity +=
@@ -1526,7 +1618,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.7 + materialData.density * 0.077 - materialData.flexiblity * 0.012;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.sharpness * 1.1 +
                 materialData.hardness * 0.6 +
@@ -1560,7 +1656,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.04 + materialData.density * 0.044 - materialData.flexiblity * 0.029;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.6 + materialData.hardness * 0.55;
             weaponData.accuracy += 0.15;
             weaponData.crit += materialData.sharpness * 0.19;
@@ -1585,7 +1685,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 -0.39 + materialData.density * 0.027 - materialData.flexiblity * 0.045;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.25 + materialData.hardness * 0.65;
             weaponData.accuracy += 0.8;
             weaponData.crit += materialData.sharpness * 0.23;
@@ -1615,7 +1719,11 @@ const modules = {
         ],
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge += 0.08 + materialData.density * 0.044;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 0.8 + materialData.hardness * 0.7;
             weaponData.accuracy -= materialData.density * 0.1;
             weaponData.durablity +=
@@ -1645,7 +1753,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 -0.24 + materialData.density * 0.03 - materialData.flexiblity * 0.04;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 0.85 + materialData.hardness * 0.4;
             weaponData.accuracy += 0.55;
             weaponData.crit += materialData.sharpness * 0.1;
@@ -1673,7 +1785,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.33 + materialData.density * 0.063 - materialData.flexiblity * 0.016;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.sharpness * 1.25 +
                 materialData.density * 0.55 +
@@ -1840,7 +1956,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.12 + materialData.density * 0.055 - materialData.flexiblity * 0.012;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.05 + materialData.toughness * 0.3;
             weaponData.accuracy -= 0.1;
             weaponData.durablity += materialData.hardness * 2.5 + materialData.toughness * 2.2;
@@ -1883,7 +2003,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.29 + materialData.density * 0.063 - materialData.flexiblity * 0.014;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.density * 0.9 + materialData.sharpness * 1.1;
             weaponData.accuracy -= 0.25;
             weaponData.crit += materialData.sharpness * 0.1;
@@ -1922,7 +2046,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.7 + materialData.density * 0.095 - materialData.flexiblity * 0.011;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.75 + materialData.toughness * 0.45;
             weaponData.accuracy -= 0.65;
             weaponData.durablity += materialData.hardness * 3.5 + materialData.toughness * 3;
@@ -2092,7 +2220,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.2 + materialData.density * 0.044 - materialData.flexiblity * 0.013;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.1 + materialData.density * 0.3;
             weaponData.defense += materialData.toughness * 0.3;
             weaponData.accuracy -= 0.18;
@@ -2140,7 +2272,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.17 + materialData.density * 0.045 - materialData.flexiblity * 0.018;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 0.8 + materialData.hardness * 0.25;
             weaponData.defense += materialData.toughness * 0.25;
             weaponData.accuracy -= 0.1;
@@ -2403,7 +2539,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 -0.06 + materialData.density * 0.039 - materialData.flexiblity * 0.026;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.3 + materialData.hardness * 0.5;
             weaponData.accuracy += 0.35;
             weaponData.crit += materialData.sharpness * 0.1;
@@ -2432,7 +2572,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.19 + materialData.density * 0.055 - materialData.flexiblity * 0.027;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.sharpness * 1.55 +
                 materialData.hardness * 0.6 +
@@ -2467,7 +2611,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.71 + materialData.density * 0.082 - materialData.flexiblity * 0.019;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.sharpness * 1.2 +
                 materialData.hardness * 0.75 +
@@ -2493,7 +2641,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.96 + materialData.density * 0.095 - materialData.flexiblity * 0.015;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack +=
                 materialData.hardness * 1.2 +
                 materialData.sharpness * 0.75 +
@@ -2525,7 +2677,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.22 + materialData.density * 0.055 - materialData.flexiblity * 0.031;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.6 + materialData.flexiblity * 0.25;
             weaponData.accuracy += 0.15;
             weaponData.crit += materialData.sharpness * 0.17;
@@ -2554,7 +2710,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.21 + materialData.density * 0.052 - materialData.flexiblity * 0.019;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.sharpness * 1.15 + materialData.hardness * 0.75;
             weaponData.accuracy += 0.1;
             weaponData.crit += materialData.sharpness * 0.1;
@@ -2578,8 +2738,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.16 + materialData.density * 0.06 - materialData.flexiblity * 0.019;
-            weaponData.damagetype = damageTypes.blunt;
-            weaponData.damagetype = damageTypes.crushing;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.35 + materialData.toughness * 0.35;
             weaponData.accuracy -= 0.15;
             weaponData.durablity += materialData.hardness * 3.4 + materialData.toughness * 2.4;
@@ -2606,8 +2769,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.67 + materialData.density * 0.087 - materialData.flexiblity * 0.015;
-            weaponData.damagetype = damageTypes.blunt;
-            weaponData.damagetype = damageTypes.crushing;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.65 + materialData.hardness * 0.4;
             weaponData.defense += materialData.toughness * 0.2;
             weaponData.accuracy -= 0.4;
@@ -2640,7 +2806,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.48 + materialData.density * 0.078 - materialData.flexiblity * 0.014;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.density * 1.05 + materialData.sharpness * 1.1;
             weaponData.accuracy -= 0.25;
             weaponData.crit += materialData.sharpness * 0.12;
@@ -2674,7 +2844,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 0.42 + materialData.density * 0.07 - materialData.flexiblity * 0.02;
-            weaponData.damagetype = damageTypes.sharp;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.sharp;
+            }
             weaponData.attack += materialData.density * 1.1 + materialData.sharpness * 0.95;
             weaponData.accuracy -= 0.3;
             weaponData.crit += materialData.sharpness * 0.13;
@@ -2700,7 +2874,11 @@ const modules = {
         itemStats: (weaponData, materialData) => {
             weaponData.actionSurge +=
                 -0.07 + materialData.density * 0.05 - materialData.flexiblity * 0.03;
-            weaponData.damagetype = damageTypes.blunt;
+            if (materialData.damageType) {
+                weaponData.damageType = materialData.damageType;
+            } else {
+                weaponData.damageType = damageTypes.blunt;
+            }
             weaponData.attack += materialData.density * 1.15 + materialData.flexiblity * 0.2;
             weaponData.accuracy += 0.15;
             weaponData.durablity += materialData.hardness * 2.9 + materialData.toughness * 2.2;
