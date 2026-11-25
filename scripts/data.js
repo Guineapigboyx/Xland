@@ -131,7 +131,7 @@ function getCraftedItem(inventoryItem) {
  * @param {Function} statsFunction - function from itemStats
  * @param {materialData|items.item|inventoryItem|string} material - material put into the itemstats function
  */
-function getMatrialData(material) {
+function getMaterialData(material) {
     if (typeof material !== "object" || Array.isArray(material)) return false;
 
     // translate all of the materials into materialData

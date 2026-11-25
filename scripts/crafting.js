@@ -459,7 +459,7 @@ function updateCraftValues() {
         for (let x = 0; x < materials.length; x++) {
             const item = gameState.persons[craftingTempData.person].inventory[materials[x]];
 
-            const itemData = getMatrialData(item);
+            const itemData = getMaterialData(item);
             if (!itemData) return;
             materialData.push(itemData);
             partMap.push(partKey);
