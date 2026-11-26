@@ -28,6 +28,7 @@
     --good: lawngreen;
     --mid: Gold;
     --bad: Brown;
+    --bad-text: crimson; /* brown is too dark for text */
 
     /* borders */
     --border-Colors: black; /* also primary text color */
@@ -127,12 +128,24 @@ button {
     background-color: var(--good);
 }
 
-.warn {
+.mid {
     background-color: var(--mid);
 }
 
 .bad {
     background-color: var(--bad);
+}
+
+.good-text {
+    color: var(--good) !important;
+}
+
+.mid-text {
+    color: var(--mid) !important;
+}
+
+.bad-text {
+    color: var(--bad-text) !important;
 }
 
 /* hover effects ------------------------------------------------------------------------------------------------------------ */
@@ -561,9 +574,12 @@ body {
     padding-right: 10%;
 }
 
-.overview-HP,
-.overview-EP {
-    height: 60%;
+.overview-EP::before {
+    content: "EP:";
+}
+
+.overview-HP::before {
+    content: "HP:";
 }
 
 .person-status {

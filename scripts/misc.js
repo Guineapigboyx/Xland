@@ -3,7 +3,7 @@
 /**
  * Add, remove, or toggle a class on elements.
  *
- * @param {String|HTMLElement|HTMLElement[]} selector - CSS selector or HTML element(s)
+ * @param {String|HTMLElement|HTMLElement[]|NodeList} selector - CSS selector or HTML element(s)
  * @param {String} className - The class to modify
  * @param {"add"|"remove"|"toggle"} action - What to do with the class
  */

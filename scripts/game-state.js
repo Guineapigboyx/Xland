@@ -73,8 +73,12 @@ function addNewTeamate(basePerson) {
         stats: [],
         equiped: basePerson.equiped,
         level: 1,
-        ep: basePerson.stats.find((stat) => stat.stat === statTypes.endurance).amount,
-        hp: basePerson.hp,
+        values: {
+            ep: basePerson.stats.find((stat) => stat.stat === statTypes.endurance).amount,
+            hp: basePerson.hp,
+            maxep: basePerson.stats.find((stat) => stat.stat === statTypes.endurance).amount,
+            maxhp: basePerson.hp,
+        },
         activeEffects: [],
         inActiveTeam: false,
     };

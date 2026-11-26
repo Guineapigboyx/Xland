@@ -26,6 +26,8 @@ crafting:
     [] modules
     [x] crafting stat combineing
     [-] socketing
+    [-] modifying items
+    [-] stat bonuses for crafting
     finshed types:
         [x] pickaxe
         [x] hammer

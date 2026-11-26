@@ -41,16 +41,24 @@ function updateStatusScreen() {
     for (let i = 0; i < 3; i++) {
         const playerOverview = document.querySelector(`.person-overview[data-slot="${i + 1}"]`);
         const inventory = playerOverview.querySelector(".person-inventory");
+        const epDisplay = playerOverview.querySelector(".person-condition > .overview-EP");
+        const hpDisplay = playerOverview.querySelector(".person-condition > .overview-HP");
         const person = gameState.persons[gameState.activeTeam[i]];
+
+        modifyClass([epDisplay, hpDisplay], "good-text mid-text bad-text", "remove");
 
         // clear and fill person inventorys
         if (person) {
             fillInventory(inventory, person.inventory);
         } else {
+            // if there is no person
             clearDiv(inventory);
             playerOverview.querySelectorAll(`*[data-equipment]`).forEach((element) => {
                 clearDiv(element);
             });
+
+            epDisplay.textContent = "N/A";
+            hpDisplay.textContent = "N/A";
             return;
         }
 
@@ -79,6 +87,32 @@ function updateStatusScreen() {
             }
 
             createItemIcon(icon, equipSlot);
+        }
+
+        // fill in hp and ep
+        hpDisplay.textContent = `${person.values.hp}/${person.values.maxhp}`;
+        epDisplay.textContent = `${person.values.ep}/${person.values.maxep}`;
+
+        // color in hp display
+        if (person.values.hp >= person.values.maxhp) {
+            modifyClass(hpDisplay, "good-text", "add");
+        } else if (person.values.hp <= person.values.maxhp * 0.1) {
+            // if below 10% make text red
+            modifyClass(hpDisplay, "bad-text", "add");
+        } else if (person.values.hp <= person.values.maxhp * 0.5) {
+            // if below 50% make text yellow
+            modifyClass(hpDisplay, "mid-text", "add");
+        }
+
+        // color in ep display
+        if (person.values.ep >= person.values.maxep) {
+            modifyClass(epDisplay, "good-text", "add");
+        } else if (person.values.ep <= person.values.maxep * 0.1) {
+            // if below 10% make text red
+            modifyClass(epDisplay, "bad-text", "add");
+        } else if (person.values.ep <= person.values.maxep * 0.5) {
+            // if below 50% make text yellow
+            modifyClass(epDisplay, "mid-text", "add");
         }
     }
 }
