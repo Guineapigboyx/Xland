@@ -30,6 +30,24 @@ function toggleScreen(buttonClicked) {
     }
 }
 
+function statusScreen() {
+    toggleScreen("status");
+
+    // clear and fill person inventorys
+    for (let i = 1; i < 4; i++) {
+        if (gameState.activeTeam[i - 1]) {
+            fillInventory(
+                `.person-overview[data-slot="${i}"] > .person-inventory`,
+                gameState.persons[gameState.activeTeam[i - 1]].inventory,
+            );
+        } else {
+            clearDiv(`.person-overview[data-slot="${i}"] > .person-inventory`);
+        }
+    }
+}
+
+// Crafting ---------------------------------------------------------------------------------------------------------------------------------
+
 function craftingScreen() {
     document.querySelector("#crafting-player-dropdown").attributes.value.value = "N/A";
     document.querySelector("#crafting-player-dropdown > label").textContent = "Select teamate";

@@ -232,11 +232,19 @@ function showContextMenu(x, y, options) {
  * @returns
  */
 function fillInventory(selector, inventory) {
-    const inventoryEl = document.querySelector(selector);
-    if (!inventoryEl) {
-        console.warn("Invalid inventory selector", inventoryEl);
-        return;
+    let inventoryEl;
+    if (typeof selector === "string") {
+        inventoryEl = document.querySelector(selector);
+    } else if (!(selector instanceof HTMLElement)) {
+        inventoryEl = selector;
+    } else {
+        return console.warn("Invalid inventory selector", inventoryEl);
     }
+
+    if (!(inventoryEl instanceof HTMLElement)) {
+        return console.warn("Invalid inventory selector", inventoryEl);
+    }
+
     clearDiv(selector);
 
     for (let invenItems = 0; invenItems < inventory.length; invenItems++) {
