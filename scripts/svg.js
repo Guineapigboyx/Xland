@@ -544,9 +544,10 @@ function getIcon(icon, materialOveride) {
 /**
  *
  * @param {Object} iconData - iconData from getIcon()
+ * @param {HTMLElement|undefined} parrent - appends the icons to a parrent element
  * @returns {HTMLElement} - a section element with all the item-icons in them
  */
-function createItemIcon(iconData) {
+function createItemIcon(iconData, parrent) {
     let iconGroup = document.createElement("item-group");
     for (let i = 0; i < iconData.length; i++) {
         const icon = document.createElement("item-icon");
@@ -563,5 +564,14 @@ function createItemIcon(iconData) {
 
         iconGroup.appendChild(icon);
     }
+
+    if (iconGroup.children.length <= 0) {
+        return console.warn(`Failed to make icon`, iconData);
+    }
+
+    if (parrent instanceof HTMLElement && parrent) {
+        parrent.append(...Array.from(iconGroup.children));
+    }
+
     return iconGroup;
 }

@@ -30,18 +30,28 @@ function toggleScreen(buttonClicked) {
     }
 }
 
+// Status ---------------------------------------------------------------------------------------------------------------------------------
+
 function statusScreen() {
     toggleScreen("status");
+    updateStatusScreen();
+}
 
-    // clear and fill person inventorys
-    for (let i = 1; i < 4; i++) {
-        if (gameState.activeTeam[i - 1]) {
-            fillInventory(
-                `.person-overview[data-slot="${i}"] > .person-inventory`,
-                gameState.persons[gameState.activeTeam[i - 1]].inventory,
-            );
+function updateStatusScreen() {
+    for (let i = 0; i < 3; i++) {
+        const playerOverview = document.querySelector(`.person-overview[data-slot="${i + 1}"]`);
+        const inventory = playerOverview.querySelector(".person-inventory");
+        const person = gameState.persons[gameState.activeTeam[i]];
+
+        // clear and fill person inventorys
+        if (person) {
+            fillInventory(inventory, person.inventory);
         } else {
-            clearDiv(`.person-overview[data-slot="${i}"] > .person-inventory`);
+            clearDiv(inventory);
+            playerOverview.querySelectorAll(`*[data-equipment]`).forEach((element) => {
+                clearDiv(element);
+            });
+            return;
         }
     }
 }

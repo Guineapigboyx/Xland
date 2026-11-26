@@ -227,18 +227,18 @@ function showContextMenu(x, y, options) {
 
 /**
  *
- * @param {String} selector - CSS selector for where the icons go
- * @param {Array} inventory - should be a array of inventoryItems
+ * @param {String|HTMLElement} selector - CSS selector or element for where the icons go
+ * @param {iventoryItem[]} inventory - should be a array of inventoryItems
  * @returns
  */
 function fillInventory(selector, inventory) {
     let inventoryEl;
     if (typeof selector === "string") {
         inventoryEl = document.querySelector(selector);
-    } else if (!(selector instanceof HTMLElement)) {
+    } else if (selector instanceof HTMLElement) {
         inventoryEl = selector;
     } else {
-        return console.warn("Invalid inventory selector", inventoryEl);
+        return console.warn("Invalid inventory selector", selector);
     }
 
     if (!(inventoryEl instanceof HTMLElement)) {

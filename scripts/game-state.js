@@ -71,7 +71,7 @@ function addNewTeamate(basePerson) {
         personData: basePerson,
         inventory: [],
         stats: [],
-        equiped: [basePerson.equiped],
+        equiped: basePerson.equiped,
         level: 1,
         ep: basePerson.stats.find((stat) => stat.stat === statTypes.endurance).amount,
         hp: basePerson.hp,
