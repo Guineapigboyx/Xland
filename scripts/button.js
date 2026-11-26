@@ -53,6 +53,33 @@ function updateStatusScreen() {
             });
             return;
         }
+
+        // fill in equip slots
+        const slots = mapObject(equipSlots, "htmlSlot");
+
+        for (let x = 0; x < slots.length; x++) {
+            equipSlot = playerOverview.querySelector(`*[data-equipment="${slots[x]}"]`);
+            if (!equipSlot) continue;
+
+            equipedInSlot = person.equiped.find((z) => z.slot.htmlSlot === slots[x]);
+
+            let icon = [];
+            if (equipedInSlot) {
+                icon = getIcon(equipedInSlot.item);
+            }
+
+            if (!equipedInSlot) {
+                for (let z = 0; z < equipSlots[slots[x]].icon.length; z++) {
+                    iconData = getIcon(equipSlots[slots[x]].icon[z], "schematic5");
+
+                    if (!iconData) continue;
+
+                    icon.push(iconData[0]);
+                }
+            }
+
+            createItemIcon(icon, equipSlot);
+        }
     }
 }
 

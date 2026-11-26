@@ -601,65 +601,6 @@ body {
     width: min-content;
 }
 
-/* Equipment slots ------------------------------------------------------------------------------------------------------------ */
-
-*[data-equipment] {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-*[data-equipment][data-inslot=""]::after {
-    content: "";
-    display: block;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    opacity: 40%;
-}
-
-*[data-equipment="head"][data-inslot=""]::after {
-    background-image: var(--head-icon);
-}
-
-*[data-equipment="feet"][data-inslot=""]::after {
-    background-image: var(--feet-icon);
-}
-
-*[data-equipment="pants"][data-inslot=""]::after {
-    background-image: var(--pants-icon);
-}
-
-*[data-equipment="body"][data-inslot=""]::after {
-    background-image: var(--body-icon);
-}
-
-*[data-equipment="hands"][data-inslot=""]::after {
-    background-image: var(--hand-icon);
-}
-
-*[data-equipment="necklace"][data-inslot=""]::after {
-    background-image: var(--necklace-icon);
-}
-
-*[data-equipment="belt"][data-inslot=""]::after {
-    background-image: var(--belt-icon);
-}
-
-*[data-equipment="storage"][data-inslot=""]::after {
-    background-image: var(--storage-icon);
-}
-
-*[data-equipment="mainHand"][data-inslot=""]::after {
-    background-image: var(--main-hand-icon);
-}
-
-*[data-equipment="offHand"][data-inslot=""]::after {
-    background-image: var(--off-hand-icon);
-}
-
 /* dividers ------------------------------------------------------------------------------------------------------------ */
 .divide /* base scrollable container divier */ {
     width: 100%;
