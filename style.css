@@ -420,7 +420,7 @@ item-icon::part(path) {
     aspect-ratio: 1/1;
     grid-row: 1;
     background-color: currentColor;
-    mask: url("Assets/inventory/go-up.svg") center / contain no-repeat;
+    mask: url("Assets/other/go-up.svg") center / contain no-repeat;
     grid-column: 2;
 }
 
@@ -811,7 +811,7 @@ item-group {
     aspect-ratio: 2/1;
     height: calc(var(--scale) * 1.5);
     background: var(--textbox-color);
-    background: url("Assets/inventory/Textbox line.svg") no-repeat center; /* the border is hardcoded into the svg */
+    background: url("Assets/other/Textbox line.svg") no-repeat center; /* the border is hardcoded into the svg */
 }
 
 .textbox.top::after {
